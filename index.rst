@@ -39,6 +39,7 @@ Rest API
    :maxdepth: 2   
 
    users
+   users/index
 
 Indices and tables
 ==================
