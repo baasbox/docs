@@ -33,16 +33,11 @@ Contents:
 
    tutorial
 
-Rest API
---------
+Rest
+----
 .. toctree::
    :maxdepth: 2   
 
-   collections
-   documents
-   assets
-   push_notifications
-   setting
    users
 
 Indices and tables
