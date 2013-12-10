@@ -10,7 +10,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   :titles_only
+   
    
    installation
    general_overview
