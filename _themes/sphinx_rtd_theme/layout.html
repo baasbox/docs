@@ -94,13 +94,13 @@
   <div class="bb-grid-for-nav">
 
     {# SIDE NAV, TOGGLES ON MOBILE #}
-    <nav data-toggle="wy-nav-shift" class="bb-nav-side">
+    <nav data-toggle="bb-nav-shift" class="bb-nav-side">
       <div class="bb-side-nav-search">
         <a href="{{ pathto(master_doc) }}" class="icon icon-home"> {{ project }}</a>
         {% include "searchbox.html" %}
       </div>
 
-      <div class="bb-menu wy-menu-vertical" data-spy="affix">
+      <div class="bb-menu bb-menu-vertical" data-spy="affix">
         {% set toctree = toctree(maxdepth=2, collapse=False, includehidden=True) %}
         {% if toctree %}
             {{ toctree }}
@@ -112,11 +112,11 @@
       &nbsp;
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="bb-nav-content-wrap">
+    <section data-toggle="bb-nav-shift" class="bb-nav-content-wrap">
 
       {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
       <nav class="bb-nav-top">
-        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <i data-toggle="bb-nav-top" class="icon icon-reorder"></i>
         <a href="{{ pathto(master_doc) }}">{{ project }}</a>
       </nav>
 
