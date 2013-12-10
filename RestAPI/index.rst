@@ -2,3 +2,4 @@ RESTAPI
 ===
 .. toctree::
 	users
+        documents
