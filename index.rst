@@ -12,6 +12,9 @@ Contents:
    :maxdepth: 2
    
    installation
+   root
+      child1
+      child2
 
 Indices and tables
 ==================
