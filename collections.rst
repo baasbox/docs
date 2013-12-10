@@ -1,6 +1,3 @@
-Rest API
---------
-
 Collections
 ===========
 
