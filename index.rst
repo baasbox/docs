@@ -10,12 +10,13 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   :titles_only
    
    installation
    general_overview
    console
    tutorial
-   
+
 
 
 Indices and tables
