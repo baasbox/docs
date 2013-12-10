@@ -33,7 +33,7 @@ Contents:
 
    tutorial
 
-Rest API
+RESTAPI
 ----
 .. toctree::
    :maxdepth: 2   
