@@ -40,6 +40,8 @@ RESTAPI
 
    users
    users/index
+   documents
+   documents/index
 
 Indices and tables
 ==================
