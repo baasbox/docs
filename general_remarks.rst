@@ -1,3 +1,5 @@
+.. _rest-API:
+
 General Remarks
 ===============
 

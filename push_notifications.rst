@@ -1,5 +1,4 @@
-Rest API
---------
+.. _rest-API:
 
 Push Notifications
 ==================
