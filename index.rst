@@ -12,7 +12,11 @@ Contents:
    :maxdepth: 2
    
    installation
+   general_overview
+   console
+   tutorial
    
+
 
 Indices and tables
 ==================
