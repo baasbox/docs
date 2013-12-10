@@ -36,7 +36,7 @@ Contents:
 .. toctree::
    :maxdepth: 2   
 
-
+   Rest Api <general_remarks>
 
 Indices and tables
 ==================
