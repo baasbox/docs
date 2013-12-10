@@ -1,6 +1,8 @@
+Tutorial
+--------
+
 BaasBox created tutorials to understand better the features offered.
 
--  [[Social Login\|http://www.baasbox.com/social-login]]
 -  [[Push
    Notifications\|http://www.baasbox.com/working-with-assets-in-baasbox-v-0-5-7/]]
 -  [[Working with
