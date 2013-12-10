@@ -16,7 +16,7 @@ run. Of course, if you wish or should it be necessary, you can apply
 suitable configuration parameters.
 
 Available Functions
--------------------
+===================
 
 Available functions are currently:
 
@@ -56,7 +56,7 @@ Available functions are currently:
       BaasBox.
 
 Applied Technology
-------------------
+==================
 
 BaasBox is written in Java with some classes in SCALA. It uses **Play!
 Framework** and it incorporates the core of **NoSQL OrientDB database**.

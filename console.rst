@@ -11,7 +11,7 @@ deployed BaasBox in the correct way, you can open your browser and open
 the welcome screen: |Home Console|
 
 The login screen
-----------------
+================
 
 When you are in the start view, the administrator console is reachable
 at the /console path. |Login Screen| To login in the administrative area
@@ -65,7 +65,7 @@ NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
 
 Settings
---------
+========
 
 By selecting the Settings option in the left menu you can access the
 settings section. |Edit Settings|\  You can choose settings for
@@ -75,7 +75,7 @@ record has the Edit button that allows you to modify its action.
 NOTE: the starred fields are mandatory.
 
 Database Management
--------------------
+===================
 
 The item **DB Management** allows you to perform some operations on the
 database. |DB Management|
@@ -96,7 +96,7 @@ To restore a database you have to download a backup file locally, and
 then use the restore feature.
 
 Users
------
+=====
 
 By selecting the Users option on the menu you can access the users
 section. |Users|\  In this section you have the list of all users. A
@@ -114,7 +114,7 @@ NOTE
    changes
 
 Collections
------------
+===========
 
 By selecting the Collections option on the menu you can access the
 collection administration page. Collections are a sort of buckets where
@@ -125,7 +125,7 @@ New Collection button and insert its name, then save the changes.
 |Create New Collection|\ 
 
 Documents
----------
+=========
 
 Documents are objects stored in the embedded NoSQL database ad grouped
 in "Collections" |Documents|\  In this section you have the list of all
@@ -139,7 +139,7 @@ Documents are accessible only by the user that created them. APIs exist
 to grant and revoke permissions to the single users or roles.
 
 Assets
-------
+======
 
 Assets are special objects. They are public by default, but only
 administrators can create or delete them. They can store arbitrary data
