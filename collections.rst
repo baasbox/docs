@@ -1,5 +1,8 @@
+Rest API
+--------
+
 Collections
------------
+===========
 
 A collection is a sort of bucket where you can store documents.
 

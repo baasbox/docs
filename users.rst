@@ -1,3 +1,6 @@
+Rest API
+--------
+
 Create a user (sign up)
 =======================
 

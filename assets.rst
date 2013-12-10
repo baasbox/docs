@@ -1,3 +1,6 @@
+Rest API
+--------
+
 **IMPORTANT**: To create the Assets you must use the related [[Admin
 API\|Admin Assets]]
 

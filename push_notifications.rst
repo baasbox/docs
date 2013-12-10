@@ -1,5 +1,8 @@
+Rest API
+--------
+
 Push Notifications
-------------------
+==================
 
 Push notifications are messages that a user can send to another user,
 using an APP that has BaasBox as back-end. Supported platforms are

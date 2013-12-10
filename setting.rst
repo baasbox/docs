@@ -1,5 +1,8 @@
- Settings
----------
+Rest API
+--------
+
+Settings
+========
 
 Settings, or “App Configuration” are App related configuration options.
 These settings are not intended to act at server configuration level,
