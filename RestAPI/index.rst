@@ -1,4 +1,4 @@
-REST API
+RESTAPI
 ===
 .. toctree::
 	users
