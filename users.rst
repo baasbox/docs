@@ -4,7 +4,7 @@ REST API
 =======================
 
 Users
-=======================
+-----------------------
 
 POST /user **Headers**: See authorization header in the [[General
 Section\|General Remarks]] **Description**: This API allows a user to
