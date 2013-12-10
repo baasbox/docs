@@ -1,5 +1,3 @@
-.. _rest-API:
-
 Create a document
 =================
 
