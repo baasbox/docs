@@ -37,6 +37,12 @@ Contents:
    :maxdepth: 2   
 
    Rest Api <general_remarks>
+   collections
+   documents
+   assets
+   push_notifications
+   setting
+   users
 
 Indices and tables
 ==================
