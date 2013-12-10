@@ -275,7 +275,7 @@ h2,h3 {
 }
 
 }
-.font-smooth,.icon: before,.wy-inline-validate.wy-inline-validate-success .wy-input-context: before,.wy-inline-validate.wy-inline-validate-danger .wy-input-context: before,.wy-inline-validate.wy-inline-validate-warning .wy-input-context: before,.wy-inline-validate.wy-inline-validate-info .wy-input-context: before,.wy-tag-input-group .wy-tag .wy-tag-remove: before,.rst-content .admonition-title: before,.rst-content h1 .headerlink: before,.rst-content h2 .headerlink: before,.rst-content h3 .headerlink: before,.rst-content h4 .headerlink: before,.rst-content h5 .headerlink: before,.rst-content h6 .headerlink: before,.rst-content dl dt .headerlink: before,.wy-alert,.rst-content .note,.rst-content .attention,.rst-content .caution,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .warning,.rst-content .seealso,.btn,input[type="text"],input[type="password"],input[type="email"],input[type="url"],input[type="date"],input[type="month"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="week"],input[type="number"],input[type="search"],input[type="tel"],input[type="color"],select,textarea,.wy-tag-input-group,.wy-menu-vertical li.on a,.wy-menu-vertical li.current>a,.wy-side-nav-search>a,.wy-side-nav-search .wy-dropdown>a,.wy-nav-top a {
+.font-smooth,.icon: before,.bb-inline-validate.bb-inline-validate-success .bb-input-context: before,.bb-inline-validate.bb-inline-validate-danger .bb-input-context: before,.bb-inline-validate.bb-inline-validate-warning .bb-input-context: before,.bb-inline-validate.bb-inline-validate-info .bb-input-context: before,.bb-tag-input-group .bb-tag .bb-tag-remove: before,.rst-content .admonition-title: before,.rst-content h1 .headerlink: before,.rst-content h2 .headerlink: before,.rst-content h3 .headerlink: before,.rst-content h4 .headerlink: before,.rst-content h5 .headerlink: before,.rst-content h6 .headerlink: before,.rst-content dl dt .headerlink: before,.bb-alert,.rst-content .note,.rst-content .attention,.rst-content .caution,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .warning,.rst-content .seealso,.btn,input[type="text"],input[type="password"],input[type="email"],input[type="url"],input[type="date"],input[type="month"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="week"],input[type="number"],input[type="search"],input[type="tel"],input[type="color"],select,textarea,.bb-tag-input-group,.bb-menu-vertical li.on a,.bb-menu-vertical li.current>a,.bb-side-nav-search>a,.bb-side-nav-search .bb-dropdown>a,.bb-nav-top a {
 	-webkit-font-smoothing: antialiased
 }
 .clearfix {
@@ -295,7 +295,7 @@ h2,h3 {
 	src: url("../font/fontawesome_webfont.eot");
 	src: url("../font/fontawesome_webfont.eot?#iefix") format("embedded-opentype"),url("../font/fontawesome_webfont.woff") format("woff"),url("../font/fontawesome_webfont.ttf") format("truetype"),url("../font/fontawesome_webfont.svg#fontawesome-webfont") format("svg")
 }
-.icon: before,.wy-inline-validate.wy-inline-validate-success .wy-input-context: before,.wy-inline-validate.wy-inline-validate-danger .wy-input-context: before,.wy-inline-validate.wy-inline-validate-warning .wy-input-context: before,.wy-inline-validate.wy-inline-validate-info .wy-input-context: before,.wy-tag-input-group .wy-tag .wy-tag-remove: before,.rst-content .admonition-title: before,.rst-content h1 .headerlink: before,.rst-content h2 .headerlink: before,.rst-content h3 .headerlink: before,.rst-content h4 .headerlink: before,.rst-content h5 .headerlink: before,.rst-content h6 .headerlink: before,.rst-content dl dt .headerlink: before {
+.icon: before,.bb-inline-validate.bb-inline-validate-success .bb-input-context: before,.bb-inline-validate.bb-inline-validate-danger .bb-input-context: before,.bb-inline-validate.bb-inline-validate-warning .bb-input-context: before,.bb-inline-validate.bb-inline-validate-info .bb-input-context: before,.bb-tag-input-group .bb-tag .bb-tag-remove: before,.rst-content .admonition-title: before,.rst-content h1 .headerlink: before,.rst-content h2 .headerlink: before,.rst-content h3 .headerlink: before,.rst-content h4 .headerlink: before,.rst-content h5 .headerlink: before,.rst-content h6 .headerlink: before,.rst-content dl dt .headerlink: before {
 	display: inline-block;
 	font-family: fontawesome-webfont;
 	font-style: normal;
@@ -303,7 +303,7 @@ h2,h3 {
 	line-height: 1;
 	text-decoration: inherit
 }
-a .icon,a .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-success a .wy-input-context,a .wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-danger a .wy-input-context,a .wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-inline-validate.wy-inline-validate-warning a .wy-input-context,a .wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-info a .wy-input-context,a .wy-tag-input-group .wy-tag .wy-tag-remove,.wy-tag-input-group .wy-tag a .wy-tag-remove,a .rst-content .admonition-title,.rst-content a .admonition-title,a .rst-content h1 .headerlink,.rst-content h1 a .headerlink,a .rst-content h2 .headerlink,.rst-content h2 a .headerlink,a .rst-content h3 .headerlink,.rst-content h3 a .headerlink,a .rst-content h4 .headerlink,.rst-content h4 a .headerlink,a .rst-content h5 .headerlink,.rst-content h5 a .headerlink,a .rst-content h6 .headerlink,.rst-content h6 a .headerlink,a .rst-content dl dt .headerlink,.rst-content dl dt a .headerlink {
+a .icon,a .bb-inline-validate.bb-inline-validate-success .bb-input-context,.bb-inline-validate.bb-inline-validate-success a .bb-input-context,a .bb-inline-validate.bb-inline-validate-danger .bb-input-context,.bb-inline-validate.bb-inline-validate-danger a .bb-input-context,a .bb-inline-validate.bb-inline-validate-warning .bb-input-context,.bb-inline-validate.bb-inline-validate-warning a .bb-input-context,a .bb-inline-validate.bb-inline-validate-info .bb-input-context,.bb-inline-validate.bb-inline-validate-info a .bb-input-context,a .bb-tag-input-group .bb-tag .bb-tag-remove,.bb-tag-input-group .bb-tag a .bb-tag-remove,a .rst-content .admonition-title,.rst-content a .admonition-title,a .rst-content h1 .headerlink,.rst-content h1 a .headerlink,a .rst-content h2 .headerlink,.rst-content h2 a .headerlink,a .rst-content h3 .headerlink,.rst-content h3 a .headerlink,a .rst-content h4 .headerlink,.rst-content h4 a .headerlink,a .rst-content h5 .headerlink,.rst-content h5 a .headerlink,a .rst-content h6 .headerlink,.rst-content h6 a .headerlink,a .rst-content dl dt .headerlink,.rst-content dl dt a .headerlink {
 	display: inline-block;
 	text-decoration: inherit
 }
@@ -311,29 +311,29 @@ a .icon,a .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-i
 	vertical-align: -10%;
 	font-size: 1.33333em
 }
-.btn .icon,.btn .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-success .btn .wy-input-context,.btn .wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-danger .btn .wy-input-context,.btn .wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-inline-validate.wy-inline-validate-warning .btn .wy-input-context,.btn .wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-info .btn .wy-input-context,.btn .wy-tag-input-group .wy-tag .wy-tag-remove,.wy-tag-input-group .wy-tag .btn .wy-tag-remove,.btn .rst-content .admonition-title,.rst-content .btn .admonition-title,.btn .rst-content h1 .headerlink,.rst-content h1 .btn .headerlink,.btn .rst-content h2 .headerlink,.rst-content h2 .btn .headerlink,.btn .rst-content h3 .headerlink,.rst-content h3 .btn .headerlink,.btn .rst-content h4 .headerlink,.rst-content h4 .btn .headerlink,.btn .rst-content h5 .headerlink,.rst-content h5 .btn .headerlink,.btn .rst-content h6 .headerlink,.rst-content h6 .btn .headerlink,.btn .rst-content dl dt .headerlink,.rst-content dl dt .btn .headerlink,.nav .icon,.nav .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-success .nav .wy-input-context,.nav .wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-danger .nav .wy-input-context,.nav .wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-inline-validate.wy-inline-validate-warning .nav .wy-input-context,.nav .wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-info .nav .wy-input-context,.nav .wy-tag-input-group .wy-tag .wy-tag-remove,.wy-tag-input-group .wy-tag .nav .wy-tag-remove,.nav .rst-content .admonition-title,.rst-content .nav .admonition-title,.nav .rst-content h1 .headerlink,.rst-content h1 .nav .headerlink,.nav .rst-content h2 .headerlink,.rst-content h2 .nav .headerlink,.nav .rst-content h3 .headerlink,.rst-content h3 .nav .headerlink,.nav .rst-content h4 .headerlink,.rst-content h4 .nav .headerlink,.nav .rst-content h5 .headerlink,.rst-content h5 .nav .headerlink,.nav .rst-content h6 .headerlink,.rst-content h6 .nav .headerlink,.nav .rst-content dl dt .headerlink,.rst-content dl dt .nav .headerlink {
+.btn .icon,.btn .bb-inline-validate.bb-inline-validate-success .bb-input-context,.bb-inline-validate.bb-inline-validate-success .btn .bb-input-context,.btn .bb-inline-validate.bb-inline-validate-danger .bb-input-context,.bb-inline-validate.bb-inline-validate-danger .btn .bb-input-context,.btn .bb-inline-validate.bb-inline-validate-warning .bb-input-context,.bb-inline-validate.bb-inline-validate-warning .btn .bb-input-context,.btn .bb-inline-validate.bb-inline-validate-info .bb-input-context,.bb-inline-validate.bb-inline-validate-info .btn .bb-input-context,.btn .bb-tag-input-group .bb-tag .bb-tag-remove,.bb-tag-input-group .bb-tag .btn .bb-tag-remove,.btn .rst-content .admonition-title,.rst-content .btn .admonition-title,.btn .rst-content h1 .headerlink,.rst-content h1 .btn .headerlink,.btn .rst-content h2 .headerlink,.rst-content h2 .btn .headerlink,.btn .rst-content h3 .headerlink,.rst-content h3 .btn .headerlink,.btn .rst-content h4 .headerlink,.rst-content h4 .btn .headerlink,.btn .rst-content h5 .headerlink,.rst-content h5 .btn .headerlink,.btn .rst-content h6 .headerlink,.rst-content h6 .btn .headerlink,.btn .rst-content dl dt .headerlink,.rst-content dl dt .btn .headerlink,.nav .icon,.nav .bb-inline-validate.bb-inline-validate-success .bb-input-context,.bb-inline-validate.bb-inline-validate-success .nav .bb-input-context,.nav .bb-inline-validate.bb-inline-validate-danger .bb-input-context,.bb-inline-validate.bb-inline-validate-danger .nav .bb-input-context,.nav .bb-inline-validate.bb-inline-validate-warning .bb-input-context,.bb-inline-validate.bb-inline-validate-warning .nav .bb-input-context,.nav .bb-inline-validate.bb-inline-validate-info .bb-input-context,.bb-inline-validate.bb-inline-validate-info .nav .bb-input-context,.nav .bb-tag-input-group .bb-tag .bb-tag-remove,.bb-tag-input-group .bb-tag .nav .bb-tag-remove,.nav .rst-content .admonition-title,.rst-content .nav .admonition-title,.nav .rst-content h1 .headerlink,.rst-content h1 .nav .headerlink,.nav .rst-content h2 .headerlink,.rst-content h2 .nav .headerlink,.nav .rst-content h3 .headerlink,.rst-content h3 .nav .headerlink,.nav .rst-content h4 .headerlink,.rst-content h4 .nav .headerlink,.nav .rst-content h5 .headerlink,.rst-content h5 .nav .headerlink,.nav .rst-content h6 .headerlink,.rst-content h6 .nav .headerlink,.nav .rst-content dl dt .headerlink,.rst-content dl dt .nav .headerlink {
 	display: inline
 }
-.btn .icon.icon-large,.btn .wy-inline-validate.wy-inline-validate-success .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-success .btn .icon-large.wy-input-context,.btn .wy-inline-validate.wy-inline-validate-danger .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-danger .btn .icon-large.wy-input-context,.btn .wy-inline-validate.wy-inline-validate-warning .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-warning .btn .icon-large.wy-input-context,.btn .wy-inline-validate.wy-inline-validate-info .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-info .btn .icon-large.wy-input-context,.btn .wy-tag-input-group .wy-tag .icon-large.wy-tag-remove,.wy-tag-input-group .wy-tag .btn .icon-large.wy-tag-remove,.btn .rst-content .icon-large.admonition-title,.rst-content .btn .icon-large.admonition-title,.btn .rst-content h1 .icon-large.headerlink,.rst-content h1 .btn .icon-large.headerlink,.btn .rst-content h2 .icon-large.headerlink,.rst-content h2 .btn .icon-large.headerlink,.btn .rst-content h3 .icon-large.headerlink,.rst-content h3 .btn .icon-large.headerlink,.btn .rst-content h4 .icon-large.headerlink,.rst-content h4 .btn .icon-large.headerlink,.btn .rst-content h5 .icon-large.headerlink,.rst-content h5 .btn .icon-large.headerlink,.btn .rst-content h6 .icon-large.headerlink,.rst-content h6 .btn .icon-large.headerlink,.btn .rst-content dl dt .icon-large.headerlink,.rst-content dl dt .btn .icon-large.headerlink,.nav .icon.icon-large,.nav .wy-inline-validate.wy-inline-validate-success .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-success .nav .icon-large.wy-input-context,.nav .wy-inline-validate.wy-inline-validate-danger .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-danger .nav .icon-large.wy-input-context,.nav .wy-inline-validate.wy-inline-validate-warning .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-warning .nav .icon-large.wy-input-context,.nav .wy-inline-validate.wy-inline-validate-info .icon-large.wy-input-context,.wy-inline-validate.wy-inline-validate-info .nav .icon-large.wy-input-context,.nav .wy-tag-input-group .wy-tag .icon-large.wy-tag-remove,.wy-tag-input-group .wy-tag .nav .icon-large.wy-tag-remove,.nav .rst-content .icon-large.admonition-title,.rst-content .nav .icon-large.admonition-title,.nav .rst-content h1 .icon-large.headerlink,.rst-content h1 .nav .icon-large.headerlink,.nav .rst-content h2 .icon-large.headerlink,.rst-content h2 .nav .icon-large.headerlink,.nav .rst-content h3 .icon-large.headerlink,.rst-content h3 .nav .icon-large.headerlink,.nav .rst-content h4 .icon-large.headerlink,.rst-content h4 .nav .icon-large.headerlink,.nav .rst-content h5 .icon-large.headerlink,.rst-content h5 .nav .icon-large.headerlink,.nav .rst-content h6 .icon-large.headerlink,.rst-content h6 .nav .icon-large.headerlink,.nav .rst-content dl dt .icon-large.headerlink,.rst-content dl dt .nav .icon-large.headerlink {
+.btn .icon.icon-large,.btn .bb-inline-validate.bb-inline-validate-success .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-success .btn .icon-large.bb-input-context,.btn .bb-inline-validate.bb-inline-validate-danger .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-danger .btn .icon-large.bb-input-context,.btn .bb-inline-validate.bb-inline-validate-warning .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-warning .btn .icon-large.bb-input-context,.btn .bb-inline-validate.bb-inline-validate-info .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-info .btn .icon-large.bb-input-context,.btn .bb-tag-input-group .bb-tag .icon-large.bb-tag-remove,.bb-tag-input-group .bb-tag .btn .icon-large.bb-tag-remove,.btn .rst-content .icon-large.admonition-title,.rst-content .btn .icon-large.admonition-title,.btn .rst-content h1 .icon-large.headerlink,.rst-content h1 .btn .icon-large.headerlink,.btn .rst-content h2 .icon-large.headerlink,.rst-content h2 .btn .icon-large.headerlink,.btn .rst-content h3 .icon-large.headerlink,.rst-content h3 .btn .icon-large.headerlink,.btn .rst-content h4 .icon-large.headerlink,.rst-content h4 .btn .icon-large.headerlink,.btn .rst-content h5 .icon-large.headerlink,.rst-content h5 .btn .icon-large.headerlink,.btn .rst-content h6 .icon-large.headerlink,.rst-content h6 .btn .icon-large.headerlink,.btn .rst-content dl dt .icon-large.headerlink,.rst-content dl dt .btn .icon-large.headerlink,.nav .icon.icon-large,.nav .bb-inline-validate.bb-inline-validate-success .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-success .nav .icon-large.bb-input-context,.nav .bb-inline-validate.bb-inline-validate-danger .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-danger .nav .icon-large.bb-input-context,.nav .bb-inline-validate.bb-inline-validate-warning .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-warning .nav .icon-large.bb-input-context,.nav .bb-inline-validate.bb-inline-validate-info .icon-large.bb-input-context,.bb-inline-validate.bb-inline-validate-info .nav .icon-large.bb-input-context,.nav .bb-tag-input-group .bb-tag .icon-large.bb-tag-remove,.bb-tag-input-group .bb-tag .nav .icon-large.bb-tag-remove,.nav .rst-content .icon-large.admonition-title,.rst-content .nav .icon-large.admonition-title,.nav .rst-content h1 .icon-large.headerlink,.rst-content h1 .nav .icon-large.headerlink,.nav .rst-content h2 .icon-large.headerlink,.rst-content h2 .nav .icon-large.headerlink,.nav .rst-content h3 .icon-large.headerlink,.rst-content h3 .nav .icon-large.headerlink,.nav .rst-content h4 .icon-large.headerlink,.rst-content h4 .nav .icon-large.headerlink,.nav .rst-content h5 .icon-large.headerlink,.rst-content h5 .nav .icon-large.headerlink,.nav .rst-content h6 .icon-large.headerlink,.rst-content h6 .nav .icon-large.headerlink,.nav .rst-content dl dt .icon-large.headerlink,.rst-content dl dt .nav .icon-large.headerlink {
 	line-height: 0.9em
 }
-.btn .icon.icon-spin,.btn .wy-inline-validate.wy-inline-validate-success .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-success .btn .icon-spin.wy-input-context,.btn .wy-inline-validate.wy-inline-validate-danger .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-danger .btn .icon-spin.wy-input-context,.btn .wy-inline-validate.wy-inline-validate-warning .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-warning .btn .icon-spin.wy-input-context,.btn .wy-inline-validate.wy-inline-validate-info .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-info .btn .icon-spin.wy-input-context,.btn .wy-tag-input-group .wy-tag .icon-spin.wy-tag-remove,.wy-tag-input-group .wy-tag .btn .icon-spin.wy-tag-remove,.btn .rst-content .icon-spin.admonition-title,.rst-content .btn .icon-spin.admonition-title,.btn .rst-content h1 .icon-spin.headerlink,.rst-content h1 .btn .icon-spin.headerlink,.btn .rst-content h2 .icon-spin.headerlink,.rst-content h2 .btn .icon-spin.headerlink,.btn .rst-content h3 .icon-spin.headerlink,.rst-content h3 .btn .icon-spin.headerlink,.btn .rst-content h4 .icon-spin.headerlink,.rst-content h4 .btn .icon-spin.headerlink,.btn .rst-content h5 .icon-spin.headerlink,.rst-content h5 .btn .icon-spin.headerlink,.btn .rst-content h6 .icon-spin.headerlink,.rst-content h6 .btn .icon-spin.headerlink,.btn .rst-content dl dt .icon-spin.headerlink,.rst-content dl dt .btn .icon-spin.headerlink,.nav .icon.icon-spin,.nav .wy-inline-validate.wy-inline-validate-success .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-success .nav .icon-spin.wy-input-context,.nav .wy-inline-validate.wy-inline-validate-danger .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-danger .nav .icon-spin.wy-input-context,.nav .wy-inline-validate.wy-inline-validate-warning .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-warning .nav .icon-spin.wy-input-context,.nav .wy-inline-validate.wy-inline-validate-info .icon-spin.wy-input-context,.wy-inline-validate.wy-inline-validate-info .nav .icon-spin.wy-input-context,.nav .wy-tag-input-group .wy-tag .icon-spin.wy-tag-remove,.wy-tag-input-group .wy-tag .nav .icon-spin.wy-tag-remove,.nav .rst-content .icon-spin.admonition-title,.rst-content .nav .icon-spin.admonition-title,.nav .rst-content h1 .icon-spin.headerlink,.rst-content h1 .nav .icon-spin.headerlink,.nav .rst-content h2 .icon-spin.headerlink,.rst-content h2 .nav .icon-spin.headerlink,.nav .rst-content h3 .icon-spin.headerlink,.rst-content h3 .nav .icon-spin.headerlink,.nav .rst-content h4 .icon-spin.headerlink,.rst-content h4 .nav .icon-spin.headerlink,.nav .rst-content h5 .icon-spin.headerlink,.rst-content h5 .nav .icon-spin.headerlink,.nav .rst-content h6 .icon-spin.headerlink,.rst-content h6 .nav .icon-spin.headerlink,.nav .rst-content dl dt .icon-spin.headerlink,.rst-content dl dt .nav .icon-spin.headerlink {
+.btn .icon.icon-spin,.btn .bb-inline-validate.bb-inline-validate-success .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-success .btn .icon-spin.bb-input-context,.btn .bb-inline-validate.bb-inline-validate-danger .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-danger .btn .icon-spin.bb-input-context,.btn .bb-inline-validate.bb-inline-validate-warning .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-warning .btn .icon-spin.bb-input-context,.btn .bb-inline-validate.bb-inline-validate-info .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-info .btn .icon-spin.bb-input-context,.btn .bb-tag-input-group .bb-tag .icon-spin.bb-tag-remove,.bb-tag-input-group .bb-tag .btn .icon-spin.bb-tag-remove,.btn .rst-content .icon-spin.admonition-title,.rst-content .btn .icon-spin.admonition-title,.btn .rst-content h1 .icon-spin.headerlink,.rst-content h1 .btn .icon-spin.headerlink,.btn .rst-content h2 .icon-spin.headerlink,.rst-content h2 .btn .icon-spin.headerlink,.btn .rst-content h3 .icon-spin.headerlink,.rst-content h3 .btn .icon-spin.headerlink,.btn .rst-content h4 .icon-spin.headerlink,.rst-content h4 .btn .icon-spin.headerlink,.btn .rst-content h5 .icon-spin.headerlink,.rst-content h5 .btn .icon-spin.headerlink,.btn .rst-content h6 .icon-spin.headerlink,.rst-content h6 .btn .icon-spin.headerlink,.btn .rst-content dl dt .icon-spin.headerlink,.rst-content dl dt .btn .icon-spin.headerlink,.nav .icon.icon-spin,.nav .bb-inline-validate.bb-inline-validate-success .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-success .nav .icon-spin.bb-input-context,.nav .bb-inline-validate.bb-inline-validate-danger .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-danger .nav .icon-spin.bb-input-context,.nav .bb-inline-validate.bb-inline-validate-warning .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-warning .nav .icon-spin.bb-input-context,.nav .bb-inline-validate.bb-inline-validate-info .icon-spin.bb-input-context,.bb-inline-validate.bb-inline-validate-info .nav .icon-spin.bb-input-context,.nav .bb-tag-input-group .bb-tag .icon-spin.bb-tag-remove,.bb-tag-input-group .bb-tag .nav .icon-spin.bb-tag-remove,.nav .rst-content .icon-spin.admonition-title,.rst-content .nav .icon-spin.admonition-title,.nav .rst-content h1 .icon-spin.headerlink,.rst-content h1 .nav .icon-spin.headerlink,.nav .rst-content h2 .icon-spin.headerlink,.rst-content h2 .nav .icon-spin.headerlink,.nav .rst-content h3 .icon-spin.headerlink,.rst-content h3 .nav .icon-spin.headerlink,.nav .rst-content h4 .icon-spin.headerlink,.rst-content h4 .nav .icon-spin.headerlink,.nav .rst-content h5 .icon-spin.headerlink,.rst-content h5 .nav .icon-spin.headerlink,.nav .rst-content h6 .icon-spin.headerlink,.rst-content h6 .nav .icon-spin.headerlink,.nav .rst-content dl dt .icon-spin.headerlink,.rst-content dl dt .nav .icon-spin.headerlink {
 	display: inline-block
 }
-.btn.icon: before,.wy-inline-validate.wy-inline-validate-success .btn.wy-input-context: before,.wy-inline-validate.wy-inline-validate-danger .btn.wy-input-context: before,.wy-inline-validate.wy-inline-validate-warning .btn.wy-input-context: before,.wy-inline-validate.wy-inline-validate-info .btn.wy-input-context: before,.wy-tag-input-group .wy-tag .btn.wy-tag-remove: before,.rst-content .btn.admonition-title: before,.rst-content h1 .btn.headerlink: before,.rst-content h2 .btn.headerlink: before,.rst-content h3 .btn.headerlink: before,.rst-content h4 .btn.headerlink: before,.rst-content h5 .btn.headerlink: before,.rst-content h6 .btn.headerlink: before,.rst-content dl dt .btn.headerlink: before {
+.btn.icon: before,.bb-inline-validate.bb-inline-validate-success .btn.bb-input-context: before,.bb-inline-validate.bb-inline-validate-danger .btn.bb-input-context: before,.bb-inline-validate.bb-inline-validate-warning .btn.bb-input-context: before,.bb-inline-validate.bb-inline-validate-info .btn.bb-input-context: before,.bb-tag-input-group .bb-tag .btn.bb-tag-remove: before,.rst-content .btn.admonition-title: before,.rst-content h1 .btn.headerlink: before,.rst-content h2 .btn.headerlink: before,.rst-content h3 .btn.headerlink: before,.rst-content h4 .btn.headerlink: before,.rst-content h5 .btn.headerlink: before,.rst-content h6 .btn.headerlink: before,.rst-content dl dt .btn.headerlink: before {
 	opacity: 0.5;
 	-webkit-transition: opacity 0.05s ease-in;
 	-moz-transition: opacity 0.05s ease-in;
 	transition: opacity 0.05s ease-in
 }
-.btn.icon: hover: before,.wy-inline-validate.wy-inline-validate-success .btn.wy-input-context: hover: before,.wy-inline-validate.wy-inline-validate-danger .btn.wy-input-context: hover: before,.wy-inline-validate.wy-inline-validate-warning .btn.wy-input-context: hover: before,.wy-inline-validate.wy-inline-validate-info .btn.wy-input-context: hover: before,.wy-tag-input-group .wy-tag .btn.wy-tag-remove: hover: before,.rst-content .btn.admonition-title: hover: before,.rst-content h1 .btn.headerlink: hover: before,.rst-content h2 .btn.headerlink: hover: before,.rst-content h3 .btn.headerlink: hover: before,.rst-content h4 .btn.headerlink: hover: before,.rst-content h5 .btn.headerlink: hover: before,.rst-content h6 .btn.headerlink: hover: before,.rst-content dl dt .btn.headerlink: hover: before {
+.btn.icon: hover: before,.bb-inline-validate.bb-inline-validate-success .btn.bb-input-context: hover: before,.bb-inline-validate.bb-inline-validate-danger .btn.bb-input-context: hover: before,.bb-inline-validate.bb-inline-validate-warning .btn.bb-input-context: hover: before,.bb-inline-validate.bb-inline-validate-info .btn.bb-input-context: hover: before,.bb-tag-input-group .bb-tag .btn.bb-tag-remove: hover: before,.rst-content .btn.admonition-title: hover: before,.rst-content h1 .btn.headerlink: hover: before,.rst-content h2 .btn.headerlink: hover: before,.rst-content h3 .btn.headerlink: hover: before,.rst-content h4 .btn.headerlink: hover: before,.rst-content h5 .btn.headerlink: hover: before,.rst-content h6 .btn.headerlink: hover: before,.rst-content dl dt .btn.headerlink: hover: before {
 	opacity: 1
 }
-.btn-mini .icon: before,.btn-mini .wy-inline-validate.wy-inline-validate-success .wy-input-context: before,.wy-inline-validate.wy-inline-validate-success .btn-mini .wy-input-context: before,.btn-mini .wy-inline-validate.wy-inline-validate-danger .wy-input-context: before,.wy-inline-validate.wy-inline-validate-danger .btn-mini .wy-input-context: before,.btn-mini .wy-inline-validate.wy-inline-validate-warning .wy-input-context: before,.wy-inline-validate.wy-inline-validate-warning .btn-mini .wy-input-context: before,.btn-mini .wy-inline-validate.wy-inline-validate-info .wy-input-context: before,.wy-inline-validate.wy-inline-validate-info .btn-mini .wy-input-context: before,.btn-mini .wy-tag-input-group .wy-tag .wy-tag-remove: before,.wy-tag-input-group .wy-tag .btn-mini .wy-tag-remove: before,.btn-mini .rst-content .admonition-title: before,.rst-content .btn-mini .admonition-title: before,.btn-mini .rst-content h1 .headerlink: before,.rst-content h1 .btn-mini .headerlink: before,.btn-mini .rst-content h2 .headerlink: before,.rst-content h2 .btn-mini .headerlink: before,.btn-mini .rst-content h3 .headerlink: before,.rst-content h3 .btn-mini .headerlink: before,.btn-mini .rst-content h4 .headerlink: before,.rst-content h4 .btn-mini .headerlink: before,.btn-mini .rst-content h5 .headerlink: before,.rst-content h5 .btn-mini .headerlink: before,.btn-mini .rst-content h6 .headerlink: before,.rst-content h6 .btn-mini .headerlink: before,.btn-mini .rst-content dl dt .headerlink: before,.rst-content dl dt .btn-mini .headerlink: before {
+.btn-mini .icon: before,.btn-mini .bb-inline-validate.bb-inline-validate-success .bb-input-context: before,.bb-inline-validate.bb-inline-validate-success .btn-mini .bb-input-context: before,.btn-mini .bb-inline-validate.bb-inline-validate-danger .bb-input-context: before,.bb-inline-validate.bb-inline-validate-danger .btn-mini .bb-input-context: before,.btn-mini .bb-inline-validate.bb-inline-validate-warning .bb-input-context: before,.bb-inline-validate.bb-inline-validate-warning .btn-mini .bb-input-context: before,.btn-mini .bb-inline-validate.bb-inline-validate-info .bb-input-context: before,.bb-inline-validate.bb-inline-validate-info .btn-mini .bb-input-context: before,.btn-mini .bb-tag-input-group .bb-tag .bb-tag-remove: before,.bb-tag-input-group .bb-tag .btn-mini .bb-tag-remove: before,.btn-mini .rst-content .admonition-title: before,.rst-content .btn-mini .admonition-title: before,.btn-mini .rst-content h1 .headerlink: before,.rst-content h1 .btn-mini .headerlink: before,.btn-mini .rst-content h2 .headerlink: before,.rst-content h2 .btn-mini .headerlink: before,.btn-mini .rst-content h3 .headerlink: before,.rst-content h3 .btn-mini .headerlink: before,.btn-mini .rst-content h4 .headerlink: before,.rst-content h4 .btn-mini .headerlink: before,.btn-mini .rst-content h5 .headerlink: before,.rst-content h5 .btn-mini .headerlink: before,.btn-mini .rst-content h6 .headerlink: before,.rst-content h6 .btn-mini .headerlink: before,.btn-mini .rst-content dl dt .headerlink: before,.rst-content dl dt .btn-mini .headerlink: before {
 	font-size: 14px;
 	vertical-align: -15%
 }
-li .icon,li .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-success li .wy-input-context,li .wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-danger li .wy-input-context,li .wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-inline-validate.wy-inline-validate-warning li .wy-input-context,li .wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-info li .wy-input-context,li .wy-tag-input-group .wy-tag .wy-tag-remove,.wy-tag-input-group .wy-tag li .wy-tag-remove,li .rst-content .admonition-title,.rst-content li .admonition-title,li .rst-content h1 .headerlink,.rst-content h1 li .headerlink,li .rst-content h2 .headerlink,.rst-content h2 li .headerlink,li .rst-content h3 .headerlink,.rst-content h3 li .headerlink,li .rst-content h4 .headerlink,.rst-content h4 li .headerlink,li .rst-content h5 .headerlink,.rst-content h5 li .headerlink,li .rst-content h6 .headerlink,.rst-content h6 li .headerlink,li .rst-content dl dt .headerlink,.rst-content dl dt li .headerlink {
+li .icon,li .bb-inline-validate.bb-inline-validate-success .bb-input-context,.bb-inline-validate.bb-inline-validate-success li .bb-input-context,li .bb-inline-validate.bb-inline-validate-danger .bb-input-context,.bb-inline-validate.bb-inline-validate-danger li .bb-input-context,li .bb-inline-validate.bb-inline-validate-warning .bb-input-context,.bb-inline-validate.bb-inline-validate-warning li .bb-input-context,li .bb-inline-validate.bb-inline-validate-info .bb-input-context,.bb-inline-validate.bb-inline-validate-info li .bb-input-context,li .bb-tag-input-group .bb-tag .bb-tag-remove,.bb-tag-input-group .bb-tag li .bb-tag-remove,li .rst-content .admonition-title,.rst-content li .admonition-title,li .rst-content h1 .headerlink,.rst-content h1 li .headerlink,li .rst-content h2 .headerlink,.rst-content h2 li .headerlink,li .rst-content h3 .headerlink,.rst-content h3 li .headerlink,li .rst-content h4 .headerlink,.rst-content h4 li .headerlink,li .rst-content h5 .headerlink,.rst-content h5 li .headerlink,li .rst-content h6 .headerlink,.rst-content h6 li .headerlink,li .rst-content dl dt .headerlink,.rst-content dl dt li .headerlink {
 	display: inline-block
 }
 li .icon-large: before,li .icon-large: before {
@@ -344,7 +344,7 @@ ul.icons {
 	margin-left: 2em;
 	text-indent: -0.8em
 }
-ul.icons li .icon,ul.icons li .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-success ul.icons li .wy-input-context,ul.icons li .wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-danger ul.icons li .wy-input-context,ul.icons li .wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-inline-validate.wy-inline-validate-warning ul.icons li .wy-input-context,ul.icons li .wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-info ul.icons li .wy-input-context,ul.icons li .wy-tag-input-group .wy-tag .wy-tag-remove,.wy-tag-input-group .wy-tag ul.icons li .wy-tag-remove,ul.icons li .rst-content .admonition-title,.rst-content ul.icons li .admonition-title,ul.icons li .rst-content h1 .headerlink,.rst-content h1 ul.icons li .headerlink,ul.icons li .rst-content h2 .headerlink,.rst-content h2 ul.icons li .headerlink,ul.icons li .rst-content h3 .headerlink,.rst-content h3 ul.icons li .headerlink,ul.icons li .rst-content h4 .headerlink,.rst-content h4 ul.icons li .headerlink,ul.icons li .rst-content h5 .headerlink,.rst-content h5 ul.icons li .headerlink,ul.icons li .rst-content h6 .headerlink,.rst-content h6 ul.icons li .headerlink,ul.icons li .rst-content dl dt .headerlink,.rst-content dl dt ul.icons li .headerlink {
+ul.icons li .icon,ul.icons li .bb-inline-validate.bb-inline-validate-success .bb-input-context,.bb-inline-validate.bb-inline-validate-success ul.icons li .bb-input-context,ul.icons li .bb-inline-validate.bb-inline-validate-danger .bb-input-context,.bb-inline-validate.bb-inline-validate-danger ul.icons li .bb-input-context,ul.icons li .bb-inline-validate.bb-inline-validate-warning .bb-input-context,.bb-inline-validate.bb-inline-validate-warning ul.icons li .bb-input-context,ul.icons li .bb-inline-validate.bb-inline-validate-info .bb-input-context,.bb-inline-validate.bb-inline-validate-info ul.icons li .bb-input-context,ul.icons li .bb-tag-input-group .bb-tag .bb-tag-remove,.bb-tag-input-group .bb-tag ul.icons li .bb-tag-remove,ul.icons li .rst-content .admonition-title,.rst-content ul.icons li .admonition-title,ul.icons li .rst-content h1 .headerlink,.rst-content h1 ul.icons li .headerlink,ul.icons li .rst-content h2 .headerlink,.rst-content h2 ul.icons li .headerlink,ul.icons li .rst-content h3 .headerlink,.rst-content h3 ul.icons li .headerlink,ul.icons li .rst-content h4 .headerlink,.rst-content h4 ul.icons li .headerlink,ul.icons li .rst-content h5 .headerlink,.rst-content h5 ul.icons li .headerlink,ul.icons li .rst-content h6 .headerlink,.rst-content h6 ul.icons li .headerlink,ul.icons li .rst-content dl dt .headerlink,.rst-content dl dt ul.icons li .headerlink {
 	width: 0.8em
 }
 ul.icons li .icon-large: before,ul.icons li .icon-large: before {
@@ -389,7 +389,7 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 .icon-ok: before {
 	content: "\f00c"
 }
-.icon-remove: before,.wy-tag-input-group .wy-tag .wy-tag-remove: before {
+.icon-remove: before,.bb-tag-input-group .bb-tag .bb-tag-remove: before {
 	content: "\f00d"
 }
 .icon-zoom-in: before {
@@ -596,7 +596,7 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 .icon-minus-sign: before {
 	content: "\f056"
 }
-.icon-remove-sign: before,.wy-inline-validate.wy-inline-validate-danger .wy-input-context: before {
+.icon-remove-sign: before,.bb-inline-validate.bb-inline-validate-danger .bb-input-context: before {
 	content: "\f057"
 }
 .icon-ok-sign: before {
@@ -650,7 +650,7 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 .icon-asterisk: before {
 	content: "\f069"
 }
-.icon-exclamation-sign: before,.wy-inline-validate.wy-inline-validate-warning .wy-input-context: before,.wy-inline-validate.wy-inline-validate-info .wy-input-context: before,.rst-content .admonition-title: before {
+.icon-exclamation-sign: before,.bb-inline-validate.bb-inline-validate-warning .bb-input-context: before,.bb-inline-validate.bb-inline-validate-info .bb-input-context: before,.rst-content .admonition-title: before {
 	content: "\f06a"
 }
 .icon-gift: before {
@@ -1247,7 +1247,7 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 .icon-level-down: before {
 	content: "\f149"
 }
-.icon-check-sign: before,.wy-inline-validate.wy-inline-validate-success .wy-input-context: before {
+.icon-check-sign: before,.bb-inline-validate.bb-inline-validate-success .bb-input-context: before {
 	content: "\f14a"
 }
 .icon-edit-sign: before {
@@ -1433,12 +1433,12 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 .icon-renren: before {
 	content: "\f18b"
 }
-.wy-alert,.rst-content .note,.rst-content .attention,.rst-content .caution,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .warning,.rst-content .seealso {
+.bb-alert,.rst-content .note,.rst-content .attention,.rst-content .caution,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .warning,.rst-content .seealso {
 	padding: 12px;
 	line-height: 24px;
 	margin-bottom: 24px
 }
-.wy-alert-title,.rst-content .admonition-title {
+.bb-alert-title,.rst-content .admonition-title {
 	color: #fff;
 	font-weight: bold;
 	display: block;
@@ -1448,40 +1448,40 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	padding: 6px 12px;
 	margin-bottom: 12px
 }
-.wy-alert.wy-alert-danger,.rst-content .wy-alert-danger.note,.rst-content .wy-alert-danger.attention,.rst-content .wy-alert-danger.caution,.rst-content .danger,.rst-content .error,.rst-content .wy-alert-danger.hint,.rst-content .wy-alert-danger.important,.rst-content .wy-alert-danger.tip,.rst-content .wy-alert-danger.warning,.rst-content .wy-alert-danger.seealso {
+.bb-alert.bb-alert-danger,.rst-content .bb-alert-danger.note,.rst-content .bb-alert-danger.attention,.rst-content .bb-alert-danger.caution,.rst-content .danger,.rst-content .error,.rst-content .bb-alert-danger.hint,.rst-content .bb-alert-danger.important,.rst-content .bb-alert-danger.tip,.rst-content .bb-alert-danger.warning,.rst-content .bb-alert-danger.seealso {
 	background: #fdf3f2
 }
-.wy-alert.wy-alert-danger .wy-alert-title,.rst-content .wy-alert-danger.note .wy-alert-title,.rst-content .wy-alert-danger.attention .wy-alert-title,.rst-content .wy-alert-danger.caution .wy-alert-title,.rst-content .danger .wy-alert-title,.rst-content .error .wy-alert-title,.rst-content .wy-alert-danger.hint .wy-alert-title,.rst-content .wy-alert-danger.important .wy-alert-title,.rst-content .wy-alert-danger.tip .wy-alert-title,.rst-content .wy-alert-danger.warning .wy-alert-title,.rst-content .wy-alert-danger.seealso .wy-alert-title,.wy-alert.wy-alert-danger .rst-content .admonition-title,.rst-content .wy-alert.wy-alert-danger .admonition-title,.rst-content .wy-alert-danger.note .admonition-title,.rst-content .wy-alert-danger.attention .admonition-title,.rst-content .wy-alert-danger.caution .admonition-title,.rst-content .danger .admonition-title,.rst-content .error .admonition-title,.rst-content .wy-alert-danger.hint .admonition-title,.rst-content .wy-alert-danger.important .admonition-title,.rst-content .wy-alert-danger.tip .admonition-title,.rst-content .wy-alert-danger.warning .admonition-title,.rst-content .wy-alert-danger.seealso .admonition-title {
+.bb-alert.bb-alert-danger .bb-alert-title,.rst-content .bb-alert-danger.note .bb-alert-title,.rst-content .bb-alert-danger.attention .bb-alert-title,.rst-content .bb-alert-danger.caution .bb-alert-title,.rst-content .danger .bb-alert-title,.rst-content .error .bb-alert-title,.rst-content .bb-alert-danger.hint .bb-alert-title,.rst-content .bb-alert-danger.important .bb-alert-title,.rst-content .bb-alert-danger.tip .bb-alert-title,.rst-content .bb-alert-danger.warning .bb-alert-title,.rst-content .bb-alert-danger.seealso .bb-alert-title,.bb-alert.bb-alert-danger .rst-content .admonition-title,.rst-content .bb-alert.bb-alert-danger .admonition-title,.rst-content .bb-alert-danger.note .admonition-title,.rst-content .bb-alert-danger.attention .admonition-title,.rst-content .bb-alert-danger.caution .admonition-title,.rst-content .danger .admonition-title,.rst-content .error .admonition-title,.rst-content .bb-alert-danger.hint .admonition-title,.rst-content .bb-alert-danger.important .admonition-title,.rst-content .bb-alert-danger.tip .admonition-title,.rst-content .bb-alert-danger.warning .admonition-title,.rst-content .bb-alert-danger.seealso .admonition-title {
 	background: #f29f97
 }
-.wy-alert.wy-alert-warning,.rst-content .wy-alert-warning.note,.rst-content .attention,.rst-content .caution,.rst-content .wy-alert-warning.danger,.rst-content .wy-alert-warning.error,.rst-content .wy-alert-warning.hint,.rst-content .wy-alert-warning.important,.rst-content .wy-alert-warning.tip,.rst-content .warning,.rst-content .wy-alert-warning.seealso {
+.bb-alert.bb-alert-warning,.rst-content .bb-alert-warning.note,.rst-content .attention,.rst-content .caution,.rst-content .bb-alert-warning.danger,.rst-content .bb-alert-warning.error,.rst-content .bb-alert-warning.hint,.rst-content .bb-alert-warning.important,.rst-content .bb-alert-warning.tip,.rst-content .warning,.rst-content .bb-alert-warning.seealso {
 	background: #ffedcc
 }
-.wy-alert.wy-alert-warning .wy-alert-title,.rst-content .wy-alert-warning.note .wy-alert-title,.rst-content .attention .wy-alert-title,.rst-content .caution .wy-alert-title,.rst-content .wy-alert-warning.danger .wy-alert-title,.rst-content .wy-alert-warning.error .wy-alert-title,.rst-content .wy-alert-warning.hint .wy-alert-title,.rst-content .wy-alert-warning.important .wy-alert-title,.rst-content .wy-alert-warning.tip .wy-alert-title,.rst-content .warning .wy-alert-title,.rst-content .wy-alert-warning.seealso .wy-alert-title,.wy-alert.wy-alert-warning .rst-content .admonition-title,.rst-content .wy-alert.wy-alert-warning .admonition-title,.rst-content .wy-alert-warning.note .admonition-title,.rst-content .attention .admonition-title,.rst-content .caution .admonition-title,.rst-content .wy-alert-warning.danger .admonition-title,.rst-content .wy-alert-warning.error .admonition-title,.rst-content .wy-alert-warning.hint .admonition-title,.rst-content .wy-alert-warning.important .admonition-title,.rst-content .wy-alert-warning.tip .admonition-title,.rst-content .warning .admonition-title,.rst-content .wy-alert-warning.seealso .admonition-title {
+.bb-alert.bb-alert-warning .bb-alert-title,.rst-content .bb-alert-warning.note .bb-alert-title,.rst-content .attention .bb-alert-title,.rst-content .caution .bb-alert-title,.rst-content .bb-alert-warning.danger .bb-alert-title,.rst-content .bb-alert-warning.error .bb-alert-title,.rst-content .bb-alert-warning.hint .bb-alert-title,.rst-content .bb-alert-warning.important .bb-alert-title,.rst-content .bb-alert-warning.tip .bb-alert-title,.rst-content .warning .bb-alert-title,.rst-content .bb-alert-warning.seealso .bb-alert-title,.bb-alert.bb-alert-warning .rst-content .admonition-title,.rst-content .bb-alert.bb-alert-warning .admonition-title,.rst-content .bb-alert-warning.note .admonition-title,.rst-content .attention .admonition-title,.rst-content .caution .admonition-title,.rst-content .bb-alert-warning.danger .admonition-title,.rst-content .bb-alert-warning.error .admonition-title,.rst-content .bb-alert-warning.hint .admonition-title,.rst-content .bb-alert-warning.important .admonition-title,.rst-content .bb-alert-warning.tip .admonition-title,.rst-content .warning .admonition-title,.rst-content .bb-alert-warning.seealso .admonition-title {
 	background: #f0b37e
 }
-.wy-alert.wy-alert-info,.rst-content .note,.rst-content .wy-alert-info.attention,.rst-content .wy-alert-info.caution,.rst-content .wy-alert-info.danger,.rst-content .wy-alert-info.error,.rst-content .wy-alert-info.hint,.rst-content .wy-alert-info.important,.rst-content .wy-alert-info.tip,.rst-content .wy-alert-info.warning,.rst-content .seealso {
+.bb-alert.bb-alert-info,.rst-content .note,.rst-content .bb-alert-info.attention,.rst-content .bb-alert-info.caution,.rst-content .bb-alert-info.danger,.rst-content .bb-alert-info.error,.rst-content .bb-alert-info.hint,.rst-content .bb-alert-info.important,.rst-content .bb-alert-info.tip,.rst-content .bb-alert-info.warning,.rst-content .seealso {
 	background: #e7f2fa
 }
-.wy-alert.wy-alert-info .wy-alert-title,.rst-content .note .wy-alert-title,.rst-content .wy-alert-info.attention .wy-alert-title,.rst-content .wy-alert-info.caution .wy-alert-title,.rst-content .wy-alert-info.danger .wy-alert-title,.rst-content .wy-alert-info.error .wy-alert-title,.rst-content .wy-alert-info.hint .wy-alert-title,.rst-content .wy-alert-info.important .wy-alert-title,.rst-content .wy-alert-info.tip .wy-alert-title,.rst-content .wy-alert-info.warning .wy-alert-title,.rst-content .seealso .wy-alert-title,.wy-alert.wy-alert-info .rst-content .admonition-title,.rst-content .wy-alert.wy-alert-info .admonition-title,.rst-content .note .admonition-title,.rst-content .wy-alert-info.attention .admonition-title,.rst-content .wy-alert-info.caution .admonition-title,.rst-content .wy-alert-info.danger .admonition-title,.rst-content .wy-alert-info.error .admonition-title,.rst-content .wy-alert-info.hint .admonition-title,.rst-content .wy-alert-info.important .admonition-title,.rst-content .wy-alert-info.tip .admonition-title,.rst-content .wy-alert-info.warning .admonition-title,.rst-content .seealso .admonition-title {
+.bb-alert.bb-alert-info .bb-alert-title,.rst-content .note .bb-alert-title,.rst-content .bb-alert-info.attention .bb-alert-title,.rst-content .bb-alert-info.caution .bb-alert-title,.rst-content .bb-alert-info.danger .bb-alert-title,.rst-content .bb-alert-info.error .bb-alert-title,.rst-content .bb-alert-info.hint .bb-alert-title,.rst-content .bb-alert-info.important .bb-alert-title,.rst-content .bb-alert-info.tip .bb-alert-title,.rst-content .bb-alert-info.warning .bb-alert-title,.rst-content .seealso .bb-alert-title,.bb-alert.bb-alert-info .rst-content .admonition-title,.rst-content .bb-alert.bb-alert-info .admonition-title,.rst-content .note .admonition-title,.rst-content .bb-alert-info.attention .admonition-title,.rst-content .bb-alert-info.caution .admonition-title,.rst-content .bb-alert-info.danger .admonition-title,.rst-content .bb-alert-info.error .admonition-title,.rst-content .bb-alert-info.hint .admonition-title,.rst-content .bb-alert-info.important .admonition-title,.rst-content .bb-alert-info.tip .admonition-title,.rst-content .bb-alert-info.warning .admonition-title,.rst-content .seealso .admonition-title {
 	background: #6ab0de
 }
-.wy-alert.wy-alert-success,.rst-content .wy-alert-success.note,.rst-content .wy-alert-success.attention,.rst-content .wy-alert-success.caution,.rst-content .wy-alert-success.danger,.rst-content .wy-alert-success.error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .wy-alert-success.warning,.rst-content .wy-alert-success.seealso {
+.bb-alert.bb-alert-success,.rst-content .bb-alert-success.note,.rst-content .bb-alert-success.attention,.rst-content .bb-alert-success.caution,.rst-content .bb-alert-success.danger,.rst-content .bb-alert-success.error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .bb-alert-success.warning,.rst-content .bb-alert-success.seealso {
 	background: #dbfaf4
 }
-.wy-alert.wy-alert-success .wy-alert-title,.rst-content .wy-alert-success.note .wy-alert-title,.rst-content .wy-alert-success.attention .wy-alert-title,.rst-content .wy-alert-success.caution .wy-alert-title,.rst-content .wy-alert-success.danger .wy-alert-title,.rst-content .wy-alert-success.error .wy-alert-title,.rst-content .hint .wy-alert-title,.rst-content .important .wy-alert-title,.rst-content .tip .wy-alert-title,.rst-content .wy-alert-success.warning .wy-alert-title,.rst-content .wy-alert-success.seealso .wy-alert-title,.wy-alert.wy-alert-success .rst-content .admonition-title,.rst-content .wy-alert.wy-alert-success .admonition-title,.rst-content .wy-alert-success.note .admonition-title,.rst-content .wy-alert-success.attention .admonition-title,.rst-content .wy-alert-success.caution .admonition-title,.rst-content .wy-alert-success.danger .admonition-title,.rst-content .wy-alert-success.error .admonition-title,.rst-content .hint .admonition-title,.rst-content .important .admonition-title,.rst-content .tip .admonition-title,.rst-content .wy-alert-success.warning .admonition-title,.rst-content .wy-alert-success.seealso .admonition-title {
+.bb-alert.bb-alert-success .bb-alert-title,.rst-content .bb-alert-success.note .bb-alert-title,.rst-content .bb-alert-success.attention .bb-alert-title,.rst-content .bb-alert-success.caution .bb-alert-title,.rst-content .bb-alert-success.danger .bb-alert-title,.rst-content .bb-alert-success.error .bb-alert-title,.rst-content .hint .bb-alert-title,.rst-content .important .bb-alert-title,.rst-content .tip .bb-alert-title,.rst-content .bb-alert-success.warning .bb-alert-title,.rst-content .bb-alert-success.seealso .bb-alert-title,.bb-alert.bb-alert-success .rst-content .admonition-title,.rst-content .bb-alert.bb-alert-success .admonition-title,.rst-content .bb-alert-success.note .admonition-title,.rst-content .bb-alert-success.attention .admonition-title,.rst-content .bb-alert-success.caution .admonition-title,.rst-content .bb-alert-success.danger .admonition-title,.rst-content .bb-alert-success.error .admonition-title,.rst-content .hint .admonition-title,.rst-content .important .admonition-title,.rst-content .tip .admonition-title,.rst-content .bb-alert-success.warning .admonition-title,.rst-content .bb-alert-success.seealso .admonition-title {
 	background: #1abc9c
 }
-.wy-alert.wy-alert-neutral,.rst-content .wy-alert-neutral.note,.rst-content .wy-alert-neutral.attention,.rst-content .wy-alert-neutral.caution,.rst-content .wy-alert-neutral.danger,.rst-content .wy-alert-neutral.error,.rst-content .wy-alert-neutral.hint,.rst-content .wy-alert-neutral.important,.rst-content .wy-alert-neutral.tip,.rst-content .wy-alert-neutral.warning,.rst-content .wy-alert-neutral.seealso {
+.bb-alert.bb-alert-neutral,.rst-content .bb-alert-neutral.note,.rst-content .bb-alert-neutral.attention,.rst-content .bb-alert-neutral.caution,.rst-content .bb-alert-neutral.danger,.rst-content .bb-alert-neutral.error,.rst-content .bb-alert-neutral.hint,.rst-content .bb-alert-neutral.important,.rst-content .bb-alert-neutral.tip,.rst-content .bb-alert-neutral.warning,.rst-content .bb-alert-neutral.seealso {
 	background: #f3f6f6
 }
-.wy-alert.wy-alert-neutral strong,.rst-content .wy-alert-neutral.note strong,.rst-content .wy-alert-neutral.attention strong,.rst-content .wy-alert-neutral.caution strong,.rst-content .wy-alert-neutral.danger strong,.rst-content .wy-alert-neutral.error strong,.rst-content .wy-alert-neutral.hint strong,.rst-content .wy-alert-neutral.important strong,.rst-content .wy-alert-neutral.tip strong,.rst-content .wy-alert-neutral.warning strong,.rst-content .wy-alert-neutral.seealso strong {
+.bb-alert.bb-alert-neutral strong,.rst-content .bb-alert-neutral.note strong,.rst-content .bb-alert-neutral.attention strong,.rst-content .bb-alert-neutral.caution strong,.rst-content .bb-alert-neutral.danger strong,.rst-content .bb-alert-neutral.error strong,.rst-content .bb-alert-neutral.hint strong,.rst-content .bb-alert-neutral.important strong,.rst-content .bb-alert-neutral.tip strong,.rst-content .bb-alert-neutral.warning strong,.rst-content .bb-alert-neutral.seealso strong {
 	color: #404040
 }
-.wy-alert.wy-alert-neutral a,.rst-content .wy-alert-neutral.note a,.rst-content .wy-alert-neutral.attention a,.rst-content .wy-alert-neutral.caution a,.rst-content .wy-alert-neutral.danger a,.rst-content .wy-alert-neutral.error a,.rst-content .wy-alert-neutral.hint a,.rst-content .wy-alert-neutral.important a,.rst-content .wy-alert-neutral.tip a,.rst-content .wy-alert-neutral.warning a,.rst-content .wy-alert-neutral.seealso a {
+.bb-alert.bb-alert-neutral a,.rst-content .bb-alert-neutral.note a,.rst-content .bb-alert-neutral.attention a,.rst-content .bb-alert-neutral.caution a,.rst-content .bb-alert-neutral.danger a,.rst-content .bb-alert-neutral.error a,.rst-content .bb-alert-neutral.hint a,.rst-content .bb-alert-neutral.important a,.rst-content .bb-alert-neutral.tip a,.rst-content .bb-alert-neutral.warning a,.rst-content .bb-alert-neutral.seealso a {
 	color: #2980b9
 }
-.wy-tray-container {
+.bb-tray-container {
 	position: fixed;
 	top: -50px;
 	left: 0;
@@ -1490,10 +1490,10 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	-moz-transition: top 0.2s ease-in;
 	transition: top 0.2s ease-in
 }
-.wy-tray-container.on {
+.bb-tray-container.on {
 	top: 0
 }
-.wy-tray-container li {
+.bb-tray-container li {
 	display: none;
 	width: 100%;
 	background: #343131;
@@ -1503,16 +1503,16 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	text-align: center;
 	box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1),0px -1px 2px -1px rgba(255,255,255,0.5) inset
 }
-.wy-tray-container li.wy-tray-item-success {
+.bb-tray-container li.bb-tray-item-success {
 	background: #27ae60
 }
-.wy-tray-container li.wy-tray-item-info {
+.bb-tray-container li.bb-tray-item-info {
 	background: #2980b9
 }
-.wy-tray-container li.wy-tray-item-warning {
+.bb-tray-container li.bb-tray-item-warning {
 	background: #e67e22
 }
-.wy-tray-container li.wy-tray-item-danger {
+.bb-tray-container li.bb-tray-item-danger {
 	background: #e74c3c
 }
 .btn {
@@ -1640,33 +1640,33 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	border-top: solid 1px transparent;
 	border-bottom: solid 3px transparent
 }
-.wy-btn-group .btn,.wy-control .btn {
+.bb-btn-group .btn,.bb-control .btn {
 	vertical-align: middle
 }
-.wy-btn-group {
+.bb-btn-group {
 	margin-bottom: 24px;
 	*zoom: 1
 }
-.wy-btn-group: before,.wy-btn-group: after {
+.bb-btn-group: before,.bb-btn-group: after {
 	display: table;
 	content: ""
 }
-.wy-btn-group: after {
+.bb-btn-group: after {
 	clear: both
 }
-.wy-dropdown {
+.bb-dropdown {
 	position: relative;
 	display: inline-block
 }
-.wy-dropdown: hover .wy-dropdown-menu {
+.bb-dropdown: hover .bb-dropdown-menu {
 	display: block
 }
-.wy-dropdown .caret: after {
+.bb-dropdown .caret: after {
 	font-family: fontawesome-webfont;
 	content: "\f0d7";
 	font-size: 70%
 }
-.wy-dropdown-menu {
+.bb-dropdown-menu {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -1679,7 +1679,7 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1);
 	padding: 12px
 }
-.wy-dropdown-menu>dd>a {
+.bb-dropdown-menu>dd>a {
 	display: block;
 	clear: both;
 	color: #404040;
@@ -1687,48 +1687,48 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	font-size: 90%;
 	padding: 0 12px
 }
-.wy-dropdown-menu>dd>a: hover {
+.bb-dropdown-menu>dd>a: hover {
 	background: #2980b9;
 	color: #fff
 }
-.wy-dropdown-menu>dd.divider {
+.bb-dropdown-menu>dd.divider {
 	border-top: solid 1px #cfd7dd;
 	margin: 6px 0
 }
-.wy-dropdown-menu>dd.search {
+.bb-dropdown-menu>dd.search {
 	padding-bottom: 12px
 }
-.wy-dropdown-menu>dd.search input[type="search"] {
+.bb-dropdown-menu>dd.search input[type="search"] {
 	width: 100%
 }
-.wy-dropdown-menu>dd.call-to-action {
+.bb-dropdown-menu>dd.call-to-action {
 	background: #e3e3e3;
 	text-transform: uppercase;
 	font-weight: 500;
 	font-size: 80%
 }
-.wy-dropdown-menu>dd.call-to-action: hover {
+.bb-dropdown-menu>dd.call-to-action: hover {
 	background: #e3e3e3
 }
-.wy-dropdown-menu>dd.call-to-action .btn {
+.bb-dropdown-menu>dd.call-to-action .btn {
 	color: #fff
 }
-.wy-dropdown.wy-dropdown-bubble .wy-dropdown-menu {
+.bb-dropdown.bb-dropdown-bubble .bb-dropdown-menu {
 	background: #fcfcfc;
 	margin-top: 2px
 }
-.wy-dropdown.wy-dropdown-bubble .wy-dropdown-menu a {
+.bb-dropdown.bb-dropdown-bubble .bb-dropdown-menu a {
 	padding: 6px 12px
 }
-.wy-dropdown.wy-dropdown-bubble .wy-dropdown-menu a: hover {
+.bb-dropdown.bb-dropdown-bubble .bb-dropdown-menu a: hover {
 	background: #2980b9;
 	color: #fff
 }
-.wy-dropdown.wy-dropdown-left .wy-dropdown-menu {
+.bb-dropdown.bb-dropdown-left .bb-dropdown-menu {
 	right: 0;
 	text-align: right
 }
-.wy-dropdown-arrow: before {
+.bb-dropdown-arrow: before {
 	content: " ";
 	border-bottom: 5px solid #f5f5f5;
 	border-left: 5px solid transparent;
@@ -1739,32 +1739,32 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 	left: 50%;
 	margin-left: -3px
 }
-.wy-dropdown-arrow.wy-dropdown-arrow-left: before {
+.bb-dropdown-arrow.bb-dropdown-arrow-left: before {
 	left: 11px
 }
-.wy-form-stacked select {
+.bb-form-stacked select {
 	display: block
 }
-.wy-form-aligned input,.wy-form-aligned textarea,.wy-form-aligned select,.wy-form-aligned .wy-help-inline,.wy-form-aligned label {
+.bb-form-aligned input,.bb-form-aligned textarea,.bb-form-aligned select,.bb-form-aligned .bb-help-inline,.bb-form-aligned label {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
 	vertical-align: middle
 }
-.wy-form-aligned .wy-control-group>label {
+.bb-form-aligned .bb-control-group>label {
 	display: inline-block;
 	vertical-align: middle;
 	width: 10em;
 	margin: 0.5em 1em 0 0;
 	float: left
 }
-.wy-form-aligned .wy-control {
+.bb-form-aligned .bb-control {
 	float: left
 }
-.wy-form-aligned .wy-control label {
+.bb-form-aligned .bb-control label {
 	display: block
 }
-.wy-form-aligned .wy-control select {
+.bb-form-aligned .bb-control select {
 	margin-top: 0.5em
 }
 fieldset {
@@ -1877,7 +1877,7 @@ input: focus: invalid: focus,textarea: focus: invalid: focus,select: focus: inva
 input[type="file"]: focus: invalid: focus,input[type="radio"]: focus: invalid: focus,input[type="checkbox"]: focus: invalid: focus {
 	outline-color: #e9322d
 }
-input.wy-input-large {
+input.bb-input-large {
 	padding: 12px;
 	font-size: 100%
 }
@@ -1912,21 +1912,21 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	color: #cad2d3;
 	border-color: transparent
 }
-.wy-checkbox,.wy-radio {
+.bb-checkbox,.bb-radio {
 	margin: 0.5em 0;
 	color: #404040 !important;
 	display: block
 }
-.wy-form-message-inline {
+.bb-form-message-inline {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
 	vertical-align: middle
 }
-.wy-input-prefix,.wy-input-suffix {
+.bb-input-prefix,.bb-input-suffix {
 	white-space: nowrap
 }
-.wy-input-prefix .wy-input-context,.wy-input-suffix .wy-input-context {
+.bb-input-prefix .bb-input-context,.bb-input-suffix .bb-input-context {
 	padding: 6px;
 	display: inline-block;
 	font-size: 80%;
@@ -1934,70 +1934,70 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	border: solid 1px #ccc;
 	color: #999
 }
-.wy-input-suffix .wy-input-context {
+.bb-input-suffix .bb-input-context {
 	border-left: 0
 }
-.wy-input-prefix .wy-input-context {
+.bb-input-prefix .bb-input-context {
 	border-right: 0
 }
-.wy-inline-validate {
+.bb-inline-validate {
 	white-space: nowrap
 }
-.wy-inline-validate .wy-input-context {
+.bb-inline-validate .bb-input-context {
 	padding: 0.5em 0.625em;
 	display: inline-block;
 	font-size: 80%
 }
-.wy-inline-validate.wy-inline-validate-success .wy-input-context {
+.bb-inline-validate.bb-inline-validate-success .bb-input-context {
 	color: #27ae60
 }
-.wy-inline-validate.wy-inline-validate-danger .wy-input-context {
+.bb-inline-validate.bb-inline-validate-danger .bb-input-context {
 	color: #e74c3c
 }
-.wy-inline-validate.wy-inline-validate-warning .wy-input-context {
+.bb-inline-validate.bb-inline-validate-warning .bb-input-context {
 	color: #e67e22
 }
-.wy-inline-validate.wy-inline-validate-info .wy-input-context {
+.bb-inline-validate.bb-inline-validate-info .bb-input-context {
 	color: #2980b9
 }
-.wy-control-group {
+.bb-control-group {
 	margin-bottom: 24px;
 	*zoom: 1
 }
-.wy-control-group: before,.wy-control-group: after {
+.bb-control-group: before,.bb-control-group: after {
 	display: table;
 	content: ""
 }
-.wy-control-group: after {
+.bb-control-group: after {
 	clear: both
 }
-.wy-control-group.wy-control-group-error .wy-form-message,.wy-control-group.wy-control-group-error label {
+.bb-control-group.bb-control-group-error .bb-form-message,.bb-control-group.bb-control-group-error label {
 	color: #e74c3c
 }
-.wy-control-group.wy-control-group-error input[type="text"],.wy-control-group.wy-control-group-error input[type="password"],.wy-control-group.wy-control-group-error input[type="email"],.wy-control-group.wy-control-group-error input[type="url"],.wy-control-group.wy-control-group-error input[type="date"],.wy-control-group.wy-control-group-error input[type="month"],.wy-control-group.wy-control-group-error input[type="time"],.wy-control-group.wy-control-group-error input[type="datetime"],.wy-control-group.wy-control-group-error input[type="datetime-local"],.wy-control-group.wy-control-group-error input[type="week"],.wy-control-group.wy-control-group-error input[type="number"],.wy-control-group.wy-control-group-error input[type="search"],.wy-control-group.wy-control-group-error input[type="tel"],.wy-control-group.wy-control-group-error input[type="color"] {
+.bb-control-group.bb-control-group-error input[type="text"],.bb-control-group.bb-control-group-error input[type="password"],.bb-control-group.bb-control-group-error input[type="email"],.bb-control-group.bb-control-group-error input[type="url"],.bb-control-group.bb-control-group-error input[type="date"],.bb-control-group.bb-control-group-error input[type="month"],.bb-control-group.bb-control-group-error input[type="time"],.bb-control-group.bb-control-group-error input[type="datetime"],.bb-control-group.bb-control-group-error input[type="datetime-local"],.bb-control-group.bb-control-group-error input[type="week"],.bb-control-group.bb-control-group-error input[type="number"],.bb-control-group.bb-control-group-error input[type="search"],.bb-control-group.bb-control-group-error input[type="tel"],.bb-control-group.bb-control-group-error input[type="color"] {
 	border: solid 2px #e74c3c
 }
-.wy-control-group.wy-control-group-error textarea {
+.bb-control-group.bb-control-group-error textarea {
 	border: solid 2px #e74c3c
 }
-.wy-control-group.fluid-input input[type="text"],.wy-control-group.fluid-input input[type="password"],.wy-control-group.fluid-input input[type="email"],.wy-control-group.fluid-input input[type="url"],.wy-control-group.fluid-input input[type="date"],.wy-control-group.fluid-input input[type="month"],.wy-control-group.fluid-input input[type="time"],.wy-control-group.fluid-input input[type="datetime"],.wy-control-group.fluid-input input[type="datetime-local"],.wy-control-group.fluid-input input[type="week"],.wy-control-group.fluid-input input[type="number"],.wy-control-group.fluid-input input[type="search"],.wy-control-group.fluid-input input[type="tel"],.wy-control-group.fluid-input input[type="color"] {
+.bb-control-group.fluid-input input[type="text"],.bb-control-group.fluid-input input[type="password"],.bb-control-group.fluid-input input[type="email"],.bb-control-group.fluid-input input[type="url"],.bb-control-group.fluid-input input[type="date"],.bb-control-group.fluid-input input[type="month"],.bb-control-group.fluid-input input[type="time"],.bb-control-group.fluid-input input[type="datetime"],.bb-control-group.fluid-input input[type="datetime-local"],.bb-control-group.fluid-input input[type="week"],.bb-control-group.fluid-input input[type="number"],.bb-control-group.fluid-input input[type="search"],.bb-control-group.fluid-input input[type="tel"],.bb-control-group.fluid-input input[type="color"] {
 	width: 100%
 }
-.wy-form-message-inline {
+.bb-form-message-inline {
 	display: inline-block;
 	padding-left: 0.3em;
 	color: #666;
 	vertical-align: middle;
 	font-size: 90%
 }
-.wy-form-message {
+.bb-form-message {
 	display: block;
 	color: #ccc;
 	font-size: 70%;
 	margin-top: 0.3125em;
 	font-style: italic
 }
-.wy-tag-input-group {
+.bb-tag-input-group {
 	padding: 4px 4px 0px 4px;
 	display: inline-block;
 	border: 1px solid #ccc;
@@ -2008,7 +2008,7 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	-moz-transition: border 0.3s linear;
 	transition: border 0.3s linear
 }
-.wy-tag-input-group .wy-tag {
+.bb-tag-input-group .bb-tag {
 	display: inline-block;
 	background-color: rgba(0,0,0,0.1);
 	padding: 0.5em 0.625em;
@@ -2016,25 +2016,25 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	position: relative;
 	margin-bottom: 4px
 }
-.wy-tag-input-group .wy-tag .wy-tag-remove {
+.bb-tag-input-group .bb-tag .bb-tag-remove {
 	color: #ccc;
 	margin-left: 5px
 }
-.wy-tag-input-group .wy-tag .wy-tag-remove: hover {
+.bb-tag-input-group .bb-tag .bb-tag-remove: hover {
 	color: #e74c3c
 }
-.wy-tag-input-group label {
+.bb-tag-input-group label {
 	margin-left: 5px;
 	display: inline-block;
 	margin-bottom: 0
 }
-.wy-tag-input-group input {
+.bb-tag-input-group input {
 	border: none;
 	font-size: 100%;
 	margin-bottom: 4px;
 	box-shadow: none
 }
-.wy-form-upload {
+.bb-form-upload {
 	border: solid 1px #ccc;
 	border-bottom: solid 3px #ccc;
 	background-color: #fff;
@@ -2048,51 +2048,51 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	transition: border-color 0.1s ease-in;
 	*zoom: 1
 }
-.wy-form-upload: before,.wy-form-upload: after {
+.bb-form-upload: before,.bb-form-upload: after {
 	display: table;
 	content: ""
 }
-.wy-form-upload: after {
+.bb-form-upload: after {
 	clear: both
 }
 @media screen and (max-width:  480px) {
-	.wy-form-upload {
+	.bb-form-upload {
 	width: 100%
 }
 
 }
-.wy-form-upload .image-drop {
+.bb-form-upload .image-drop {
 	display: none
 }
-.wy-form-upload .image-desktop {
+.bb-form-upload .image-desktop {
 	display: none
 }
-.wy-form-upload .image-loading {
+.bb-form-upload .image-loading {
 	display: none
 }
-.wy-form-upload .wy-form-upload-icon {
+.bb-form-upload .bb-form-upload-icon {
 	display: block;
 	font-size: 32px;
 	color: #b3b3b3
 }
-.wy-form-upload .image-drop .wy-form-upload-icon {
+.bb-form-upload .image-drop .bb-form-upload-icon {
 	color: #27ae60
 }
-.wy-form-upload p {
+.bb-form-upload p {
 	font-size: 90%
 }
-.wy-form-upload .wy-form-upload-image {
+.bb-form-upload .bb-form-upload-image {
 	float: left;
 	margin-right: 24px
 }
 @media screen and (max-width:  480px) {
-	.wy-form-upload .wy-form-upload-image {
+	.bb-form-upload .bb-form-upload-image {
 	width: 100%;
 	margin-bottom: 24px
 }
 
 }
-.wy-form-upload img {
+.bb-form-upload img {
 	max-width: 125px;
 	max-height: 125px;
 	opacity: 0.9;
@@ -2100,72 +2100,72 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	-moz-transition: opacity 0.1s ease-in;
 	transition: opacity 0.1s ease-in
 }
-.wy-form-upload .wy-form-upload-content {
+.bb-form-upload .bb-form-upload-content {
 	float: left
 }
 @media screen and (max-width:  480px) {
-	.wy-form-upload .wy-form-upload-content {
+	.bb-form-upload .bb-form-upload-content {
 	width: 100%
 }
 
 }
-.wy-form-upload: hover {
+.bb-form-upload: hover {
 	border-color: #b3b3b3;
 	color: #404040
 }
-.wy-form-upload: hover .image-desktop {
+.bb-form-upload: hover .image-desktop {
 	display: block
 }
-.wy-form-upload: hover .image-drag {
+.bb-form-upload: hover .image-drag {
 	display: none
 }
-.wy-form-upload: hover img {
+.bb-form-upload: hover img {
 	opacity: 1
 }
-.wy-form-upload: active {
+.bb-form-upload: active {
 	border-top: solid 3px #ccc;
 	border-bottom: solid 1px #ccc
 }
-.wy-form-upload.wy-form-upload-big {
+.bb-form-upload.bb-form-upload-big {
 	width: 100%;
 	text-align: center;
 	padding: 72px
 }
-.wy-form-upload.wy-form-upload-big .wy-form-upload-content {
+.bb-form-upload.bb-form-upload-big .bb-form-upload-content {
 	float: none
 }
-.wy-form-upload.wy-form-upload-file p {
+.bb-form-upload.bb-form-upload-file p {
 	margin-bottom: 0
 }
-.wy-form-upload.wy-form-upload-file .wy-form-upload-icon {
+.bb-form-upload.bb-form-upload-file .bb-form-upload-icon {
 	display: inline-block;
 	font-size: inherit
 }
-.wy-form-upload.wy-form-upload-drop {
+.bb-form-upload.bb-form-upload-drop {
 	background-color: #ddf7e8
 }
-.wy-form-upload.wy-form-upload-drop .image-drop {
+.bb-form-upload.bb-form-upload-drop .image-drop {
 	display: block
 }
-.wy-form-upload.wy-form-upload-drop .image-desktop {
+.bb-form-upload.bb-form-upload-drop .image-desktop {
 	display: none
 }
-.wy-form-upload.wy-form-upload-drop .image-drag {
+.bb-form-upload.bb-form-upload-drop .image-drag {
 	display: none
 }
-.wy-form-upload.wy-form-upload-loading .image-drag {
+.bb-form-upload.bb-form-upload-loading .image-drag {
 	display: none
 }
-.wy-form-upload.wy-form-upload-loading .image-desktop {
+.bb-form-upload.bb-form-upload-loading .image-desktop {
 	display: none
 }
-.wy-form-upload.wy-form-upload-loading .image-loading {
+.bb-form-upload.bb-form-upload-loading .image-loading {
 	display: block
 }
-.wy-form-upload.wy-form-upload-loading .wy-input-prefix {
+.bb-form-upload.bb-form-upload-loading .bb-input-prefix {
 	display: none
 }
-.wy-form-upload.wy-form-upload-loading p {
+.bb-form-upload.bb-form-upload-loading p {
 	margin-bottom: 0
 }
 .rotate-90 {
@@ -2217,32 +2217,32 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	-o-transform: scaleX(-1) rotate(270deg);
 	transform: scaleX(-1) rotate(270deg)
 }
-.wy-form-gallery-manage {
+.bb-form-gallery-manage {
 	margin-left: -12px;
 	margin-right: -12px
 }
-.wy-form-gallery-manage li {
+.bb-form-gallery-manage li {
 	float: left;
 	padding: 12px;
 	width: 20%;
 	cursor: pointer
 }
 @media screen and (max-width:  768px) {
-	.wy-form-gallery-manage li {
+	.bb-form-gallery-manage li {
 	width: 25%
 }
 
 }
 @media screen and (max-width:  480px) {
-	.wy-form-gallery-manage li {
+	.bb-form-gallery-manage li {
 	width: 50%
 }
 
 }
-.wy-form-gallery-manage li: active {
+.bb-form-gallery-manage li: active {
 	cursor: move
 }
-.wy-form-gallery-manage li>a {
+.bb-form-gallery-manage li>a {
 	padding: 12px;
 	background-color: #fff;
 	border: solid 1px #e1e4e5;
@@ -2252,17 +2252,17 @@ select[disabled],textarea[disabled],input[readonly],select[readonly],textarea[re
 	-moz-transition: all 0.1s ease-in;
 	transition: all 0.1s ease-in
 }
-.wy-form-gallery-manage li>a: active {
+.bb-form-gallery-manage li>a: active {
 	border: solid 1px #ccc;
 	border-top: solid 3px #ccc
 }
-.wy-form-gallery-manage img {
+.bb-form-gallery-manage img {
 	width: 100%;
 	-webkit-transition: all 0.05s ease-in;
 	-moz-transition: all 0.05s ease-in;
 	transition: all 0.05s ease-in
 }
-li.wy-form-gallery-edit {
+li.bb-form-gallery-edit {
 	position: relative;
 	color: #fff;
 	padding: 24px;
@@ -2271,7 +2271,7 @@ li.wy-form-gallery-edit {
 	background-color: #343131;
 	border-radius: 4px
 }
-li.wy-form-gallery-edit .arrow {
+li.bb-form-gallery-edit .arrow {
 	position: absolute;
 	display: block;
 	top: -50px;
@@ -2286,30 +2286,30 @@ li.wy-form-gallery-edit .arrow {
 	border-bottom-color: #343131
 }
 @media only screen and (max-width:  480px) {
-	.wy-form button[type="submit"] {
+	.bb-form button[type="submit"] {
 	margin: 0.7em 0 0
 }
-.wy-form input[type="text"],.wy-form input[type="password"],.wy-form input[type="email"],.wy-form input[type="url"],.wy-form input[type="date"],.wy-form input[type="month"],.wy-form input[type="time"],.wy-form input[type="datetime"],.wy-form input[type="datetime-local"],.wy-form input[type="week"],.wy-form input[type="number"],.wy-form input[type="search"],.wy-form input[type="tel"],.wy-form input[type="color"] {
+.bb-form input[type="text"],.bb-form input[type="password"],.bb-form input[type="email"],.bb-form input[type="url"],.bb-form input[type="date"],.bb-form input[type="month"],.bb-form input[type="time"],.bb-form input[type="datetime"],.bb-form input[type="datetime-local"],.bb-form input[type="week"],.bb-form input[type="number"],.bb-form input[type="search"],.bb-form input[type="tel"],.bb-form input[type="color"] {
 	margin-bottom: 0.3em;
 	display: block
 }
-.wy-form label {
+.bb-form label {
 	margin-bottom: 0.3em;
 	display: block
 }
-.wy-form input[type="password"],.wy-form input[type="email"],.wy-form input[type="url"],.wy-form input[type="date"],.wy-form input[type="month"],.wy-form input[type="time"],.wy-form input[type="datetime"],.wy-form input[type="datetime-local"],.wy-form input[type="week"],.wy-form input[type="number"],.wy-form input[type="search"],.wy-form input[type="tel"],.wy-form input[type="color"] {
+.bb-form input[type="password"],.bb-form input[type="email"],.bb-form input[type="url"],.bb-form input[type="date"],.bb-form input[type="month"],.bb-form input[type="time"],.bb-form input[type="datetime"],.bb-form input[type="datetime-local"],.bb-form input[type="week"],.bb-form input[type="number"],.bb-form input[type="search"],.bb-form input[type="tel"],.bb-form input[type="color"] {
 	margin-bottom: 0
 }
-.wy-form-aligned .wy-control-group label {
+.bb-form-aligned .bb-control-group label {
 	margin-bottom: 0.3em;
 	text-align: left;
 	display: block;
 	width: 100%
 }
-.wy-form-aligned .wy-controls {
+.bb-form-aligned .bb-controls {
 	margin: 1.5em 0 0 0
 }
-.wy-form .wy-help-inline,.wy-form-message-inline,.wy-form-message {
+.bb-form .bb-help-inline,.bb-form-message-inline,.bb-form-message {
 	display: block;
 	font-size: 80%;
 	padding: 0.2em 0 0.8em
@@ -2337,7 +2337,7 @@ li.wy-form-gallery-edit .arrow {
 .full-width {
 	width: 100%
 }
-.wy-grid-one-col {
+.bb-grid-one-col {
 	*zoom: 1;
 	max-width: 68em;
 	margin-left: auto;
@@ -2345,14 +2345,14 @@ li.wy-form-gallery-edit .arrow {
 	max-width: 1066px;
 	margin-top: 1.618em
 }
-.wy-grid-one-col: before,.wy-grid-one-col: after {
+.bb-grid-one-col: before,.bb-grid-one-col: after {
 	display: table;
 	content: ""
 }
-.wy-grid-one-col: after {
+.bb-grid-one-col: after {
 	clear: both
 }
-.wy-grid-one-col section {
+.bb-grid-one-col section {
 	display: block;
 	float: left;
 	margin-right: 2.35765%;
@@ -2361,10 +2361,10 @@ li.wy-form-gallery-edit .arrow {
 	padding: 1.618em;
 	margin-right: 0
 }
-.wy-grid-one-col section: last-child {
+.bb-grid-one-col section: last-child {
 	margin-right: 0
 }
-.wy-grid-index-card {
+.bb-grid-index-card {
 	*zoom: 1;
 	max-width: 68em;
 	margin-left: auto;
@@ -2374,173 +2374,173 @@ li.wy-form-gallery-edit .arrow {
 	background: #fcfcfc;
 	padding: 1.618em
 }
-.wy-grid-index-card: before,.wy-grid-index-card: after {
+.bb-grid-index-card: before,.bb-grid-index-card: after {
 	display: table;
 	content: ""
 }
-.wy-grid-index-card: after {
+.bb-grid-index-card: after {
 	clear: both
 }
-.wy-grid-index-card header,.wy-grid-index-card section,.wy-grid-index-card aside {
+.bb-grid-index-card header,.bb-grid-index-card section,.bb-grid-index-card aside {
 	display: block;
 	float: left;
 	margin-right: 2.35765%;
 	width: 100%
 }
-.wy-grid-index-card header: last-child,.wy-grid-index-card section: last-child,.wy-grid-index-card aside: last-child {
+.bb-grid-index-card header: last-child,.bb-grid-index-card section: last-child,.bb-grid-index-card aside: last-child {
 	margin-right: 0
 }
-.wy-grid-index-card.twocol {
+.bb-grid-index-card.twocol {
 	max-width: 768px
 }
-.wy-grid-index-card.twocol section {
+.bb-grid-index-card.twocol section {
 	display: block;
 	float: left;
 	margin-right: 2.35765%;
 	width: 48.82117%
 }
-.wy-grid-index-card.twocol section: last-child {
+.bb-grid-index-card.twocol section: last-child {
 	margin-right: 0
 }
-.wy-grid-index-card.twocol aside {
+.bb-grid-index-card.twocol aside {
 	display: block;
 	float: left;
 	margin-right: 2.35765%;
 	width: 48.82117%
 }
-.wy-grid-index-card.twocol aside: last-child {
+.bb-grid-index-card.twocol aside: last-child {
 	margin-right: 0
 }
-.wy-grid-search-filter {
+.bb-grid-search-filter {
 	*zoom: 1;
 	max-width: 68em;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 24px
 }
-.wy-grid-search-filter: before,.wy-grid-search-filter: after {
+.bb-grid-search-filter: before,.bb-grid-search-filter: after {
 	display: table;
 	content: ""
 }
-.wy-grid-search-filter: after {
+.bb-grid-search-filter: after {
 	clear: both
 }
-.wy-grid-search-filter .wy-grid-search-filter-input {
+.bb-grid-search-filter .bb-grid-search-filter-input {
 	display: block;
 	float: left;
 	margin-right: 2.35765%;
 	width: 74.41059%
 }
-.wy-grid-search-filter .wy-grid-search-filter-input: last-child {
+.bb-grid-search-filter .bb-grid-search-filter-input: last-child {
 	margin-right: 0
 }
-.wy-grid-search-filter .wy-grid-search-filter-btn {
+.bb-grid-search-filter .bb-grid-search-filter-btn {
 	display: block;
 	float: left;
 	margin-right: 2.35765%;
 	width: 23.23176%
 }
-.wy-grid-search-filter .wy-grid-search-filter-btn: last-child {
+.bb-grid-search-filter .bb-grid-search-filter-btn: last-child {
 	margin-right: 0
 }
-.wy-table,.rst-content table.docutils,.rst-content table.field-list {
+.bb-table,.rst-content table.docutils,.rst-content table.field-list {
 	border-collapse: collapse;
 	border-spacing: 0;
 	empty-cells: show;
 	margin-bottom: 24px
 }
-.wy-table caption,.rst-content table.docutils caption,.rst-content table.field-list caption {
+.bb-table caption,.rst-content table.docutils caption,.rst-content table.field-list caption {
 	color: #000;
 	font: italic 85%/1 arial,sans-serif;
 	padding: 1em 0;
 	text-align: center
 }
-.wy-table td,.rst-content table.docutils td,.rst-content table.field-list td,.wy-table th,.rst-content table.docutils th,.rst-content table.field-list th {
+.bb-table td,.rst-content table.docutils td,.rst-content table.field-list td,.bb-table th,.rst-content table.docutils th,.rst-content table.field-list th {
 	font-size: 90%;
 	margin: 0;
 	overflow: visible;
 	padding: 8px 16px
 }
-.wy-table td: first-child,.rst-content table.docutils td: first-child,.rst-content table.field-list td: first-child,.wy-table th: first-child,.rst-content table.docutils th: first-child,.rst-content table.field-list th: first-child {
+.bb-table td: first-child,.rst-content table.docutils td: first-child,.rst-content table.field-list td: first-child,.bb-table th: first-child,.rst-content table.docutils th: first-child,.rst-content table.field-list th: first-child {
 	border-left-width: 0
 }
-.wy-table thead,.rst-content table.docutils thead,.rst-content table.field-list thead {
+.bb-table thead,.rst-content table.docutils thead,.rst-content table.field-list thead {
 	color: #000;
 	text-align: left;
 	vertical-align: bottom;
 	white-space: nowrap
 }
-.wy-table thead th,.rst-content table.docutils thead th,.rst-content table.field-list thead th {
+.bb-table thead th,.rst-content table.docutils thead th,.rst-content table.field-list thead th {
 	font-weight: bold;
 	border-bottom: solid 2px #e1e4e5
 }
-.wy-table td,.rst-content table.docutils td,.rst-content table.field-list td {
+.bb-table td,.rst-content table.docutils td,.rst-content table.field-list td {
 	background-color: transparent;
 	vertical-align: middle
 }
-.wy-table td p,.rst-content table.docutils td p,.rst-content table.field-list td p {
+.bb-table td p,.rst-content table.docutils td p,.rst-content table.field-list td p {
 	line-height: 18px;
 	margin-bottom: 0
 }
-.wy-table .wy-table-cell-min,.rst-content table.docutils .wy-table-cell-min,.rst-content table.field-list .wy-table-cell-min {
+.bb-table .bb-table-cell-min,.rst-content table.docutils .bb-table-cell-min,.rst-content table.field-list .bb-table-cell-min {
 	width: 1%;
 	padding-right: 0
 }
-.wy-table .wy-table-cell-min input[type=checkbox],.rst-content table.docutils .wy-table-cell-min input[type=checkbox],.rst-content table.field-list .wy-table-cell-min input[type=checkbox],.wy-table .wy-table-cell-min input[type=checkbox],.rst-content table.docutils .wy-table-cell-min input[type=checkbox],.rst-content table.field-list .wy-table-cell-min input[type=checkbox] {
+.bb-table .bb-table-cell-min input[type=checkbox],.rst-content table.docutils .bb-table-cell-min input[type=checkbox],.rst-content table.field-list .bb-table-cell-min input[type=checkbox],.bb-table .bb-table-cell-min input[type=checkbox],.rst-content table.docutils .bb-table-cell-min input[type=checkbox],.rst-content table.field-list .bb-table-cell-min input[type=checkbox] {
 	margin: 0
 }
-.wy-table-secondary {
+.bb-table-secondary {
 	color: gray;
 	font-size: 90%
 }
-.wy-table-tertiary {
+.bb-table-tertiary {
 	color: gray;
 	font-size: 80%
 }
-.wy-table-odd td,.wy-table-striped tr: nth-child(2n-1) td,.rst-content table.docutils: not(.field-list) tr: nth-child(2n-1) td {
+.bb-table-odd td,.bb-table-striped tr: nth-child(2n-1) td,.rst-content table.docutils: not(.field-list) tr: nth-child(2n-1) td {
 	background-color: #f3f6f6
 }
-.wy-table-backed {
+.bb-table-backed {
 	background-color: #f3f6f6
 }
-.wy-table-bordered-all,.rst-content table.docutils {
+.bb-table-bordered-all,.rst-content table.docutils {
 	border: 1px solid #e1e4e5
 }
-.wy-table-bordered-all td,.rst-content table.docutils td {
+.bb-table-bordered-all td,.rst-content table.docutils td {
 	border-bottom: 1px solid #e1e4e5;
 	border-left: 1px solid #e1e4e5
 }
-.wy-table-bordered-all tbody>tr: last-child td,.rst-content table.docutils tbody>tr: last-child td {
+.bb-table-bordered-all tbody>tr: last-child td,.rst-content table.docutils tbody>tr: last-child td {
 	border-bottom-width: 0
 }
-.wy-table-bordered {
+.bb-table-bordered {
 	border: 1px solid #e1e4e5
 }
-.wy-table-bordered-rows td {
+.bb-table-bordered-rows td {
 	border-bottom: 1px solid #e1e4e5
 }
-.wy-table-bordered-rows tbody>tr: last-child td {
+.bb-table-bordered-rows tbody>tr: last-child td {
 	border-bottom-width: 0
 }
-.wy-table-horizontal tbody>tr: last-child td {
+.bb-table-horizontal tbody>tr: last-child td {
 	border-bottom-width: 0
 }
-.wy-table-horizontal td,.wy-table-horizontal th {
+.bb-table-horizontal td,.bb-table-horizontal th {
 	border-width: 0 0 1px 0;
 	border-bottom: 1px solid #e1e4e5
 }
-.wy-table-horizontal tbody>tr: last-child td {
+.bb-table-horizontal tbody>tr: last-child td {
 	border-bottom-width: 0
 }
-.wy-table-responsive {
+.bb-table-responsive {
 	margin-bottom: 24px;
 	max-width: 100%;
 	overflow: auto
 }
-.wy-table-responsive table {
+.bb-table-responsive table {
 	margin-bottom: 0 !important
 }
-.wy-table-responsive table td,.wy-table-responsive table th {
+.bb-table-responsive table td,.bb-table-responsive table th {
 	white-space: nowrap
 }
 html {
@@ -2626,73 +2626,73 @@ code.code-large,.rst-content tt.code-large {
 .full-width {
 	width: 100%
 }
-.wy-plain-list-disc,.rst-content .section ul,.rst-content .toctree-wrapper ul {
+.bb-plain-list-disc,.rst-content .section ul,.rst-content .toctree-wrapper ul {
 	list-style: disc;
 	line-height: 24px;
 	margin-bottom: 24px
 }
-.wy-plain-list-disc li,.rst-content .section ul li,.rst-content .toctree-wrapper ul li {
+.bb-plain-list-disc li,.rst-content .section ul li,.rst-content .toctree-wrapper ul li {
 	list-style: disc;
 	margin-left: 24px
 }
-.wy-plain-list-disc li ul,.rst-content .section ul li ul,.rst-content .toctree-wrapper ul li ul {
+.bb-plain-list-disc li ul,.rst-content .section ul li ul,.rst-content .toctree-wrapper ul li ul {
 	margin-bottom: 0
 }
-.wy-plain-list-disc li li,.rst-content .section ul li li,.rst-content .toctree-wrapper ul li li {
+.bb-plain-list-disc li li,.rst-content .section ul li li,.rst-content .toctree-wrapper ul li li {
 	list-style: circle
 }
-.wy-plain-list-disc li li li,.rst-content .section ul li li li,.rst-content .toctree-wrapper ul li li li {
+.bb-plain-list-disc li li li,.rst-content .section ul li li li,.rst-content .toctree-wrapper ul li li li {
 	list-style: square
 }
-.wy-plain-list-decimal,.rst-content .section ol,.rst-content ol.arabic {
+.bb-plain-list-decimal,.rst-content .section ol,.rst-content ol.arabic {
 	list-style: decimal;
 	line-height: 24px;
 	margin-bottom: 24px
 }
-.wy-plain-list-decimal li,.rst-content .section ol li,.rst-content ol.arabic li {
+.bb-plain-list-decimal li,.rst-content .section ol li,.rst-content ol.arabic li {
 	list-style: decimal;
 	margin-left: 24px
 }
-.wy-type-large {
+.bb-type-large {
 	font-size: 120%
 }
-.wy-type-normal {
+.bb-type-normal {
 	font-size: 100%
 }
-.wy-type-small {
+.bb-type-small {
 	font-size: 100%
 }
-.wy-type-strike {
+.bb-type-strike {
 	text-decoration: line-through
 }
-.wy-text-warning {
+.bb-text-warning {
 	color: #e67e22 !important
 }
-a.wy-text-warning: hover {
+a.bb-text-warning: hover {
 	color: #eb9950 !important
 }
-.wy-text-info {
+.bb-text-info {
 	color: #2980b9 !important
 }
-a.wy-text-info: hover {
+a.bb-text-info: hover {
 	color: #409ad5 !important
 }
-.wy-text-success {
+.bb-text-success {
 	color: #27ae60 !important
 }
-a.wy-text-success: hover {
+a.bb-text-success: hover {
 	color: #36d278 !important
 }
-.wy-text-danger {
+.bb-text-danger {
 	color: #e74c3c !important
 }
-a.wy-text-danger: hover {
+a.bb-text-danger: hover {
 	color: #ed7669 !important
 }
-.wy-text-neutral {
+.bb-text-neutral {
 	color: #404040 !important
 }
-a.wy-text-neutral: hover {
+a.bb-text-neutral: hover {
 	color: #595959 !important
 }
 .codeblock-example {
@@ -2970,76 +2970,76 @@ pre.literal-block {
 	color: #999;
 	background-color: #eaf2f5
 }
-.wy-breadcrumbs li {
+.bb-breadcrumbs li {
 	display: inline-block
 }
-.wy-breadcrumbs li.wy-breadcrumbs-aside {
+.bb-breadcrumbs li.bb-breadcrumbs-aside {
 	float: right
 }
-.wy-breadcrumbs li a {
+.bb-breadcrumbs li a {
 	display: inline-block;
 	padding: 5px
 }
-.wy-breadcrumbs li a: first-child {
+.bb-breadcrumbs li a: first-child {
 	padding-left: 0
 }
-.wy-breadcrumbs-extra {
+.bb-breadcrumbs-extra {
 	margin-bottom: 0;
 	color: #b3b3b3;
 	font-size: 80%;
 	display: inline-block
 }
 @media screen and (max-width:  480px) {
-	.wy-breadcrumbs-extra {
+	.bb-breadcrumbs-extra {
 	display: none
 }
-.wy-breadcrumbs li.wy-breadcrumbs-aside {
+.bb-breadcrumbs li.bb-breadcrumbs-aside {
 	display: none
 }
 
 }
 @media print {
-	.wy-breadcrumbs li.wy-breadcrumbs-aside {
+	.bb-breadcrumbs li.bb-breadcrumbs-aside {
 	display: none
 }
 
 }
-.wy-affix {
+.bb-affix {
 	position: fixed;
 	top: 1.618em
 }
-.wy-menu a: hover {
+.bb-menu a: hover {
 	text-decoration: none
 }
-.wy-menu-horiz {
+.bb-menu-horiz {
 	*zoom: 1
 }
-.wy-menu-horiz: before,.wy-menu-horiz: after {
+.bb-menu-horiz: before,.bb-menu-horiz: after {
 	display: table;
 	content: ""
 }
-.wy-menu-horiz: after {
+.bb-menu-horiz: after {
 	clear: both
 }
-.wy-menu-horiz ul,.wy-menu-horiz li {
+.bb-menu-horiz ul,.bb-menu-horiz li {
 	display: inline-block
 }
-.wy-menu-horiz li: hover {
+.bb-menu-horiz li: hover {
 	background: rgba(255,255,255,0.1)
 }
-.wy-menu-horiz li.divide-left {
+.bb-menu-horiz li.divide-left {
 	border-left: solid 1px #404040
 }
-.wy-menu-horiz li.divide-right {
+.bb-menu-horiz li.divide-right {
 	border-right: solid 1px #404040
 }
-.wy-menu-horiz a {
+.bb-menu-horiz a {
 	height: 32px;
 	display: inline-block;
 	line-height: 32px;
 	padding: 0 16px
 }
-.wy-menu-vertical header {
+.bb-menu-vertical header {
 	height: 32px;
 	display: inline-block;
 	line-height: 32px;
@@ -3051,27 +3051,27 @@ pre.literal-block {
 	color: #2980b9;
 	white-space: nowrap
 }
-.wy-menu-vertical ul {
+.bb-menu-vertical ul {
 	margin-bottom: 0
 }
-.wy-menu-vertical li.divide-top {
+.bb-menu-vertical li.divide-top {
 	border-top: solid 1px #404040
 }
-.wy-menu-vertical li.divide-bottom {
+.bb-menu-vertical li.divide-bottom {
 	border-bottom: solid 1px #404040
 }
-.wy-menu-vertical li.current {
+.bb-menu-vertical li.current {
 	background: #e3e3e3
 }
-.wy-menu-vertical li.current a {
+.bb-menu-vertical li.current a {
 	color: gray;
 	border-right: solid 1px #c9c9c9;
 	padding: 0.4045em 2.427em
 }
-.wy-menu-vertical li.current a: hover {
+.bb-menu-vertical li.current a: hover {
 	background: #d6d6d6
 }
-.wy-menu-vertical li.on a,.wy-menu-vertical li.current>a {
+.bb-menu-vertical li.on a,.bb-menu-vertical li.current>a {
 	color: #404040;
 	padding: 0.4045em 1.618em;
 	font-weight: bold;
@@ -3082,28 +3082,28 @@ pre.literal-block {
 	border-top: solid 1px #c9c9c9;
 	padding-left: 1.618em -4px
 }
-.wy-menu-vertical li.on a: hover,.wy-menu-vertical li.current>a: hover {
+.bb-menu-vertical li.on a: hover,.bb-menu-vertical li.current>a: hover {
 	background: #fcfcfc
 }
-.wy-menu-vertical li.tocktree-l2.current>a {
+.bb-menu-vertical li.tocktree-l2.current>a {
 	background: #c9c9c9
 }
-.wy-menu-vertical li.current ul {
+.bb-menu-vertical li.current ul {
 	display: block
 }
-.wy-menu-vertical li ul {
+.bb-menu-vertical li ul {
 	margin-bottom: 0;
 	display: none
 }
-.wy-menu-vertical .local-toc li ul {
+.bb-menu-vertical .local-toc li ul {
 	display: block
 }
-.wy-menu-vertical li ul li a {
+.bb-menu-vertical li ul li a {
 	margin-bottom: 0;
 	color: #b3b3b3;
 	font-weight: normal
 }
-.wy-menu-vertical a {
+.bb-menu-vertical a {
 	display: inline-block;
 	line-height: 18px;
 	padding: 0.4045em 1.618em;
@@ -3112,16 +3112,16 @@ pre.literal-block {
 	font-size: 90%;
 	color: #b3b3b3
 }
-.wy-menu-vertical a: hover {
+.bb-menu-vertical a: hover {
 	background-color: #4e4a4a;
 	cursor: pointer
 }
-.wy-menu-vertical a: active {
+.bb-menu-vertical a: active {
 	background-color: #2980b9;
 	cursor: pointer;
 	color: #fff
 }
-.wy-side-nav-search {
+.bb-side-nav-search {
 	z-index: 200;
 	background-color: #538378;
 	text-align: center;
@@ -3130,13 +3130,13 @@ pre.literal-block {
 	color: #fcfcfc;
 	margin-bottom: 0.809em
 }
-.wy-side-nav-search input[type=text] {
+.bb-side-nav-search input[type=text] {
 	width: 100%;
 	border-radius: 50px;
 	padding: 6px 12px;
 	border-color: #2472a4
 }
-.wy-side-nav-search img {
+.bb-side-nav-search img {
 	display: block;
 	margin: auto auto 0.809em auto;
 	height: 45px;
@@ -3145,7 +3145,7 @@ pre.literal-block {
 	padding: 5px;
 	border-radius: 100%
 }
-.wy-side-nav-search>a,.wy-side-nav-search .wy-dropdown>a {
+.bb-side-nav-search>a,.bb-side-nav-search .bb-dropdown>a {
 	color: #fcfcfc;
 	font-size: 100%;
 	font-weight: bold;
@@ -3153,16 +3153,16 @@ pre.literal-block {
 	padding: 4px 6px;
 	margin-bottom: 0.809em
 }
-.wy-side-nav-search>a: hover,.wy-side-nav-search .wy-dropdown>a: hover {
+.bb-side-nav-search>a: hover,.bb-side-nav-search .bb-dropdown>a: hover {
 	background: rgba(255,255,255,0.1)
 }
-.wy-nav .wy-menu-vertical header {
+.bb-nav .bb-menu-vertical header {
 	color: #2980b9
 }
-.wy-nav .wy-menu-vertical a {
+.bb-nav .bb-menu-vertical a {
 	color: #b3b3b3
 }
-.wy-nav .wy-menu-vertical a: hover {
+.bb-nav .bb-menu-vertical a: hover {
 	background-color: #2980b9;
 	color: #fff
 }
@@ -3190,18 +3190,18 @@ pre.literal-block {
 	left: auto;
 	opacity: 0
 }
-.wy-body-for-nav {
+.bb-body-for-nav {
 	background: left repeat-y #fcfcfc;
 	background-image: url(data: image/png;
 	base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxOERBMTRGRDBFMUUxMUUzODUwMkJCOThDMEVFNURFMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxOERBMTRGRTBFMUUxMUUzODUwMkJCOThDMEVFNURFMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE4REExNEZCMEUxRTExRTM4NTAyQkI5OEMwRUU1REUwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjE4REExNEZDMEUxRTExRTM4NTAyQkI5OEMwRUU1REUwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+EwrlwAAAAA5JREFUeNpiMDU0BAgwAAE2AJgB9BnaAAAAAElFTkSuQmCC);
 	background-size: 300px 1px
 }
-.wy-grid-for-nav {
+.bb-grid-for-nav {
 	position: absolute;
 	width: 100%;
 	height: 100%
 }
-.wy-nav-side {
+.bb-nav-side {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -3211,7 +3211,7 @@ pre.literal-block {
 	background: #343131;
 	z-index: 200
 }
-.wy-nav-top {
+.bb-nav-top {
 	display: none;
 	background: #2980b9;
 	color: #fff;
@@ -3222,18 +3222,18 @@ pre.literal-block {
 	font-size: 100%;
 	*zoom: 1
 }
-.wy-nav-top: before,.wy-nav-top: after {
+.bb-nav-top: before,.bb-nav-top: after {
 	display: table;
 	content: ""
 }
-.wy-nav-top: after {
+.bb-nav-top: after {
 	clear: both
 }
-.wy-nav-top a {
+.bb-nav-top a {
 	color: #fff;
 	font-weight: bold
 }
-.wy-nav-top img {
+.bb-nav-top img {
 	margin-right: 12px;
 	height: 45px;
 	width: 45px;
@@ -3241,23 +3241,23 @@ pre.literal-block {
 	padding: 5px;
 	border-radius: 100%
 }
-.wy-nav-top i {
+.bb-nav-top i {
 	font-size: 30px;
 	float: left;
 	cursor: pointer
 }
-.wy-nav-content-wrap {
+.bb-nav-content-wrap {
 	margin-left: 300px;
 	background: #fcfcfc;
 	min-height: 100%
 }
-.wy-nav-content {
+.bb-nav-content {
 	padding: 1.618em 3.236em;
 	height: 100%;
 	max-width: 800px;
 	margin: auto
 }
-.wy-body-mask {
+.bb-body-mask {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -3265,7 +3265,7 @@ pre.literal-block {
 	display: none;
 	z-index: 499
 }
-.wy-body-mask.on {
+.bb-body-mask.on {
 	display: block
 }
 footer {
@@ -3303,26 +3303,26 @@ footer p {
 	font-size: 90%
 }
 @media screen and (max-width:  768px) {
-	.wy-body-for-nav {
+	.bb-body-for-nav {
 	background: #fcfcfc
 }
-.wy-nav-top {
+.bb-nav-top {
 	display: block
 }
-.wy-nav-side {
+.bb-nav-side {
 	left: -300px
 }
-.wy-nav-side.shift {
+.bb-nav-side.shift {
 	width: 85%;
 	left: 0
 }
-.wy-nav-content-wrap {
+.bb-nav-content-wrap {
 	margin-left: 0
 }
-.wy-nav-content-wrap .wy-nav-content {
+.bb-nav-content-wrap .bb-nav-content {
 	padding: 1.618em
 }
-.wy-nav-content-wrap.shift {
+.bb-nav-content-wrap.shift {
 	position: fixed;
 	min-width: 100%;
 	left: 85%;
@@ -3333,20 +3333,20 @@ footer p {
 
 }
 @media screen and (min-width:  1400px) {
-	.wy-nav-content-wrap {
+	.bb-nav-content-wrap {
 	background: rgba(0,0,0,0.05)
 }
-.wy-nav-content {
+.bb-nav-content {
 	margin: 0;
 	background: #fcfcfc
 }
 
 }
 @media print {
-	.wy-nav-side {
+	.bb-nav-side {
 	display: none
 }
-.wy-nav-content-wrap {
+.bb-nav-content-wrap {
 	margin-left: 0
 }
 
@@ -3386,7 +3386,7 @@ footer p {
 .rst-versions .rst-current-version: after {
 	clear: both
 }
-.rst-versions .rst-current-version .icon,.rst-versions .rst-current-version .wy-inline-validate.wy-inline-validate-success .wy-input-context,.wy-inline-validate.wy-inline-validate-success .rst-versions .rst-current-version .wy-input-context,.rst-versions .rst-current-version .wy-inline-validate.wy-inline-validate-danger .wy-input-context,.wy-inline-validate.wy-inline-validate-danger .rst-versions .rst-current-version .wy-input-context,.rst-versions .rst-current-version .wy-inline-validate.wy-inline-validate-warning .wy-input-context,.wy-inline-validate.wy-inline-validate-warning .rst-versions .rst-current-version .wy-input-context,.rst-versions .rst-current-version .wy-inline-validate.wy-inline-validate-info .wy-input-context,.wy-inline-validate.wy-inline-validate-info .rst-versions .rst-current-version .wy-input-context,.rst-versions .rst-current-version .wy-tag-input-group .wy-tag .wy-tag-remove,.wy-tag-input-group .wy-tag .rst-versions .rst-current-version .wy-tag-remove,.rst-versions .rst-current-version .rst-content .admonition-title,.rst-content .rst-versions .rst-current-version .admonition-title,.rst-versions .rst-current-version .rst-content h1 .headerlink,.rst-content h1 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h2 .headerlink,.rst-content h2 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h3 .headerlink,.rst-content h3 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h4 .headerlink,.rst-content h4 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h5 .headerlink,.rst-content h5 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h6 .headerlink,.rst-content h6 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content dl dt .headerlink,.rst-content dl dt .rst-versions .rst-current-version .headerlink {
+.rst-versions .rst-current-version .icon,.rst-versions .rst-current-version .bb-inline-validate.bb-inline-validate-success .bb-input-context,.bb-inline-validate.bb-inline-validate-success .rst-versions .rst-current-version .bb-input-context,.rst-versions .rst-current-version .bb-inline-validate.bb-inline-validate-danger .bb-input-context,.bb-inline-validate.bb-inline-validate-danger .rst-versions .rst-current-version .bb-input-context,.rst-versions .rst-current-version .bb-inline-validate.bb-inline-validate-warning .bb-input-context,.bb-inline-validate.bb-inline-validate-warning .rst-versions .rst-current-version .bb-input-context,.rst-versions .rst-current-version .bb-inline-validate.bb-inline-validate-info .bb-input-context,.bb-inline-validate.bb-inline-validate-info .rst-versions .rst-current-version .bb-input-context,.rst-versions .rst-current-version .bb-tag-input-group .bb-tag .bb-tag-remove,.bb-tag-input-group .bb-tag .rst-versions .rst-current-version .bb-tag-remove,.rst-versions .rst-current-version .rst-content .admonition-title,.rst-content .rst-versions .rst-current-version .admonition-title,.rst-versions .rst-current-version .rst-content h1 .headerlink,.rst-content h1 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h2 .headerlink,.rst-content h2 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h3 .headerlink,.rst-content h3 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h4 .headerlink,.rst-content h4 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h5 .headerlink,.rst-content h5 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content h6 .headerlink,.rst-content h6 .rst-versions .rst-current-version .headerlink,.rst-versions .rst-current-version .rst-content dl dt .headerlink,.rst-content dl dt .rst-versions .rst-current-version .headerlink {
 	color: #fcfcfc
 }
 .rst-versions .rst-current-version .icon-book {

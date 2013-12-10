@@ -89,18 +89,18 @@
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="bb-body-for-nav">
 
-  <div class="wy-grid-for-nav">
+  <div class="bb-grid-for-nav">
 
     {# SIDE NAV, TOGGLES ON MOBILE #}
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
+    <nav data-toggle="wy-nav-shift" class="bb-nav-side">
+      <div class="bb-side-nav-search">
         <a href="{{ pathto(master_doc) }}" class="icon icon-home"> {{ project }}</a>
         {% include "searchbox.html" %}
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix">
+      <div class="bb-menu wy-menu-vertical" data-spy="affix">
         {% set toctree = toctree(maxdepth=2, collapse=False, includehidden=True) %}
         {% if toctree %}
             {{ toctree }}
@@ -112,17 +112,17 @@
       &nbsp;
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+    <section data-toggle="wy-nav-shift" class="bb-nav-content-wrap">
 
       {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
-      <nav class="wy-nav-top">
+      <nav class="bb-nav-top">
         <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
         <a href="{{ pathto(master_doc) }}">{{ project }}</a>
       </nav>
 
 
       {# PAGE CONTENT #}
-      <div class="wy-nav-content">
+      <div class="bb-nav-content">
         <div class="rst-content">
           {% include "breadcrumbs.html" %}
           {% block body %}{% endblock %}
