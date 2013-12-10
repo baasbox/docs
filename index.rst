@@ -10,12 +10,31 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
    
    installation
+
+.. toctree::
+   :maxdepth: 2   
+
+   introduction
+
+.. toctree::
+   :maxdepth: 2   
+
    general_overview
+
+.. toctree::
+   :maxdepth: 2   
+
    console
+
+.. toctree::
+   :maxdepth: 2   
+
    tutorial
+
+.. toctree::
+   :maxdepth: 2   
 
 
 
