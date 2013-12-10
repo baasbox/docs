@@ -2,7 +2,7 @@
 API\|Admin Assets]]
 
 Retrieve
---------
+========
 
 GET /asset/:name If the asset is a file, this API retrieves the file. In
 the response header the server will indicate the file content-type.

@@ -1,5 +1,5 @@
 Create a document
------------------
+=================
 
 POST /document/:collection **Headers**: See authorization header in the
 [[General Remarks\|General Remarks]] **Description**: Create a new
@@ -21,7 +21,7 @@ the documents. All other users but the admins cannot have any kind of
 access to the documents.
 
 Modify a document
------------------
+=================
 
 PUT /document/:collection/ID **Headers**: See authorization header in
 the [[General Remarks\|General Remarks]] **Description**: Updates the
@@ -41,7 +41,7 @@ users, can modify it. **Body payload**\  Any valid JSON string.
 The @ID field is the unique ID of the document.
 
 Retrieve a document
--------------------
+===================
 
 GET /document/:collection/ID **Headers**: See authorization header in
 the [[General Remarks\|General Remarks]] **Description**: Retrieves the
@@ -61,7 +61,7 @@ backoffice users can retrieve it.
 The @ID field is the unique ID of the document.
 
 Retrieve a document only by its ID
-----------------------------------
+==================================
 
 GET /document/ID **Headers**: See authorization header in the [[General
 Remarks\|General Remarks]] **Description**: Retrieves the specified
@@ -78,7 +78,7 @@ document **Returns**:
 The @ID field is the unique ID of the document.
 
 Delete a document
------------------
+=================
 
 DELETE /document/:collection/ID **Headers**: See authorization header in
 the [[General Remarks\|General Remarks]] **Description**: Delete a
@@ -93,7 +93,7 @@ the admin or backoffice users can delete it. **Returns**:
    doesn’t belong to the collection
 
 Count the number of documents in a collection
----------------------------------------------
+=============================================
 
 GET /document/:collection/count **Headers**: See authorization header in
 the [[General Remarks\|General Remarks]] **Description**: Returns the
@@ -108,7 +108,7 @@ and therefore are not included **Returns**:
 -  Code 200: OK, and a JSON list of documents
 
 Retrieves a list of Documents
------------------------------
+=============================
 
 GET /document/:collection **Headers**: See authorization header in the
 [[General Remarks\|General Remarks]] **Description**: Returns the

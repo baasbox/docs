@@ -5,7 +5,7 @@ These are the general notes about the REST API protocol used by BaasBox
 and its JSON format.
 
 Request Headers
----------------
+===============
 
 If not specified otherwise, all requests need some custom HTTP headers.
 These are **Authentications headers**\  BaasBox, since the 0.57 version

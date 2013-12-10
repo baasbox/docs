@@ -1,5 +1,5 @@
 Create a user (sign up)
------------------------
+=======================
 
 POST /user **Headers**: See authorization header in the [[General
 Section\|General Remarks]] **Description**: This API allows a user to
@@ -46,7 +46,7 @@ their password. **Body payload**\  A JSON object like this:
 -  Code 201: user created
 
 User Login (Sign in)
---------------------
+====================
 
 POST /login **Headers**: Content-Type: application/x-www-form-urlencoded
 **Description**: Checks username/password and grants the user the right
@@ -129,7 +129,7 @@ the specified device. **Returns**:
    associated device has been removed.
 
 Password Reset
---------------
+==============
 
 GET /user/:username/password/reset **Headers**: X-BAASBPX-APPCODE: The
 App Code **Parameters**\ 
@@ -163,7 +163,7 @@ in order to reset the password The confirmation and the error web page
 -  Code 200: OK. The reset email was sent
 
 Retrieve a user profile
------------------------
+=======================
 
 GET /user **Headers**: See the [[General Section\|General Remarks]] for
 authentication hints. **Description**: Retrieves the information about
@@ -195,7 +195,7 @@ the user. Specifically the following JSON is returned:
 -  Code 200: OK: retrieves he JSON object representing the current user
 
 Update a user
--------------
+=============
 
 PUT /user **Headers**: See the [[General Section\|General Remarks]]
 **Body payload**\  A JSON object like this:
@@ -235,7 +235,7 @@ PUT /user **Headers**: See the [[General Section\|General Remarks]]
 -  Code 200: OK: retrieves the JSON object representing the current user
 
 Change password
----------------
+===============
 
 PUT /user/password **Headers**: See the [[General Section\|General
 Remarks]] **Body payload**\  A JSON object like this:
@@ -264,7 +264,7 @@ password of a user. **Returns**:
 -  Code 200: OK
 
 Test if a username already exists
----------------------------------
+=================================
 
 **Not yet implemented**\  GET /user/:username/exists **Headers**: See
 the [[General Section\|General Remarks]] **Returns**:

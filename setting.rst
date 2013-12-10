@@ -19,7 +19,7 @@ PLEASE NOTE that only users belonging to administrator roles can call
 these APIs
 
 Retrieve current settings
--------------------------
+=========================
 
 GET /admin/configuration/dump.json **Headers**: Please see the [[General
 Remarks\|General Remarks]] **Parameters**: None **Description**: Returns
@@ -69,7 +69,7 @@ following format:
 -  Code 200: OK
 
 Retrieve only one section
--------------------------
+=========================
 
 GET /admin/configuration/:section **Headers**: Please see the [[General
 Remarks\|General Remarks]] **Parameters**\ 
@@ -106,7 +106,7 @@ key-value form. The returned JSON is:
    </pre>
 
 Modify a value of a specific setting
-------------------------------------
+====================================
 
 PUT /admin/configuration/:section/:key/:value **Headers**: Please see
 the [[General Remarks\|General Remarks]] **Parameters**\ 
