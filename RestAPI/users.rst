@@ -1,3 +1,5 @@
+.. _create-a-user:
+
 Create a user
 =======================
 
