@@ -1,6 +1,9 @@
 .. _create-a-user:
 
-Create a user
+REST API
+=======================
+
+Users
 =======================
 
 POST /user **Headers**: See authorization header in the [[General
