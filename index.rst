@@ -33,10 +33,11 @@ Contents:
 
    tutorial
 
+Rest API
+--------
 .. toctree::
    :maxdepth: 2   
 
-   Rest Api
    collections
    documents
    assets

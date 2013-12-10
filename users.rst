@@ -1,3 +1,5 @@
+.. _rest-API:
+
 Create a user (sign up)
 =======================
 
