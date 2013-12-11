@@ -10,9 +10,15 @@ limitations are imposed by the operating system vendor. To enable the
 Push Notification system, please read the tutorial and see the Setting
 API
 
-**Enable push notifications for a device**: PUT
-/push/device/:os/:deviceId **Headers**: See authorization header in the
-[[General Remarks\|General Remarks]] **Parameters**\ 
+**Enable push notifications for a device**: 
+
+``PUT
+/push/device/:os/:deviceId`` 
+
+**Headers**: See authorization header in the
+:doc:`general_remarks`  
+
+**Parameters**\ 
 
 -  **os**: the device operating system. This can be both ios or android.
    Other platforms are not supported yet
@@ -29,8 +35,13 @@ notifications by the App. Both parameters are mandatory. **Returns**:
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 200: OK. The device is successfully registered
 
-**Send a push notification**: POST /push/message/:username **Headers**:
-See authorization header in the [[General Remarks\|General Remarks]]
+**Send a push notification**: 
+
+``POST /push/message/:username`` 
+
+**Headers**:
+See authorization header in the :doc:`general_remarks` 
+
 **Parameters**\ 
 
 -  **username**: mandatory. The recipient of the message
@@ -38,13 +49,12 @@ See authorization header in the [[General Remarks\|General Remarks]]
 **Description**: This API allows to send a push notification to another
 user. **Body payload**\  A JSON object like this:
 
-.. raw:: html
-
-   <pre>
+::
+  
    {
-   “message”:”hi guy”
+   	“message”:”hi guy”
    }
-   </pre>
+   
 
 message field must contain the message to deliver. Please read the Push
 Notification tutorial to know how to handle push notifications and how

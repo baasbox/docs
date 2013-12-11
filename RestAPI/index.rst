@@ -11,7 +11,6 @@ REST API
         push_notifications
         documents
         settings
-
-.. toctree::
+        Admin/index 
    
-        Admin/index        
+               

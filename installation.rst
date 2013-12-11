@@ -4,7 +4,7 @@ Installation
 **System Requirements**\  Java VM 6 or above BaasBox is compiled with
 Java 1.6
 
-1. Download the latest version from the [[Downloads\|Downloads]], keep
+1. Download the latest version from the `Download <http://www.baasbox.com/download/>`_, keep
    in mind that until the 1.0 version will be released, BaasBox is not
    production-ready and therefore subject to change. For Windows
    Platforms on the same page you will find the start.tar.gz file.

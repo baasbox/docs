@@ -26,7 +26,17 @@ Contents:
 .. toctree::
    :maxdepth: 2   
 
+   custom_error_code
+
+.. toctree::
+   :maxdepth: 2   
+
    console
+
+.. toctree::
+   :maxdepth: 2
+
+   hacking
 
 .. toctree::
    :maxdepth: 2   
@@ -42,12 +52,6 @@ RestAPI
   
    RestAPI/index
 
-Advanced
---------
-.. toctree::
-   :maxdepth: 3
-  
-   Advanced/index
 
 Indices and tables
 ==================
