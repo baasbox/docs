@@ -1,0 +1,184 @@
+@pattern-text-color-ie: #333;
+@pattern-text-color: rgba(0, 0, 0, 0.6);
+
+.font-color-dark(){
+  color: @pattern-text-color-ie;
+  color: @pattern-text-color;
+}
+
+.colorblock{
+  background: url('../img/background/background-image.jpg') no-repeat;
+  background-size: cover;
+
+  .block-container{
+    .title{
+      .font-color-dark();
+      font-weight: 400;
+    }
+
+    .description{
+      .font-color-dark();
+    }
+  }
+}
+
+.mainmenu{
+  background: url('../img/background/background-image.jpg') no-repeat;
+  background-size: cover;
+
+  .menuwrapper{
+    .menulist{
+      .items{
+        .menuitem{
+          a{
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+            .font-color-dark();
+            font-weight: 400;
+          }
+
+          a:hover{
+            background: rgba(0, 0, 0, 0.15);
+            box-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+    }
+
+    .logoblock .companyname, .socialblock .socialicon i{
+      .font-color-dark();
+    }
+
+    .logoblock:hover .companyname, .socialblock .socialicon i:hover{
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+  }
+}
+
+.homeblock{
+  .block-container{
+    #description-home{
+
+      .wrapper{
+        h1.maintext{
+          .font-color-dark();
+        }
+
+        .descriptiontext{
+          font-weight: 400;
+        }
+
+        .mobilebrands{
+          .mobileicon{
+            i{
+              color: #fff;
+              color: rgba(255,255,255,0.75);
+              text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            i:hover{
+              color: #fff;
+              text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.priceblock{
+  .block-container{
+    .infoblock{
+      .title{
+        color: #fff;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+      }
+
+      .subscription{
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+      }
+
+      .contacticons{
+
+        font-weight: 400;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+
+        a.item{
+
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        }
+
+        a.item:hover{
+          background: rgba(0, 0, 0, 0.15);
+          box-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+      }
+    }
+  }
+}
+
+
+.twitterblock{
+  .block-container{
+    .twitterlogo i{
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    .messages-container{
+      .message{
+        .font-color-dark();
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+        .content{
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+.contactsblock{
+  .block-container{
+
+    .wrapper{
+      h2.title{
+        color: #fff;
+      }
+    }
+  }
+}
+
+.footerblock{
+  a.copyright {
+    .font-color-dark();
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .contactsblock{
+    .block-container{
+      background: none;
+
+      .wrapper{
+        h2.title{
+          .font-color-dark();
+          font-weight: 400;
+          text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+        .contact-info{
+          .title, a, p{
+            .font-color-dark();
+            font-weight: 400;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+          }
+          a:hover{
+            .font-color-dark();
+          }
+        }
+      }
+    }
+  }
+}
