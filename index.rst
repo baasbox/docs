@@ -36,6 +36,8 @@ Contents:
 Rest API
 --------
 .. toctree::
+   :maxdepth: 2
+   
    RestAPI <RestAPI/index>
 
 
