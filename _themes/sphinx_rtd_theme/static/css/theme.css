@@ -3203,8 +3203,6 @@ pre.literal-block {
 }
 .bb-nav-side {
 	position: fixed;
-	top: 0;
-	left: 0;
 	width: 300px;
 	overflow: hidden;
 	min-height: 100%;
