@@ -8,3 +8,4 @@ RESTAPI
         push_notifications
         documents
         settings
+        Admin/index
