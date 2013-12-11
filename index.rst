@@ -33,12 +33,11 @@ Contents:
 
    tutorial
 
-Rest
-----
+Rest API
+--------
 .. toctree::
-   :maxdepth: 2   
+   RestAPI <RestApi/index>
 
-   users
 
 Indices and tables
 ==================

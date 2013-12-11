@@ -1,7 +1,5 @@
-.. _create-a-user:
-
 Create a user
-=======================
+=============
 
 POST /user **Headers**: See authorization header in the [[General
 Section\|General Remarks]] **Description**: This API allows a user to
