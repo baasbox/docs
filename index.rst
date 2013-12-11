@@ -38,7 +38,7 @@ Rest API
 .. toctree::
    :maxdepth: 2
    
-   RestAPI <RestAPI/index>
+   RestAPI/index
 
 
 Indices and tables
