@@ -62,6 +62,7 @@ a .bat file. Just create a new start.bat file and place the following
 line in it: 
 
 :::
+
 	java %1 -cp ./lib/\*;
 	play.core.server.NettyServer.
 
