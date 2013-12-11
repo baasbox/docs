@@ -36,7 +36,7 @@ Contents:
 Rest API
 --------
 .. toctree::
-   RestAPI <RestApi/index>
+   RestAPI <RestAPI/index>
 
 
 Indices and tables
