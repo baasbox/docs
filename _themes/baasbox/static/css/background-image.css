@@ -1,0 +1,115 @@
+.colorblock {
+  background: url('../img/background/background-image.jpg') no-repeat;
+  background-size: cover;
+}
+.colorblock .block-container .title {
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+.colorblock .block-container .description {
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+}
+.mainmenu {
+  background: url('../img/background/background-image.jpg') no-repeat;
+  background-size: cover;
+}
+.mainmenu .menuwrapper .menulist .items .menuitem a {
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+}
+.mainmenu .menuwrapper .menulist .items .menuitem a:hover {
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+.mainmenu .menuwrapper .logoblock .companyname,
+.mainmenu .menuwrapper .socialblock .socialicon i {
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+}
+.mainmenu .menuwrapper .logoblock:hover .companyname,
+.mainmenu .menuwrapper .socialblock .socialicon i:hover {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.homeblock .block-container #description-home .wrapper h1.maintext {
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+}
+.homeblock .block-container #description-home .wrapper .descriptiontext {
+  font-weight: 400;
+}
+.homeblock .block-container #description-home .wrapper .mobilebrands .mobileicon i {
+  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.homeblock .block-container #description-home .wrapper .mobilebrands .mobileicon i:hover {
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+.priceblock .block-container .infoblock .title {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+.priceblock .block-container .infoblock .subscription {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+.priceblock .block-container .infoblock .contacticons {
+  font-weight: 400;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+.priceblock .block-container .infoblock .contacticons a.item {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+.priceblock .block-container .infoblock .contacticons a.item:hover {
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+.twitterblock .block-container .twitterlogo i {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.twitterblock .block-container .messages-container .message {
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+.twitterblock .block-container .messages-container .message .content {
+  font-weight: 400;
+}
+.contactsblock .block-container .wrapper h2.title {
+  color: #fff;
+}
+.footerblock a.copyright {
+  color: #333333;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+@media screen and (max-width: 1024px) {
+  .contactsblock .block-container {
+    background: none;
+  }
+  .contactsblock .block-container .wrapper h2.title {
+    color: #333333;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+  .contactsblock .block-container .wrapper .contact-info .title,
+  .contactsblock .block-container .wrapper .contact-info a,
+  .contactsblock .block-container .wrapper .contact-info p {
+    color: #333333;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+  .contactsblock .block-container .wrapper .contact-info a:hover {
+    color: #333333;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
