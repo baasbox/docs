@@ -3203,12 +3203,14 @@ pre.literal-block {
 }
 .bb-nav-side {
 	position: fixed;
+	top: 0;
+	left: 0;
 	width: 300px;
 	overflow: hidden;
 	min-height: 100%;
 	background: #343131;
-	z-index: 200
 }
+
 .bb-nav-top {
 	display: none;
 	background: #2980b9;
