@@ -23,11 +23,14 @@ By default these values are:
 -  App Code: 1234567890
 
 You can change these values at any time by follow the instructions shown
-in the [[hacking\|Hacking]]. By clicking on the question marks, the
-fields will be filled with the default values. ## The Dashboard ## Once
-you logged in, you will see the main dashboard screen: |Dashboard|\  The
-web console is based on twitter bootstrap and on the [[Charisma
-Template\|https://github.com/usmanhalalit/charisma]] project. The
+in the :doc:`hacking`. By clicking on the question marks, the
+fields will be filled with the default values. 
+
+The Dashboard  
+================
+
+Once you logged in, you will see the main dashboard screen: |Dashboard|\  The
+web console is based on twitter bootstrap and on the `Charisma Template <https://github.com/usmanhalalit/charisma/>`_ project. The
 dashboard is splitted into several sections:
 
 1.  BaasBox version number
@@ -37,7 +40,7 @@ dashboard is splitted into several sections:
 5.  Number of users and rapid access to the relative section
 6.  Number of documents (objects) stored in the embedded database and
     rapid access to the relative section
-7.  Quick link to the [[Downloads\|Downloads]] of BaasBox site where you
+7.  Quick link to the `download <http://www.baasbox.com/download/>`_ of BaasBox site where you
     can find the latest version
 8.  Number of collections, documents and total size in one window.
 9.  Here you can see all latest news about BaasBox. These are feeds from
@@ -121,7 +124,7 @@ collection administration page. Collections are a sort of buckets where
 you can store objects, also known as "documents". |Collections|\  In
 this section you have a list of all your collections and you can quickly
 find them with the search tool. To create a new collection, click on the
-New Collection button and insert its name, then save the changes.
+New Collection button and insert its name, then save the changes.\
 |Create New Collection|\ 
 
 Documents
@@ -152,15 +155,17 @@ use these names to reference the assets.
 with information fields like Icon, Name, Meta, Size, Type, Download and
 Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
-following window: |New Asset|\  NOTE: you have to fill at least the Name
+following window: |New Asset|\
+\ 
+NOTE: you have to fill at least the Name
 field and save the changes to create a new asset.
 
 .. |Home Console| image:: _static/Console_0.6.0/home_console.png
 .. |Login Screen| image:: _static/Console_0.6.0/login.png
 .. |Dashboard| image:: _static/Console_0.6.0/baasbox_0-6-0-console.png
 .. |News| image:: _static/Console_0.6.0/news.png
-.. |Edit Settings| _static/image:: Console_0.6.0/edit_settings.png
-.. |DB Management| _static/image:: Console_0.6.0/baasbox-db-management.png
+.. |Edit Settings| image:: _static/Console_0.6.0/edit_settings.png
+.. |DB Management| image:: _static/Console_0.6.0/baasbox-db-management.png
 .. |Users| image:: _static/Console_0.6.0/users.png
 .. |Create new user| image:: _static/Console_0.6.0/create_new_user.png
 .. |Collections| image:: _static/Console_0.6.0/collections.png
@@ -169,3 +174,4 @@ field and save the changes to create a new asset.
 .. |Documents Table| image:: _static/Console_0.6.0/baasbox-documents-table.png
 .. |Assets| image:: _static/Console_0.6.0/assets.png
 .. |New Asset| image:: _static/Console_0.6.0/new_asset.png
+

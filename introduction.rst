@@ -41,7 +41,9 @@ documentation explains:
       site on the splash screen
 
 For a complete list of changes and new features, see
-[[changelog\|http://www.baasbox.com/baasbox-server-0-7-2-released]]
+changelog_
 
 The Getting Started section will allow you to have rapidly a first
 result of what BaasBox can give you. Enjoy!
+
+.. _changelog: http://www.baasbox.com/baasbox-server-0-7-2-released

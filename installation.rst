@@ -18,10 +18,12 @@ Java 1.6
       flag)
 
 BaasBox will start and will create the DB directory, then it will listen
-on port 9000. Go to [[http://localhost:9000\|http://localhost:9000]]
+on port 9000. Go to http://localhost:9000/
 with your preferred browser. If everything worked fine, the BaasBox logo
 should appear. Now you can open the Administrator Console:
-[[http://localhost:9000/console\|http://localhost:9000/console]] For
-further clarifications about the console, you can read the [[Admin
-Console\|Console]] That’s all! BaasBox is ready to go and to serve your
+http://localhost:9000/console For
+further clarifications about the console, you can read the :doc:`console` That’s all! BaasBox is ready to go and to serve your
 Apps! To stop the server just halt (CTRL-C) the shell script.
+
+.. _http://localhost:9000/: http://localhost:9000/
+.. _http://localhost:9000/console: http://localhost:9000/console

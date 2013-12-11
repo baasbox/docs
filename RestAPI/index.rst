@@ -1,6 +1,9 @@
-RESTAPI
+Contents:
+
+REST API
 -------
 .. toctree::
+
         general_remarks
         users
         collections
@@ -8,4 +11,7 @@ RESTAPI
         push_notifications
         documents
         settings
-        Admin/index
+
+.. toctree::
+   
+        Admin/index        

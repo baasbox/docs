@@ -1,5 +1,5 @@
 Application Settings
-====================
+================
 
 These APIs can be used to set some internal settings. Note that many of
 these settings are App-related and do not affect server behavior or

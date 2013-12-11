@@ -1,5 +1,5 @@
 Assets
-====================
+======
 
 Assets are a special kind of records. First of all, they can be both
 files or JSON documents. Furthermore they are accessible by anyone, even

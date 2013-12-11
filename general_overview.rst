@@ -11,7 +11,7 @@ and manage as its main requirement. To migrate a BaasBox instance from a
 server to another, you just have to zip the database folder and copy it
 in the server target folder. Moreover, it is ready to use without
 applying any alteration to configuration parameters. You just have to
-launch the command ./start (or start.bat on Windows) and BaasBox will
+launch the command ``./start`` (or ``start.bat`` on Windows) and BaasBox will
 run. Of course, if you wish or should it be necessary, you can apply
 suitable configuration parameters.
 

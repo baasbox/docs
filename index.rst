@@ -31,15 +31,23 @@ Contents:
 .. toctree::
    :maxdepth: 2   
 
-   tutorial
+   tutorial 
+   Download <http://www.baasbox.com/download>
 
-Rest API
+
+RestAPI
 --------
 .. toctree::
    :maxdepth: 3
-   
+  
    RestAPI/index
 
+Advanced
+--------
+.. toctree::
+   :maxdepth: 3
+  
+   Advanced/index
 
 Indices and tables
 ==================

@@ -1,6 +1,7 @@
 ADMIN
 -----
 .. toctree::
+
         admin_collections
         admin_users
         admin_assets

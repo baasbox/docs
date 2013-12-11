@@ -1,5 +1,5 @@
 Users
-======
+=====
 
 Admin APIs to manage users **Retrieve all the registered users**: GET
 /admin/user **Headers**: See the [[General Remarks\|General Remarks]]
