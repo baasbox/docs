@@ -1,5 +1,10 @@
 RESTAPI
 -------
 .. toctree::
-	users
+        general_remarks
+        users
+        collections
+        assets
+        push_notifications
         documents
+        settings

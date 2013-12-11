@@ -6,11 +6,14 @@ Create a user
 ----------------
 
 
-POST /user **Headers**: See authorization header in the [[General
-Section\|General Remarks]] **Description**: This API allows a user to
+''POST /user'' 
+**Headers**: See authorization header in the [[General
+Section\|General Remarks]] 
+**Description**: This API allows a user to
 sign up to the App. Users will belong to the registereduser role and
 they will post new content, will retrieve their own content, will change
-their password. **Body payload**\  A JSON object like this:
+their password. 
+**Body payload**\  A JSON object like this:
 
 .. raw:: html
 
@@ -53,10 +56,12 @@ their password. **Body payload**\  A JSON object like this:
 User Login (Sign in)
 --------------------
 
-POST /login **Headers**: Content-Type: application/x-www-form-urlencoded
+''POST /login'' 
+**Headers**: Content-Type: application/x-www-form-urlencoded
 **Description**: Checks username/password and grants the user the right
 to execute other calls. This API returns a session token that must be
-provided into subsequent calls. **Body payload**\ 
+provided into subsequent calls. 
+**Body payload**\ 
 username={username}&password={password}&appcode={appcode}&login\_data={“os”:”{ios\|android}”,
 “deviceId”:”{……..}”}
 
@@ -119,12 +124,14 @@ Note that if not used the token will expire in 15 minutes. In that case
 a new login must be performed. The token expiration does not delete the
 device ID info so the user may continue to receive push notifications.
 
-POST /logout/:deviceId **Headers**: X-BB-SESSION: The Session Token \*
+''POST /logout/:deviceId'' 
+**Headers**: X-BB-SESSION: The Session Token \*
 X-BB-SESSION must contain the session token provided by the login API
 **Parameters**\  \* deviceId: the deviceId used in the login API
 **Description**: This API allows a user to logout from the App on a
 specific device. Push notification will not be sent to the user through
-the specified device. **Returns**:
+the specified device. 
+**Returns**:
 
 -  Code 500: the server cannot fulfill the request, an internal server
    error occurred
@@ -136,8 +143,10 @@ the specified device. **Returns**:
 Password Reset
 --------------
 
-GET /user/:username/password/reset **Headers**: X-BAASBPX-APPCODE: The
-App Code **Parameters**\ 
+''GET /user/:username/password/reset''
+**Headers**: X-BAASBPX-APPCODE: The
+App Code 
+**Parameters**\ 
 
 -  **username**: the username of the user who wants to reset the
    password
@@ -170,8 +179,10 @@ in order to reset the password The confirmation and the error web page
 Retrieve a user profile
 -----------------------
 
-GET /user **Headers**: See the [[General Section\|General Remarks]] for
-authentication hints. **Description**: Retrieves the information about
+''GET /user'' 
+**Headers**: See the [[General Section\|General Remarks]] for
+authentication hints. 
+**Description**: Retrieves the information about
 the user. Specifically the following JSON is returned:
 
 .. raw:: html
@@ -202,7 +213,8 @@ the user. Specifically the following JSON is returned:
 Update a user
 -------------
 
-PUT /user **Headers**: See the [[General Section\|General Remarks]]
+''PUT /user'' 
+**Headers**: See the [[General Section\|General Remarks]]
 **Body payload**\  A JSON object like this:
 
 .. raw:: html
@@ -242,8 +254,10 @@ PUT /user **Headers**: See the [[General Section\|General Remarks]]
 Change password
 ---------------
 
-PUT /user/password **Headers**: See the [[General Section\|General
-Remarks]] **Body payload**\  A JSON object like this:
+''PUT /user/password'' 
+**Headers**: See the [[General Section\|General
+Remarks]] 
+**Body payload**\  A JSON object like this:
 
 .. raw:: html
 
@@ -271,8 +285,10 @@ password of a user. **Returns**:
 Test if a username already exists
 ---------------------------------
 
-**Not yet implemented**\  GET /user/:username/exists **Headers**: See
-the [[General Section\|General Remarks]] **Returns**:
+**Not yet implemented**\  ''GET /user/:username/exists'' 
+**Headers**: See
+the [[General Section\|General Remarks]] 
+**Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
