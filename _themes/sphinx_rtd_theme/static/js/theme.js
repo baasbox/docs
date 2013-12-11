@@ -1,6 +1,5 @@
 $( document ).ready(function() {
   // Shift nav in mobile when clicking the menu.
-  console.log("DOCUMENT READY");
   $("[data-toggle='bb-nav-top']").click(function() {
     $("[data-toggle='bb-nav-shift']").toggleClass("shift");
     $("[data-toggle='rst-versions']").toggleClass("shift");
@@ -11,6 +10,7 @@ $( document ).ready(function() {
     $("[data-toggle='rst-versions']").toggleClass("shift");
   });
   $("[data-toggle='rst-current-version']").click(function() {
+    console.log("adding behaviour to current version");
     $("[data-toggle='rst-versions']").toggleClass("shift-up");
   });
   $("table.docutils:not(.field-list").wrap("<div class='bb-table-responsive'></div>");
