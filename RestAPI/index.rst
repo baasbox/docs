@@ -1,2 +1,5 @@
+RESTAPI
+===
 .. toctree::
 	users
+        documents
