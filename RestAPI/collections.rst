@@ -1,5 +1,3 @@
-.. _rest-API: 
-
 Collections
 ===========
 
