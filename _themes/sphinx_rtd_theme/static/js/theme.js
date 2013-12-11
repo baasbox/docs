@@ -9,8 +9,9 @@ $( document ).ready(function() {
     $("[data-toggle='bb-nav-shift']").removeClass("shift");
     $("[data-toggle='rst-versions']").toggleClass("shift");
   });
-  $("[data-toggle='rst-current-version']").click(function() {
-    console.log("adding behaviour to current version");
+  var versions = $("[data-toggle='rst-current-version']");
+  console.log(versions,"Versions");
+  versions.on('click',function() {
     $("[data-toggle='rst-versions']").toggleClass("shift-up");
   });
   $("table.docutils:not(.field-list").wrap("<div class='bb-table-responsive'></div>");
