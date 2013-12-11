@@ -1,5 +1,3 @@
-$( document ).ready(function() {
-  // Shift nav in mobile when clicking the menu.
-  console.log("Empty")
-  
+$(document).ready(function() {
+  $('link[href=https://media.readthedocs.org/css/sphinx_rtd_theme.css]');
 });

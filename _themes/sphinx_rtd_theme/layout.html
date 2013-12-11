@@ -52,7 +52,7 @@
     
   {% endif %}
   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
   {% for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
   {% endfor %}
