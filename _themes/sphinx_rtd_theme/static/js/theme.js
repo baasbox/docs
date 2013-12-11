@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   // Shift nav in mobile when clicking the menu.
+  console.log("DOCUMENT READY");
   $("[data-toggle='bb-nav-top']").click(function() {
     $("[data-toggle='bb-nav-shift']").toggleClass("shift");
     $("[data-toggle='rst-versions']").toggleClass("shift");
