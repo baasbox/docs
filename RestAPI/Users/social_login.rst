@@ -37,7 +37,7 @@ Once you have connected to a social network you can use any client
 library to obtain the OAuth tokens for users account, and store them
 with the social API provided by BaasBox.
 
-You can find an application example and tutorial at: :doc:`social_login_tutorial`
+You can find an application example and tutorial at: :doc:`/RestAPI/Tutorial/social_login_tutorial`
 
 API documentation
 -----------------
@@ -45,7 +45,7 @@ API documentation
 Retrieve all social network connections for connected user
 ----------------------------------------------------------
 
-GET /social
+``GET /social``
 
 Headers:
 
@@ -92,7 +92,7 @@ Returns:
 Login a User with a specified social network
 --------------------------------------------
 
-POST /social/:socialNetwork
+``POST /social/:socialNetwork``
 
 Headers: X-BAASBOX-APPCODE = App code
 
@@ -133,7 +133,7 @@ Returns:
 Link a user to a specified social network
 -----------------------------------------
 
-PUT /social/:socialNetwork
+``PUT /social/:socialNetwork``
 
 Headers:
 
@@ -166,7 +166,7 @@ exists)
 Unlink a user from a specified social network
 ---------------------------------------------
 
-DELETE /social/:socialNetwork
+``DELETE /social/:socialNetwork``
 
 Headers:
 

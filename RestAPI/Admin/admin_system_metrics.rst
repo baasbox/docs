@@ -7,7 +7,7 @@ system and its resources usage
 **Retrieve some system statistics**: ``GET
 /admin/dbStatistics`` 
 
-**Headers**: See the :doc:`general_remarks`
+**Headers**: See the :doc:`/RestAPI/general_remarks`
 
 **Description**: Returns a set of statistics about DB and
 memory usage. User must belong to the Admin Role 
