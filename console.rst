@@ -22,11 +22,14 @@ By default these values are:
 -  App Code: 1234567890
 
 You can change these values at any time by follow the instructions shown
-in the [[hacking\|Hacking]]. By clicking on the question marks, the
-fields will be filled with the default values. ## The Dashboard ## Once
-you logged in, you will see the main dashboard screen: |Dashboard|\  The
-web console is based on twitter bootstrap and on the [[Charisma
-Template\|https://github.com/usmanhalalit/charisma]] project. The
+in the :doc:`hacking`. By clicking on the question marks, the
+fields will be filled with the default values. 
+
+The Dashboard 
+-------------
+
+Once you logged in, you will see the main dashboard screen: |Dashboard|\  The
+web console is based on twitter bootstrap and on the `Charisma Template <https://github.com/usmanhalalit/charisma/>`_ project. The
 dashboard is splitted into several sections:
 
 1.  BaasBox version number
@@ -36,7 +39,7 @@ dashboard is splitted into several sections:
 5.  Number of users and rapid access to the relative section
 6.  Number of documents (objects) stored in the embedded database and
     rapid access to the relative section
-7.  Quick link to the [[Downloads\|Downloads]] of BaasBox site where you
+7.  Quick link to the `download <http://www.baasbox.com/download/>`_ of BaasBox site where you
     can find the latest version
 8.  Number of collections, documents and total size in one window.
 9.  Here you can see all latest news about BaasBox. These are feeds from
@@ -159,16 +162,16 @@ a new asset, click on the New Asset button and you will see the
 following window: |New Asset|\  NOTE: you have to fill at least the Name
 field and save the changes to create a new asset.
 
-.. |Home Console| image:: Console_0.7.2/home_console.png
-.. |Login Screen| image:: Console_0.7.2/login.png
-.. |Dashboard| image:: Console_0.7.2/baasbox_0-7-2-console.png
-.. |News| image:: Console_0.7.2/news.png
-.. |DB Management| image:: Console_0.7.2/baasbox-db-management.png
-.. |Users| image:: Console_0.7.2/users.png
-.. |Create new user| image:: Console_0.7.2/create_new_user.png
-.. |Collections| image:: Console_0.7.2/collections.png
-.. |Create New Collection| image:: Console_0.7.2/create_new_collection.png
-.. |Documents| image:: Console_0.7.2/documents.png
-.. |Documents Table| image:: Console_0.7.2/baasbox-documents-table.png
-.. |Assets| image:: Console_0.7.2/assets.png
-.. |New Asset| image:: Console_0.7.2/new_asset.png
+.. |Home Console| image:: _static/Console_0.7.2/home_console.png
+.. |Login Screen| image:: _static/Console_0.7.2/login.png
+.. |Dashboard| image:: _static/Console_0.7.2/baasbox_0-7-2-console.png
+.. |News| image:: _static/Console_0.7.2/news.png
+.. |DB Management| image:: _static/Console_0.7.2/baasbox-db-management.png
+.. |Users| image:: _static/Console_0.7.2/users.png
+.. |Create new user| image:: _static/Console_0.7.2/create_new_user.png
+.. |Collections| image:: _static/Console_0.7.2/collections.png
+.. |Create New Collection| image:: _static/Console_0.7.2/create_new_collection.png
+.. |Documents| image:: _static/Console_0.7.2/documents.png
+.. |Documents Table| image:: _static/Console_0.7.2/baasbox-documents-table.png
+.. |Assets| image:: _static/Console_0.7.2/assets.png
+.. |New Asset| image:: _static/Console_0.7.2/new_asset.png

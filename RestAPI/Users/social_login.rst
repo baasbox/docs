@@ -24,24 +24,21 @@ to the *apiKey* / *apiSecret* values; those values must be stored into
 the BaasBox database in order to use BaasBox social feature: you can
 access the social login tab from the settings menu in the admin console.
 
-.. figure:: Social-Login/img1.png
-   :alt: Social login tab
+|Social login tab|\
 
-   Social login tab
 Then click on the specific social network you are working on and fill in
 the form with the keys and press Save. You can disable the social
 feature for a specific social network by pressing the **disable xxx
 button**
 
-.. figure:: Social-Login/img2.png
-   :alt: Disable button
+|Disable button|\
 
    Disable button
 Once you have connected to a social network you can use any client
 library to obtain the OAuth tokens for users account, and store them
 with the social API provided by BaasBox.
 
-You can find an application example and tutorial at: [link]
+You can find an application example and tutorial at: :doc:`social_login_tutorial`
 
 API documentation
 -----------------
@@ -107,11 +104,11 @@ Url parameters
 Parameters:
 
 -  oauth\_token: the **oauth\_token** obtained after user authentication
-   and authorization with a client library (see example at [link])
+   and authorization with a client library (see example at :doc:`social_login_tutorial`)
 
 -  oauth\_secret: the **oauth\_secret** obtained after user
    authentication and authorization with a client library (see example
-   at [link])
+   at :doc:`social_login_tutorial`)
 
 This method allows to login into the BaasBox app using the tokens
 obtained by a social network client library. If the user has already
@@ -124,7 +121,7 @@ the social network profile and they will be stored inside the user
 object. A username will be uniquely generated (to prevent username
 collision). Therefore after a succesfull login, if necessary, the client
 app may ask for a username and update the user object accordingly.(See
-the user update section of the documentation [link])
+the user update section of the documentation :doc:`social_login_tutorial`)
 
 Returns:
 
@@ -150,10 +147,10 @@ Url parameters
 
 Parameters: oauth\_token: the **oauth\_token** obtained after user
 authentication and authorization with a client library (see example at
-[link])
+:doc:`social_login_tutorial`)
 
 oauth\_secret: the **oauth\_secret** obtained after user authentication
-and authorization with a client library (see example at [link])
+and authorization with a client library (see example at :doc:`social_login_tutorial`)
 
 This method allows an existing user to connect their account to a
 specified social network.
@@ -189,3 +186,6 @@ successful a 400 code if the user was not linked to specified social
 network a 401 code (Unauthorized) if any of the mandatory header was
 missing a 500 code if something on the server went wrong (i.e. the user
 was generated and it had only a connection with a social network)
+
+.. |Social login tab| image:: _static/Social-Login/img1.png
+.. |Disable button| image:: _static/Social-Login/img2.png
