@@ -3213,7 +3213,7 @@ pre.literal-block {
 
 .bb-nav-top {
 	display: none;
-	background: #2980b9;
+	background: #538378;
 	color: #fff;
 	padding: 0.4045em 0.809em;
 	position: relative;
@@ -3237,7 +3237,7 @@ pre.literal-block {
 	margin-right: 12px;
 	height: 45px;
 	width: 45px;
-	background-color: #2980b9;
+	background-color: #538378;
 	padding: 5px;
 	border-radius: 100%
 }
