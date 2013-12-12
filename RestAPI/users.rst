@@ -1,25 +1,18 @@
 Users
-============
+=====
 
+Create a user (sign up)
+-----------------------
 
-Create a user
-----------------
-
-
-``POST /user``
-
-**Headers**: See authorization header in the :doc:`general_remarks`
-
-**Description**: This API allows a user to
+POST /user **Headers**: See authorization header in the [[General
+Section\|General Remarks]] **Description**: This API allows a user to
 sign up to the App. Users will belong to the registereduser role and
 they will post new content, will retrieve their own content, will change
-their password. 
+their password. **Body payload**\  A JSON object like this:
 
-**Body payload**\  A JSON object like this:
+.. raw:: html
 
-
-::
-
+   <pre>
    {
 
        "username":"{username}",
@@ -35,6 +28,7 @@ their password.
        "visibleByAnonymousUsers": {...}
 
    }
+   </pre>
 
 -  **username** and **password** fields are mandatory but password may
    be empty.
@@ -57,17 +51,10 @@ their password.
 User Login (Sign in)
 --------------------
 
-``POST /login``
- 
-**Headers**: Content-Type: application/x-www-form-urlencoded
-
+POST /login **Headers**: Content-Type: application/x-www-form-urlencoded
 **Description**: Checks username/password and grants the user the right
-
 to execute other calls. This API returns a session token that must be
-provided into subsequent calls. 
-
-**Body payload**\ 
-
+provided into subsequent calls. **Body payload**\ 
 username={username}&password={password}&appcode={appcode}&login\_data={“os”:”{ios\|android}”,
 “deviceId”:”{……..}”}
 
@@ -85,8 +72,9 @@ username={username}&password={password}&appcode={appcode}&login\_data={“os”:
 
 **Example of valid login\_data content is**:
 
-::
+.. raw:: html
 
+   <pre>
    {
 
      "os":"android",
@@ -94,6 +82,7 @@ username={username}&password={password}&appcode={appcode}&login\_data={“os”:
      "deviceId":"xxxxxxxxxxxxxx"
 
    }
+   </pre>
 
 Note that in this way a user could login from different devices at the
 same time. **Returns**:
@@ -106,9 +95,9 @@ same time. **Returns**:
    X-BB-SESSION field which is the session token to use in subsequent
    requests as a request header
 
+.. raw:: html
 
-::
-
+   <pre>
    {
 
        "result": "ok",
@@ -122,27 +111,18 @@ same time. **Returns**:
        }
 
    }
+   </pre>
 
 Note that if not used the token will expire in 15 minutes. In that case
 a new login must be performed. The token expiration does not delete the
 device ID info so the user may continue to receive push notifications.
 
-
-``POST /logout/:deviceId`` 
-
-**Headers**: X-BB-SESSION: The Session Token 
-
-  -  X-BB-SESSION must contain the session token provided by the login API
-
-**Parameters**\  
-
-  -  deviceId: the deviceId used in the login API
-
+POST /logout/:deviceId **Headers**: X-BB-SESSION: The Session Token \*
+X-BB-SESSION must contain the session token provided by the login API
+**Parameters**\  \* deviceId: the deviceId used in the login API
 **Description**: This API allows a user to logout from the App on a
 specific device. Push notification will not be sent to the user through
-the specified device. 
-
-**Returns**:
+the specified device. **Returns**:
 
 -  Code 500: the server cannot fulfill the request, an internal server
    error occurred
@@ -154,11 +134,8 @@ the specified device.
 Password Reset
 --------------
 
-``GET /user/:username/password/reset``
-
-**Headers**: X-BAASBOX-APPCODE: The App Code 
-
-**Parameters**\ 
+GET /user/:username/password/reset **Headers**: X-BAASBPX-APPCODE: The
+App Code **Parameters**\ 
 
 -  **username**: the username of the user who wants to reset the
    password
@@ -180,7 +157,6 @@ settings can be setup by the administrator via the Settings menu in the
 admin console, or via the Settings API **Some of them are**: The SMTP
 Server configuration The email message to be sent The HTML Form to show
 in order to reset the password The confirmation and the error web page
-
 **Returns**:
 
 -  Code 500: the server cannot fulfill the request, an internal server
@@ -192,16 +168,13 @@ in order to reset the password The confirmation and the error web page
 Retrieve a user profile
 -----------------------
 
-``GET /user``
-
-**Headers**: See the :doc:`general_remarks` for
-authentication hints. 
-
-**Description**: Retrieves the information about
+GET /user **Headers**: See the [[General Section\|General Remarks]] for
+authentication hints. **Description**: Retrieves the information about
 the user. Specifically the following JSON is returned:
 
-::
+.. raw:: html
 
+   <pre>
    {
 
        "visibleByTheUser": {...},
@@ -213,6 +186,7 @@ the user. Specifically the following JSON is returned:
        "visibleByAnonymousUsers": {...}
 
    }
+   </pre>
 
 **Returns**:
 
@@ -226,14 +200,12 @@ the user. Specifically the following JSON is returned:
 Update a user
 -------------
 
-``PUT /user`` 
-
-**Headers**: See the :doc:`general_remarks`
-
+PUT /user **Headers**: See the [[General Section\|General Remarks]]
 **Body payload**\  A JSON object like this:
 
-::
+.. raw:: html
 
+   <pre>
    {
 
        "visibleByTheUser": {...},
@@ -245,6 +217,7 @@ Update a user
        "visibleByAnonymousUsers": {...}
 
    }
+   </pre>
 
 -  **visibleByTheUser** is an object whose fields are private and
    visible only by the user
@@ -267,14 +240,12 @@ Update a user
 Change password
 ---------------
 
-''PUT /user/password'' 
+PUT /user/password **Headers**: See the [[General Section\|General
+Remarks]] **Body payload**\  A JSON object like this:
 
-**Headers**: See the :doc:`general_remarks`
+.. raw:: html
 
-**Body payload**\  A JSON object like this:
-
-::
-
+   <pre>
    {
 
    "old": "the old password",
@@ -282,6 +253,7 @@ Change password
    "new": "the new password"
 
    }
+   </pre>
 
 both old and new fields are mandatory. **Description**: Changes the
 password of a user. **Returns**:
@@ -297,12 +269,12 @@ password of a user. **Returns**:
 Test if a username already exists
 ---------------------------------
 
-**Not yet implemented**\  ``GET /user/:username/exists`` 
-
-**Headers**: See the :doc:`general_remarks` 
-
-**Returns**:
+**Not yet implemented**\  GET /user/:username/exists **Headers**: See
+the [[General Section\|General Remarks]] **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
    invalid or missing
+
+[[Social Login\|Social Login]]
+------------------------------

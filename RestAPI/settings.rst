@@ -6,9 +6,7 @@ These settings are not intended to act at server configuration level,
 such as, for example, listening port, or log location, but they are
 intended to set up many APP specific parameters, like the App name, the
 Push Certificate supplied by Apple, and so on. Settings are split in
-different sections or topics. 
-
-**Available sections are**:
+different sections or topics. **Available sections are**:
 
 -  **PasswordRecovery**: this section contains many settings that affect
    the password recovery workflow
@@ -23,18 +21,14 @@ these APIs
 Retrieve current settings
 -------------------------
 
-``GET /admin/configuration/dump.json`` 
-
-**Headers**: Please see the :doc:`general_remarks` 
-
-**Parameters**: None 
-
-**Description**: Returns
+GET /admin/configuration/dump.json **Headers**: Please see the [[General
+Remarks\|General Remarks]] **Parameters**: None **Description**: Returns
 a JSON representing the current configuration. The JSON has the
 following format:
 
-::
+.. raw:: html
 
+   <pre>
    {
 
        "result": "ok",
@@ -64,6 +58,7 @@ following format:
                        },
 
                        ....
+   </pre>
 
 **Returns**:
 
@@ -74,21 +69,19 @@ following format:
 -  Code 200: OK
 
 Retrieve only one section
------------------------
+-------------------------
 
-``GET /admin/configuration/:section`` 
-
-**Headers**: Please see the :doc:`general_remarks` 
-
-**Parameters**\ 
+GET /admin/configuration/:section **Headers**: Please see the [[General
+Remarks\|General Remarks]] **Parameters**\ 
 
 -  **section**: one valid setting section
 
 **Description**: Retrieves the settings of a specific section in a
 key-value form. The returned JSON is:
 
-::
+.. raw:: html
 
+   <pre>
    {
 
        "result": "ok",
@@ -110,16 +103,13 @@ key-value form. The returned JSON is:
            },
 
            ....
+   </pre>
 
 Modify a value of a specific setting
--------------------------------------
+------------------------------------
 
-``PUT /admin/configuration/:section/:key/:value`` 
-
-**Headers**: Please see
-the :doc:`general_remarks` 
-
-**Parameters**\ 
+PUT /admin/configuration/:section/:key/:value **Headers**: Please see
+the [[General Remarks\|General Remarks]] **Parameters**\ 
 
 -  **section**: one valid setting section
 -  **key**: the key of the setting to modify

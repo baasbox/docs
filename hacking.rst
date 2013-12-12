@@ -8,7 +8,7 @@ JVM. To do so, you have to use the **-D** parameter in this way
 
      ./start -DBAASBOX_PARAMETER=NEW_VALUE
 
-Where *BAASBOX PARAMETER* is the key of the parameter to override and
+Where *BAASBOX*\ PARAMETER\_ is the key of the parameter to override and
 *NEW*\ VALUE\_ is the value you want to use. Please note that there is
 no space between the D and the name parameter. Overridable keys are:
 
@@ -41,15 +41,15 @@ configuration file may be:
 The Play! Framework
 ~~~~~~~~~~~~~~~~~~~
 
-BaasBox is built on top of 
-`Play! Framework <http://www.playframework.com/>`_. Because of this you have to
-download a `JDK 6 or
-above <http://www.oracle.com/technetwork/java/javase/downloads/index.html/>`_
-N.B.(JDK not JRE!) and `Play!
-2.1.1 <http://www.playframework.com/download/>`_ at this link, and install
+BaasBox is built on top of [[Play!
+Framework\|http://www.playframework.com/]]. Because of this you have to
+download a [[JDK 6 or
+above\|http://www.oracle.com/technetwork/java/javase/downloads/index.html]]
+N.B.(JDK not JRE!) and [[Play!
+2.1.1\|http://www.playframework.com/download]] at this link, and install
 them following their installation guides. You must also download the
-BaasBox source code source from its `GitHub
-Repo <https://github.com/baasbox/baasbox/>`_. Once all the required
+BaasBox source code source from its [[GitHub
+Repo\|https://github.com/baasbox/baasbox]]. Once all the required
 software is correctly installed, and the BaasBox source code is in a
 convenient directory, go to that directory and type **play dist**\ 
 
@@ -59,19 +59,15 @@ new ./dist directory you will find a zip file containing the compiled
 code. To test it, unzip it in any directory and type ./start (remember
 to set the execution flag). If you are using a Windows system, you need
 a .bat file. Just create a new start.bat file and place the following
-line in it: 
-
-::
-
-	java %1 -cp ./lib/\*;
-	play.core.server.NettyServer.
+line in it: \*\*java %1 -cp ./lib/\*;
+play.core.server.NettyServer.\*\*
 
 (Pay attention to to the final dot)
 
-Since BaasBox is based upon the `Play! Framework
-2.1 <http://www.playframework.com/download/>`_, many configuration options
+Since BaasBox is based upon the [[Play! Framework
+2.1\|http://www.playframework.com/download]], many configuration options
 available by Play! could be used with BaasBox. Please refer to the
-`Play!
-documentation <http://www.playframework.com/documentation/2.1.x/Configuration/>`_
+[[Play!
+documentation\|http://www.playframework.com/documentation/2.1.x/Configuration]]
 to know how to perform such operations and to customize the default
 behavior.

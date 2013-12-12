@@ -1,15 +1,11 @@
-Assets
-======
+Admin Assets
+============
 
 Assets are a special kind of records. First of all, they can be both
 files or JSON documents. Furthermore they are accessible by anyone, even
 without authentication. They are useful to create publicly accessible
-elements such as, for example, images. 
-
-**Create an Asset**: ``POST
-/admin/asset`` 
-
-**Headers**\  See the :doc:`general_remarks`
+elements such as, for example, images. **Create an Asset**: POST
+/admin/asset **Headers**\  See the [[General Remarks\|General Remarks]]
 and:
 
 1. **to create an object (JSON document) asset**\ 
@@ -43,28 +39,27 @@ value. **Returns**:
 
 **Examples**\  Object Asset:
 
-::
+.. raw:: html
 
+   <pre>
    curl -d "name=objectAsset&meta={\"name\": \"Pizza\", \"price\": 5, \"ingredients\": [\"Mozzarella\", \"pomodoro\", \"basilico\"]}" --user admin:admin -H X-BAASBOX-APPCODE:1234567890 http://localhost:9000/admin/asset
+   </pre>
 
 File Asset:
 
-::
+.. raw:: html
 
+   <pre>
    curl --form file=@pizza.jpg --form name=fileAsset --form meta="{\"name\": \"Margherita\", \"price\": 5, \"ingredients\": [\"Mozzarella\", \"pomodoro\", \"basilico\"]}" --user admin:admin -H X-BAASBOX-APPCODE:1234567890 http://localhost:9000/admin/asset
+   </pre>
 
 **Note**: in this case the file pizza.jpg is a file that must be into
 the same directory in which you run the command
 
-**Retrieve all the assets**: ``GET /admin/asset`` 
-
-**Headers**: See the
-:doc:`general_remarks`. The user must be an administrator
-
+**Retrieve all the assets**: GET /admin/asset **Headers**: See the
+[[General Remarks\|General Remarks]]. The user must be an administrator
 **Description**: This API returns a JSON describing all the available
-assets 
-
-**Returns**:
+assets **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
@@ -72,14 +67,9 @@ assets
 -  Code 403: the user is not an Admin
 -  Code 200: OK. A JSON collection is provided
 
-**Delete an asset**: ``DELETE /admin/asset/:name`` 
-
-**Headers**: See the
-:doc:`general_remarks`. The user must be an administrator
-
-**Description**: This API deletes a given asset. 
-
-**Parameters**\ 
+**Delete an asset**: DELETE /admin/asset/:name **Headers**: See the
+[[General Remarks\|General Remarks]]. The user must be an administrator
+**Description**: This API deletes a given asset. **Parameters**\ 
 
 -  **name**: the name of the asset
 

@@ -1,5 +1,5 @@
-Collections
-===========
+Admin Collections
+=================
 
 A collection is a sort of bucket where you can store documents.
 Documents, also known as records, are schema-less, which means that
@@ -10,15 +10,11 @@ the records stored in them have a per-user-record-security-level. I.e.
 each record can be accessed only by the user who created them. Of course
 there are APIs to grant or revoke privileges to other users.
 
-**Create a new Collection**: ``POST /admin/collection/{collection name}``
-
-**Headers**: See the :doc:`general_remarks`
-
+**Create a new Collection**: POST /admin/collection/{collection name}
+**Headers**: See the [[General Remarks\|General Remarks]]
 **Description**: Creates a new collection with the name specified in
 URL. A Collection is a way to classify the Documents. User must belong
-to the Admin Role 
-
-**Returns**:
+to the Admin Role **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server

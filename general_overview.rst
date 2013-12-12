@@ -1,5 +1,5 @@
 General Overview
-----------------
+================
 
 BaasBox is a server that makes available a set of functions for the
 backend of mobile applications. All you need is a **Java Virtual Machine
@@ -11,12 +11,12 @@ and manage as its main requirement. To migrate a BaasBox instance from a
 server to another, you just have to zip the database folder and copy it
 in the server target folder. Moreover, it is ready to use without
 applying any alteration to configuration parameters. You just have to
-launch the command ``./start`` (or ``start.bat`` on Windows) and BaasBox will
+launch the command ./start (or start.bat on Windows) and BaasBox will
 run. Of course, if you wish or should it be necessary, you can apply
 suitable configuration parameters.
 
 Available Functions
-===================
+-------------------
 
 Available functions are currently:
 
@@ -56,7 +56,7 @@ Available functions are currently:
       BaasBox.
 
 Applied Technology
-==================
+------------------
 
 BaasBox is written in Java with some classes in SCALA. It uses **Play!
 Framework** and it incorporates the core of **NoSQL OrientDB database**.
