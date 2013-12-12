@@ -12,7 +12,7 @@ there are APIs to grant or revoke privileges to other users.
 
 **Create a new Collection**: ``POST /admin/collection/{collection name}``
 
-**Headers**: See the :doc:`general_remarks`
+**Headers**: See the :doc:`/RestAPI/general_remarks`
 
 **Description**: Creates a new collection with the name specified in
 URL. A Collection is a way to classify the Documents. User must belong
