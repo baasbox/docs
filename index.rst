@@ -18,8 +18,6 @@ Contents:
    
    installation
 
-
-
 .. toctree::
    :maxdepth: 2   
 

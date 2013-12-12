@@ -306,4 +306,5 @@ Test if a username already exists
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
    invalid or missing
-:doc:`social_login`
+
+:doc:`general_remarks`
