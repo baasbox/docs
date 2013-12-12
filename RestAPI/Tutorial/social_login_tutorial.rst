@@ -44,7 +44,7 @@ Windows user
 ------------
 
 Use this table
-http://en.wikipedia.org/wiki/Hosts\_(file)#Location\_in\_the\_file\_system
+`Hosts <http://en.wikipedia.org/wiki/Hosts\_(file)#Location\_in\_the\_file\_system/>`
 to locate the Hosts file based on the windows version you are using.
 
 Add the following lines:
@@ -195,7 +195,7 @@ makes in order to link and login users with the social login features
 and to interact with the post collection.
 
 In the meanwhile you can have a look at the
-[[Documentation\|Introduction]]
+:doc:`general_remarks`
 
 
 .. |hosts file| image:: _static/Social-Login/Tutorial/img1.png
