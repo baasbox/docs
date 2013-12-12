@@ -9,7 +9,7 @@ elements such as, for example, images.
 **Create an Asset**: ``POST
 /admin/asset`` 
 
-**Headers**\  See the :doc:`general_remarks`
+**Headers**\  See the :doc:`/RestAPI/general_remarks`
 and:
 
 1. **to create an object (JSON document) asset**\ 
@@ -21,7 +21,9 @@ and:
 -  **content-type**: multipart/form-data
 
 **Description**: This API creates a new asset. The user must belong to
-the admin role. #### Body payload #### The body can contain the
+the admin role. 
+
+**Body payload** The body can contain the
 following fields:
 
 -  **name**: MANDATORY. The name of the asset.
@@ -33,7 +35,9 @@ following fields:
 
 **NOTE**: the server automatically detects if you are posting a file or
 not by the content-type header. So pay attention and set up the correct
-value. **Returns**:
+value. 
+
+**Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
@@ -59,7 +63,7 @@ the same directory in which you run the command
 **Retrieve all the assets**: ``GET /admin/asset`` 
 
 **Headers**: See the
-:doc:`general_remarks`. The user must be an administrator
+:doc:`/RestAPI/general_remarks`. The user must be an administrator
 
 **Description**: This API returns a JSON describing all the available
 assets 
@@ -75,7 +79,7 @@ assets
 **Delete an asset**: ``DELETE /admin/asset/:name`` 
 
 **Headers**: See the
-:doc:`general_remarks`. The user must be an administrator
+:doc:`/RestAPI/general_remarks`. The user must be an administrator
 
 **Description**: This API deletes a given asset. 
 
