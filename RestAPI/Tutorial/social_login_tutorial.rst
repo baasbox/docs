@@ -2,7 +2,7 @@ Social Login Tutorial
 =====================
 
 A quick start tutorial of the social features on BaasBox (part 1 - configuration)
-=================================================================================
+---------------------------------------------------------------------------------
 
 Since version 0.7.2 BaasBox allows you to create or link an user account
 to several social networks. At the moment only facebook and google+ are
@@ -31,16 +31,15 @@ localhost.
 Open your /etc/hosts file with sudo privileges and add the following
 line:
 
-127.0.0.1 developer.deardiary.com
+::
+
+  127.0.0.1 developer.deardiary.com
 
 then save.
 
 The file should look like this:
 
-.. figure:: Social-Login/Tutorial/img1.png
-   :alt: hosts file
-
-   hosts file
+   |hosts file|
 Windows user
 ------------
 
@@ -67,27 +66,21 @@ https://developers.facebook.com/apps and login if necessary
 From the top bar menu click on the **apps** link and then on the button
 **create new app**
 
-.. figure:: Social-Login/Tutorial/img2.png
-   :alt: appsbarandcreate
 
-   appsbarandcreate
+   |appsbarandcreate|
 Fill in the form with the name of the app (for the purpose of this
 tutorial we will use **MyDearDiary**) and continue filling in the
 überdifficult captcha
 
-.. figure:: Social-Login/Tutorial/img3.png
-   :alt: facebookappcreation
 
-   facebookappcreation
+   |facebookappcreation|
+
 The settings page of your brand new app will now load. Copy your APP Id
 and App Secret and fill in the app domain with the domain you used in
 the previous part (**developer.deardiary.com**) omitting the *http://*
 protocol.
 
-.. figure:: Social-Login/Tutorial/img5.png
-   :alt: facebookapppage
-
-   facebookapppage
+   |facebookapppage|
 And remember to **Save your changes** with the button at the bottom of
 the form.
 
@@ -102,10 +95,8 @@ Fill in the form with the data |creategoogleapp|
 And a frightening long list will appear: don't panic and simply activate
 the **google+ api** switch.
 
-.. figure:: Social-Login/Tutorial/img7.png
-   :alt: google+switch
 
-   google+switch
+   |google+switch|
 We are almost done:
 
 Click on the big blue **create oauth token** button |oauth|
@@ -117,10 +108,7 @@ previous section of the tutorial
 
 A new page should appear: write down the Client ID and Client Secret.
 
-.. figure:: Social-Login/Tutorial/img11.png
-   :alt: googleend
-
-   googleend
+   |googleend|
 You are doing great: let's move on!
 
 Configure BaasBox console
@@ -136,10 +124,9 @@ From the left menu select settings and then the Social Login Tab. Enable
 facebook and google links and fill in the fields with apptokens and
 appsecret you wrote down in previous section.
 
-.. figure:: Social-Login/Tutorial/img12.png
-   :alt: baasboxconsole
 
-   baasboxconsole
+|baasboxconsole|
+
 Save it!
 
 Now select the collections menu item from the left and click on the
@@ -200,10 +187,9 @@ If everything is okay, pointing the browser at
 http://developer.deardiary.com:8000 should open a page that looks like
 this:
 
-.. figure:: Social-Login/Tutorial/img14.png
-   :alt: mydeardiary
+|mydeardiary|
 
-   mydeardiary
+  
 In the next part we will have a look at the server requests the app
 makes in order to link and login users with the social login features
 and to interact with the post collection.
@@ -211,8 +197,17 @@ and to interact with the post collection.
 In the meanwhile you can have a look at the
 [[Documentation\|Introduction]]
 
-.. |creategoogleapp| image:: Social-Login/Tutorial/img6.png
-.. |oauth| image:: Social-Login/Tutorial/img8.png
-.. |googleform1| image:: Social-Login/Tutorial/img9.png
-.. |googleform2| image:: Social-Login/Tutorial/img10.png
-.. |posts| image:: Social-Login/Tutorial/img13.png
+
+.. |hosts file| image:: _static/Social-Login/Tutorial/img1.png
+.. |appsbarandcreate| image:: _static/Social-Login/Tutorial/img2.png
+.. |facebookappcreation| image:: _static/Social-Login/Tutorial/img3.png
+.. |facebookapppage| image:: _static/Social-Login/Tutorial/img5.png
+.. |creategoogleapp| image:: _static/Social-Login/Tutorial/img6.png
+.. |google+switch| image:: _static/Social-Login/Tutorial/img7.png
+.. |oauth| image:: _static/Social-Login/Tutorial/img8.png
+.. |googleform1| image:: _static/Social-Login/Tutorial/img9.png
+.. |googleform2| image:: _static/Social-Login/Tutorial/img10.png
+.. |googleend| image:: _static/Social-Login/Tutorial/img11.png
+.. |baasboxconsole| image:: _static/Social-Login/Tutorial/img12.png
+.. |posts| image:: _static/Social-Login/Tutorial/img13.png
+.. |mydeardiary| image:: _static/Social-Login/Tutorial/img14.png

@@ -1,10 +1,17 @@
-Admin Users
-===========
+Users
+=====
 
-Admin APIs to manage users **Retrieve all the registered users**: GET
-/admin/user **Headers**: See the [[General Remarks\|General Remarks]]
-**QueryString**: See the [[General Remarks\|General Remarks]]
+Admin APIs to manage users 
+
+**Retrieve all the registered users**: ``GET
+/admin/user`` 
+
+**Headers**: See the :doc:`general_remarks`
+
+**QueryString**: See the :doc:`general_remarks`
+
 **Description**: Returns a JSON list of all current registered users
+
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
