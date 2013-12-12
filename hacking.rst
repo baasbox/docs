@@ -8,7 +8,7 @@ JVM. To do so, you have to use the **-D** parameter in this way
 
      ./start -DBAASBOX_PARAMETER=NEW_VALUE
 
-Where *BAASBOX*\ PARAMETER\_ is the key of the parameter to override and
+Where *BAASBOX PARAMETER* is the key of the parameter to override and
 *NEW*\ VALUE\_ is the value you want to use. Please note that there is
 no space between the D and the name parameter. Overridable keys are:
 
@@ -61,7 +61,7 @@ to set the execution flag). If you are using a Windows system, you need
 a .bat file. Just create a new start.bat file and place the following
 line in it: 
 
-:::
+::
 
 	java %1 -cp ./lib/\*;
 	play.core.server.NettyServer.
