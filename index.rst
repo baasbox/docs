@@ -8,15 +8,17 @@ Welcome to baasbox's documentation!
 
 Contents:
 
-.. toctree::
-   :maxdepth: 2
-   
-   installation
 
 .. toctree::
    :maxdepth: 2   
 
    introduction
+   
+.. toctree::
+   :maxdepth: 2
+   
+   installation
+
 
 .. toctree::
    :maxdepth: 2   
