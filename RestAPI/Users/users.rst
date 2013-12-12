@@ -309,4 +309,4 @@ Test if a username already exists
 -  Code 401: Credentials supplied in the ‘authorization’ header are
    invalid or missing
 
-:doc:`/RestAPI/Users/social_login`
+Click here for the :doc:`/RestAPI/Users/social_login` section
