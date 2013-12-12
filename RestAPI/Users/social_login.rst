@@ -1,8 +1,7 @@
 Social Login
 ============
 
-Available since version 0.7.2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Available since version 0.7.2**
 
 BaasBox provides an API that allows you to connect/create your users
 through social networks.
