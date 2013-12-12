@@ -6,9 +6,9 @@ Admin APIs to manage users
 **Retrieve all the registered users**: ``GET
 /admin/user`` 
 
-**Headers**: See the :doc:`general_remarks`
+**Headers**: See the :doc:`/RestAPI/general_remarks`
 
-**QueryString**: See the :doc:`general_remarks`
+**QueryString**: See the :doc:`/RestAPI/general_remarks`
 
 **Description**: Returns a JSON list of all current registered users
 
