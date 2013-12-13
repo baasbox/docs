@@ -90,7 +90,7 @@ Importing the iOS SDK
 Download the SDK from here, and unzip the file. Drag the extracted
 folder onto the root of the starter project.
 
-|import sdk ios|<== The project navigator should now look like this.
+|import sdk ios| <== The project navigator should now look like this.
 
 
 Since we are going to use the BaasBox SDK in different files we suggest
