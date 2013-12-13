@@ -96,6 +96,7 @@ name of the collection[LINK TO COLLECTION] on the server side, that will
 hold all the instances of class ``SMPost``. Here is an example:
 
 ::
+
 ­	(NSString *)collectionName { 
 		return @"document/posts";	}	@end
 
@@ -159,7 +160,7 @@ use the following method
 .. code-block:: c
 
 	[SMPost getObjectsWithParams:@{kPageNumber : @0, kPageSize : @10} 		     	
-	completion:^(NSArray *objects, NSError *error) {	     if (error == nil) {		_posts = [objects mutableCopy]; 
+	                  completion:^(NSArray *objects, NSError *error) {	     if (error == nil) {		_posts = [objects mutableCopy]; 
                 [self.tableView reloadData];	     } else {		 NSLog(@"error %@", error.localizedDescription);	     } 
 	 }];
 
