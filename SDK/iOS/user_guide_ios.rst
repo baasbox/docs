@@ -40,8 +40,8 @@ is pretty similar to the login. Here is an example.
 
 	BAAClient *client = [BAAClient sharedClient];	[client createUserWithUsername:@"john" 
 			   andPassword:@"supersecretpassword"	             completionHandler:^(BOOL success, NSError *error) { 
-	if (success) {		NSLog(@"user created %@", client.authenticatedUser);	} else {		NSLog(@"error in creating user: %@", error); 
-	}        }];
+			if (success) {				NSLog(@"user created %@", client.authenticatedUser);			} else {				NSLog(@"error in creating user: %@", error); 
+			}            }];
 
 
 
@@ -98,7 +98,7 @@ hold all the instances of class ``SMPost``. Here is an example:
 .. code-block:: c
 
 ­	(NSString *)collectionName { 
-		return @"document/posts";  	}  	@end
+		return @"document/posts";	}	@end
 
 Once you have completed these two steps you are ready to start
 interacting with the server, performing CRUD operations on posts.
