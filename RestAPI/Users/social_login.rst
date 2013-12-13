@@ -23,8 +23,6 @@ to the *apiKey* / *apiSecret* values; those values must be stored into
 the BaasBox database in order to use BaasBox social feature: you can
 access the social login tab from the settings menu in the admin console.
 
-.. image:: /../../_static/Social-Login/img1.png
-
 |Social login tab|\
 
 Then click on the specific social network you are working on and fill in
@@ -186,3 +184,6 @@ successful a 400 code if the user was not linked to specified social
 network a 401 code (Unauthorized) if any of the mandatory header was
 missing a 500 code if something on the server went wrong (i.e. the user
 was generated and it had only a connection with a social network)
+
+.. |Social login tab| image:: /../../_static/Social-Login/img1.png
+.. |Disable button| image:: /../../_static/Social-Login/img2.png
