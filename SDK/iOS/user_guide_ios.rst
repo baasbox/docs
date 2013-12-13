@@ -95,10 +95,10 @@ Finally you need to implement the ``collectionName`` method. This is the
 name of the collection[LINK TO COLLECTION] on the server side, that will
 hold all the instances of class ``SMPost``. Here is an example:
 
-::
+.. code-block:: c
 
-­	(NSString *)collectionName { 
-	return @"document/posts";	}	@end
+	(NSString *)collectionName { 
+		return @"document/posts";	}	@end
 
 Once you have completed these two steps you are ready to start
 interacting with the server, performing CRUD operations on posts.
