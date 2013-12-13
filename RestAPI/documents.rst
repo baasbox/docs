@@ -245,8 +245,7 @@ Will return the following JSON
         "id": "a1b45ea7-7005-4f24-ae5e-76a6840ab856"
     },
     "http_code": 200
-
-}
+    }
 
 As you can see we are using a dot before the field name in the URL of
 the request.
