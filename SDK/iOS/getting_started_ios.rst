@@ -90,7 +90,6 @@ Importing the iOS SDK
 Download the SDK from here, and unzip the file. Drag the extracted
 folder onto the root of the starter project.
 
-
 |import sdk ios|<== The project navigator should now look like this.
 
 
@@ -131,8 +130,8 @@ Next, open **SMPost.m** and implement ``initWithDictionary:`` as follows.
 	(instancetype) initWithDictionary:(NSDictionary *)dictionary 
 	{	  self = [super initWithDictionary:dictionary]; 
 	  if (self) {		_postTitle = dictionary[@"postTitle"];
-	        _postBody = dictionary[@"postBody"];	   }return self; 
- }
+	        _postBody = dictionary[@"postBody"];	   }	return self; 
+ 	}
 
 This is the method that initializes an instance of post given a
 dictionary. We suggest to name the keys of the dictionary exactly with
