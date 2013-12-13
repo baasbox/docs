@@ -9,7 +9,7 @@ elements such as, for example, images.
 **Create an Asset**: ``POST
 /admin/asset`` 
 
-**Headers**\  See the :doc:`general_remarks`
+**Headers**\  See the :doc:`/RestAPI/general_remarks`
 and:
 
 1. **to create an object (JSON document) asset**\ 
@@ -63,7 +63,7 @@ the same directory in which you run the command
 **Retrieve all the assets**: ``GET /admin/asset`` 
 
 **Headers**: See the
-:doc:`general_remarks`. The user must be an administrator
+:doc:`/RestAPI/general_remarks`. The user must be an administrator
 
 **Description**: This API returns a JSON describing all the available
 assets 
@@ -79,7 +79,7 @@ assets
 **Delete an asset**: ``DELETE /admin/asset/:name`` 
 
 **Headers**: See the
-:doc:`general_remarks`. The user must be an administrator
+:doc:`/RestAPI/general_remarks`. The user must be an administrator
 
 **Description**: This API deletes a given asset. 
 
