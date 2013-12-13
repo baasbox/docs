@@ -593,7 +593,7 @@ instances.
 Getting Started Tutorial
 ------------------------
 
-:doc:`Build an App now! </getting_started_ios>`
+:doc:`Build an App now! <getting_started_ios>`
 [[Build an App now!\|Getting Started iOS]] Go to our [[Getting Started
 Tutorial\|Getting Started iOS]] to learn how to integrate BaasBox into
 an existing application. The application is called DearDiary and it’s a
