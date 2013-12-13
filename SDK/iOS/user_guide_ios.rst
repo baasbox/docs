@@ -1,5 +1,5 @@
 User Guide iOS
---------------
+==============
 
 The Baasbox iOS SDK is meant to get you quickly started in performing
 CRUD operations on your custom data objects. The goal of guide is to
@@ -7,7 +7,7 @@ illustrate the essential steps to build your first application in five
 minutes. Let's get started!
 
 Download the latest version of iOS SDK
-[[here\|http://www.baasbox.com/?wpdmact=process&did=OS5ob3RsaW5r]]
+`here <http://www.baasbox.com/?wpdmact=process&did=OS5ob3RsaW5r/>`_
 
 Authentication
 --------------
@@ -16,7 +16,6 @@ The first step of each application is to login or signup a new user.
 Once you have imported the SDK into your project, you can login using
 the following code snippet.
 
-.. raw:: html
 
    <pre>
    <html>
@@ -428,7 +427,10 @@ an instance of post and saves it on the back end.
 
 In the completion block you can either check for the error to be nil or
 the object to be not nil. The saveObject:completion: method can be also
-used to update an existing object. ## Deleting objects ##
+used to update an existing object. 
+
+Deleting objects
+----------------
 
 To delete an existing object on the back end you can use the
 deleteObject:completion: like this.
@@ -520,8 +522,12 @@ This method will return an array of instances of SMPost. When loading
 lists of objects this way all the results are paginated. This call will
 return the first page of results using the default page length parameter
 set in the SDK. If you want to tweak it look for BAAPageLength. If you
-need to specify page number and size look at the following section. ##
-Pagination ## To allow you loading objects in a paginated way you can
+need to specify page number and size look at the following section. 
+
+Pagination 
+----------
+
+To allow you loading objects in a paginated way you can
 use the following method
 
 .. raw:: html
@@ -587,6 +593,7 @@ instances.
 Getting Started Tutorial
 ------------------------
 
+:doc:`Build an App now! </getting_started_ios>`
 [[Build an App now!\|Getting Started iOS]] Go to our [[Getting Started
 Tutorial\|Getting Started iOS]] to learn how to integrate BaasBox into
 an existing application. The application is called DearDiary and it’s a

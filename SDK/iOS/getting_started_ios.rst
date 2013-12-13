@@ -1,3 +1,6 @@
+Getting Started iOS
+===================
+
 Introduction
 ------------
 
@@ -53,30 +56,10 @@ local machine. To test visit the following link:
 [[http://localhost:9000/\|http://localhost:9000/]] and you should see
 the following screen.
 
-.. raw:: html
-
-   <html>
-   <p>
-
-.. raw:: html
-
-   </p>
-   </html>
-
 This means BaasBox is correctly running. If you are working on a BaasBox
 running on a remote server, ask your system administrator which is the
 URL of the console. Tap the administrator login button. This will show
 the following.
-
-.. raw:: html
-
-   <html>
-   <p>
-
-.. raw:: html
-
-   </p>
-   </html>
 
 If you are running BaasBox on a local machine the default the admin
 credentials are:
