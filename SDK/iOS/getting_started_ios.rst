@@ -259,7 +259,8 @@ Updating data on the server
 Open **SMDetailViewController.m** and change the ``savePost:`` method as
 follows.
 
-.. code-block:: c­	
+::
+­	
 	(void) savePost:(id)sender {		self.post.postTitle = self.titleField.text; 
 		self.post.postBody = self.bodyTextView.text;		[SMPost saveObject:self.post		    completion:^(id object, NSError *error) {			if (error == nil) {				NSLog(@"object saved"); 
 				self.post = object;				[[NSNotificationCenter defaultCenter] 
