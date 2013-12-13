@@ -23,7 +23,7 @@ to the *apiKey* / *apiSecret* values; those values must be stored into
 the BaasBox database in order to use BaasBox social feature: you can
 access the social login tab from the settings menu in the admin console.
 
-.. image:: /RestAPI/Users/Social-Login/img1.png
+.. image:: /Social-Login/img1.png
 
 |Social login tab|\
 
