@@ -65,7 +65,9 @@ credentials are:
 -  app code: 1234567890
 
 If you have testing against an instance running on a server, contact the
-system administrator to get these credentials. Once you are logged in as
+system administrator to get these credentials. 
+
+Once you are logged in as
 administrator you you will see the BaasBox console like this.
 
 |dashboard baasbox|
