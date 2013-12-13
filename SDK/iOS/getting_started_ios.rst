@@ -98,10 +98,19 @@ to import it globally. Open the DearDiary-Prefix.pch file and import the
 ``BAAClient`` header as follows.
 
 .. code-block:: c
-	#import <Availability.h>	#ifndef __IPHONE_4_0	#warning "This project uses features only available in iOS SDK 
-		4.0 and later."	#endif	#ifdef __OBJC__		#import <UIKit/UIKit.h>		#import <Foundation/Foundation.h>		#import <SystemConfiguration/SystemConfiguration.h> 
+
+	#import <Availability.h>
+	#ifndef __IPHONE_4_0
+	#warning "This project uses features only available in iOS SDK 
+		4.0 and later."
+	#endif
+	#ifdef __OBJC__
+		#import <UIKit/UIKit.h>
+		#import <Foundation/Foundation.h>
+		#import <SystemConfiguration/SystemConfiguration.h> 
 		#import <MobileCoreServices/	MobileCoreServices.h> 
-		#import "BAAClient.h" // <­ added import statement	#endif
+		#import "BAAClient.h" // <­ added import statement
+	#endif
 
 After this the BaasBox methods will be available throughout the project,
 with no need of further import statements. Now let’s review the current
@@ -121,16 +130,21 @@ class extend ``BAAObject`` like this.
 .. code-block:: c
 
 	@interface SMPost : BAAObject 
-	...;	@end
+	...;
+	@end
 
 Next, open **SMPost.m** and implement ``initWithDictionary:`` as follows.
 
 .. code-block:: c
 
 	(instancetype) initWithDictionary:(NSDictionary *)dictionary 
-	{	  self = [super initWithDictionary:dictionary]; 
-	  if (self) {		_postTitle = dictionary[@"postTitle"];
-	        _postBody = dictionary[@"postBody"];	   }	return self; 
+	{
+	  self = [super initWithDictionary:dictionary]; 
+	  if (self) {
+		_postTitle = dictionary[@"postTitle"];
+	        _postBody = dictionary[@"postBody"];
+	   }
+	return self; 
  	}
 
 This is the method that initializes an instance of post given a
@@ -141,7 +155,8 @@ implement the ``collectionName`` method as follows.
 .. code-block:: c
 
 	(NSString *)collectionName { 
-	    return @"document/posts";	}
+	    return @"document/posts";
+	}
 
 This is the path to the method called on the server side. Under the hood
 the iOS SDK will make a call to localhost:9000/document/posts to execute
@@ -160,12 +175,25 @@ and change ``viewWillAppear:`` as follows.
 
 .. code-block:: c
 
-	(void)viewWillAppear:(BOOL)animated {		[super viewWillAppear:animated];		BAAClient *client = [BAAClient sharedClient]; 
-		if (client.isAuthenticated) {			NSLog(@"Logged in");			[SMPost getObjectsWithCompletion:				    ^(NSArray *objects, NSError *error) {				_posts = [objects mutableCopy]; 
-				[self.tableView reloadData];			}];
-		} else {			NSLog(@"need to login"); 
-			SMLoginViewController *loginViewController =			    [[SMLoginViewController alloc] 							       initWithNibName:@"SMLoginViewController"					bundle:nil];			[self.navigationController 				  					presentViewController:loginViewController					    animated:YES 
-					  completion:nil];			} 
+	(void)viewWillAppear:(BOOL)animated {
+		[super viewWillAppear:animated];
+		BAAClient *client = [BAAClient sharedClient]; 
+		if (client.isAuthenticated) {
+			NSLog(@"Logged in");
+			[SMPost getObjectsWithCompletion:
+				    ^(NSArray *objects, NSError *error) {
+				_posts = [objects mutableCopy]; 
+				[self.tableView reloadData];
+			}];
+		} else {
+			NSLog(@"need to login"); 
+			SMLoginViewController *loginViewController =
+			    [[SMLoginViewController alloc] 							       initWithNibName:@"SMLoginViewController"
+					bundle:nil];
+			[self.navigationController 				  					presentViewController:loginViewController
+					    animated:YES 
+					  completion:nil];
+			} 
 	}
 
 This piece of code will load posts stored on the server when the user is
@@ -195,12 +223,23 @@ We will now hook them up with BaasBox actions. Open
 
 .. code-block:: c
 
-	(IBAction) login {	NSLog(@"login");	BAAClient *client = [BAAClient sharedClient];	[client 
-           authenticateUsername:self.loginUsernameField.text                withPassword:self.loginPasswordField.text 
-              completionHandler:^(BOOL success, NSError *e) {                    if (success) {			NSLog(@"user authenticated %@", 
-				client.authenticatedUser);			[self 
-			dismissViewControllerAnimated:YES					  completion:nil];		} else {			NSLog(@"error in logging in %@", 
-			      e.localizedDescription);		} 
+	(IBAction) login {
+	NSLog(@"login");
+	BAAClient *client = [BAAClient sharedClient];
+	[client 
+           authenticateUsername:self.loginUsernameField.text
+                withPassword:self.loginPasswordField.text 
+              completionHandler:^(BOOL success, NSError *e) {
+                    if (success) {
+			NSLog(@"user authenticated %@", 
+				client.authenticatedUser);
+			[self 
+			dismissViewControllerAnimated:YES
+					  completion:nil];
+		} else {
+			NSLog(@"error in logging in %@", 
+			      e.localizedDescription);
+		} 
 	}];
 
 This shows how to authenticate a user against the BaasBox back end. Now
@@ -208,13 +247,24 @@ implement the signup method like this.
 
 .. code-block:: c
 
-	(IBAction) signup {			NSLog(@"signup");		BAAClient *client = [BAAClient sharedClient];		[client 
-		createUserWithUsername:self.signupUsernameField.text			andPassword:self.signupPasswordField.text 
-		     completionHandler:^(BOOL success, NSError *e) {			    if (success) {				NSLog(@"user created %@", 
-					client.authenticatedUser);				[self 
-				   dismissViewControllerAnimated:YES						      completion:nil];
-				}				} else {					NSLog(@"error: %@", e); 
-				}			}];
+	(IBAction) signup {	
+		NSLog(@"signup");
+		BAAClient *client = [BAAClient sharedClient];
+		[client 
+		createUserWithUsername:self.signupUsernameField.text
+			andPassword:self.signupPasswordField.text 
+		     completionHandler:^(BOOL success, NSError *e) {
+			    if (success) {
+				NSLog(@"user created %@", 
+					client.authenticatedUser);
+				[self 
+				   dismissViewControllerAnimated:YES
+						      completion:nil];
+				}
+				} else {
+					NSLog(@"error: %@", e); 
+				}
+			}];
 	}
 
 Notice that in both cases you will need a username and a password. The
@@ -232,15 +282,29 @@ Open **SMMasterViewController.m** and change the implementation of
 
 .. code-block:: c
 
-	(void)createNewPost:(id)sender {	  if (!_posts) {		_posts = [[NSMutableArray alloc] init];	  }	  SMPost *p = [[SMPost alloc] init];	  p.postTitle = [NSString stringWithFormat:@"No title %i", 
-         _posts.count ];	  p.postBody = @"No boby"; 
-	  [SMPost saveObject:p		completion:^(SMPost *post, NSError *error) { 
-			if (error == nil) {				NSLog(@"created post on server %@", post);				[_posts insertObject:post atIndex:0]; 
-					NSIndexPath *indexPath =						[NSIndexPath indexPathForRow:0 
-								   inSection:0];					[self.tableView 
-						insertRowsAtIndexPaths:@[indexPath]				withRowAnimation:UITableViewRowAnimationAutomatic]; 
-			 } else {				NSLog(@"error in saving %@", error); 
-			}	}];
+	(void)createNewPost:(id)sender {
+	  if (!_posts) {
+		_posts = [[NSMutableArray alloc] init];
+	  }
+	  SMPost *p = [[SMPost alloc] init];
+	  p.postTitle = [NSString stringWithFormat:@"No title %i", 
+         _posts.count ];
+	  p.postBody = @"No boby"; 
+	  [SMPost saveObject:p
+		completion:^(SMPost *post, NSError *error) { 
+			if (error == nil) {
+				NSLog(@"created post on server %@", post);
+				[_posts insertObject:post atIndex:0]; 
+					NSIndexPath *indexPath =
+						[NSIndexPath indexPathForRow:0 
+								   inSection:0];
+					[self.tableView 
+						insertRowsAtIndexPaths:@[indexPath]
+				withRowAnimation:UITableViewRowAnimationAutomatic]; 
+			 } else {
+				NSLog(@"error in saving %@", error); 
+			}
+	}];
 
 
 Every time the user taps the “+” button a new note will be created and
@@ -259,13 +323,24 @@ Updating data on the server
 Open **SMDetailViewController.m** and change the ``savePost:`` method as
 follows.
 
-::
-­	
-	(void) savePost:(id)sender {		self.post.postTitle = self.titleField.text; 
-		self.post.postBody = self.bodyTextView.text;		[SMPost saveObject:self.post		    completion:^(id object, NSError *error) {			if (error == nil) {				NSLog(@"object saved"); 
-				self.post = object;				[[NSNotificationCenter defaultCenter] 
-				  postNotificationName:@"POST_UPDATED"						object:nil]; 
-				[self.navigationController					popViewControllerAnimated:YES];			}else {				NSLog(@"error in updating %@", error); }			}
+.. code-block:: c
+	
+	(void) savePost:(id)sender {
+		self.post.postTitle = self.titleField.text; 
+		self.post.postBody = self.bodyTextView.text;
+		[SMPost saveObject:self.post
+		    completion:^(id object, NSError *error) {
+			if (error == nil) {
+				NSLog(@"object saved"); 
+				self.post = object;
+				[[NSNotificationCenter defaultCenter] 
+				  postNotificationName:@"POST_UPDATED"
+						object:nil]; 
+				[self.navigationController
+					popViewControllerAnimated:YES];
+			}else {
+				NSLog(@"error in updating %@", error); }
+			}
 		}];
 	}
 
