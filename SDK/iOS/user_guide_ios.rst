@@ -16,72 +16,9 @@ The first step of each application is to login or signup a new user.
 Once you have imported the SDK into your project, you can login using
 the following code snippet.
 
+.. code-block:: c
 
-   <pre>
-   <html>
-   <!-- AUTHENTICATION-->
-           <div class="codecolorer-container text geshi" style="overflow:auto;white-space:nowrap;width:700px;height:230px;">
-               <table cellpadding="0" cellspacing="0">
-                   <tbody>
-                       <tr>
-                           <td class="line-numbers">
-                           <div>
-                               1
-                               <br>
-                               2
-                               <br>
-                               3
-                               <br>
-                               4
-                               <br>
-                               5
-                               <br>
-                               6
-                               <br>
-                               7
-                               <br>
-                               8
-                               <br>
-                               9
-                               <br>
-                               10
-                               <br>
-                               11
-                               <br/>
-                               12
-                           </div></td>
-                           <td>
-                           <div class="text codecolorer" style="white-space:nowrap;border-width:0px;">
-                               <span class="class">BAAClient</span> *client = [BAAClient sharedClient];
-                               <br/>
-                               [client authenticateUsername:<span class="string">@john</span>
-                               <br/>
-                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="field">withPassword:</span><span class="string">@"supersecretpassword"</span>
-                               <br/>
-                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="field">completionHandler:</span>^(<span class="specialoperator">BOOL</span> success, NSError *error) {
-                               <br/>
-                               <span class="tab1"><span class="specialoperator">if</span> (success) {</span>
-                               <br/>
-                               <span class="tab2">NSLog(<span class="string">@"user authenticated %@",</span></span>
-                               <br/>
-                               <span class="tab3"> client.authenticatedUser);</span>
-                               <br/>
-                               <span class="tab1">} <span class="specialoperator">else </span>{</span>
-                               <br/>
-                               <span class="tab2">NSLog(<span class="string">@"error in logging in %@",</span></span>
-                               <br/>
-                               <span class="tab3"> error.localizedDescription);</span>
-                               <br/>
-                               <span class="tab1">}</span>
-                               <br/>
-                               }];
-                           </div></td>
-                       </tr>
-                   </tbody>
-               </table>
-           </div>
-   </html>
-   </pre>
+	BAAClient *client = [BAAClient sharedClient];	[client authenticateUsername:@"john" withPassword:@"supersecretpassword"	completionHandler:^(BOOL success, NSError *error) { if (success) {	NSLog(@"user authenticated %@", client.authenticatedUser);	} else {	NSLog(@"error in logging in %@", error.localizedDescription);	} }];
 
 Notice that the information about the user (e.g. username and
 authentication token) is automatically saved by the SDK. Once you get
