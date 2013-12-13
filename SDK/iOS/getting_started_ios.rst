@@ -41,8 +41,7 @@ Installing BaasBox
 
 The first step is to install BaasBox. For sake of simplicity we will
 show how to install it on a local machine. You will see that’s very
-easy. Download the latest version of BaasBox from here: [[Download
-here\|Downloads]]. Unzip the file, open Terminal, go to the directory
+easy. Download the latest version of BaasBox from `here <http://www.baasbox.com/download/>`_. Unzip the file, open Terminal, go to the directory
 unzipped, type “./start” and hit return. BaasBox is now running on your
 local machine. To test visit the following link:
 `http://localhost:9000/ <http://localhost:9000//>`_ and you should see
