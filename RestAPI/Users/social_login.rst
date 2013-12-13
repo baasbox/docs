@@ -186,5 +186,5 @@ network a 401 code (Unauthorized) if any of the mandatory header was
 missing a 500 code if something on the server went wrong (i.e. the user
 was generated and it had only a connection with a social network)
 
-.. |Social login tab| image:: _static/Social-Login/img1.png
-.. |Disable button| image:: _static/Social-Login/img2.png
+.. |Social login tab| image:: _static/images/Social-Login/img1.png
+.. |Disable button| image:: _static/images/Social-Login/img2.png
