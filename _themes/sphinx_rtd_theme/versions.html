@@ -2,7 +2,7 @@
 {# Add rst-badge after rst-versions for small badge style. #}
   <div class="rst-versions" data-toggle="rst-versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="icon icon-book"> Read the Docs</span>
+      <span class="icon icon-book">Other Versions</span>
       v: {{ current_version }} 
       <span class="icon icon-caret-down"></span>
     </span>
@@ -19,18 +19,7 @@
           <dd><a href="{{ url }}">{{ type }}</a></dd>
         {% endfor %}
       </dl>
-      <dl>
-        <dt>On Read the Docs</dt>
-          <dd>
-            <a href="//{{ PRODUCTION_DOMAIN }}/projects/{{ slug }}/?fromdocs={{ slug }}">Project Home</a>
-          </dd>
-          <dd>
-            <a href="//{{ PRODUCTION_DOMAIN }}/builds/{{ slug }}/?fromdocs={{ slug }}">Builds</a>
-          </dd>
-      </dl>
       <hr/>
-      Free document hosting provided by <a href="http://www.readthedocs.org">Read the Docs</a>.
-
     </div>
   </div>
 {% endif %}
