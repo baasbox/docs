@@ -22,6 +22,8 @@ Unzip and run the project to check it works as expected. It’s made of
 two components: a table view and a detail view. The first shows a list
 of memos. Tap the “+” button to add a new one.
 
+|add new memo| |edit title body|
+
 You will see the updated note in the list. Feel free to add further
 notes. The app is pretty simple and works as expected. It has a problem
 though. When you delete it (e.g. reset the simulator or uninstall it
@@ -46,10 +48,14 @@ local machine. To test visit the following link:
 `http://localhost:9000/ <http://localhost:9000//>`_ and you should see
 the following screen.
 
+|launch baasbox|
+
 This means BaasBox is correctly running. If you are working on a BaasBox
 running on a remote server, ask your system administrator which is the
 URL of the console. Tap the administrator login button. This will show
 the following.
+
+|login baasbox|
 
 If you are running BaasBox on a local machine the default the admin
 credentials are:
@@ -62,6 +68,8 @@ If you have testing against an instance running on a server, contact the
 system administrator to get these credentials. Once you are logged in as
 administrator you you will see the BaasBox console like this.
 
+|dashboard baasbox|
+
 The next step is to create a collection. 
 
 Creating a collection
@@ -73,6 +81,8 @@ to create a new one to hold the posts of the DearDiary app. Click the
 button, enter “posts” and click the Save button. You will end up in this
 situation.
 
+|new collection baasbox|
+
 Now the back end is ready to store custom objects in the newly created
 collection. Let’s move on to integrate the SDK in your project. 
 
@@ -83,7 +93,7 @@ Download the SDK from here, and unzip the file. Drag the extracted
 folder onto the root of the starter project.
 
 
-<== The project navigator should now look like this.
+|import sdk ios|<== The project navigator should now look like this.
 
 
 Since we are going to use the BaasBox SDK in different files we suggest
@@ -425,6 +435,8 @@ The method isAuthenticated will return a boolean value that you can use
 to update the user interface accordingly. The class
 SMLoginViewController includes just graphic elements like the following.
 
+|signup login|
+
 .. raw:: html
 
    <p>
@@ -599,7 +611,9 @@ back end will return an authentication token that is automatically
 stored by the SDK and will be used for subsequent API calls that need
 authentication. The SDK will NOT store in any form the password entered
 by the user. Now it’s time to store newly created posts on the server.
-## Storing data on the server ##
+
+Storing data on the server
+--------------------------
 
 .. raw:: html
 
@@ -833,6 +847,8 @@ are running on a local machine) and click the “Documents” button on the
 left menu. Select the “posts” collection from the dropdown menu and you
 will see the new note created as follows.
 
+|see post collections dashboard|
+
 .. raw:: html
 
    <p>
@@ -859,3 +875,15 @@ tutorial. Here are some suggestions:
 
 To find out more about additional methods available in the SDK check out
 the :doc:`User Guide Here <user_guide_ios>`.
+
+.. |add new memo| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_add-new-memo.png
+.. |dashboard baasbox| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_dashboard-baasbox.png
+.. |edit title body| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_edit-title-body.png
+.. |import sdk ios| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_import-sdk-ios-0-1-5.png
+.. |launch baasbox| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_launch-baasbox.png
+.. |login baasbox| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_login-baasbox.png
+.. |new collection baasbox| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_new-collection-baasbox.png
+.. |see post collections dashboard| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_see-post-collections-dashboard.png
+.. |signup login| image:: /../../_static/Tutorial/Dear_diary/001-DearDiary_signup-login.png
+
+
