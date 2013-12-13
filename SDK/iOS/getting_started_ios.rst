@@ -99,8 +99,10 @@ to import it globally. Open the DearDiary-Prefix.pch file and import the
 ``BAAClient`` header as follows.
 
 .. code-block:: c
-#import <Availability.h>#ifndef __IPHONE_4_0#warning "This project uses features only available in iOS SDK 
-4.0 and later."#endif#ifdef __OBJC__	#import <UIKit/UIKit.h>	#import <Foundation/Foundation.h>	#import <SystemConfiguration/SystemConfiguration.h> #import <MobileCoreServices/	MobileCoreServices.h> #import "BAAClient.h" // <­ added import statement#endif
+	#import <Availability.h>	#ifndef __IPHONE_4_0	#warning "This project uses features only available in iOS SDK 
+		4.0 and later."	#endif	#ifdef __OBJC__		#import <UIKit/UIKit.h>		#import <Foundation/Foundation.h>		#import <SystemConfiguration/SystemConfiguration.h> 
+		#import <MobileCoreServices/	MobileCoreServices.h> 
+		#import "BAAClient.h" // <­ added import statement	#endif
 
 After this the BaasBox methods will be available throughout the project,
 with no need of further import statements. Now let’s review the current
@@ -127,7 +129,7 @@ Next, open **SMPost.m** and implement ``initWithDictionary:`` as follows.
 .. code-block:: c
 
 	(instancetype) initWithDictionary:(NSDictionary *)dictionary 
-{	  self = [super initWithDictionary:dictionary]; 
+	{	  self = [super initWithDictionary:dictionary]; 
 	  if (self) {		_postTitle = dictionary[@"postTitle"];
 	        _postBody = dictionary[@"postBody"];	   }return self; 
  }
