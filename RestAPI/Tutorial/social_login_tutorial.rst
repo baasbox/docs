@@ -90,7 +90,9 @@ google+ app.
 Point your browser to https://code.google.com/apis/console and create a
 new app from the left menu.
 
-Fill in the form with the data |creategoogleapp|
+Fill in the form with the data 
+
+|creategoogleapp|
 
 And a frightening long list will appear: don't panic and simply activate
 the **google+ api** switch.
