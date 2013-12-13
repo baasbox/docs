@@ -23,6 +23,8 @@ to the *apiKey* / *apiSecret* values; those values must be stored into
 the BaasBox database in order to use BaasBox social feature: you can
 access the social login tab from the settings menu in the admin console.
 
+.. image:: img1.png
+
 |Social login tab|\
 
 Then click on the specific social network you are working on and fill in
@@ -32,7 +34,6 @@ button**
 
 |Disable button|\
 
-   Disable button
 Once you have connected to a social network you can use any client
 library to obtain the OAuth tokens for users account, and store them
 with the social API provided by BaasBox.
