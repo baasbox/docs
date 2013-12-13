@@ -197,17 +197,16 @@ and to interact with the post collection.
 In the meanwhile you can have a look at the
 :doc:`general_remarks`
 
-
-.. |hosts file| image:: _static/Social-Login/Tutorial/img1.png
-.. |appsbarandcreate| image:: _static/Social-Login/Tutorial/img2.png
-.. |facebookappcreation| image:: _static/Social-Login/Tutorial/img3.png
-.. |facebookapppage| image:: _static/Social-Login/Tutorial/img5.png
-.. |creategoogleapp| image:: _static/Social-Login/Tutorial/img6.png
-.. |google+switch| image:: _static/Social-Login/Tutorial/img7.png
-.. |oauth| image:: _static/Social-Login/Tutorial/img8.png
-.. |googleform1| image:: _static/Social-Login/Tutorial/img9.png
-.. |googleform2| image:: _static/Social-Login/Tutorial/img10.png
-.. |googleend| image:: _static/Social-Login/Tutorial/img11.png
-.. |baasboxconsole| image:: _static/Social-Login/Tutorial/img12.png
-.. |posts| image:: _static/Social-Login/Tutorial/img13.png
-.. |mydeardiary| image:: _static/Social-Login/Tutorial/img14.png
+.. |hosts file| image:: /../../_static/Social-Login/Tutorial/img1.png
+.. |appsbarandcreate| image:: /../../_static/Social-Login/Tutorial/img2.png
+.. |facebookappcreation| image:: /../../_static/Social-Login/Tutorial/img3.png
+.. |facebookapppage| image:: /../../_static/Social-Login/Tutorial/img5.png
+.. |creategoogleapp| image:: /../../_static/Social-Login/Tutorial/img6.png
+.. |google+switch| image:: /../../_static/Social-Login/Tutorial/img7.png
+.. |oauth| image:: /../../_static/Social-Login/Tutorial/img8.png
+.. |googleform1| image:: /../../_static/Social-Login/Tutorial/img9.png
+.. |googleform2| image:: /../../_static/Social-Login/Tutorial/img10.png
+.. |googleend| image:: /../../_static/Social-Login/Tutorial/img11.png
+.. |baasboxconsole| image:: /../../_static/Social-Login/Tutorial/img12.png
+.. |posts| image:: /../../_static/Social-Login/Tutorial/img13.png
+.. |mydeardiary| image:: /../../_static/Social-Login/Tutorial/img14.png
