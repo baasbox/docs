@@ -2639,7 +2639,6 @@ code.code-large,.rst-content tt.code-large {
 .bb-plain-list-disc,.rst-content .section ul,.rst-content .toctree-wrapper ul {
 	list-style: disc;
 	line-height: 27px;
-	margin-bottom: 24px
 }
 .bb-plain-list-disc li,.rst-content .section ul li,.rst-content .toctree-wrapper ul li {
 	list-style: disc;
@@ -2657,7 +2656,6 @@ code.code-large,.rst-content tt.code-large {
 .bb-plain-list-decimal,.rst-content .section ol,.rst-content ol.arabic {
 	list-style: decimal;
 	line-height: 24px;
-	margin-bottom: 24px
 }
 .bb-plain-list-decimal li,.rst-content .section ol li,.rst-content ol.arabic li {
 	list-style: decimal;
@@ -3249,12 +3247,7 @@ pre.literal-block {
 	font-weight: bold
 }
 .bb-nav-top img {
-	margin-right: 12px;
-	height: 45px;
-	width: 45px;
-	background-color: #538378;
-	padding: 5px;
-	border-radius: 100%
+
 }
 .bb-nav-top i {
 	font-size: 30px;
