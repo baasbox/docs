@@ -52,6 +52,13 @@ RestAPI
   
    RestAPI/index
 
+SDK
+--------
+.. toctree::
+   :maxdepth: 3
+  
+   SDK/index
+
 
 Indices and tables
 ==================
