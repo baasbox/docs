@@ -6,6 +6,9 @@ performing CRUD operations on your custom data objects. The goal of
 guide is to illustrate the essential steps to build your first
 application in five minutes. Let's get started!
 
+Download the latest version of Android SDK
+`here <http://www.baasbox.com/?wpdmact=process&did=MTAuaG90bGluaw==/>`_
+
 Authentication
 --------------
 
