@@ -16,21 +16,11 @@ tutorial you need a Mac with the following tools installed:
 In this tutorial you will learn how to integrate BaasBox into an
 existing application. The application is called DearDiary and it’s a
 personal diary. You can download the starter project from here:
-[[http://www.baasbox.com/doc/tutorial/DearDiary-starter.zip\|DearDiary-starter.zip]].
+`DearDiary-starter.zip <http://www.baasbox.com/doc/tutorial/DearDiary-starter.zip/>`_
 
 Unzip and run the project to check it works as expected. It’s made of
 two components: a table view and a detail view. The first shows a list
 of memos. Tap the “+” button to add a new one.
-
-.. raw:: html
-
-   <html>
-   <p>
-
-.. raw:: html
-
-   </p>
-   <p>
 
 You will see the updated note in the list. Feel free to add further
 notes. The app is pretty simple and works as expected. It has a problem
@@ -53,7 +43,7 @@ easy. Download the latest version of BaasBox from here: [[Download
 here\|Downloads]]. Unzip the file, open Terminal, go to the directory
 unzipped, type “./start” and hit return. BaasBox is now running on your
 local machine. To test visit the following link:
-[[http://localhost:9000/\|http://localhost:9000/]] and you should see
+`http://localhost:9000/ <http://localhost:9000//>`_ and you should see
 the following screen.
 
 This means BaasBox is correctly running. If you are working on a BaasBox
@@ -72,55 +62,29 @@ If you have testing against an instance running on a server, contact the
 system administrator to get these credentials. Once you are logged in as
 administrator you you will see the BaasBox console like this.
 
-.. raw:: html
+The next step is to create a collection. 
 
-   <html>
-   <p>
+Creating a collection
+---------------------
 
-.. raw:: html
-
-   </p>
-   </html>
-
-The next step is to create a collection. ## Creating a collection ## A
-collection is a bucket to hold objects of the same class. We are going
+A collection is a bucket to hold objects of the same class. We are going
 to create a new one to hold the posts of the DearDiary app. Click the
 “Collections” button on the left side menu, tap the “New Collection”
 button, enter “posts” and click the Save button. You will end up in this
 situation.
 
-.. raw:: html
-
-   <html>
-   <p>
-
-.. raw:: html
-
-   </p>
-   </html>
-
 Now the back end is ready to store custom objects in the newly created
-collection. Let’s move on to integrate the SDK in your project. ##
-Importing the iOS SDK ##
+collection. Let’s move on to integrate the SDK in your project. 
 
-.. raw:: html
-
-   <html>
-   <p>
+Importing the iOS SDK
+---------------------
 
 Download the SDK from here, and unzip the file. Drag the extracted
 folder onto the root of the starter project.
 
-.. raw:: html
-
-   </p>
-   <p>
 
 <== The project navigator should now look like this.
 
-.. raw:: html
-
-   </p>
 
 Since we are going to use the BaasBox SDK in different files we suggest
 to import it globally. Open the DearDiary-Prefix.pch file and import the
@@ -864,7 +828,7 @@ created user is already logged in and you can start creating new posts
 right away. Tap on the “+” button to add a new note. It will have the
 default values “No title” and “No body”. Now open the console in the
 browser
-([[http://localhost:9000/console\|http://localhost:9000/console]] if you
+(`http://localhost:9000/console <http://localhost:9000/console/>`_ if you
 are running on a local machine) and click the “Documents” button on the
 left menu. Select the “posts” collection from the dropdown menu and you
 will see the new note created as follows.
@@ -882,12 +846,16 @@ Great, you have saved your first post on the back end! Feel free to play
 with new notes or by changing titles and contents check how they are
 stored on the back end. Assuming that so far you have run the example on
 the simulator you could run it on a real device and see how the posts
-created by a given users are correctly loaded on that as well. ## Where
-to go from here ## There are a few ways in which you can continue this
+created by a given users are correctly loaded on that as well. 
+
+Where to go from here
+---------------------
+
+There are a few ways in which you can continue this
 tutorial. Here are some suggestions:
 
 -  allow the deletion of a post
 -  load posts in a paginated way
 
 To find out more about additional methods available in the SDK check out
-the [["User Guide" here\|User Guide iOS]].
+the :doc:`User Guide Here <user_guide_ios>`.
