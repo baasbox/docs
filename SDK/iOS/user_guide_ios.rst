@@ -18,7 +18,18 @@ the following code snippet.
 
 .. code-block:: c
 
-	BAAClient *client = [BAAClient sharedClient];	[client authenticateUsername:@"john" withPassword:@"supersecretpassword"	completionHandler:^(BOOL success, NSError *error) { if (success) {	NSLog(@"user authenticated %@", client.authenticatedUser);	} else {	NSLog(@"error in logging in %@", error.localizedDescription);	} }];
+    BAAClient *client = [BAAClient sharedClient];
+    [client authenticateUsername:@"john" 
+			withPassword:@"supersecretpassword"
+		   completionHandler:^(BOOL success, NSError *error) { 
+	if (success) {
+		NSLog(@"user authenticated %@", 
+		      client.authenticatedUser);
+	} else {
+		NSLog(@"error in logging in %@", 
+		      error.localizedDescription);
+	} 
+    }];
 
 Notice that the information about the user (e.g. username and
 authentication token) is automatically saved by the SDK. Once you get
@@ -334,7 +345,7 @@ an instance of post and saves it on the back end.
                            </div></td>
                            <td>
                            <div class="text codecolorer" style="white-space:nowrap">
-                               <span class="class">SMPost</span> *p = [[SMPost alloc] init];
+                               <span class="class">SMPost</span> *p = [[SMPost alloc] init];
                                <br />
                                p.postTitle = <span class="string">@"Title"</span>;
                                <br />
