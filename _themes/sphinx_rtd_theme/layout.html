@@ -23,8 +23,8 @@
   {% endif %}
 
   {# CSS #}
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto+Slab:400,700|Inconsolata:400,700">
+  
   {# JS #}
   {% if not embedded %}
 
@@ -96,7 +96,7 @@
     {# SIDE NAV, TOGGLES ON MOBILE #}
     <nav data-toggle="bb-nav-shift" class="bb-nav-side">
       <div class="bb-side-nav-search">
-        <a href="http://www.baasbox.com"" class="icon icon-home"> {{ project }}</a>
+        <a href="http://www.baasbox.com"> <img class="companylogo" src="http://www.baasbox.com/wp-content/uploads/2013/12/logo_baasbox.png" /></a>
         {% include "searchbox.html" %}
       </div>
 
@@ -117,7 +117,7 @@
       {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
       <nav class="bb-nav-top">
         <i data-toggle="bb-nav-top" class="icon icon-reorder"></i>
-        <a href="{{ pathto(master_doc) }}">{{ project }}</a>
+        <a href="http://www.baasbox.com"><img class="companylogo" src="http://www.baasbox.com/wp-content/uploads/2013/12/logo_baasbox.png" /></a>
       </nav>
 
 
