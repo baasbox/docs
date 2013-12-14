@@ -8,6 +8,7 @@ REST API
         users
         collections
         assets
+	file
         push_notifications
         documents
         settings
