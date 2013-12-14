@@ -131,3 +131,11 @@ http://localhost/ -> /_static/underscore.js
 http://localhost/ -> /_static/css/theme.css
 http://localhost/ -> /_static/doctools.js
 http://localhost/ -> /_static/js/theme.js
+http://localhost/custom_error_code.html -> /RestAPI/index.html
+http://localhost/RestAPI/index.html -> /_static/jquery.js
+http://localhost/RestAPI/index.html -> /_static/underscore.js
+http://localhost/RestAPI/index.html -> /_static/doctools.js
+http://localhost/ -> /_static/css/theme.css
+http://localhost/RestAPI/index.html -> /_static/js/theme.js
+http://localhost/RestAPI/index.html -> /introduction.html
+http://localhost/ -> /_static/css/theme.css

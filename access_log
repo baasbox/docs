@@ -182,3 +182,13 @@ validation.sls.microsoft.com - - [14/Dec/2013:00:51:11 +0100] "GET /_static/css/
 validation.sls.microsoft.com - - [14/Dec/2013:00:51:11 +0100] "GET /_static/doctools.js HTTP/1.1" 304 -
 validation.sls.microsoft.com - - [14/Dec/2013:00:51:11 +0100] "GET /_static/js/theme.js HTTP/1.1" 304 -
 validation.sls.microsoft.com - - [14/Dec/2013:00:51:12 +0100] "GET /favicon.ico HTTP/1.1" 403 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:16 +0100] "GET /RestAPI/index.html HTTP/1.1" 200 13578
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:16 +0100] "GET /_static/jquery.js HTTP/1.1" 304 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:16 +0100] "GET /_static/underscore.js HTTP/1.1" 304 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:16 +0100] "GET /_static/doctools.js HTTP/1.1" 304 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:16 +0100] "GET /_static/css/theme.css HTTP/1.1" 200 102268
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:16 +0100] "GET /_static/js/theme.js HTTP/1.1" 304 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:17 +0100] "GET /favicon.ico HTTP/1.1" 403 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:23 +0100] "GET /introduction.html HTTP/1.1" 304 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:23 +0100] "GET /_static/css/theme.css HTTP/1.1" 304 -
+validation.sls.microsoft.com - - [14/Dec/2013:01:00:23 +0100] "GET /favicon.ico HTTP/1.1" 403 -
