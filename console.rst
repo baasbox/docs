@@ -1,17 +1,16 @@
 Console
--------
-
+=======
 BaasBox has an administration web console that allows to administer and
 control many aspects of its behavior and to perform administrative
 tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. This guide will
-illustrate the console for the version **0.6.0**\  We suppose that
+illustrate the console for the version **0.7.2**\  We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox in the correct way, you can open your browser and open
 the welcome screen: |Home Console|
 
 The login screen
-================
+----------------
 
 When you are in the start view, the administrator console is reachable
 at the /console path. |Login Screen| To login in the administrative area
@@ -26,8 +25,8 @@ You can change these values at any time by follow the instructions shown
 in the :doc:`hacking`. By clicking on the question marks, the
 fields will be filled with the default values. 
 
-The Dashboard  
-================
+The Dashboard 
+-------------
 
 Once you logged in, you will see the main dashboard screen: |Dashboard|\  The
 web console is based on twitter bootstrap and on the `Charisma Template <https://github.com/usmanhalalit/charisma/>`_ project. The
@@ -63,22 +62,27 @@ dashboard is splitted into several sections:
 
 12. Feedback tab: from there you can send us a feedback about your
     experience with BaasBox
+13. ::
+
+         DB Management: you can create backup of your DB and import & export
+
+14. Roles: you can view and create roles for users
 
 NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
 
 Settings
-========
+--------
 
 By selecting the Settings option in the left menu you can access the
-settings section. |Edit Settings|\  You can choose settings for
-applications, password recovery, images and push notifications. Each
-record has the Edit button that allows you to modify its action.
+settings section. You can choose settings for applications, password
+recovery, images and push notifications. Each record has the Edit button
+that allows you to modify its action.
 
 NOTE: the starred fields are mandatory.
 
 Database Management
-===================
+-------------------
 
 The item **DB Management** allows you to perform some operations on the
 database. |DB Management|
@@ -99,7 +103,7 @@ To restore a database you have to download a backup file locally, and
 then use the restore feature.
 
 Users
-=====
+-----
 
 By selecting the Users option on the menu you can access the users
 section. |Users|\  In this section you have the list of all users. A
@@ -117,18 +121,18 @@ NOTE
    changes
 
 Collections
-===========
+-----------
 
 By selecting the Collections option on the menu you can access the
 collection administration page. Collections are a sort of buckets where
 you can store objects, also known as "documents". |Collections|\  In
 this section you have a list of all your collections and you can quickly
 find them with the search tool. To create a new collection, click on the
-New Collection button and insert its name, then save the changes.\
+New Collection button and insert its name, then save the changes.
 |Create New Collection|\ 
 
 Documents
-=========
+---------
 
 Documents are objects stored in the embedded NoSQL database ad grouped
 in "Collections" |Documents|\  In this section you have the list of all
@@ -142,7 +146,7 @@ Documents are accessible only by the user that created them. APIs exist
 to grant and revoke permissions to the single users or roles.
 
 Assets
-======
+------
 
 Assets are special objects. They are public by default, but only
 administrators can create or delete them. They can store arbitrary data
@@ -155,23 +159,19 @@ use these names to reference the assets.
 with information fields like Icon, Name, Meta, Size, Type, Download and
 Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
-following window: |New Asset|\
-\ 
-NOTE: you have to fill at least the Name
+following window: |New Asset|\  NOTE: you have to fill at least the Name
 field and save the changes to create a new asset.
 
-.. |Home Console| image:: _static/Console_0.6.0/home_console.png
-.. |Login Screen| image:: _static/Console_0.6.0/login.png
-.. |Dashboard| image:: _static/Console_0.6.0/baasbox_0-6-0-console.png
-.. |News| image:: _static/Console_0.6.0/news.png
-.. |Edit Settings| image:: _static/Console_0.6.0/edit_settings.png
-.. |DB Management| image:: _static/Console_0.6.0/baasbox-db-management.png
-.. |Users| image:: _static/Console_0.6.0/users.png
-.. |Create new user| image:: _static/Console_0.6.0/create_new_user.png
-.. |Collections| image:: _static/Console_0.6.0/collections.png
-.. |Create New Collection| image:: _static/Console_0.6.0/create_new_collection.png
-.. |Documents| image:: _static/Console_0.6.0/documents.png
-.. |Documents Table| image:: _static/Console_0.6.0/baasbox-documents-table.png
-.. |Assets| image:: _static/Console_0.6.0/assets.png
-.. |New Asset| image:: _static/Console_0.6.0/new_asset.png
-
+.. |Home Console| image:: _static/Console_0.7.2/home_console.png
+.. |Login Screen| image:: _static/Console_0.7.2/login.png
+.. |Dashboard| image:: _static/Console_0.7.2/baasbox_0-7-2-console.png
+.. |News| image:: _static/Console_0.7.2/news.png
+.. |DB Management| image:: _static/Console_0.7.2/baasbox-db-management.png
+.. |Users| image:: _static/Console_0.7.2/users.png
+.. |Create new user| image:: _static/Console_0.7.2/create_new_user.png
+.. |Collections| image:: _static/Console_0.7.2/collections.png
+.. |Create New Collection| image:: _static/Console_0.7.2/create_new_collection.png
+.. |Documents| image:: _static/Console_0.7.2/documents.png
+.. |Documents Table| image:: _static/Console_0.7.2/baasbox-documents-table.png
+.. |Assets| image:: _static/Console_0.7.2/assets.png
+.. |New Asset| image:: _static/Console_0.7.2/new_asset.png
