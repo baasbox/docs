@@ -188,9 +188,11 @@ and change ``viewWillAppear:`` as follows.
 		} else {
 			NSLog(@"need to login"); 
 			SMLoginViewController *loginViewController =
-			    [[SMLoginViewController alloc] 							       initWithNibName:@"SMLoginViewController"
+			    [[SMLoginViewController alloc] 							       
+			    initWithNibName:@"SMLoginViewController"
 					bundle:nil];
-			[self.navigationController 				  					presentViewController:loginViewController
+			[self.navigationController 				  					
+			    presentViewController:loginViewController
 					    animated:YES 
 					  completion:nil];
 			} 
