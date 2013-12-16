@@ -17,7 +17,7 @@ P.S. The async nature of the method DOES NOT ensure the creation of the file.
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
    error occurred
--  Code 404: file not created.
+-  Code 404: file not created
 -  Code 202: ACCEPTED and returns the filename of the file that will be generated
          
 
@@ -49,7 +49,7 @@ Retrieve a file
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
    error occurred
--  Code 404: file not present.
+-  Code 404: file not present
 -  Code 200: OK and returns the stream of the file
 
 Delete a file
