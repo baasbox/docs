@@ -16,9 +16,8 @@ The first step of each application is to login or signup a new user.
 Once you have imported the SDK into your project, you can login using
 the following code snippet.
 
-.. raw:: html
+.. code-block:: c
 
-   <pre>
    LoginTask loginTask = new LoginTask();
    loginTask.execute(username, password);
 
@@ -41,7 +40,6 @@ the following code snippet.
            onLogin(result);
        }
    }
-   </pre>
 
 Notice that the information about the user (e.g. username and
 authentication token) is automatically saved by the SDK. After this call
@@ -54,9 +52,8 @@ Sign up
 Using the SDK you can even allow the creation of new users. The pattern
 is pretty similar to the login. Here is an example.
 
-.. raw:: html
+.. code-block:: c
 
-   <pre>
    SignupTask signupTask = new SignupTask();
            
    JSONObject user = new JSONObject();
@@ -88,7 +85,6 @@ is pretty similar to the login. Here is an example.
            //Update UI after execution
        }
    }
-   </pre>
 
 
 Whenever you need to know if you are authenticated you can use the
@@ -103,9 +99,8 @@ To save instances on the server you use the createDocument method of
 App.bbox, For example, this code snippet adds an entry to an address
 book.
 
-.. raw:: html
+.. code-block:: c
 
-   <pre>
    AddTask addTask = new AddTask();
    addTask.execute(name, phone);
 
@@ -132,7 +127,7 @@ book.
            // refresh UI to show newly added person
        }
    }
-   </pre>
+
 
 Notice that “address-book” in this example has to match the name of the
 colleciton that you have set up on the back end.
@@ -143,9 +138,8 @@ Deleting objects
 To delete an existing object on the back end you can use the following
 snippet.
 
-.. raw:: html
+.. code-block:: c
 
-   <pre>
    // entry is a json object representing an entry in the address book
    adapter.remove(entry);
    new DeleteTask().execute(entry);
@@ -164,16 +158,15 @@ snippet.
            onPersonDeleted(result);
        }
    }
-   </pre>
+
 
 Loading objects
 ---------------
 
 To load a collection of objects you just getAllDocuments() as follows.
 
-.. raw:: html
+.. code-block:: c
 
-   <pre>
    LoadTask loadTask = new LoadTask();
    loadTask.execute();
 
@@ -195,7 +188,6 @@ To load a collection of objects you just getAllDocuments() as follows.
            // update UI after loading
        }
    }
-   </pre>
 
 The first parameter of getAllDocuments is again the exact name of the
 collection set up on the server. The second is the sorting parameters.
