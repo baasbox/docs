@@ -21,8 +21,8 @@ P.S. The async nature of the method DOES NOT ensure the creation of the file.
 -  Code 202: ACCEPTED and returns the filename of the file that will be generated
          
 
-Retrieve all databases
-----------------------
+Retrieve all backup files
+-------------------------
 ``GET /admin/db/export``
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
@@ -36,7 +36,7 @@ Retrieve all databases
    error occurred
 -  Code 200: OK and returns a JSON representation containing the list of files stored in the db backup folder
 
-Retrieve a file
+Retrieve a backup file
 ---------------
 ``GET /admin/db/export/:filename``
 
@@ -52,7 +52,7 @@ Retrieve a file
 -  Code 404: file not present
 -  Code 200: OK and returns the stream of the file
 
-Delete a file
+Delete a backup file
 -------------
 ``DELETE /admin/db/export/:filename``
 
