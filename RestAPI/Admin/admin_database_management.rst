@@ -52,8 +52,25 @@ Retrieve a backup file
 -  Code 404: file not present
 -  Code 200: OK and returns the stream of the file
 
+Drop a database
+---------------
+``DELETE /admin/db/:timeout``
+
+**Headers**: See the :doc:`/RestAPI/general_remarks`
+
+**Description**: Drop database with a timeout (if specified) and creates another one
+
+**Returns**:
+
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 500: the servers cannot fulfill the request, an internal server
+   error occurred
+-  Code 200: OK
+
+
+
 Delete a backup file
--------------
+--------------------
 ``DELETE /admin/db/export/:filename``
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
