@@ -95,8 +95,8 @@ App.bbox.isUserLoggedIn();
 Creating and saving objects
 ---------------------------
 
-To save instances on the server you use the createDocument method of
-App.bbox, For example, this code snippet adds an entry to an address
+To save instances on the server you use the ``createDocument`` method of
+**App.bbox**, For example, this code snippet adds an entry to an address
 book.
 
 .. code-block:: c
@@ -163,7 +163,7 @@ snippet.
 Loading objects
 ---------------
 
-To load a collection of objects you just getAllDocuments() as follows.
+To load a collection of objects you just ``getAllDocuments()`` as follows.
 
 .. code-block:: c
 
@@ -189,7 +189,7 @@ To load a collection of objects you just getAllDocuments() as follows.
        }
    }
 
-The first parameter of getAllDocuments is again the exact name of the
+The first parameter of ``getAllDocuments`` is again the exact name of the
 collection set up on the server. The second is the sorting parameters.
 The third is the number of the page you’d like to load (-1 to not
 specify any) and the fourth is the number of results per page.
