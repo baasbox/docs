@@ -2,6 +2,7 @@ ADMIN
 -------
 .. toctree::
 
+	admin_database_management
         admin_collections
 	admin_users
 	admin_assets
