@@ -9,6 +9,7 @@ Export database
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
 **Description**: Generate a full dump of the db in an asyncronus task.
+
 P.S. The async nature of the method DOES NOT ensure the creation of the file.
 
 **Returns**:
@@ -74,6 +75,7 @@ Import database
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
 **Description**: Uploads a json export file and apply it to the db.
+
 **WARNING:** all data on the db will be wiped out before importing
 
 **Returns**:
@@ -81,8 +83,6 @@ Import database
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
    error occurred
--  Code 400: an attempt of potential sql-injection attack has detected.
-   Check the query string parameters
 -  Code 200: OK
 
 
