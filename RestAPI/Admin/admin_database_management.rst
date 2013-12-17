@@ -8,15 +8,14 @@ Export database
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
-**Description**: Generate a full dump of the db in an asyncronus task.
+**Description**: Generate a full dump of the db in an asynchronous task.
 
 P.S. The async nature of the method DOES NOT ensure the creation of the file.
 
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 404: file not created
 -  Code 202: ACCEPTED and returns the filename of the file that will be generated
          
@@ -32,8 +31,7 @@ Retrieve all backup files
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 200: OK and returns a JSON representation containing the list of files stored in the db backup folder
 
 Retrieve a backup file
@@ -47,8 +45,7 @@ Retrieve a backup file
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 404: file not present
 -  Code 200: OK and returns the stream of the file
 
@@ -58,13 +55,12 @@ Drop a database
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
-**Description**: Drop database with a timeout (if specified) and creates another one
+**Description**: Drop database with a timeout (if specified) and creates a new clean one (returns to initial stage)
 
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 200: OK
 
 
@@ -80,10 +76,9 @@ Delete a backup file
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
--  Code 404: file not present
--  Code 200: OK: the file is deleted correctly
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
+-  Code 404: file not found
+-  Code 200: OK: the file was correctly deleted 
 
 Import database
 ---------------
@@ -91,15 +86,14 @@ Import database
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
-**Description**: Uploads a json export file and apply it to the db.
+**Description**: Uploads a JSON export file and applies it to the db.
 
 **WARNING:** all data on the db will be wiped out before importing
 
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 200: OK
 
 
