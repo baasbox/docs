@@ -99,6 +99,7 @@ Resize image
 -  h: height desired
 
 **Returns:**
+
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 400: not found
@@ -116,6 +117,7 @@ Resize image
 -  perc: percentual for the image resized
 
 **Returns:**
+
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 400: not found
@@ -133,6 +135,7 @@ For example: if the settings are [10%,25%,50%,75%] and you use the following API
 -  sizeId: the resizing index to be applied.
 
 **Returns:**
+
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 400: not found
