@@ -102,7 +102,8 @@ Resize image
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
--  Code 400: not found
+-  Code 403: the user is not an Admin
+-  Code 404: asset not found
 -  Code 200: ok and returns the image resized
 
 **Resize the image with a fixed percentual**:``GET /asset/:name/resize/:perc``
@@ -120,7 +121,8 @@ Resize image
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
--  Code 400: not found
+-  Code 403: the user is not an Admin
+-  Code 404: asset not found
 -  Code 200: ok and returns the image resized
 
 **Apply a resizeId**:``GET /asset/:name/resizeId/:sizeId``	
@@ -138,7 +140,8 @@ For example: if the settings are [10%,25%,50%,75%] and you use the following API
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
--  Code 400: not found
+-  Code 403: the user is not an Admin
+-  Code 404: asset not found
 -  Code 200: ok and returns the image resized
 
 
