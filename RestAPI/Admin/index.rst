@@ -1,7 +1,8 @@
 ADMIN
 -------
 .. toctree::
-
+        :maxdepth: 6
+        
 	admin_database_management
         admin_collections
 	admin_users
