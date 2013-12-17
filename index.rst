@@ -48,14 +48,14 @@ Contents:
 RestAPI
 --------
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 6
   
    RestAPI/index
 
 SDK
 --------
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 6
   
    SDK/index
 
