@@ -1,9 +1,8 @@
-Contents:
 
 REST API
 -------
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 6
 
         general_remarks
         users
