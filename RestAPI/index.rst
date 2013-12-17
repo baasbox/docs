@@ -3,6 +3,7 @@ Contents:
 REST API
 -------
 .. toctree::
+	:maxdepth: 2
 
         general_remarks
         users
