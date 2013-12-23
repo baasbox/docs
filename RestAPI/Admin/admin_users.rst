@@ -15,12 +15,9 @@ Admin APIs to manage users
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
--  Code 400: an attempt of potential sql-injection attack has detected.
-   Check the query string parameters
--  Code 200: OK: Retrieve the list of all users but the default admin
-   user
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
+-  Code 400: an attempt of potential sql-injection attack has been detected. Check the query string parameters
+-  Code 200: OK: Retrieve the list of all users but the default admin user
    
 Admin APIs to manage follow/unfollow
 ====================================
@@ -38,9 +35,8 @@ Admin APIs to manage follow/unfollow
   
 **Returns**:
 
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
--  Code 404: both or either users not exist
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
+-  Code 404: both or either users do not exist
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 400: user :follow is already a friend of :tofollow
 -  Code 400: cannot create followship relationship with internal users
@@ -59,9 +55,8 @@ Admin APIs to manage follow/unfollow
   
 **Returns**:
 
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
 -  Code 404: user :follower is not a friend of :tofollow
--  Code 404: both or either users not exist
+-  Code 404: both or either users do not exist
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 200: OK

@@ -320,12 +320,11 @@ Create a friendship relation
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
-**Description**: This API allows a user to create a friendship relationship with another user
-which username is the one specified in the :username URL component.Once the friendship relation has been created the follower will be able to see the documents created by the followed user as well as its visibleByFriends data in its user profile
+**Description**: This API allows a user to create a friendship relationship with another user whose username is the one specified in the :username URL component. Once the friendship relation has been created, the follower will be able to see the documents created by the followed user as well as its visibleByFriends data in its user profile
 
 **Returns**: 
 
--  Code  201: (CREATED) response code if the operation is successfull
+-  Code  201: (CREATED) response code if the operation is successful
 -  Code  404: (NOT FOUND) response if the username provided does not exists
 -  Code  400: (BAD REQUEST) if the relationship between users already exists
 
@@ -336,12 +335,11 @@ Delete a friendship relation
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
-**Description**: This API allows a user to delete a friendship relationship with another user
-which username is the one specified in the :username URL component.Once the friendship relation has been deleted the follower will not be able to see the documents created by the followed user as well as its visibleByFriends data in its user profile.
+**Description**: This API allows a user to delete a friendship relationship with another user whose username is the one specified in the :username URL component.Once the friendship relation has been deleted the follower will not be able to see the documents created by the followed user as well as its visibleByFriends data in its user profile.
 
 **Returns**: 
 
--  Code 200: (OK) response code if the operation is successfull
+-  Code 200: (OK) response code if the operation is successful
 -  Code 404: (NOT FOUND) response if the username provided does not exists or if the relationship does not exists
 
 Get all following
@@ -358,7 +356,7 @@ protected.
 **Returns**: 
 
 -  Code 200: (OK) response code if the operation is successfull
--  Code 404: (NOT FOUND) response if the user hasn't any friend relationship
+-  Code 404: (NOT FOUND) response if the user does not have any friend relationships
 
 Get all followers
 -----------------
@@ -374,7 +372,7 @@ This API supports filter criteria, sorting, pagination
 
 **Returns**: 
 
--  Code 200: (OK) response code if the operation is successfull
--  Code 404: (NOT FOUND) response if the user hasn't any friend relationship
+-  Code 200: (OK) response code if the operation is successful
+-  Code 404: (NOT FOUND) response if the user does not have any friend relationships
 
 Click here for the :doc:`/RestAPI/Users/social_login` section
