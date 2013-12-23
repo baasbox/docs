@@ -342,16 +342,33 @@ which username is the one specified in the :username URL component.Once the frie
 -  Code 200: (OK) response code if the operation is successfull
 -  Code 404: (NOT FOUND) response if the username provided does not exists or if the relationship does not exists
 
-Get all followers
+Get all following
 -----------------
 
-``GET /follower/``
+``GET /following``
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
-**Description**: This API allows a user to get a list of all the users he is following.
-The method returns in its data property an array filled with the user profiles representing its "friends".Each profile will contain the ``visibleByFriends`` data which would be otherwise
+**Description**: This API returns a list of users that are followed by the current one (the one that made the call).
+The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
 protected.
+
+**Returns**: 
+
+-  Code 200: (OK) response code if the operation is successfull
+-  Code 404: (NOT FOUND) response if the user hasn't any friend relationship
+
+Get all followers
+-----------------
+
+``GET /followers``
+
+**Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
+
+**Description**: This API returns the list of followers.
+The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
+protected.
+This API supports filter criteria, sorting, pagination
 
 **Returns**: 
 
