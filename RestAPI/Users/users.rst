@@ -314,7 +314,7 @@ Follow and Unfollow Users
 
 Create a friendship relation
 ----------------------------
-``POST /follower/:username``
+``POST /follow/:username``
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
@@ -330,7 +330,7 @@ which username is the one specified in the :username URL component.Once the frie
 Delete a friendship relation
 ----------------------------
 
-``DELETE /follower/:username``
+``DELETE /follow/:username``
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
