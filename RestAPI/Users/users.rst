@@ -49,8 +49,6 @@ their password.
 
 **Returns**: 
 
-Username and password are mandatory.
-
 -  Code 400: ‘username’ or ‘password’ fields are missing
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
