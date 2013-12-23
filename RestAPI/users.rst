@@ -8,7 +8,7 @@ Create a user
 
 ``POST /user``
 
-**Headers**: See authorization header in the :doc:`general_remarks`
+**Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
 **Description**: This API allows a user to
 sign up to the App. Users will belong to the registereduser role and
@@ -45,8 +45,11 @@ their password.
 -  **visibleByRegisteredUsers** is an object whose fields are visible by
    the user, his/her friends, any registered user
 -  **visibleByAnonymousUsers** is an object whose fields are public and
-   visible by everyone, even anonymous users **Returns**: Username and
-   password are mandatory.
+   visible by everyone, even anonymous users 
+
+**Returns**: 
+
+Username and password are mandatory.
 
 -  Code 400: ‘username’ or ‘password’ fields are missing
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
@@ -96,7 +99,9 @@ username={username}&password={password}&appcode={appcode}&login\_data={“os”:
    }
 
 Note that in this way a user could login from different devices at the
-same time. **Returns**:
+same time. 
+
+**Returns**:
 
 -  Code 500: the server cannot fulfill the request, an internal server
    error occurred
@@ -194,7 +199,7 @@ Retrieve a user profile
 
 ``GET /user``
 
-**Headers**: See the :doc:`general_remarks` for
+**Headers**: See the :doc:`/RestAPI/general_remarks` for
 authentication hints. 
 
 **Description**: Retrieves the information about
@@ -228,7 +233,7 @@ Update a user
 
 ``PUT /user`` 
 
-**Headers**: See the :doc:`general_remarks`
+**Headers**: See the :doc:`/RestAPI/general_remarks`
 
 **Body payload**\  A JSON object like this:
 
@@ -267,9 +272,9 @@ Update a user
 Change password
 ---------------
 
-''PUT /user/password'' 
+``PUT /user/password`` 
 
-**Headers**: See the :doc:`general_remarks`
+**Headers**: See the :doc:`/RestAPI/general_remarks`
 
 **Body payload**\  A JSON object like this:
 
@@ -299,10 +304,11 @@ Test if a username already exists
 
 **Not yet implemented**\  ``GET /user/:username/exists`` 
 
-**Headers**: See the :doc:`general_remarks` 
+**Headers**: See the :doc:`/RestAPI/general_remarks` 
 
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
    invalid or missing
+
