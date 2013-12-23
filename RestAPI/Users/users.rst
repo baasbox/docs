@@ -260,7 +260,9 @@ Update a user
 -  **visibleByAnonymousUsers** is an object whose fields are public and
    visible by everyone, even anonymous users **Description**: Update an
    user profile information. WARNING: the sent data will overwrite
-   pre-existent **Returns**:
+   pre-existent 
+   
+   **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
