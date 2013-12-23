@@ -47,8 +47,9 @@ their password.
 -  **visibleByAnonymousUsers** is an object whose fields are public and
    visible by everyone, even anonymous users 
 
-**Returns**: Username and
-   password are mandatory.
+**Returns**: 
+
+Username and password are mandatory.
 
 -  Code 400: ‘username’ or ‘password’ fields are missing
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
@@ -98,7 +99,9 @@ username={username}&password={password}&appcode={appcode}&login\_data={“os”:
    }
 
 Note that in this way a user could login from different devices at the
-same time. **Returns**:
+same time. 
+
+**Returns**:
 
 -  Code 500: the server cannot fulfill the request, an internal server
    error occurred
