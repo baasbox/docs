@@ -21,3 +21,47 @@ Admin APIs to manage users
    Check the query string parameters
 -  Code 200: OK: Retrieve the list of all users but the default admin
    user
+   
+Admin APIs to manage follow/unfollow
+====================================
+
+**Create a follow relationship **: ``POST /admin/Fw/:follower/to/:tofollow``
+
+**Headers**: See the :doc:`/RestAPI/general_remarks`
+
+**Description**: Create a follow relationship between user follower and user to follow
+
+**Parameters**:
+
+  -  follower: user follower 
+  -  tofollow: user to follow
+  
+**Returns**:
+
+-  Code 500: the servers cannot fulfill the request, an internal server
+   error occurred
+-  Code 404: both or either users not exist
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 400: user :follow is already a friend of :tofollow
+-  Code 400: cannot create followship relationship with internal users
+-  Code 200: OK
+   
+**Delete a follow relationship **: ``DELETE /admin/Fw/:follower/to/:tofollow``
+
+**Headers**: See the :doc:`/RestAPI/general_remarks`
+
+**Description**: Delete a follow relationship between user follower and user to follow
+
+**Parameters**:
+
+  -  follower: user follower
+  -  tofollow: user to follow
+  
+**Returns**:
+
+-  Code 500: the servers cannot fulfill the request, an internal server
+   error occurred
+-  Code 404: user :follower is not a friend of :tofollow
+-  Code 404: both or either users not exist
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 200: OK
