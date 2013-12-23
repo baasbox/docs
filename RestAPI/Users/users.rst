@@ -262,7 +262,7 @@ Update a user
    user profile information. WARNING: the sent data will overwrite
    pre-existent 
    
-   **Returns**:
+**Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
