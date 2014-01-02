@@ -35,10 +35,12 @@ html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
+	height:100%;
 }
 body {
 	margin: 0;
 	background-color:#eaeaea;
+	height:100%;
 }
 a {
   font-family:Cantarell-Regular !important;
@@ -3238,9 +3240,11 @@ pre.literal-block {
 	top: 0;
 	left: 0;
 	width: 300px;
-	overflow: hidden;
-	min-height: 100%;
 	background-color: #282828;
+	min-height: 100%; /* min. height for modern browser */
+    height:auto !important; /* important rule for modern Browser */
+    height:100%; /* min. height for IE */
+    overflow: hidden !important; /* FF scroll-bar */
 }
 
 .bb-nav-top {
