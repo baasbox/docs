@@ -89,6 +89,19 @@ Stream a file
 
 -  id: the unique identifier of the file
 
+**QueryString**:
+
+- download: when true the **"Content-Disposition"** header with the **attachment; filename="<filename>"** value is sent. This allows the browsers to download the file instead of trying to manage it themselves (as it happens with images for example)
+- resize: same as assets (whose explanation you can look at) it tells the server that the image you want to retrieve has to be resized. Allowed values are those defined in the image settings.
+- sizeId: same as assets. Instead of specifying a value for resizing, it refers to the list of allowed formats. This value is a zero-based array index relating to the list of those values allowed in the image settings.
+
+**Image settings**
+The value list for allowed formats is not comma-separated, as wrongly stated so far, but it is space-separated. 
+A new format was added:
+<=nnpx
+where nn is the number of pixels.
+With this format we want the size of the returned image to be no more than nn pixels both in height and in width. Basically, should one of the two exceed the value of nn, it automatically gets resized to nn and the other parameter scales, keeping the same aspect ratio.
+
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
