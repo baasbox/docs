@@ -3241,7 +3241,7 @@ pre.literal-block {
 	left: 0;
 	width: 300px;
 	overflow: hidden;
-	min-height: 1000%;
+	min-height: 10000%;
 	background-color: #282828;
 }
 
