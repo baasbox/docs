@@ -58,6 +58,9 @@ h4 {
   font-family:FjallaOne-Regular !important;
 }
 
+a{
+  font-family:Cantarell-Regular !important;
+}
 
 a: hover,a: active {
 	outline: 0
