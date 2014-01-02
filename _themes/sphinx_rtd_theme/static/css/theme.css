@@ -1,6 +1,6 @@
-@font-face { font-family: FjallaOne-Regular; src: url('_static/font/FjallaOne-Regular.otf'); } 
+@font-face { font-family: FjallaOne-Regular; src: url('http://www.baasbox.com/wp-content/themes/PandoraBox/font/FjallaOne-Regular.otf'); } 
 
-@font-face { font-family: Cantarell-Regular; src: url('_static/font/Cantarell-Regular.ttf'); } 
+@font-face { font-family: Cantarell-Regular; src: url('http://www.baasbox.com/wp-content/themes/PandoraBox/font/Cantarell-Regular.ttf'); } 
 
 *::selection, input::selection, textarea::selection {
 background-color: #538378;
