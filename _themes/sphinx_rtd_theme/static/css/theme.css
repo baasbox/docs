@@ -1,3 +1,7 @@
+@font-face { font-family: FjallaOne-Regular; src: url('http://www.baasbox.com/wp-content/themes/PandoraBox/font/FjallaOne-Regular.otf'); } 
+
+@font-face { font-family: Cantarell-Regular; src: url('http://www.baasbox.com/wp-content/themes/PandoraBox/font/Cantarell-Regular.ttf'); } 
+
 *::selection, input::selection, textarea::selection {
 background-color: #538378;
 color: #fff;
@@ -36,6 +40,25 @@ body {
 	margin: 0;
 	background-color:#eaeaea;
 }
+
+h1 {
+  font-size: 48px;
+  font-family:FjallaOne-Regular !important;
+}
+h2 {
+  font-size: 36px;
+  font-family:FjallaOne-Regular !important;
+}
+h3 {
+  font-size: 28px;
+  font-family:FjallaOne-Regular !important;
+}
+h4 {
+  font-size: 24px;
+  font-family:FjallaOne-Regular !important;
+}
+
+
 a: hover,a: active {
 	outline: 0
 }
