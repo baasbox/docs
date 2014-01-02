@@ -256,10 +256,14 @@ Update a user
 -  **visibleByRegisteredUsers** is an object whose fields are visible by
    the user, their friends, any registered user
 -  **visibleByAnonymousUsers** is an object whose fields are public and
-   visible by everyone, even anonymous users **Description**: Update an
-   user profile information. WARNING: the sent data will overwrite
-   pre-existent 
+   visible by everyone, even anonymous users 
    
+**Description**: Update an user profile information. 
+
+The four JSON objects are optional. Using this API you can send just one of them or all four.
+
+PAY ATTENTION: The previously stored content for each of the JSON objects will be overwritten with what was sent through this API.
+
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
