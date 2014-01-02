@@ -134,11 +134,15 @@ ul,ol,dl {
 	padding: 0;
 	list-style: none;
 	list-style-image: none
-        font-family:Cantarell-Regular !important;
 }
 li {
 	list-style: none
-        font-family:Cantarell-Regular !important;
+}
+ul,ol,dl {
+        font-family:Cantarell-Regular !important;	
+}
+li {
+        font-family:Cantarell-Regular !important;	
 }
 dd {
 	margin: 0
