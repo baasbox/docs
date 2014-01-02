@@ -3239,7 +3239,7 @@ pre.literal-block {
 	left: 0;
 	width: 300px;
 	overflow: hidden;
-	min-height: 100%;
+	min-height: relative;
 	background-color: #282828;
 }
 
