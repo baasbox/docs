@@ -40,27 +40,6 @@ body {
 	margin: 0;
 	background-color:#eaeaea;
 }
-
-h1 {
-  font-size: 48px;
-  font-family:FjallaOne-Regular !important;
-}
-h2 {
-  font-size: 36px;
-  font-family:FjallaOne-Regular !important;
-}
-h3 {
-  font-size: 28px;
-  font-family:FjallaOne-Regular !important;
-}
-h4 {
-  font-size: 24px;
-  font-family:FjallaOne-Regular !important;
-}
-p {
-  font-family:Cantarell-Regular !important;
-}
-
 a {
   font-family:Cantarell-Regular !important;
 }
@@ -2626,12 +2605,12 @@ h1,h2,h3,h4,h5,h6,legend {
 	margin-top: 0;
 	font-weight: normal;
 	color: rgb(80,80,80);
-	font-family: "Lato";
+    font-family:FjallaOne-Regular !important;
 	text-transform: uppercase;
 }
 p {
 	color:rgb(85, 85, 85);
-	font-family: "Lato";
+    font-family:Cantarell-Regular !important;
 	line-height: 27px;
 	margin: 0;
 	font-size: 16px;
