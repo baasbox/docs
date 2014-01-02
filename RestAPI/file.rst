@@ -98,38 +98,10 @@ Stream a file
 -  Code 404: file not found
 -  Code 200: OK. The file content is returned
 
-Force a web browser to download the file
-----------------------------------------
-
-``GET /file/download/:id``
-
-**Headers**:
-
--  See the :doc:`general_remarks` 
-
--  User must have the right to read the file
-
-**Description**: Stream the content of the file to the client, but put
-the "Content-Disposition" header in the response so the browser
-understands that it must download the file.
-
-**Parameters**:
-
--  id: the unique identifier of the file
-
-**Returns**:
-
--  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
--  Code 401: user unauthorized
--  Code 404: file not found
--  Code 200: OK. The file content is returned
-
 Retrieve a file details
 -----------------------
 
-``GET /file/:details/:id``
+``GET /file/details/:id``
 
 **Headers**:
 
