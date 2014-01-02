@@ -3240,11 +3240,9 @@ pre.literal-block {
 	top: 0;
 	left: 0;
 	width: 300px;
+	overflow: hidden;
+	min-height: 100%;
 	background-color: #282828;
-	min-height: 100%; /* min. height for modern browser */
-    height:auto !important; /* important rule for modern Browser */
-    height:100%; /* min. height for IE */
-    overflow: hidden !important; /* FF scroll-bar */
 }
 
 .bb-nav-top {
@@ -3284,7 +3282,7 @@ pre.literal-block {
 }
 .bb-nav-content {
 	padding: 1.618em 3.236em;
-	height: 100%;
+	max-height: 100%;
 	max-width: 800px;
 	margin: auto
 }
