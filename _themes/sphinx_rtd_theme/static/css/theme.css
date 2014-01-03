@@ -6,6 +6,11 @@
 background-color: #538378;
 color: #fff;
 }
+
+.rst-versions a {
+	color: #FFFFFF !important;
+}
+
  
 * {
 	-webkit-box-sizing: border-box;
