@@ -1,3 +1,8 @@
+@font-face { font-family: FjallaOne-Regular; src: url('http://themes.googleusercontent.com/static/fonts/fjallaone/v1/rxxXUYj4oZ6Q5oDJFtEd6r3hpw3pgy2gAi-Ip7WPMi0.woff'); } 
+
+@font-face { font-family: Cantarell-Regular; src: url('http://themes.googleusercontent.com/static/fonts/cantarell/v3/V86VyqXbc09Sss3BPsMj17O3LdcAZYWl9Si6vvxL-qU.woff'); } 
+
+
 *::selection, input::selection, textarea::selection {
 background-color: #538378;
 color: #fff;
@@ -31,11 +36,17 @@ html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
+	height:100%;
 }
 body {
 	margin: 0;
 	background-color:#eaeaea;
+	height:100%;
 }
+a {
+  font-family:Cantarell-Regular !important;
+}
+
 a: hover,a: active {
 	outline: 0
 }
@@ -108,6 +119,12 @@ ul,ol,dl {
 }
 li {
 	list-style: none
+}
+ul,ol,dl {
+        font-family:Cantarell-Regular !important;	
+}
+li {
+        font-family:Cantarell-Regular !important;	
 }
 dd {
 	margin: 0
@@ -2591,12 +2608,12 @@ h1,h2,h3,h4,h5,h6,legend {
 	margin-top: 0;
 	font-weight: normal;
 	color: rgb(80,80,80);
-	font-family: "Lato";
+    font-family:"FjallaOne-Regular" !important;
 	text-transform: uppercase;
 }
 p {
 	color:rgb(85, 85, 85);
-	font-family: "Lato";
+    font-family:"Cantarell-Regular" !important;
 	line-height: 27px;
 	margin: 0;
 	font-size: 16px;
@@ -3225,7 +3242,7 @@ pre.literal-block {
 	left: 0;
 	width: 300px;
 	overflow: hidden;
-	min-height: 100%;
+	min-height: 1500%;
 	background-color: #282828;
 }
 
@@ -3706,4 +3723,4 @@ img {
 }
 span[id*='MathJax-Span'] {
 	color: #404040
-} 
+}
