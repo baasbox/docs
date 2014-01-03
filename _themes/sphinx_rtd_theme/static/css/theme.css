@@ -6,6 +6,11 @@
 background-color: #538378;
 color: #fff;
 }
+
+.rst-versions a {
+	color: #FFFFFF !important;
+}
+
  
 * {
 	-webkit-box-sizing: border-box;
@@ -3405,7 +3410,7 @@ footer p {
 	text-align: right;
 	font-size: 90%;
 	cursor: pointer;
-	color: #27ae60;
+        color: #FFFFFF !important;
 	*zoom: 1
 }
 .rst-versions .rst-current-version: before,.rst-versions .rst-current-version: after {
