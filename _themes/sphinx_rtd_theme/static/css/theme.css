@@ -2,6 +2,11 @@
 
 @font-face { font-family: Cantarell-Regular; src: url('http://themes.googleusercontent.com/static/fonts/cantarell/v3/V86VyqXbc09Sss3BPsMj17O3LdcAZYWl9Si6vvxL-qU.woff'); } 
 
+.div-side {
+height:100%;
+}
+
+
 
 *::selection, input::selection, textarea::selection {
 background-color: #538378;
