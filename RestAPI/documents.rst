@@ -158,8 +158,7 @@ Retrieves a list of Documents
 
 ``GET /document/:collection`` 
 
-**Headers**: See authorization header in the
-:doc:`general_remarks` 
+**Headers**: See authorization header in the :doc:`general_remarks` 
 
 **Description**: Returns the
 documents that the USER CAN READ in a collection. Pay attention because
@@ -173,6 +172,36 @@ not be retrieved
 -  Code 500: the servers cannot fulfill the request, an internal server
    error occurred
 -  Code 200: OK, and a JSON list of documents
+
+Grant/revoke user/role
+----------------------
+
+``PUT /document/:collection/:id/:action/user/:username``
+
+or
+
+``PUT /document/:collection/:id/:action/role/:rolename``
+
+**Headers**: See authorization header in the :doc:`general_remarks` 
+
+**Description**: Returns the documents that the USER CAN READ in a collection.
+**where:**
+
+  *  :collection is the name of the collection
+  *  :id is the unique id of the document belonging to the :collection 
+  *  :action is the kind of grant you want to give: "read", "update", "delete", "all" 
+  *  :username is the user to give the grant 
+  *  :rolename is the name of a role. in this case every user belonging to that role will have the specified grant.
+
+**Returns**:
+
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 404: the collection does not exist
+-  Code 500: the servers cannot fulfill the request, an internal server error occurred
+-  Code 200: OK
+
+**To revoke a permission just use DELETE instead of PUT**
+
 
 Update objects fields
 ---------------------
