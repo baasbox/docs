@@ -291,7 +291,7 @@ PAY ATTENTION: The previously stored content for each of the JSON objects will b
 Change password
 ---------------
 
-``PUT /user/password`` 
+``PUT /me/password`` 
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
@@ -307,8 +307,9 @@ Change password
 
    }
 
-both old and new fields are mandatory. **Description**: Changes the
-password of a user. 
+both old and new fields are mandatory. 
+
+**Description**: Changes the password of a user. 
 
 **Returns**:
 
