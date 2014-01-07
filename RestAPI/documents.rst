@@ -86,31 +86,6 @@ Anonymous users can retrieve documents
 
 The @ID field is the unique ID of the document.
 
-Retrieve a document only by its ID
--------
-
-``GET /document/ID`` 
-
-**Headers**: See authorization header in the :doc:`general_remarks`  
-
-**Description**: Retrieves the specified
-document 
-
-Anonymous users can retrieve documents
-
-
-**Returns**:
-
--  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 403: FORBIDDEN, the user does not have the necessary privilege
-   to update the document
--  Code 500: the servers cannot fulfill the request, an internal server
-   error occurred
--  Code 404: the collection specified does not exist
--  Code 200: OK and the internal JSON document representation.
-
-The @ID field is the unique ID of the document.
-
 Delete a document
 -----------------
 
