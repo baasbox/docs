@@ -212,13 +212,6 @@ Retrieve current user profile
 
 ``GET /me``
 
-**Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
-
-Retrieve a user profile
------------------------
-
-``GET /user``
-
 **Headers**: See the :doc:`/RestAPI/general_remarks` for
 authentication hints. 
 
