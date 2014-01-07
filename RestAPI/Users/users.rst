@@ -1,10 +1,8 @@
 Users
 ============
 
-
 Create a user
 ----------------
-
 
 ``POST /user``
 
@@ -192,6 +190,30 @@ in order to reset the password The confirmation and the error web page
    the email address is not configured for the given user
 -  Code 200: OK. The reset email was sent
 
+
+Test if a username already exists
+---------------------------------
+
+**Not yet implemented**\  ``GET /user/:username/exists`` 
+
+**Headers**: See the :doc:`/RestAPI/general_remarks` 
+
+**Returns**:
+
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 401: Credentials supplied in the ‘authorization’ header are
+   invalid or missing
+   
+Logged users
+============
+
+Retrieve current user profile
+-----------------------------
+
+``GET /me``
+
+**Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
+
 Retrieve a user profile
 -----------------------
 
@@ -226,10 +248,10 @@ the user. Specifically the following JSON is returned:
    error occurred
 -  Code 200: OK: retrieves he JSON object representing the current user
 
-Update a user
+Update current user
 -------------
 
-``PUT /user`` 
+``PUT /me``
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
@@ -264,7 +286,6 @@ The four JSON objects are optional. Using this API you can send just one of them
 
 PAY ATTENTION: The previously stored content for each of the JSON objects will be overwritten with what was sent through this API.
 
-   
 **Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
@@ -294,7 +315,9 @@ Change password
    }
 
 both old and new fields are mandatory. **Description**: Changes the
-password of a user. **Returns**:
+password of a user. 
+
+**Returns**:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 401: Credentials supplied in the ‘authorization’ header are
@@ -304,24 +327,12 @@ password of a user. **Returns**:
 -  Code 400: the old password is invalid
 -  Code 200: OK
 
-Test if a username already exists
----------------------------------
-
-**Not yet implemented**\  ``GET /user/:username/exists`` 
-
-**Headers**: See the :doc:`/RestAPI/general_remarks` 
-
-**Returns**:
-
--  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
--  Code 401: Credentials supplied in the ‘authorization’ header are
-   invalid or missing
-
 Follow and Unfollow Users
 =========================
 
 Create a friendship relation
 ----------------------------
+
 ``POST /follow/:username``
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
