@@ -364,10 +364,31 @@ Get all following
 The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
 protected.
 
+
 **Returns**: 
 
 -  Code 200: (OK) response code if the operation is successfull
--  Code 404: (NOT FOUND) response if the user does not have any friend relationships
+Returns an empty collection instead of error 404 if elements not exist.
+
+Get following by username
+-------------------------
+
+``GET /following/:username``
+
+**Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
+
+**Parameters**\ 
+
+-  **username**: the username of the user who wants to get the following user
+
+**Description**: This API returns a list of users that are followed by the user passed in parameter.
+The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
+protected.
+
+**Returns**: 
+
+-  Code 200: (OK) response code if the operation is successfull
+Returns an empty collection instead of error 404 if elements not exist.
 
 Get all followers
 -----------------
@@ -377,6 +398,27 @@ Get all followers
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 
 **Description**: This API returns the list of followers.
+The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
+protected.
+This API supports filter criteria, sorting, pagination
+
+**Returns**: 
+
+-  Code 200: (OK) response code if the operation is successful
+-  Code 404: (NOT FOUND) response if the user does not have any friend relationships
+
+Get followers by username
+-------------------------
+
+``GET /followers``
+
+**Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
+
+**Parameters**\ 
+
+-  **username**: the username of the user who wants to get the followers user.
+
+**Description**: This API returns the list of followers by the username passed in parameter. If username is null, returns the list of followers by the current one (the one that made the call).
 The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
 protected.
 This API supports filter criteria, sorting, pagination
