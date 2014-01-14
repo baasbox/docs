@@ -418,7 +418,7 @@ Get followers by username
 
 -  **username**: the username of the user who wants to get the followers user.
 
-**Description**: This API returns the list of followers by the username passed in parameter. If username is null, returns the list of followers by the current one (the one that made the call).
+**Description**: This API returns the list of followers by the username passed in parameter.
 The method returns in its data property an array filled with the user profiles representing its "friends". Each profile will contain the ``visibleByFriends`` data which would be otherwise
 protected.
 This API supports filter criteria, sorting, pagination
