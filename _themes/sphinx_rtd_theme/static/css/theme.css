@@ -299,7 +299,9 @@ p,h2,h3 {
 h2,h3 {
 	page-break-after: avoid
 }
-
+h2 {
+	margin: 50px 0 0 0!important;
+}
 }
 .font-smooth,.icon: before,.bb-inline-validate.bb-inline-validate-success .bb-input-context: before,.bb-inline-validate.bb-inline-validate-danger .bb-input-context: before,.bb-inline-validate.bb-inline-validate-warning .bb-input-context: before,.bb-inline-validate.bb-inline-validate-info .bb-input-context: before,.bb-tag-input-group .bb-tag .bb-tag-remove: before,.rst-content .admonition-title: before,.rst-content h1 .headerlink: before,.rst-content h2 .headerlink: before,.rst-content h3 .headerlink: before,.rst-content h4 .headerlink: before,.rst-content h5 .headerlink: before,.rst-content h6 .headerlink: before,.rst-content dl dt .headerlink: before,.bb-alert,.rst-content .note,.rst-content .attention,.rst-content .caution,.rst-content .danger,.rst-content .error,.rst-content .hint,.rst-content .important,.rst-content .tip,.rst-content .warning,.rst-content .seealso,.btn,input[type="text"],input[type="password"],input[type="email"],input[type="url"],input[type="date"],input[type="month"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="week"],input[type="number"],input[type="search"],input[type="tel"],input[type="color"],select,textarea,.bb-tag-input-group,.bb-menu-vertical li.on a,.bb-menu-vertical li.current>a,.bb-side-nav-search>a,.bb-side-nav-search .bb-dropdown>a,.bb-nav-top a {
 	-webkit-font-smoothing: antialiased
@@ -3728,4 +3730,12 @@ img {
 }
 span[id*='MathJax-Span'] {
 	color: #404040
+}
+
+h1 {
+	margin: 40px 0 10px 0!important;	
+}
+
+h2, h3 {
+	margin: 40px 0 10px 0!important;
 }
