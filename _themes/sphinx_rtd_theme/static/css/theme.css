@@ -1729,7 +1729,7 @@ ul.icons li .icon-large: before,ul.icons li .icon-large: before {
 }
 .bb-dropdown-menu>dd.call-to-action {
 	background: #e3e3e3;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	font-weight: 500;
 	font-size: 80%
 }
@@ -2613,7 +2613,7 @@ h1,h2,h3,h4,h5,h6,legend {
 	font-weight: normal;
 	color: rgb(80,80,80);
     font-family:"FjallaOne-Regular" !important;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 }
 p {
 	color:rgb(85, 85, 85);
@@ -3084,7 +3084,7 @@ pre.literal-block {
 	padding: 0 1.618em;
 	display: block;
 	font-weight: bold;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	font-size: 80%;
 	color: #2980b9;
 	white-space: nowrap
