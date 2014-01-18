@@ -1,6 +1,6 @@
 Console
 =======
-BaasBox has an administration web console that allows to administer and
+BaasBox has a web console that allows to manage and
 control many aspects of its behavior and to perform administrative
 tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. This guide will

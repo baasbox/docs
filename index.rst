@@ -26,17 +26,21 @@ Contents:
 .. toctree::
    :maxdepth: 2   
 
-   custom_error_code
-
-.. toctree::
-   :maxdepth: 2   
-
    console
 
+RestAPI
+--------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   hacking
+   RestAPI/index
+
+SDK
+--------
+.. toctree::
+   :maxdepth: 3
+
+   SDK/index
 
 .. toctree::
    :maxdepth: 2   
@@ -44,21 +48,10 @@ Contents:
    tutorial 
    Download <http://www.baasbox.com/download>
 
-
-RestAPI
---------
 .. toctree::
-   :maxdepth: 3
-  
-   RestAPI/index
+   :maxdepth: 2
 
-SDK
---------
-.. toctree::
-   :maxdepth: 3
-  
-   SDK/index
-
+   hacking
 
 Indices and tables
 ==================

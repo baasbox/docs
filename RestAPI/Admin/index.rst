@@ -1,4 +1,4 @@
-ADMIN
+Admin
 -------
 .. toctree::
         :maxdepth: 6	
