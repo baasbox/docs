@@ -45,8 +45,7 @@ SDK
 .. toctree::
    :maxdepth: 2   
 
-   tutorial 
-   Download <http://www.baasbox.com/download>
+   tutorial
 
 .. toctree::
    :maxdepth: 2
