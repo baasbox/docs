@@ -184,7 +184,7 @@ To retrieve the followers the logged in user you can use this method.
 .. code-block:: objective-c
 
 	BAAUser *user = ...;
-	[user loadFollowersWithCompletion:^(NSArray *following, NSError *error) {
+	[user loadFollowersWithCompletion:^(NSArray *followers, NSError *error) {
 		if (error) {
 			// deal with retrieved list
 		} else {
