@@ -196,16 +196,16 @@ To retrieve the followers the logged in user you can use this method.
 Follow
 ------
 
-The currently logged in user can follow another user via this method.
+The currently logged user can follow another user via this method.
 
 .. code-block:: objective-c
 
 	BAAUser *userToBeFollowed = ...;
 	[BAAUser followUser:userToBeFollowed 
-	         completion:^(BOOL success, NSError *error) {
+	         completion:^(BAAUser *user, NSError *error) {
            
-				if (success) {
-					// update UI
+				if (error == nil) {
+					// deal with user
 				} else {
 					// show error
 				}
@@ -437,22 +437,27 @@ When you have uploaded a file you can grant access to other users. Here is the m
 .. code-block:: objective-c
 
 	BAAFile *file = ...;
-	[file grantAccess:BAAAclRegisteredType
-	       completion:^(BAAFile *updatedFile, NSError *error) {
-                
-	                    if (error == nil) { 
-							// deal with updatedFile with new ACL
-						} else {
-							// show error
-						}
-								
+	[uploadedPicture grantAccessToRole:kAclRegisteredRole
+	                            ofType:kAclReadPermission
+	                        completion:^(id object, NSError *error) {
+
+			            if (error == nil) {
+			                // ok
+			            } else {
+			               // error
+			            }
 	}];
 
-You can specify one of the following types of access:
+You can specify one of the following types of roles:
 
-* ``BAAAclAnonymousType``, publicly visible
-* ``BAAAclRegisteredType``, visible by whoever has an account on the back end
-* ``BAAAclAdministratorType``, visible only by the administrator
+* ``kAclAnonymousRole``, publicly visible
+* ``kAclRegisteredRole``, visible by whoever has an account on the back end
+* ``kAclAdministratorRole``, visible only by the administrator
 
 
+Permissions are represented by the following constants:
+
+* ``kAclReadPermission``, permission to read a file
+* ``kAclDeletePermission``, permission to delete a file
+* ``kAclUpdatePermission``, permission to update a file
 
