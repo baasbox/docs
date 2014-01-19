@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'baasbox'
-copyright = u'2013, baasbox'
+copyright = u'2013-2014, BaaBox'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

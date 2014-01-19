@@ -103,4 +103,6 @@ a string. Accepted parameters are:
 JSON Serialization
 ==================
 
-If you don't use one of your SDKs, when you 
+If you don't use one of your SDKs, remember that property names 
+starting with @ _ # are reserved for future usage. We suggest to name your property
+with using one of those as first character.
