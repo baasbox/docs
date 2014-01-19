@@ -14,7 +14,5 @@ REST API
         documents
         settings
         Admin/index 
-	Users/index
-	Tutorial/index
-   
+	Users/index  
                

@@ -79,7 +79,7 @@ is:
 For bb\_code see [[here\|Custom Error Code]]
 
 **Query Criteria**\  Some APIs allow to pass query criteria via
-QueryString. Accepted parameters are:
+a string. Accepted parameters are:
 
 -  **where**: set a filter criteria in a SQL-like fashion (i.e.:
    “color=’yellow’ or address.city=’rome’”). It is possible to use the
@@ -98,3 +98,9 @@ QueryString. Accepted parameters are:
 /document/mycoolestcollection/count?where=color%3D’yellow’
 /document/mycoolestcollection/count?where=color%3D%3F&params%3dyellow
 /document/documents/count?where=color%3D%3F%20or%20color%3D%3F&params=yellow&params=cyan
+
+
+JSON Serialization
+==================
+
+If you don't use one of your SDKs, when you 
