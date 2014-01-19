@@ -5,6 +5,6 @@ SDK
 .. toctree::
 
 	iOS/index
-	Android/index
+	.. Android/index
    
                

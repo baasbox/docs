@@ -6,13 +6,10 @@ REST API
 	:maxdepth: 6
 
         general_remarks
-        users
-        collections
-        assets
-	file
-        push_notifications
+        Users/index
         documents
+        file
+        assets
+        push_notifications
         settings
         Admin/index 
-	Users/index  
-               

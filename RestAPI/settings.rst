@@ -25,7 +25,7 @@ Retrieve current settings
 
 ``GET /admin/configuration/dump.json`` 
 
-**Headers**: Please see the :doc:`general_remarks` 
+**Headers**: Please See :doc:`general_remarks` 
 
 **Parameters**: None 
 
@@ -78,7 +78,7 @@ Retrieve only one section
 
 ``GET /admin/configuration/:section`` 
 
-**Headers**: Please see the :doc:`general_remarks` 
+**Headers**: Please See :doc:`general_remarks` 
 
 **Parameters**\ 
 

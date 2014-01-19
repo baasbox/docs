@@ -16,7 +16,8 @@ documentation explains:
 -  the SDK features
 
    -  iOS SDK
-   -  Android SDK
+   .. -  Android SDK
+
 
 For a complete list of changes and new features, see
 changelog_
