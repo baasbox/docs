@@ -81,6 +81,11 @@ Anonymous users can retrieve documents
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
 
+<<<<<<< HEAD
+=======
+The @ID field is the unique ID of the document.
+
+>>>>>>> develop
 Delete a document
 -----------------
 
