@@ -18,7 +18,7 @@ tutorial you need a Mac with the following tools installed:
 In this tutorial you will learn how to integrate BaasBox into an
 existing application. The application is called DearDiary and it’s a
 personal diary. You can download the starter project from here:
-`DearDiary-starter.zip <http://www.baasbox.com/doc/tutorial/DearDiary-starter.zip/>`_
+`DearDiary-starter.zip <http://www.baasbox.com/?wpdmact=process&did=OS5ob3RsaW5r>`_
 
 Unzip and run the project to check it works as expected. It’s made of
 two components: a table view and a detail view. The first shows a list
