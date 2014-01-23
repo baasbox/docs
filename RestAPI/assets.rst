@@ -10,6 +10,7 @@ Retrieve
 
 If the asset is a file, this API retrieves the file. In
 the response header the server will indicate the file content-type.
+
 **Example**: 
 
 ``http://localhost:9000/asset/testimg``
