@@ -34,8 +34,7 @@ their password.
 
    }
 
--  **username** and **password** fields are mandatory but password may
-   be empty.
+-  **username** and **password** fields are mandatory.
 -  **visibleByTheUser** is an object whose fields are private and
    visible only by the user
 -  **visibleByFriend** is an object whose fields are visible by the user
