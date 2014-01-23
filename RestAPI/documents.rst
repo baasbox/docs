@@ -24,8 +24,6 @@ valid JSON string.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and unique ID will be returned.
 
-The @ID field is the unique ID of the document. 
-
 **NOTE on Record
 Security Level**\ 
 
@@ -63,7 +61,7 @@ The @ID field is the unique ID of the document.
 Retrieve a document
 -------------------
 
-``GET /document/:collection/ID`` 
+``GET /document/:collection`` 
 
 **Headers**: See authorization header in
 the :doc:`general_remarks` 
@@ -89,7 +87,7 @@ The @ID field is the unique ID of the document.
 Delete a document
 -----------------
 
-``DELETE /document/:collection/ID`` 
+``DELETE /document/:collection`` 
 
 **Headers**: See authorization header in
 the :doc:`general_remarks` 
