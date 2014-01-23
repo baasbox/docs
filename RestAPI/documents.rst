@@ -24,6 +24,8 @@ valid JSON string.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and unique ID will be returned.
 
+The @ID field is the unique ID of the document. 
+
 **NOTE on Record
 Security Level**\ 
 
@@ -56,6 +58,7 @@ users, can modify it.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
 
+The @ID field is the unique ID of the document.
 
 Retrieve a document
 -------------------
@@ -81,11 +84,8 @@ Anonymous users can retrieve documents
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
 
-<<<<<<< HEAD
-=======
 The @ID field is the unique ID of the document.
 
->>>>>>> develop
 Delete a document
 -----------------
 
@@ -226,8 +226,8 @@ the following ID **a1b45ea7-7005-4f24-ae5e-76a6840ab856**
 
 Let's say we want to modify the title
 
-Making a **PUT** request to this URL
-``/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.title`` and with the
+Making a **PUT** request to the following URL
+/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.title and with the
 following request body
 
 ::
@@ -241,6 +241,7 @@ Will return the following JSON
     {
     "result": "ok",
     "data": {
+        "@ID": "#24:0",
         "@version": 3,
         "@class": "posts",
         "title": "this is the new title",
@@ -257,7 +258,7 @@ A post without tags is not a real post so let's add it as an array of
 strings:
 
 Making a **PUT** request to the following URL
-``/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.tags`` and with the
+/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.tags and with the
 following request body
 
 ::
@@ -271,6 +272,7 @@ Will return the following JSON:
     {
     "result": "ok",
     "data": {
+        "@ID": "#24:0",
         "@version": 4,
         "@class": "posts",
         "title": "this is the new title",
@@ -290,7 +292,7 @@ As you can see a tags field was added to the object.
 Now let's say that we want to add an element to this tags array:
 
 Making a **PUT** request to the following URL
-``/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.tags[3]`` with the
+/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.tags[3] with the
 following request body
 
 ::
@@ -304,6 +306,7 @@ Will return:
     {
         "result": "ok",
         "data": {
+            "@ID": "#24:0",
             "@version": 5,
             "@class": "posts",
             "title": "this is the new title",
@@ -322,7 +325,7 @@ Will return:
 And what if we want to modify a tag at a specific index?
 
 Making a **PUT** request to the following URL
-``/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.tags[3]`` with the
+/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.tags[3] with the
 following request body
 
 ::
@@ -336,6 +339,7 @@ Will return
     {
     "result": "ok",
     "data": {
+        "@ID": "#24:0",
         "@version": 6,
         "@class": "posts",
         "title": "this is the new title",
@@ -355,7 +359,7 @@ Will return
 And what about nested objects:
 
 Making a **PUT** request to the following URL
-``/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.author`` with the
+/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.author with the
 following request body
 
 ::
@@ -369,6 +373,7 @@ Will return
     {
     "result": "ok",
     "data": {
+        "@ID": "#24:0",
         "@version": 9,
         "@class": "posts",
         "title": "this is the new title",
@@ -396,7 +401,7 @@ The **author** object was added and we can also modify its inner
 properties
 
 Making a **PUT** request to the following URL
-``/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.author/.roles[3]``
+/document/posts/a1b45ea7-7005-4f24-ae5e-76a6840ab856/.author/.roles[3]
 with the following request body
 
 {"data":"optimus prime"}
@@ -408,6 +413,7 @@ Will return:
     {
     "result": "ok",
     "data": {
+        "@ID": "#24:0",
         "@version": 10,
         "@class": "posts",
         "title": "this is the new title",
