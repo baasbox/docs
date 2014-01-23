@@ -102,6 +102,7 @@ Resize image
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server error occurred
+-  Code 503: the server is too busy, operation not performed.
 -  Code 403: the user is not an Admin
 -  Code 404: asset not found
 -  Code 200: ok and returns the image resized
