@@ -36,7 +36,7 @@ Once you have connected to a social network you can use any client
 library to obtain the OAuth tokens for users account, and store them
 with the social API provided by BaasBox.
 
-You can find an application example and tutorial at: :doc:`/RestAPI/Tutorial/social_login_tutorial`
+You can find an application example and tutorial `here http://www.baasbox.com/social-login/`_:
 
 API documentation
 -----------------
@@ -102,11 +102,11 @@ Url parameters
 Parameters:
 
 -  oauth\_token: the **oauth\_token** obtained after user authentication
-   and authorization with a client library (see example at :doc:`social_login_tutorial`)
+   and authorization with a client library (see example `here http://www.baasbox.com/social-login/`_:)
 
 -  oauth\_secret: the **oauth\_secret** obtained after user
    authentication and authorization with a client library (see example
-   at :doc:`social_login_tutorial`)
+   `here http://www.baasbox.com/social-login/`_:)
 
 This method allows to login into the BaasBox app using the tokens
 obtained by a social network client library. If the user has already
@@ -119,7 +119,7 @@ the social network profile and they will be stored inside the user
 object. A username will be uniquely generated (to prevent username
 collision). Therefore after a succesfull login, if necessary, the client
 app may ask for a username and update the user object accordingly.(See
-the user update section of the documentation :doc:`social_login_tutorial`)
+the example `here http://www.baasbox.com/social-login/`_:)
 
 Returns:
 
@@ -144,11 +144,10 @@ Url parameters
 :socialNetwork could be **facebook** or **google**
 
 Parameters: oauth\_token: the **oauth\_token** obtained after user
-authentication and authorization with a client library (see example at
-:doc:`social_login_tutorial`)
+authentication and authorization with a client library (see example `here http://www.baasbox.com/social-login/`_:)
 
 oauth\_secret: the **oauth\_secret** obtained after user authentication
-and authorization with a client library (see example at :doc:`social_login_tutorial`)
+and authorization with a client library (see example `here http://www.baasbox.com/social-login/`_:)
 
 This method allows an existing user to connect their account to a
 specified social network.

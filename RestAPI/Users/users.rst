@@ -408,7 +408,7 @@ This API supports filter criteria, sorting, pagination
 Get followers by username
 -------------------------
 
-``GET /followers``
+``GET /followers/:username``
 
 **Headers**: See authorization header in the :doc:`/RestAPI/general_remarks`
 

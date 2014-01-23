@@ -15,8 +15,7 @@ valid JSON string. **Returns**:
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and unique ID will be returned.
 
-The @ID field is the unique ID of the document. **NOTE on Record
-Security Level**\  By default documents are private and visible only to
+**NOTE on Record Security Level**\  By default documents are private and visible only to
 the user who has created them. The owner can update and delete
 documents. Their friends (feature not fully implemented) can only see
 the documents. All other users but the admins cannot have any kind of
@@ -40,8 +39,6 @@ users, can modify it. **Body payload**\  Any valid JSON string.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
 
-The @ID field is the unique ID of the document.
-
 Retrieve a document
 ===================
 
@@ -60,8 +57,6 @@ backoffice users can retrieve it.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
 
-The @ID field is the unique ID of the document.
-
 Retrieve a document only by its ID
 ==================================
 
@@ -76,8 +71,6 @@ document **Returns**:
    error occurred
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
-
-The @ID field is the unique ID of the document.
 
 Delete a document
 =================

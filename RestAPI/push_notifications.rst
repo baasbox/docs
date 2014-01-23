@@ -20,7 +20,7 @@ API
 
 **Parameters**\ 
 
--  **os**: the device operating system. This can be both ios or android.
+-  **os**: the device operating system. This can be either ``ios`` or ``android``.
    Other platforms are not supported yet
 -  **deviceId:** the unique identifier of the device. This identifier is
    released by Google and Apple. Please read the tutorial to know how to

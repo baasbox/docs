@@ -1,5 +1,5 @@
-File
-====
+Files
+=====
 
 Available since version 0.7.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,7 +22,7 @@ Create a file
 
 ``POST /file`` 
 
-**Headers**: See the :doc:`general_remarks` 
+**Headers**: See :doc:`general_remarks` 
 and:
 
   -  content-type: multipart/form-data
@@ -54,7 +54,7 @@ Delete a file
 
 **Headers**:
 
--  See the :doc:`general_remarks` 
+-  See :doc:`general_remarks` 
 -  User must have the right to delete the file
 
 **Description**: This API deletes a given file
@@ -79,7 +79,7 @@ Stream a file
 
 **Headers**:
 
--  See the :doc:`general_remarks` 
+-  See :doc:`general_remarks` 
 
 -  User must have the right to read the file
 
@@ -118,7 +118,7 @@ Retrieve a file details
 
 **Headers**:
 
--  See the :doc:`general_remarks` 
+-  See :doc:`general_remarks` 
 -  User must have the right to read the file
 
 **Description**: Returns revenant data about a stored file:
@@ -150,7 +150,7 @@ Retrieve only the attached data for a given file:
 
 **Headers**:
 
--  See the :doc:`general_remarks` 
+-  See :doc:`general_remarks` 
 -  User must have the right to read the file
 
 **Description**: Returns the attached data related to a given file. IE:
@@ -175,7 +175,7 @@ Retrieves details of all the stored files
 
 **Headers**:
 
--  See the :doc:`general_remarks` 
+-  See :doc:`general_remarks` 
 -  User must have the right to read the files
 
 **Description**: Returns relevant data about all the stored files.

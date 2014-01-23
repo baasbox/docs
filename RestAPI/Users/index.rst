@@ -1,4 +1,4 @@
-USERS
+Users
 -------
 .. toctree::
         :maxdepth: 6
