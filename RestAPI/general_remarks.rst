@@ -70,7 +70,7 @@ is:
 
 		"result": "error",
 
-		"bb_code": "",
+		"bb_code": xxx,
 
 		"message": "...a message explaining the problem in plain English...",
 
