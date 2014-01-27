@@ -22,7 +22,7 @@ Admin APIs to manage users
 Admin APIs to manage follow/unfollow
 ====================================
 
-**Create a follow relationship **: ``POST /admin/Fw/:follower/to/:tofollow``
+**Create a follow relationship**: ``POST /admin/Fw/:follower/to/:tofollow``
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
@@ -42,7 +42,7 @@ Admin APIs to manage follow/unfollow
 -  Code 400: cannot create followship relationship with internal users
 -  Code 200: OK
    
-**Delete a follow relationship **: ``DELETE /admin/Fw/:follower/to/:tofollow``
+**Delete a follow relationship**: ``DELETE /admin/Fw/:follower/to/:tofollow``
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
