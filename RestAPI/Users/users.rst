@@ -128,6 +128,26 @@ a new login must be performed. The token expiration does not delete the
 device ID info so the user may continue to receive push notifications.
 
 
+User Logout 
+------------
+
+``POST /logout`` 
+
+**Headers**: X-BB-SESSION: The Session Token 
+
+  -  X-BB-SESSION must contain the session token provided by the login API
+
+**Description**: This API allows a user to logout from the App
+
+**Returns**:
+
+-  Code 500: the server cannot fulfill the request, an internal server
+   error occurred
+-  Code 400: The session token is malformed or expired, the server
+   cannot retrieve the App Code associated
+-  Code 20O: OK. the user has successfully logged out.
+
+
 ``POST /logout/:deviceId`` 
 
 **Headers**: X-BB-SESSION: The Session Token 
@@ -148,7 +168,7 @@ the specified device.
    error occurred
 -  Code 400: The session token is malformed or expired, the server
    cannot retrieve the App Code associated
--  Code 204: NO CONTENT. the user has successfully logged out. The
+-  Code 20O: OK. the user has successfully logged out. The
    associated device has been removed.
 
 Password Reset
