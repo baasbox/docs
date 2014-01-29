@@ -1,7 +1,0 @@
-Contents:
-
-ADVANCED
--------
-.. toctree::
-
-      hacking
