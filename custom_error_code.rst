@@ -13,3 +13,4 @@ These are custom error code made by BaasBox
    administration console and check the settings
 -  50302: The server cannot resolve the host name. HINT: check your
    internet connection
+-  50303: Could not send push notifications. HINT: Check your API Key(Google)
