@@ -3,7 +3,7 @@ Custom Error Code
 
 Custom Error Code 
 
-These are custom errore code made by BaasBox
+These are custom error code made by BaasBox
 
 -  40001: You are attempting to update a database object with older
    data. Versions is not the same
