@@ -799,6 +799,18 @@ curl -X PUT http://localhost:9000/me/password \
 TO BE IMPLEMENTED
 ```
 
+```java
+BaasUser current = BaasUser.current();
+current.changePassword("newpassword",new BaasHandler<Void>() {
+  public Void handle(BaasHandler<Void> res) {
+    if(res.isSuccess()) {
+      Log.d("LOG", "New password updated, you should relogin");
+    } else {
+      Log.e("LOG","error",res.error());
+    }
+  }
+});
+```
 > Example of response
 
 ```json
@@ -1134,6 +1146,19 @@ curl http://localhost:9000/user/cesare/password/reset \
 TO BE IMPLEMENTED
 ```
 
+```java
+BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if(res.isSuccess()) {
+      Log.d("LOG","Password reset has been requested");
+    } else{
+      Log.e("LOG","Error",res.error());
+    }
+  }
+};
+```
+
 > Example of error
 
 ```json
@@ -1177,6 +1202,103 @@ Parameter | Description
 This API works only if there is an `email` field (populated with a valid email address) in the `visibleByTheUser` field of the user profile
 </aside>
 
+## Fetch a user profile
+
+> example of request to get a user profile
+
+```shell
+curl http://localhost:9000/user/cesare \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+```java
+BaasUser.fetch("cesare",new BaasHandler<BaasUser>() {
+  @Override
+  public void handle(BaasResult<BaasUser> res) {
+    if(res.isSuccess()){
+      BaasUser user = res.value();
+      Log.d("LOG","The user: "+user);
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
+```
+
+> Example of response
+
+```json
+{"result": "ok",
+ "data": {
+ "user" : {
+ 
+ },
+ "visibleByFriend": {},
+ "visibleByRegisteredUsers": {},
+ "visibleByAnonymousUsers": {}
+ }}
+```
+
+
+
+``GET /user/:username``
+
+Allows to retrieve information about a user profile.
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user. Mandatory.
+
+## Fetch all users
+
+> example of request to get all users
+
+```shell
+curl http://localhost:9000/users \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+
+
+```java
+BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
+  @Override
+  public void handle(BaasResult<List<BaasUser>> res) {
+    if(res.isSuccess()) {
+      for(BaasUser u: res.value()) {
+        Log.d("LOG", "The user is: "+u.getName());
+      }
+    } else {
+      Log.e("LOG","error");
+    }
+  }
+});
+```
+
+> Example of response
+
+```json
+{"result": "ok",
+ "data": [
+   {"user" : {
+ 
+     },
+    "visibleByFriend": {},
+    "visibleByRegisteredUsers": {},
+    "visibleByAnonymousUsers": {}
+   },
+   {"user" : {
+ 
+     },
+    "visibleByFriend": {},
+    "visibleByRegisteredUsers": {},
+    "visibleByAnonymousUsers": {}
+   }   
+ ]
+}
+```
+
+``GET /users``
 
 
 # Hacking
