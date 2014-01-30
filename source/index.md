@@ -4,6 +4,7 @@ title: API Reference
 language_tabs:
   - shell: cURL
   - objective_c: iOS
+  - java: Android
 
 toc_footers:
  - <a href='#'></a>
@@ -447,7 +448,18 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-EXAMPLE OF SIGNUP IN JAVA
+BaasUser user = BaasUser.withUserName("andrea");
+user.setPassword("password");
+user.signup(new BaasHandler<BaasUser>(){
+  @Override
+  public void handle(BaasResult<BaasUser> result){
+    if(result.isSuccess()) {
+      Log.d("LOG","Current user is: "+result.value());
+    } else {
+      Log.e("LOG","Show error",result.error());
+    }
+  }
+});
 ```
 
 > Sample response when a user is created
@@ -515,6 +527,20 @@ BAAClient *client = [BAAClient sharedClient];
 }];
 ```
 
+```java
+BaasUser user = BaasUser.withUserName("andrea");
+user.setPassword("password");
+user.login(new BaasHandler<BaasUser>() {
+  @Override
+  public void handle(BaasResult<BaasUser> result) {
+    if(result.isSucces()) {
+      Log.d("LOG", "The user is currently logged in: "+result.value());
+    } else {
+      Log.e("LOG","Show error",result.error());
+    }
+  }
+});
+```
 > Sample response when a user is logged in
 
 ```json
@@ -571,6 +597,19 @@ curl -X POST http://localhost:9000/logout \
 }];
 ```
 
+```java
+BaasUser.current().logout(new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> result) {
+    if(result.isSuccess()) {
+      Log.d("LOG", "Logged out: "+(BaasUser.current() == null));
+    } else{
+      Log.e("LOG","Show error",result.error());
+    }
+  };
+});
+```
+
 > Sample response when a user logs out
 
 ```json
@@ -611,6 +650,20 @@ curl http://localhost:9000/me \
 }];
 ``` 
 
+```java
+BaasUser.current().refresh(new BaasHandler<BaasUser>() {
+  @Override
+  public void handle(BaasResult<BaasUser> result) {
+    if(result.isSuccess()) {
+      BaasUser user = result.value();
+      JsonObject data = user.getScope(Scope.PRIVATE);
+      Log.d("LOG","Log some private data: "+data);
+    } else {
+      Log.e("LOG","error:",result.error());
+    }
+  }
+});
+```
 > Sample response 
 
 ```json
@@ -657,6 +710,20 @@ curl -X PUT http://localhost:9000/me \
 TO BE IMPLEMENTED
 ```
 
+```java
+BaasUser user = BaasUser.current();
+user.getScope(Scope.PRIVATE).putString("property","value");
+user.save(new BaasHandler<BaasUser>() {
+  @Override
+  public void handle(BaasResult<BaasUser> res) {
+    if(res.isSuccess()) {
+      Log.d("LOG", "User data has been saved");
+    } else {
+      Log.e("LOG", "error,res.error());
+    }
+  }
+});
+```
 
 
 > Sample JSON response
@@ -787,6 +854,21 @@ BAAUser *user = ...; // Instance of user to be followed
          }];
 ```
 
+```java
+BaasUser user = BaasUser.withUsername("cesare");
+user.follow(new BaasHandler<BaasUser>() {
+
+  @Override
+  public void handle(BaasResult<BaasUser> res) {
+    if(res.isSuccess()) {
+     JsonObject profile = res.value().getScope(Scope.FRIEND);
+     Log.d("LOG", "It's profile "+profile);
+    } else{
+      // there was an error
+    }
+  } 
+});
+```
 > Example response
 
 ```json
@@ -855,6 +937,20 @@ BAAUser *user = ...; // Instance of user to be unfollowed
          }];
 ```
 
+```java
+BaasUser.withUserName("cesare").unfollow(
+  new BaasHandler<BaasUser>() {
+    @Override
+    public void handle(BaasResult<BaasUser> res) {
+      if(res.isSuccess()) {
+        JsonObject data = res.value().getScope(Scope.FRIEND);
+        Log.d("LOG", "No more friend data:"+(data==null));
+      } else {
+        // there was an error
+      }
+    }
+  });
+```
 > Example of response
 
 ```json
@@ -899,6 +995,21 @@ BAAUser *user = ... // user representing "cesare"
             }
             
         }];
+```
+
+```java
+BaasUser user = ... // the user representing "cesare"
+
+user.following(new BaasHandler<List<BaasUser>>() {
+  @Override
+  public void handle(BaasResult<List<BaasUser>> res) {
+    if(res.isSuccess()){
+      for(BaasUser u: res.value()) {
+        Log.d("LOG","Cesare is follwing: "+u.getName());
+      }
+    }
+  }
+});
 ```
 
 > Example of response
@@ -959,6 +1070,22 @@ BAAUser *user = ... // user representing "cesare"
             
         }];
 ```
+
+```java
+BaasUser user = ... // the user representing "cesare"
+
+user.followers(new BaasHandler<List<BaasUser>>() {
+  @Override
+  public void handle(BaasResult<List<BaasUser>> res) {
+    if(res.isSuccess()){
+      for(BaasUser u: res.value()) {
+        Log.d("LOG", u.getName()+ " is following cesare");
+      }
+    }
+  }
+});
+```
+
 
 > Example of response with "cesare"'s followers
 
