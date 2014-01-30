@@ -402,6 +402,7 @@ These are custom error codes specific to BaasBox
 ```shell
 curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
 	 -H X-BB-SESSION:f083f676-65d0-45bd-bfe5-e876ef3f659e
+	
 ```
 
 ```objective_c
@@ -1442,7 +1443,7 @@ Creates a new collection. The user calling this API must be admin or belong to t
 
 Parameter | Description
 --------- | -----------
-**collectionName** | The name of the new collection. Mandatory.
+**collection-name** | The name of the new collection. Mandatory.
 
 
 
@@ -1480,10 +1481,393 @@ Deletes an existing collection with the name specified in the URL. The user call
 
 Parameter | Description
 --------- | -----------
-**collectionName** | The name of the collection to be deleted. Mandatory.
+**collection-name** | The name of the collection to be deleted. Mandatory.
 
 <aside class="warning">
 	The deletion of a collection deletes all the objects belonging to that. 
+</aside>
+
+
+
+## Documents
+
+A document belongs to a [Collection](#collections34). You can create, read, update and delete a document, provided you have access to it.
+Here are the APIs.
+
+## Create a document
+
+> Example of request to create a document.
+
+```shell
+curl -X POST http://localhost:9000/document/mycollection \
+	 -d '{"title" : "My new post title", "body" : "Body of my post."}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes post is an instance of Post, which subclasses BAAObject with properties "title" and "body".
+Post *post = [[Post alloc] init];
+post.title = @"My new post title";
+post.body = @"Body of my post.";
+[post saveObjectWithCompletion:^(Post *p, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"saved post is %@", p)
+    } else {
+        // deal with error
+    }
+    
+}];
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:0",
+    "@version": 2,
+    "@class": "mycollection",
+    "title": "My new post title",
+    "body": "Body of my post.",
+    "id": "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+    "_creation_date": "2014-01-30T21:13:16.016+0100",
+    "_author": "cesare"
+  },
+  "http_code": 200
+}
+```
+
+`POST /document/:collection-name`
+
+Creates a document in the collection specified in the parameter. The collection must have been created in advance. See [here](#create-a-new-collection).
+The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins) cannot have any kind of access to those documents.
+
+Parameter | Description
+--------- | -----------
+**collection-name** | The name of the collection. Mandatory.
+ | A valid JSON as the body of the POST call. Mandatory.
+
+
+
+
+
+
+
+
+## Retrieve a document
+
+> Example of request to retrieve a specific document
+
+```shell
+curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
+ 	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assuming Post is a subclass of BAAObject
+[Post getObjectWithId:@"090dd688-2e9a-4dee-9afa-aad72a1efa93"
+           completion:^(Post *post, NSError *error) {
+               
+               if (error == nil) {
+                   NSLog(@"Post is %@", post);
+               } else {
+                   // deal with error
+               }
+               
+           }];
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:0",
+    "@version": 2,
+    "@class": "mycollection",
+    "title": "My new post title",
+    "body": "Body of my post.",
+    "id": "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+    "_creation_date": "2014-01-30T21:13:16.016+0100",
+    "_author": "cesare"
+  },
+  "http_code": 200
+}
+```
+
+
+`GET /document/:collection/:ID`
+
+Retrieves the document in the collection specified with the ID provided as parameter. 
+Only the owner of the document (besides his friends and users with admin role) can retrieve it.
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+**ID** | The unique ID of the document. Mandatory.
+
+
+
+
+## Modify a document
+
+> Example of request to modify a document.
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
+	 -d '{"title" : "My new post title", "body" : "New body of post.", "tags" : "tag1"}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes post is an instance of Post, which subclasses BAAObject with properties "title", "body" and "tags".
+Post *post = [[Post alloc] init];
+post.title = @"My new post title";
+post.tags = @"tag1"
+post.body = @"Body of my post.";
+[post saveObjectWithCompletion:^(Post *p, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"saved post is %@", p)
+    } else {
+        // deal with error
+    }
+    
+}];
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:0",
+    "@version": 3,
+    "@class": "mycollection",
+    "title": "My new post title",
+    "body": "New body of post.",
+    "tags": "tag1",
+    "id": "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+    "_creation_date": "2014-01-30T21:13:16.016+0100",
+    "_author": "cesare"
+  },
+  "http_code": 200
+}
+```
+
+`PUT /document/:collection/:ID`
+
+Updates the document with the ID provided in the specified collection. 
+Only the owner of the document (besides the admin and backoffice users), can call this API.
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+**ID** | The unique ID of the document. Mandatory.
+  | A valid JSON as the body of the PUT. 
+
+
+<aside class="warning">
+	The document is fully replaced with the new content. 
+</aside>
+
+
+
+## Delete a document
+
+> Example of request to delete a document
+
+```shell
+curl -X DELETE http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes post is an instance of Post, which subclasses BAAObject 
+[post deleteObjectWithCompletion:^(BOOL success, NSError *error) {
+    
+    if (success) {
+        NSLog(@"object deleted");
+    } else {
+        // deal with error
+    }
+    
+}];
+```
+
+```java
+TODO
+```
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`DELETE /document/:collection/:ID`
+
+Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (besides the admin or backoffice users) can delete it.
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+**ID** | The unique ID of the document. Mandatory.
+
+
+
+## Count documents
+
+> Example of request to count documents in a collection
+
+```shell
+curl http://localhost:9000/document/mycollection/count \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT IMPLEMENTED
+```
+
+```java
+TODO
+```
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "count": 1
+  },
+  "http_code": 200
+}
+```
+
+`GET /document/:collection/count`
+
+Returns the number of documents that the **user can red** in a collection. 
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read and therefore are not included in the count.
+</aside>
+
+
+
+
+
+
+
+## Retrieve documents 
+
+> Example of request to retrieve a list of documents using default pagination
+
+```shell
+curl http://localhost:9000/document/mycollection \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+	
+// Version with pagination
+curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes Post as a subclass of BAAObject
+[Post getObjectsWithCompletion:^(NSArray *posts, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"Posts are %@", posts);
+    } else {
+        // deal with error
+    }
+    
+}];
+
+// Version with pagination
+NSDictionary *parameters = @{kPageNumber : @0,
+                             kPageSize : @20};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+
+                }];
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "@rid": "#25:1",
+      "@version": 5,
+      "@class": "mycollection",
+      "title": "My new post title",
+      "body": "Body of my post.",
+      "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+      "_creation_date": "2014-01-30T22:22:36.036+0100",
+      "_author": "cesare"
+    },
+	{
+      "@rid": "#26:1",
+      "@version": 5,
+      "@class": "mycollection",
+      "title": "My second post title",
+      "body": "Body of my second post.",
+      "id": "af1236fe-c8bs-4r6f-866b-e4cnkutd8636",
+      "_creation_date": "2014-01-30T22:22:38.031+0100",
+      "_author": "cesare"
+    }
+  ],
+  "http_code": 200
+}
+```
+
+`GET /document/:collection`
+
+Returns the documents that the **user can read** in a collection. This API supports [pagination](#pagination)
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read and therefore are not included in the result.
 </aside>
 
 
@@ -1500,6 +1884,81 @@ Parameter | Description
 
 
 
+
+## Grant permissions on a Document
+
+> Example of request to grant read access to user "a" on document "090dd688"
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT YET IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+
+> Example of request to grant update access to all registered users on a document
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/registered \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT YET IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /document/:collection/:id/:action/user/:username`
+
+`PUT /document/:collection/:id/:action/role/:rolename`
+
+Grants permission on a document. You can set permissions for a single user or a role name.
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+**id** | The ID of the document. Mandatory.
+**action** | The grant you want to assign. One of: 	“read”, “update”, “delete”, “all”. Mandatory.
+**username** | The username of the user to which you want to assign the grant
+**rolename** | The name of role to which you want to grant the permission. One of: "anonymous", "registered", "administrator"
+
+
+
+
+## Revoke permissions on a Document
+
+
+TBW
+
+
+
+
+
+
+## Update a Document's field
+
+
+TBW
 
 
 
