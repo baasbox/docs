@@ -719,7 +719,7 @@ user.save(new BaasHandler<BaasUser>() {
     if(res.isSuccess()) {
       Log.d("LOG", "User data has been saved");
     } else {
-      Log.e("LOG", "error,res.error());
+      Log.e("LOG", error,res.error());
     }
   }
 });
