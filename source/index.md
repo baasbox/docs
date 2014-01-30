@@ -445,6 +445,8 @@ Some APIs allow to specify query criteria. Accepted parameters are:
    mandatory if pagination is used (see below)
 -  **page**: a 0 based index indicating the page requested
 -  **recordPerPage**: the number of records per page
+-  **fields**: allow to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exaustive list of available functions is available at https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators, meanwhile the explanation of how to specify projections is at https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections
+-  **groupBy**: allow to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
 
 **Example of valid calls**:
 
