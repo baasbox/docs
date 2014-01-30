@@ -1238,6 +1238,7 @@ Parameter | Description
 This API works only if there is an `email` field (populated with a valid email address) in the `visibleByTheUser` field of the user profile
 </aside>
 
+
 ## Fetch a user profile
 
 > example of request to get a user profile
@@ -1318,8 +1319,8 @@ Parameter | Description
 > example of request to get a list users
 
 ```shell
-curl http://localhost:9000/user/a \
-	-H X-BAASBOX-APPCODE:1234567890
+curl http://localhost:9000/users \
+	 -H X-BB-SESSION:f083f676-65d0-45bd-bfe5-e876ef3f659e
 ```
 
 ```objective_c
@@ -1396,6 +1397,112 @@ BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
 ``GET /users``
 
 Allows to retrieve a list of users. This API supports [pagination](#pagination) and [query criteria](#query-criteria).
+
+
+
+
+## Collections
+
+A collection is a sort of bucket where you can store documents. Documents are schema-less, which means that there are no constraints on their fields definition or data type.
+Another very important feature to know about collections is that the records stored have a per-user-record-security-level, meaning that each record can be accessed only by the user who created it. There are APIs to grant or revoke privileges to other users. TODO link
+
+
+## Create a new Collection
+
+> Example of request to create a collection
+
+```shell
+curl -X POST http://localhost:9000/admin/collection/mycollection \
+	 -H X-BB-SESSION:53331bd8-3dbb-40af-8bcb-252ac908f142
+```
+
+```objective_c
+TO BE IMPLEMENTED
+```
+
+```java
+TO DO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 201
+}
+```
+
+``POST /admin/collection/:collection-name``
+
+Creates a new collection. The user calling this API must be admin or belong to the admin role.
+
+Parameter | Description
+--------- | -----------
+**collectionName** | The name of the new collection. Mandatory.
+
+
+
+
+## Delete a Collection
+
+> Example of request to delete a collection
+
+```shell
+curl -X DELETE http://localhost:9000/admin/collection/mycollection \
+	 -H X-BB-SESSION:53331bd8-3dbb-40af-8bcb-252ac908f142
+```
+
+```objective_c
+NOT SUPPORTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`DELETE /admin/collection/:collection-name`
+
+Deletes an existing collection with the name specified in the URL. The user calling this API must be admin or belong to the admin role.
+
+Parameter | Description
+--------- | -----------
+**collectionName** | The name of the collection to be deleted. Mandatory.
+
+<aside class="warning">
+	The deletion of a collection deletes all the objects belonging to that. 
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Hacking
 
