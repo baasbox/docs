@@ -395,6 +395,42 @@ These are custom error codes specific to BaasBox
 -  50302: The server cannot resolve the host name. HINT: check your
    internet connection 
 
+## Pagination
+
+> Example of paginated query
+
+```shell
+curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
+	 -H X-BB-SESSION:f083f676-65d0-45bd-bfe5-e876ef3f659e
+```
+
+```objective_c
+NSDictionary *parameters = @{kPageNumber : @0,
+                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+[BAAUser loadUsersWithParameters:parameters
+                      completion:^(NSArray *users, NSError *error) {
+                          
+						  if (error == nil) {
+                          	NSLog(@"users are %@", users);
+					  	  } else {
+							// deal with error
+					      }
+                          
+                      }];
+```
+
+```java
+TODO
+```
+
+Some queries support pagination. There are two important parameters in paginated calls.
+
+Parameter | Description
+--------- | -----------
+**page** | O indexed page number. Optional
+**recordsPerPage** | Number of elements to be retrieved per page. Optional
+
+
 
 ## Query Criteria
 
@@ -1139,7 +1175,7 @@ Parameter | Description
 
 ```shell
 curl http://localhost:9000/user/cesare/password/reset \
-	-H X-BAASBOX-APPCODE:1234567890
+	 -H X-BAASBOX-APPCODE:1234567890
 ```
 
 ```objective_c
@@ -1207,12 +1243,29 @@ This API works only if there is an `email` field (populated with a valid email a
 > example of request to get a user profile
 
 ```shell
-curl http://localhost:9000/user/cesare \
-	-H X-BAASBOX-APPCODE:1234567890
+curl http://localhost:9000/user/a \
+	 -H X-BB-SESSION:f083f676-65d0-45bd-bfe5-e876ef3f659e
+```
+
+```objective_c
+[BAAUser loadUserDetails:@"a"
+              completion:^(BAAUser *user, NSError *error) {
+    
+    if (error == nil) {
+    
+        NSLog(@"user details are %@", user);
+        
+    } else {
+    
+        // deal with error
+        
+    }
+    
+}];
 ```
 
 ```java
-BaasUser.fetch("cesare",new BaasHandler<BaasUser>() {
+BaasUser.fetch("a",new BaasHandler<BaasUser>() {
   @Override
   public void handle(BaasResult<BaasUser> res) {
     if(res.isSuccess()){
@@ -1228,15 +1281,21 @@ BaasUser.fetch("cesare",new BaasHandler<BaasUser>() {
 > Example of response
 
 ```json
-{"result": "ok",
- "data": {
- "user" : {
- 
- },
- "visibleByFriend": {},
- "visibleByRegisteredUsers": {},
- "visibleByAnonymousUsers": {}
- }}
+{
+  "result": "ok",
+  "data": {
+    "user": {
+      "name": "a",
+      "status": "ACTIVE",
+	  "visibleByFriends": {"phoneNumber":"+1985478562"}},
+      "roles": [
+        {
+          "name": "registered"
+        }
+      ]
+    },
+    "signUpDate": "2014-01-24T12:13:08.008+0100"
+  }
 ```
 
 
@@ -1249,16 +1308,34 @@ Parameter | Description
 --------- | -----------
 **username** | Username of the user. Mandatory.
 
-## Fetch all users
 
-> example of request to get all users
+
+
+
+
+## Fetch users
+
+> example of request to get a list users
 
 ```shell
-curl http://localhost:9000/users \
+curl http://localhost:9000/user/a \
 	-H X-BAASBOX-APPCODE:1234567890
 ```
 
-
+```objective_c
+NSDictionary *parameters = @{kPageNumber : @0,
+                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+[BAAUser loadUsersWithParameters:parameters
+                      completion:^(NSArray *users, NSError *error) {
+                          
+						  if (error == nil) {
+                          	NSLog(@"users are %@", users);
+					  	  } else {
+							// deal with error
+					      }
+                          
+                      }];
+```
 
 ```java
 BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
@@ -1278,27 +1355,76 @@ BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
 > Example of response
 
 ```json
-{"result": "ok",
- "data": [
-   {"user" : {
- 
-     },
-    "visibleByFriend": {},
-    "visibleByRegisteredUsers": {},
-    "visibleByAnonymousUsers": {}
-   },
-   {"user" : {
- 
-     },
-    "visibleByFriend": {},
-    "visibleByRegisteredUsers": {},
-    "visibleByAnonymousUsers": {}
-   }   
- ]
+{
+  "result": "ok",
+  "data": [
+    {
+      "user": {
+        "roles": [
+          {
+            "name": "registered"
+          }
+        ],
+        "name": "cesare",
+        "status": "ACTIVE"
+      },
+      "signUpDate": "2014-01-24T11:28:09.009+0100",
+      "visibleByTheUser": {
+        "email": "cesare@email.com"
+      },
+      "visibleByFriends": {
+        "phoneNumber": "+1123456"
+      }
+    },
+    {
+      "user": {
+        "roles": [
+          {
+            "name": "registered"
+          }
+        ],
+        "name": "e",
+        "status": "ACTIVE"
+      },
+      "signUpDate": "2014-01-24T12:10:37.037+0100"
+    }
+  ],
+  "http_code": 200
 }
 ```
 
 ``GET /users``
 
+Allows to retrieve a list of users. This API supports [pagination](#pagination) and [query criteria](#query-criteria).
 
 # Hacking
+
+You can override many default value and options by providing them to the JVM. To do so, you have to use the -D parameter in this way
+
+`./start -DBAASBOX_PARAMETER=NEW_VALUE`
+
+Where `BAASBOX_PARAMETER` is the key of the parameter to override and `NEW_VALUE` is the value you want to use. 
+Please note that there is no space between the D and the parameter name. Overridable keys are:
+
+
+Key | Description | Example
+--------- | ----------- | -------------
+**http.port** |	The port used by BaasBox |	`-Dhttp.port=80`
+**https.port** |	The SSL port used by BaasBox. By default SSL is disabled |	`-Dhttp.port=443`
+**application.code** |	Your Application Code. You should override the default one and choose a very unique code |	`-Dapplication.code=Zh54re3`
+**orient.baasbox.path** |	The path of the embedded database. By default this is {BAASBOX_HOME/db/baasbox}  |	`-Dorient.baasbox.path=./mydb`
+**logger.application** |	The default level of the logger. By default is DEBUG. Possible values are ERROR, WARNING, INFO, DEBUG, TRACE |	`-Dlogger.application=INFO`
+**config.file** | 	An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` then you have to create a file named baasbox.config
+
+Regarding the `config.file` key, a possible example of an external configuration file may be:
+
+```
+include classpath("application.conf")
+application.code="1234-56789"
+orient.baasbox.path=db/baasbox
+logger.application=DEBUG
+```
+
+## The Play! Framework
+
+Since BaasBox is based upon the Play! Framework, many configuration options available by Play! could be used with BaasBox. Please refer to the [Play! documentation](http://www.playframework.com/documentation/2.1.x/Configuration) to know how to perform such operations and to customize the default behavior.
