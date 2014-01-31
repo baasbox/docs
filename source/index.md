@@ -380,7 +380,7 @@ object. In case of error, the data returned are more detailed and are useful to
 understand why the request was rejected. 
 
 
-## Custom Error Codes
+## Custom error codes
 
 
 These are custom error codes specific to BaasBox
@@ -2240,6 +2240,16 @@ Parameter | Description
 <aside class="warning">
 The fieldName must start with a .
 </aside>
+
+
+## Files
+
+## Assets
+
+## Settings
+
+## Admin
+
 
 
 
