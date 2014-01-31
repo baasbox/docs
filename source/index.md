@@ -236,8 +236,7 @@ button and you will see this window:
 ![New user image](images/Console_0.7.2/create_new_user.png)
 
 <aside class="notice">
-Starred fields are mandatory. After you have filled at least the mandatory fields, 
-you have to save the changes.
+	Starred fields are mandatory. After you have filled at least the mandatory fields, you have to save the changes.
 </aside>
 
 
@@ -1945,10 +1944,68 @@ Parameter | Description
 
 
 
+
+
+
+
+
 ## Revoke permissions on a Document
 
 
-TBW
+> Example of request to revoke read access to user "a" on document "090dd688"
+
+```shell
+curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT YET IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+
+> Example of request to revoke update access to all registered users on a document
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/registered \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT YET IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`DELETE /document/:collection/:id/:action/user/:username`
+
+`DELETE /document/:collection/:id/:action/role/:rolename`
+
+Revokes permission on a document. You can revoke permissions to a single user or a role name.
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+**id** | The ID of the document. Mandatory.
+**action** | The grant you want to assign. One of: 	“read”, “update”, “delete”, “all”. Mandatory.
+**username** | The username of the user to which you want to assign the grant
+**rolename** | The name of role to which you want to grant the permission. One of: "anonymous", "registered", "administrator"
 
 
 
@@ -1957,11 +2014,232 @@ TBW
 
 ## Update a Document's field
 
+> Example of a request to change the value of the field 'title'
 
-TBW
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.title  \
+	 -d '{"data" : "Updated title"}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:1",
+    "@version": 6,
+    "@class": "mycollection",
+    "title": "Updated title",
+    "body": "Body of my post.",
+    "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+    "_creation_date": "2014-01-30T22:22:36.036+0100",
+    "_author": "cesare"
+  },
+  "http_code": 200
+}
+```
+
+> Example of a request to add a new value named 'tags'
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.tags  \
+	 -d '{"data" : ["tag1", "tag2"]}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:1",
+    "@version": 7,
+    "@class": "mycollection",
+    "title": "Updated title",
+    "body": "Body of my post.",
+    "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+    "_creation_date": "2014-01-30T22:22:36.036+0100",
+    "_author": "cesare",
+    "tags": [
+      "tag1",
+      "tag2"
+    ]
+  },
+  "http_code": 200
+}
+```
+
+> Example of a request to add a new value to the 'tags' array property
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.tags[3]  \
+	--globoff \
+	 -d '{"data" : "newly added tag"}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:1",
+    "@version": 10,
+    "@class": "mycollection",
+    "title": "Updated title",
+    "body": "Body of my post.",
+    "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+    "_creation_date": "2014-01-30T22:22:36.036+0100",
+    "_author": "cesare",
+    "tags": [
+      "tag1",
+      "tag2",
+      "newly added tag"
+    ]
+  },
+  "http_code": 200
+}
+```
+
+> Example of a request to add a JSON object as a property.
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.address  \
+	--globoff \
+	 -d '{"data" : {"street" : "5th Avenue", "zip" : 10021}}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Response includes new property
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:1",
+    "@version": 15,
+    "@class": "mycollection",
+    "title": "Updated title",
+    "body": "Body of my post.",
+    "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+    "_creation_date": "2014-01-30T22:22:36.036+0100",
+    "_author": "cesare",
+    "tags": [
+      "tag1",
+      "tag2",
+      "newly added tag"
+    ],
+    "address": {
+      "zip": 10021,
+      "street": "5th Avenue"
+    }
+  },
+  "http_code": 200
+}
+```
+
+> Example of request to change a nested property
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.address/.street  \
+	--globoff \
+	 -d '{"data" : "6th Avenue"}' \
+	 -H Content-type:application/json \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+NOT IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Response includes new value for the property
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@rid": "#25:1",
+    "@version": 15,
+    "@class": "mycollection",
+    "title": "Updated title",
+    "body": "Body of my post.",
+    "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+    "_creation_date": "2014-01-30T22:22:36.036+0100",
+    "_author": "cesare",
+    "tags": [
+      "tag1",
+      "tag2",
+      "newly added tag"
+    ],
+    "address": {
+      "zip": 10021,
+      "street": "6th Avenue"
+    }
+  },
+  "http_code": 200
+}
+```
 
 
+`PUT /document/:collection/:id/.:fieldname`
 
+Updates a single field of an existing object. The field can be a simple property, 
+a complex JSON object or even an array using the notation `.array[index]` .
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+**id** | The ID of the document. Mandatory.
+**fieldname** | The name of the field that you want to update
+**data** | A JSON object in the body of the PUT. The new value must have a key named `data`.
+
+<aside class="warning">
+The fieldName must start with a .
+</aside>
 
 
 
