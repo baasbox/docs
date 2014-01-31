@@ -1521,7 +1521,19 @@ post.body = @"Body of my post.";
 ```
 
 ```java
-TODO
+BaasDocument doc = new BaasDocument("mycollection");
+doc.putString("title","My new post title")
+   .putString("body","Body of my post.");
+doc.save(new BaasHandler<BaasDocument>() {
+  @Override
+  public void handle(BaasResult<BaasDocument> res) {
+    if(res.isSuccess()) {
+      Log.d("LOG","Saved: "+res.value());
+    } else {
+
+    }
+  }
+});
 ```
 
 > Example of response
@@ -1584,7 +1596,6 @@ curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1
 ```
 
 ```java
-TODO
 ```
 
 > Example of response
@@ -1649,7 +1660,18 @@ post.body = @"Body of my post.";
 ```
 
 ```java
-TODO
+BaasDocument.fetch("mycollection","090dd688-2e9a-4dee-9afa-aad72a1efa93",
+                   new BaasHandler<BaasDocument>() {
+                     @Override
+                     public void handler(BaasResult<BaasDocument> res) {
+                       if(res.isSuccess()) {
+                         BaasDocument doc = res.value();
+                         Log.d("LOG","Document: "+doc);
+                       } else {
+                         Log.e("LOG","error",res.error());
+                       }
+                     }
+                   });
 ```
 
 > Example of response
