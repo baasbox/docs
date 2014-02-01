@@ -420,7 +420,19 @@ NSDictionary *parameters = @{kPageNumber : @0,
 ```
 
 ```java
-TODO
+Filter paginate = Filter.paging("user.name",0,20);
+BaasUse.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
+  @Override
+  public void handle(BaasResult<List<BaasUser>> res) {
+    if (res.isSuccess()) {
+      for(BaasUser user:res.value()) {
+        Log.d("LOG","User is: "+user);
+      }
+    } else {
+      Log.e("LOG","error",res.error());
+    }
+  }
+});
 ```
 
 Some queries support pagination. There are two important parameters in paginated calls.
@@ -1660,18 +1672,18 @@ post.body = @"Body of my post.";
 ```
 
 ```java
-BaasDocument.fetch("mycollection","090dd688-2e9a-4dee-9afa-aad72a1efa93",
-                   new BaasHandler<BaasDocument>() {
-                     @Override
-                     public void handler(BaasResult<BaasDocument> res) {
-                       if(res.isSuccess()) {
-                         BaasDocument doc = res.value();
-                         Log.d("LOG","Document: "+doc);
-                       } else {
-                         Log.e("LOG","error",res.error());
-                       }
-                     }
-                   });
+BaasDocument.fetch("mycollection",
+                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+               new BaasHandler<BaasDocument>() {
+                 @Override
+                 public void handler(BaasResult<BaasDocument> res) {
+                   if(res.isSuccess()) {
+                     BaasDocument doc = res.value();
+                     Log.d("LOG","Document: "+doc);
+                   } else {
+                     Log.e("LOG","error",res.error());
+                   }
+                 }});
 ```
 
 > Example of response
@@ -1735,7 +1747,17 @@ curl -X DELETE http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9a
 ```
 
 ```java
-TODO
+// Assumes doc is an instance of BaasDocument
+doc.delete(new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG", "Document deleted");
+    } else {
+      Log.e("LOG", "error",res.error());
+    }
+  }
+});
 ```
 > Example of response
 
@@ -1772,7 +1794,16 @@ NOT IMPLEMENTED
 ```
 
 ```java
-TODO
+BaasDocument.count("collection",new BaasHandler<Long> () {
+  @Override
+  public void handle(BaasResult<Long> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","visible document count is: "+res.value());
+    } else {
+      Log.e("LOG","Error",res.value());
+    }
+  }
+});
 ```
 > Example of response
 
@@ -1845,7 +1876,38 @@ NSDictionary *parameters = @{kPageNumber : @0,
 ```
 
 ```java
-TODO
+BaasDocument.fetchAll(new BaasHandler<List<BaasDocument>() {
+  @Override
+  public void handle(BaasResult<List<BaasDocument>> res) {
+    
+    if (res.isSuccess()) {
+      for (BaasDocument doc:res.value()) {
+        Log.d("LOG","Doc: "+doc);
+      }
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
+
+// using pagination and selection
+Filter filter = Filter.paging("title",0,20)
+                      .setWhere("_author = ?","Cesare");
+
+BaasDocument.fetchAll(filter,new BaasHandler<List<BaasDocument>() {
+  @Override
+  public void handle(BaasResult<List<BaasDocument>> res) {
+    
+    if (res.isSuccess()) {
+      for (BaasDocument doc:res.value()) {
+        Log.d("LOG","Doc: "+doc);
+      }
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
+
 ```
 
 > Example of response
@@ -1920,7 +1982,17 @@ NOT YET IMPLEMENTED
 ```
 
 ```java
-TODO
+// assuming doc is an instance of the document
+doc.grant(Grant.READ,"a",new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","Permission granted");
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
 ```
 
 
@@ -1936,7 +2008,18 @@ NOT YET IMPLEMENTED
 ```
 
 ```java
-TODO
+// assumes doc is an instance of the document
+doc.grantAll(Grant.UPDATE,Role.REGISTERED,
+   new BaasHandler<Void>() {
+     @Override
+     public void handle(BaasResult<Void> res) {
+       if (res.isSuccess()) {
+         Log.d("LOG","Permission granted");
+       } else {
+         Log.e("LOG","Error",res.error());
+       }
+     }
+   });
 ```
 
 > Example of response
@@ -1986,7 +2069,17 @@ NOT YET IMPLEMENTED
 ```
 
 ```java
-TODO
+// assuming doc is an instance of the document
+doc.revoke(Grant.READ,"a",new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","Permission granted");
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
 ```
 
 
@@ -2002,7 +2095,18 @@ NOT YET IMPLEMENTED
 ```
 
 ```java
-TODO
+// assumes doc is an instance of the document
+doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
+   new BaasHandler<Void>() {
+     @Override
+     public void handle(BaasResult<Void> res) {
+       if (res.isSuccess()) {
+         Log.d("LOG","Permission granted");
+       } else {
+         Log.e("LOG","Error",res.error());
+       }
+     }
+   });
 ```
 
 > Example of response
@@ -2050,7 +2154,7 @@ NOT IMPLEMENTED
 ```
 
 ```java
-TODO
+NOT IMPLEMENTED
 ```
 
 > Example of response
@@ -2086,7 +2190,7 @@ NOT IMPLEMENTED
 ```
 
 ```java
-TODO
+NOT IMPLEMENTED
 ```
 
 > Example of response
@@ -2127,7 +2231,7 @@ NOT IMPLEMENTED
 ```
 
 ```java
-TODO
+NOT IMPLEMENTED
 ```
 
 > Example of response
@@ -2169,7 +2273,7 @@ NOT IMPLEMENTED
 ```
 
 ```java
-TODO
+NOT IMPLEMENTED
 ```
 
 > Response includes new property
@@ -2215,7 +2319,7 @@ NOT IMPLEMENTED
 ```
 
 ```java
-TODO
+NOT IMPLEMENTED
 ```
 
 > Response includes new value for the property
