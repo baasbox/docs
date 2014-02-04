@@ -3,7 +3,7 @@ Introduction
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-You can access all section using the sidebar on the left. The
+You can access all sections using the sidebar on the left. The
 documentation explains:
 
 -  the BaasBox features (server side)
@@ -22,7 +22,7 @@ documentation explains:
 For a complete list of changes and new features, see
 changelog_
 
-The Getting Started section will allow you to have rapidly a first
+The Getting Started section will allow you to rapidly have a first
 result of what BaasBox can give you. Enjoy!
 
 .. _changelog: http://www.baasbox.com/baasbox-server-0-7-2-released
