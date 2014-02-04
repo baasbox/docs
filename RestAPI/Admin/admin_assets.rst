@@ -94,6 +94,7 @@ Resize image
 **Description:** Resize image with a specified width and height
 
 **Parameters:**
+
 -  name: name of image
 -  w: width desired
 -  h: height desired

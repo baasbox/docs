@@ -27,17 +27,12 @@ Underscore and dash are also allowed. The name of a collection is treated as cas
 
 **Returns**:
 
-Code 400: the X-BAASBOX-APPCODE contains an invalid application code
-
-Code 500: the servers cannot fulfill the request, an internal server
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 500: the servers cannot fulfill the request, an internal server
 error occurred
-
-Code 400: collection name is invalid
-
-Code 403: the user is not an Admin
-
-Code 201: collection created
-
+-  Code 400: collection name is invalid
+-  Code 403: the user is not an Admin
+-  Code 201: collection created
 
 Delete a collection
 -------------------
@@ -53,13 +48,9 @@ URL. The user calling this API must belong to the Admin Role.
 
 **Returns**:
 
-Code 400: the X-BAASBOX-APPCODE contains an invalid application code
-
-Code 500: the servers cannot fulfill the request, an internal server
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 500: the servers cannot fulfill the request, an internal server
 error occurred
-
-Code 400: collection name is invalid
-
-Code 403: the user is not an Admin
-
-Code 201: collection deleted
+-  Code 400: collection name is invalid
+-  Code 403: the user is not an Admin
+-  Code 201: collection deleted
