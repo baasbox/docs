@@ -832,8 +832,6 @@ Parameter | Description
 
 
 
-
-
 ## Change password
 
 > Example of request
@@ -2042,9 +2040,9 @@ Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
 **id** | The ID of the document. Mandatory.
-**action** | The grant you want to assign. One of: 	“read”, “update”, “delete”, “all”. Mandatory.
+**action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to which you want to assign the grant
-**rolename** | The name of role to which you want to grant the permission. One of: "anonymous", "registered", "administrator"
+**rolename** | The name of role to which you want to grant the permission. One of: `anonymous`, `registered`, `administrator`
 
 
 
@@ -2129,9 +2127,9 @@ Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
 **id** | The ID of the document. Mandatory.
-**action** | The grant you want to assign. One of: 	“read”, “update”, “delete”, “all”. Mandatory.
+**action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to which you want to assign the grant
-**rolename** | The name of role to which you want to grant the permission. One of: "anonymous", "registered", "administrator"
+**rolename** | The name of role to which you want to grant the permission. One of: `anonymous`, `registered`, `administrator`
 
 
 
@@ -2523,7 +2521,7 @@ API to delete a file.
 
 Parameter | Description
 --------- | -----------
-**id** | The id of the file to be deleted
+**id** | The id of the file to be deleted. Mandatory.
 
 
 
@@ -2583,7 +2581,7 @@ Parameter | Description
 
 
 
-## Retrieve file details
+## Retrieve details of a file
 
 > Example of request to retrieve details of a file
 
@@ -2639,30 +2637,215 @@ Parameter | Description
 **id** | The id of the file whose details are to be retrieved. Mandatory.
 
 
-## Retrieve details of stored files
+
+
+## Retrieve details of files
+
+> Example of request to retrieve details of files
+
+```shell
+curl http://localhost:9000/file/details \
+	 -H X-BB-SESSION:45640ea7-f57f-4ade-b781-4aebc0c364b6
+```
+
+```objective_c
+TO BE IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response with details of files
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "@version": 4,
+      "id": "338ad9e6-1a70-4483-bd46-9764be05def4",
+      "_creation_date": "2014-02-04T00:50:13.013+0100",
+      "_author": "a",
+      "fileName": "41EAE238-0E8F-491D-BA34-C7BFB4EFF595.image/jpeg",
+      "contentType": "image/jpeg",
+      "contentLength": 75642,
+      "metadata": { },
+      "attachedData": { }
+    },
+	{  }
+  ],
+  "http_code": 200
+}
+```
 
 `GET /file/details`
 
+Returns a list of details about the files that the user has access to.
+Supports [pagination](#pagination).
+
+
+
+
+## Grant access to a file
+
+> Example of request to grant read access to user “a” on a file
+
+```shell
+curl -X PUT http://localhost:9000/file/41368ee4/read/user/a \
+     -H X-BB-SESSION:b24fa187-797d-49d1-87fb-c99fee3a6588
+```
+
+```objective_c
+BAAFile *file = ... ; // instance of file, already saved on the server
+[file grantAccessToUser:@"a"
+                 ofType:kAclReadPermission
+             completion:^(id object, NSError *error) {
+                 
+                 if (error == nil) {
+                     NSLog(@"Permission granted");
+                 } else {
+                     // Deal with error
+                 }
+                 
+             }];
+```
+
+```java
+TODO
+```
+
+> Example of request to grant write access to role “registered” on a file
+
+```shell
+curl -X PUT http://localhost:9000/file/41368ee4/update/role/registered \
+     -H X-BB-SESSION:b24fa187-797d-49d1-87fb-c99fee3a6588
+```
+
+```objective_c
+BAAFile *file = ... ; // instance of file, already saved on the server
+[file grantAccessToRole:kAclRegisteredRole
+                 ofType:kAclUpdatePermission
+             completion:^(id object, NSError *error) {
+                 
+                 if (error == nil) {
+                     // Permission granted
+                 } else {
+                     // Deal with error
+                 }
+                 
+             }];
+```
+
+```java
+TODO
+```
+
+> Example of response 
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+
+`PUT /file/:id/:action/user/:username` 
+
+`PUT /file/:id/:action/role/:rolename`
+
+API to grant access on a file to a specific user or role.
+
+Parameter | Description
+--------- | -----------
+**id** | The ID of the file. Mandatory.
+**action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
+**username** | The username of the user to which you want to assign the grant. Mandatory.
+**rolename** | The name of role to which you want to grant the permission. One of: `anonymous`, `registered`, `administrator`. Mandatory.
 
 
 
 
 
 
-## Grant access to file
 
-`PUT /file/:id/:action/user/:username or PUT /file/:id/:action/role/:rolename`
+## Revoke access to a file
 
+> Example of request to revoke read access to user “a” on a file
 
+```shell
+curl -X DELETE http://localhost:9000/file/41368ee4/read/user/a \
+     -H X-BB-SESSION:b24fa187-797d-49d1-87fb-c99fee3a6588
+```
 
+```objective_c
+BAAFile *file = ... ; // instance of file, already saved on the server
+[file revokeAccessToUser:@"a"
+                  ofType:kAclReadPermission
+              completion:^(id object, NSError *error) {
+                  
+                  if (error == nil) {
+                      NSLog(@"Permission revoked");
+                  } else {
+                      // Deal with error
+                  }
+                  
+              }];
+```
 
+```java
+TODO
+```
 
-## Revoke access to file
+> Example of request to revoke write access to role “registered” on a file
+
+```shell
+curl -X DELETE http://localhost:9000/file/41368ee4/update/role/registered \
+     -H X-BB-SESSION:b24fa187-797d-49d1-87fb-c99fee3a6588
+```
+
+```objective_c
+BAAFile *file = ... ; // instance of file, already saved on the server
+[file revokeAccessToRole:kAclRegisteredRole
+                  ofType:kAclUpdatePermission
+              completion:^(id object, NSError *error) {
+                  
+                  if (error == nil) {
+                      NSLog(@"Permission revoked");
+                  } else {
+                      // Deal with error
+                  }
+                  
+              }];
+```
+
+```java
+TODO
+```
+
+> Example of response 
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
 
 `DELETE /file/:id/:action/user/:username or DELETE /file/:id/:action/role/:rolename`
 
+API to revoke access on a file to a specific user or role.
 
-
+Parameter | Description
+--------- | -----------
+**id** | The ID of the file. Mandatory.
+**action** | The grant you want to revoke. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
+**username** | The username of the user to which you want to revoke the grant. Mandatory.
+**rolename** | The name of role to which you want to revoke the permission. One of: `anonymous`, `registered`, `administrator`. Mandatory.
 
 
 
