@@ -145,7 +145,7 @@ User Logout
    error occurred
 -  Code 400: The session token is malformed or expired, the server
    cannot retrieve the App Code associated
--  Code 20O: OK. the user has successfully logged out.
+-  Code 200: OK. the user has successfully logged out.
 
 
 ``POST /logout/:deviceId`` 
@@ -168,7 +168,7 @@ the specified device.
    error occurred
 -  Code 400: The session token is malformed or expired, the server
    cannot retrieve the App Code associated
--  Code 20O: OK. the user has successfully logged out. The
+-  Code 200: OK. the user has successfully logged out. The
    associated device has been removed.
 
 Password Reset
@@ -191,15 +191,15 @@ email addressthat in the visibleByTheUser field of the user profile.
 forgotten password. The App must call the /user/:username/password/reset
 API where :username is the placeholder to substitute with the username.
 The server checks if the email address is present within the
-visibleByTheUser fields in the user profile The server sends an email to
-that address with a generated link to follow to reset the password The
-user opens the email and opens the given link in a web browser A form is
+visibleByTheUser fields in the user profile. The server sends an email to
+that address with a generated link to follow to reset the password. The
+user opens the email and opens the given link in a web browser. A form is
 shown with two html password fields. The user fills in the two fields
-and submits the form A confirmation message is shown by the server Many
+and submits the form. A confirmation message is shown by the server Many
 settings can be setup by the administrator via the Settings menu in the
 admin console, or via the Settings API **Some of them are**: The SMTP
-Server configuration The email message to be sent The HTML Form to show
-in order to reset the password The confirmation and the error web page
+Server configuration. The email message to be sent The HTML Form to show
+in order to reset the password. The confirmation and the error web page
 
 **Returns**:
 
