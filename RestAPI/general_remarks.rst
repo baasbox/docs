@@ -83,7 +83,7 @@ is:
 
 	}
 
-For bb\_code see :doc:`custom_error_code`.
+For bb\_code see below.
 
 Custom Error Codes
 ------------------
@@ -98,6 +98,7 @@ These are custom error codes specific to BaasBox
    administration console and check the settings
 -  50302: The server cannot resolve the host name. HINT: check your
    internet connection 
+-  50303: Could not send push notifications. HINT: Check your API Key(Google)
 
 
 Query Criteria
