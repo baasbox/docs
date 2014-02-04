@@ -22,7 +22,7 @@ Create a new collection
 **Description**: Creates a new collection with the name specified in
 URL. User must belong
 to the Admin Role. The name of a collection MUST start with an alphabetic character,
-CAN contain any alphanumeric character (latin letter and arabic digits). 
+CAN contain any alphanumeric character (Latin letters and Arabic numerals). 
 Underscore and dash are also allowed. The name of a collection is treated as case-insensitive.
 
 **Returns**:
@@ -49,7 +49,7 @@ Delete a collection
 **Description**: Deletes an existing new collection with the name specified in the
 URL. The user calling this API must belong to the Admin Role. 
 
-**Warning**: When you delete a collection all the objects store in it are deleted as well.
+**Warning**: When you delete a collection all the objects stored in it are deleted as well.
 
 **Returns**:
 
