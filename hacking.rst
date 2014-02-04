@@ -8,7 +8,7 @@ JVM. To do so, you have to use the **-D** parameter in this way
 
      ./start -DBAASBOX_PARAMETER=NEW_VALUE
 
-Where **BAASBOX PARAMETER** is the key of the parameter to override and
+Where **BAASBOX_PARAMETER** is the key of the parameter to override and
 **NEW_VALUE** is the value you want to use. Please note that there is
 no space between the D and the name parameter. Overridable keys are:
 
