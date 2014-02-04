@@ -51,15 +51,7 @@ URL. The user calling this API must belong to the Admin Role.
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 500: the servers cannot fulfill the request, an internal server
 error occurred
-<<<<<<< HEAD
 -  Code 400: collection name is invalid
 -  Code 403: the user is not an Admin
 -  Code 201: collection deleted
-=======
 
-Code 400: collection name is invalid
-
-Code 403: the user is not an Admin
-
-Code 201: collection deleted
->>>>>>> 9cb8c37359b65800472c393fe684f2d95e658f8f
