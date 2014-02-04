@@ -95,7 +95,7 @@ Delete a document
 the :doc:`general_remarks` 
 
 **Description**: Delete a
-document in the specified collection Only the owner of the document and
+document in the specified collection. Only the owner of the document and
 the admin or backoffice users can delete it. 
 
 **Returns**:
@@ -167,7 +167,7 @@ or
   *  :id is the unique id of the document belonging to the :collection 
   *  :action is the kind of grant you want to give: "read", "update", "delete", "all" 
   *  :username is the user to give the grant 
-  *  :rolename is the name of a role. in this case every user belonging to that role will have the specified grant.
+  *  :rolename is the name of a role. In this case every user belonging to that role will have the specified grant.
 
 **Returns**:
 
@@ -194,9 +194,9 @@ A new endpoint was added to the BaasBox Document API
 **Headers**: See authorization header in the :doc:`general_remarks`
 
 **Description**: Modify a single field specified by the fieldname
-parameter: the fieldName must start with a . could be a simple property
+parameter: the fieldName must start with a . (dot). It could be a simple property
 or a complex JSON object or even an array using the notation
-.array[index] where index is a valid integer.
+.array[index] where the index is a valid integer.
 
 **Body payload**: A JSON object with a "data" field (see examples below)
 
