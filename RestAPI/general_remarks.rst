@@ -23,8 +23,7 @@ password must be combined into a string “username:password” and then
 encoded using BASE64. The header must be in the form: ``Authorization:
 Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==`` . If the authentication fails, the
 server replies with BAD REQUEST http error (code 400)
-
-**X-BAASBOX-APPCODE**\  This is the application code, by default this
+**X-BAASBOX-APPCODE**\:  This is the application code, by default this
 is: ``1234567890``
 
 Session Token
@@ -84,7 +83,7 @@ is:
 
 	}
 
-For bb\_code see below.
+For bb\_code see :doc:`custom_error_code`.
 
 Custom Error Codes
 ------------------
