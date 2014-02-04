@@ -61,9 +61,8 @@ dashboard is splitted into several sections:
 
 12. Feedback tab: from there you can send us a feedback about your
     experience with BaasBox
-13. ::
 
-         DB Management: you can create backup of your DB and import/export
+13. DB Management: you can create backup of your DB and import/export
 
 14. Roles: you can view and create roles for users
 
@@ -158,7 +157,9 @@ use these names to reference the assets.
 with information fields like Icon, Name, Meta, Size, Type, Download and
 Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
-following window: |New Asset|\  NOTE: you have to fill in at least the Name
+following window: 
+
+|New Asset|\  NOTE: you have to fill in at least the Name
 field and save the changes to create a new asset.
 
 .. |Home Console| image:: _static/Console_0.7.3/home_console.png
