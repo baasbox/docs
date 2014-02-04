@@ -191,8 +191,7 @@ For each file the following data are returned:
   -  the storage date
 
 NOTE: this API supports QueryStrings selection and sort criteria. Please
-refer to the Query Criteria section in the [[General Remarks\|General
-Remarks]] page.
+refer to the Query Criteria section in the :doc:`general_remarks` page.
 
 **Returns**:
 
