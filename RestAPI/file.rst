@@ -209,6 +209,7 @@ Grant/revoke user/role
 /file/:id/:action/role/:rolename``
 
 **Headers**: See authorization header in the :doc:`general_remarks` 
+
 **Description**: Grant a user (o an entire role) specific permission on
 a file.
 
