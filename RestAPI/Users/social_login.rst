@@ -156,8 +156,8 @@ This procedure is very similar to the Login method with a difference:
 this is a PUT request and it must be invoked with the X-BB-SESSION
 header.
 
-Returns 200 code with an empty response if the linking was succesful 401
-code if any of the mandatory headers was missing 500 code if something
+Returns: a 200 code with an empty response if the linking was succesful, a 401
+code if any of the mandatory headers was missing, a 500 code if something
 on the server went wrong (i.e. another user with the same tokens already
 exists)
 
@@ -179,9 +179,9 @@ specified social network is the only one linked to the user, an error
 will be raised (as the user will not be available to connect anymore).
 
 Returns: a 200 code with an empty response if the unlink procedure was
-successful a 400 code if the user was not linked to specified social
-network a 401 code (Unauthorized) if any of the mandatory header was
-missing a 500 code if something on the server went wrong (i.e. the user
+successful, a 400 code if the user was not linked to specified social
+network, a 401 code (Unauthorized) if any of the mandatory header was
+missing, a 500 code if something on the server went wrong (i.e. the user
 was generated and it had only a connection with a social network)
 
 .. |Social login tab| image:: /../../_static/Social-Login/img1.png
