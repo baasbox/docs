@@ -1,7 +1,7 @@
 Hacking
 =======
 
-You can override many default value and options by providing them to the
+You can override many default values and options by providing them to the
 JVM. To do so, you have to use the **-D** parameter in this way
 
 ::
@@ -23,7 +23,7 @@ no space between the D and the name parameter. Overridable keys are:
 +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
 | orient.baasbox.path   | The path of the embedded database. By default this is {BAASBOX\_HOME/db/baasbox}                                                                                                                 | -Dorient.baasbox.path=./mydb                                                           |
 +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
-| logger.application    | The default level of the logger. By default is DEBUG. Possible values are ERROR, WARNING, INFO, DEBUG, TRACE                                                                                     | -Dlogger.application=INFO                                                              |
+| logger.application    | The default level of the logger. By default this is DEBUG. Possible values are ERROR, WARNING, INFO, DEBUG, TRACE                                                                                     | -Dlogger.application=INFO                                                              |
 +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
 | config.file           | An external configuration file. You can put all your parameters in a file. This file **MUST** include the **include classpath("application.conf")** directive, otherwise BaasBox will not work   | -Dconfig.file=baasbox.config then you have to create a file named **baasbox.config**   |
 +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+
@@ -66,7 +66,7 @@ line in it:
 	java %1 -cp ./lib/\*;
 	play.core.server.NettyServer.
 
-(Pay attention to to the final dot)
+(Pay attention to the final dot)
 
 Since BaasBox is based upon the `Play! Framework
 2.1 <http://www.playframework.com/download/>`_, many configuration options
