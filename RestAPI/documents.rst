@@ -163,11 +163,11 @@ or
 **Description**: Returns the documents that the USER CAN READ in a collection.
 **where:**
 
-  *  :collection is the name of the collection
-  *  :id is the unique id of the document belonging to the :collection 
-  *  :action is the kind of grant you want to give: "read", "update", "delete", "all" 
-  *  :username is the user to give the grant 
-  *  :rolename is the name of a role. In this case every user belonging to that role will have the specified grant.
+  *  collection is the name of the collection
+  *  id is the unique id of the document belonging to the :collection 
+  *  action is the kind of grant you want to give:"read", "update", "delete", "all" 
+  *  username is the user to give the grant 
+  *  rolename is the name of a role. In this case every user belonging to that role will have the specified grant.
 
 **Returns**:
 

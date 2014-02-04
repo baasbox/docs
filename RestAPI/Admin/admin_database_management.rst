@@ -1,5 +1,5 @@
 DB Management
-=====
+=============
 
 Export database
 ---------------
@@ -55,7 +55,7 @@ Drop a database
 
 **Headers**: See the :doc:`/RestAPI/general_remarks`
 
-**Description**: Drop database with a timeout (if specified) and creates a new clean one (returns to initial stage)
+**Description**: Drops the database with a timeout (if specified) and creates a new clean one (returns to initial stage)
 
 **Returns**:
 

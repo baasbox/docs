@@ -22,22 +22,17 @@ Create a new collection
 **Description**: Creates a new collection with the name specified in
 URL. User must belong
 to the Admin Role. The name of a collection MUST start with an alphabetic character,
-CAN contain any alphanumeric character (latin letter and arabic digits). 
+CAN contain any alphanumeric character (Latin letters and Arabic numerals). 
 Underscore and dash are also allowed. The name of a collection is treated as case-insensitive.
 
 **Returns**:
 
-Code 400: the X-BAASBOX-APPCODE contains an invalid application code
-
-Code 500: the servers cannot fulfill the request, an internal server
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 500: the servers cannot fulfill the request, an internal server
 error occurred
-
-Code 400: collection name is invalid
-
-Code 403: the user is not an Admin
-
-Code 201: collection created
-
+-  Code 400: collection name is invalid
+-  Code 403: the user is not an Admin
+-  Code 201: collection created
 
 Delete a collection
 -------------------
@@ -49,17 +44,22 @@ Delete a collection
 **Description**: Deletes an existing new collection with the name specified in the
 URL. The user calling this API must belong to the Admin Role. 
 
-**Warning**: When you delete a collection all the objects store in it are deleted as well.
+**Warning**: When you delete a collection all the objects stored in it are deleted as well.
 
 **Returns**:
 
-Code 400: the X-BAASBOX-APPCODE contains an invalid application code
-
-Code 500: the servers cannot fulfill the request, an internal server
+-  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
+-  Code 500: the servers cannot fulfill the request, an internal server
 error occurred
+<<<<<<< HEAD
+-  Code 400: collection name is invalid
+-  Code 403: the user is not an Admin
+-  Code 201: collection deleted
+=======
 
 Code 400: collection name is invalid
 
 Code 403: the user is not an Admin
 
 Code 201: collection deleted
+>>>>>>> 9cb8c37359b65800472c393fe684f2d95e658f8f
