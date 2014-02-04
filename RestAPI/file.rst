@@ -13,7 +13,7 @@ documents. Moreover, it is possible to enter queries through selection
 and ordering criteria on the JSON data associated to the files.
 
 The maximum size of a file is 2GB, but we do not recommend reaching such
-size, since BaasBox is software that provides backend services for
+size, since BaasBox is a software that provides backend services for
 mobile Apps. Currently we do not support resume functions for upload and
 download.
 
@@ -27,7 +27,7 @@ and:
 
   -  content-type: multipart/form-data
 
-**Description**: This API store a new file into the BaasBox embedded DB.
+**Description**: This API stores a new file into the BaasBox embedded DB.
 
 **Body payload** The body can contain the following fields:.
 
@@ -39,9 +39,9 @@ and:
 
 -  Code 400: the X-BAASBOX-APPCODE contains an invalid application code
 -  Code 400: the "file" field is not present in the received request
--  Code 401: user unauthorized.
+-  Code 401: unauthorized user
 -  Code 201: file created
--  Code 200: OK and unique ID will be returned.
+-  Code 200: OK and unique ID will be returned
 
 If BaasBox stores a file, it will return a JSON string with all the data
 representing the file itself, including the unique identifier (ID) to
@@ -70,7 +70,7 @@ Delete a file
    error occurred
 -  Code 401: user unauthorized
 -  Code 404: file not found
--  Code 200: OK. The file has been deleted.
+-  Code 200: OK. The file has been deleted
 
 Stream a file
 -------------
@@ -121,7 +121,7 @@ Retrieve a file details
 -  See :doc:`general_remarks` 
 -  User must have the right to read the file
 
-**Description**: Returns revenant data about a stored file:
+**Description**: Returns relevant data about a stored file:
 
 -  the original file name
 -  its content type
@@ -154,7 +154,7 @@ Retrieve only the attached data for a given file:
 -  User must have the right to read the file
 
 **Description**: Returns the attached data related to a given file. IE:
-returns the JSON object sent when the file was been created.
+returns the JSON object sent when the file has been created.
 
 **Parameters**:
 
@@ -197,7 +197,7 @@ Remarks]] page.
    error occurred
 -  Code 401: user unauthorized
 -  Code 404: file not found
--  Code 200: OK. The data are returned.
+-  Code 200: OK. The data are returned
 
 Grant/revoke user/role
 ----------------------
@@ -216,7 +216,7 @@ a file.
    "delete", "all"
 -  :username is the user to give the grant
 -  :rolename is the name of a role. in this case every user belonging to
-   that role will have the specified grant.
+   that role will have the specified grant
 
 **Returns**:
 
