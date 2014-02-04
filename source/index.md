@@ -2370,11 +2370,331 @@ The fieldName must start with a .
 
 ## Files
 
+Users can upload files. Only the user who created it, besides administrators and users who have the role of “BackOffice” can access such file. 
+The maximum size of a file is 2GB, but we do not recommend reaching such size, since BaasBox is software that provides backend services for mobile Apps. Currently we do not support resume functions for upload and download.
+
+
+
+
+
+
+
+## Create a file
+
+> Example of request to create a file
+
+```shell
+curl -X POST http://localhost:9000/file \
+	 -F file=@test.jpg \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
+```
+
+```objective_c
+NSData *data = ...; // data for file
+BAAFile *file = [[BAAFile alloc] initWithData:data];
+file.contentType = @"image/jpeg";
+[file uploadFileWithCompletion:^(BAAFile *uploadedFile, NSError *error) { 
+	
+	if (error == nil) {
+		NSLog(@"Uploaded file is %@", uploadedFile)
+	} else {
+		// Deal with error
+	}
+	
+}];
+```
+
+```java
+TODO
+```
+
+> Example of response when a file is created
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@version": 2,
+    "_creation_date": "2014-02-03T18:54:17.017+0100",
+    "id": "be81f25d-c954-498e-84a2-6f43a94a9d8f",
+    "_author": "cesare",
+    "fileName": "test.jpg",
+    "contentType": "image/jpeg",
+    "contentLength": 283808,
+    "metadata": { },
+    "attachedData": { }     
+  },
+  "http_code": 201
+}
+```
+
+> Example of request to create a file with attached data
+
+```shell
+curl -X POST http://localhost:9000/file \
+	 -F 'attachedData={"test_key":"test_value"}' \
+	 -F file=@test.jpg \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
+```
+
+```objective_c
+TO BE IMPLEMENTED 
+```
+
+```java
+TODO
+```
+
+> Example of request to create a file with attached data and acl
+
+```shell
+curl -X POST http://localhost:9000/file \
+	 -F '"attachedData"={"test_key":"test_value"}' \
+	 -F '"acl"={"read":{"roles":["registered"]}' \
+	 -F file=@test.jpg \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
+```
+
+```objective_c
+TO BE IMPLEMENTED 
+```
+
+```java
+TODO
+```
+
+`POST /file`
+
+API to create and upload a file. By default the uploaded file will be accessible only by the owner, backoffice and admin users.
+
+Parameter | Description
+--------- | -----------
+**file** | The file itself. Mandatory.
+**attachedData** | A valid JSON string to store data associated to a file. Optional.
+**acl** | A valid JSON string to declare access to the file. Optional. TODO: link to ACL
+
+
+<aside class="notice">
+	The metadata field of the JSON response may vary according to the type of file uploaded.
+</aside>
+
+
+## Delete a file
+
+> Example of request to delete a file
+
+```shell
+curl -X DELETE http://localhost:9000/file/a57b33ce-7f4d-4ff7-bf8c-f8c0f973b9d8 \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
+```
+
+```objective_c
+BAAFile *picture = ...; // instance or subclass of BAAFile
+[picture deleteFileWithCompletion:^(BOOL success, NSError *error) {
+   
+    if (success) {
+        NSLog(@"Pic deleted");
+    } else {
+		// Deal with error
+	}
+	
+}
+    
+}];
+```
+
+```java
+TODO
+```
+
+> Example of response when a file is deleted
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`DELETE /file/:id`
+
+API to delete a file. 
+
+Parameter | Description
+--------- | -----------
+**id** | The id of the file to be deleted
+
+
+
+
+
+
+## Retrieve a file
+
+> Example of request to retrieve a file.
+
+```shell
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
+```
+
+```objective_c
+BAAFile *picture = ...; // instance or subclass of BAAFile, previously saved on the server
+[picture loadFileWithCompletion:^(NSData *data, NSError *error) {
+    
+    self.imageView.image = [[UIImage alloc] initWithData:data];
+    
+}];
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+// Binary of the file
+```
+
+> Example of request to suggest the browser to download an app
+
+```shell
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?download=true
+```
+
+> Example of request to retrieve a resized version of an app. TODO: explain this
+
+```shell
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?sizeId=0
+```
+
+`GET /file/:id`
+
+Parameter | Description
+--------- | -----------
+**id** | The id of the file to be retrieved. Mandatory.
+**download** | Set it to `true` to download a file (useful from browser). Optional. 
+**resize** | Index to retrieve an element from the array of resize options. Optional TODO: explain
+
+
+
+
+## Retrieve file details
+
+> Example of request to retrieve details of a file
+
+```shell
+curl http://localhost:9000/file/details/f18e4343-5100-4398-b32f-2e634220bf99  \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
+```
+
+```objective_c
+[BAAFile loadFileDetails:p.fileId
+              completion:^(BAAFile *file, NSError *error) {
+                  
+                  if (error == nil) {
+                      NSLog(@"file %@", file);
+                  } else {
+                      // Deal with error
+                  }
+                  
+              }];
+```
+
+```java
+TODO
+```
+
+> Example of response with file details
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "@version": 6,
+    "id": "f18e4343-5100-4398-b32f-2e634220bf99",
+    "_creation_date": "2014-02-03T23:41:59.059+0100",
+    "_author": "cesare",
+    "fileName": "test.jpg",
+    "contentType": "image/jpeg",
+    "contentLength": 283808,
+    "metadata": { },
+    "attachedData": { }
+  },
+  "http_code": 200
+}
+```
+
+`GET /file/details/:id`
+
+Retrieves the details of a file, including `attachedData` and `metadata`.
+
+
+Parameter | Description
+--------- | -----------
+**id** | The id of the file whose details are to be retrieved. Mandatory.
+
+
+## Retrieve details of stored files
+
+`GET /file/details`
+
+
+
+
+
+
+
+## Grant access to file
+
+`PUT /file/:id/:action/user/:username or PUT /file/:id/:action/role/:rolename`
+
+
+
+
+
+## Revoke access to file
+
+`DELETE /file/:id/:action/user/:username or DELETE /file/:id/:action/role/:rolename`
+
+
+
+
+
+
 ## Assets
+
+Assets are ...
+
+## Create an asset
+
+`POST /admin/asset`
+
+
+## Retrieve an Asset
+
+`GET /asset/:name`
+
+You can retrieve an asset only by name. 
+
+
+## Resize Asset
+
+GET /asset/:name/resize/:w/:h
+
+
+
+
 
 ## Settings
 
-## Admin
+http://docs.baasbox.com/en/develop/RestAPI/settings.html
+
+## Push Notifications
 
 
 
