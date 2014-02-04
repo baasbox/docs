@@ -1,7 +1,7 @@
 Settings
 ========
 
-Settings, or “App Configuration” are App related configuration options.
+Settings or “App Configuration” are App related configuration options.
 These settings are not intended to act at server configuration level,
 such as, for example, listening port, or log location, but they are
 intended to set up many APP specific parameters, like the App name, the

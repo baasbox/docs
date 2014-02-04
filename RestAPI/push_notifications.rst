@@ -28,7 +28,8 @@ API
 
 **Description**: This API allows to associate an user to a device, this
 means that from now on the user will be able to receive push
-notifications by the App. Both parameters are mandatory. **Returns**:
+notifications by the App. Both parameters are mandatory. 
+**Returns**:
 
 -  Code 500: the servers cannot fulfill the request, an internal server
    error occurred
@@ -47,7 +48,8 @@ See authorization header in the :doc:`general_remarks`
 -  **username**: mandatory. The recipient of the message
 
 **Description**: This API allows to send a push notification to another
-user. **Body payload**\  A JSON object like this:
+user. 
+**Body payload**\  A JSON object like this:
 
 ::
   
@@ -65,7 +67,8 @@ devices), or Push Certificates released by Apple (for iOS devices). A
 push notification can be delivered only if the recipient has sent its
 device and operating system info through the login API or the
 register\_device API. If a user performs a login using more than a
-device, a push notification will be sent for each of them. **Returns**:
+device, a push notification will be sent for each of them. 
+**Returns**:
 
 -  Code 503: push notifications not properly configured
 -  Code 500: the server cannot fulfill the request, an internal server

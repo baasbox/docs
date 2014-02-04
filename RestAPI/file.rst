@@ -182,9 +182,13 @@ Retrieves details of all the stored files
 Please note that only the files that can actually be read from the user
 are returned.
 
-For each file the following data are returned: \* the original file name
-\* its content type \* its content length \* its attached data \* the
-user that stored id \* the storage date
+For each file the following data are returned:
+  -  the original file name
+  -  its content type 
+  -  its content length 
+  -  its attached data 
+  -  the user that stored id
+  -  the storage date
 
 NOTE: this API supports QueryStrings selection and sort criteria. Please
 refer to the Query Criteria section in the [[General Remarks\|General
