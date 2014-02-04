@@ -53,5 +53,5 @@ URL. The user calling this API must belong to the Admin Role.
 error occurred
 -  Code 400: collection name is invalid
 -  Code 403: the user is not an Admin
--  Code 201: collection deleted
+-  Code 201: collection deleteda
 
