@@ -161,16 +161,16 @@ a new asset, click on the New Asset button and you will see the
 following window: |New Asset|\  NOTE: you have to fill in at least the Name
 field and save the changes to create a new asset.
 
-.. |Home Console| image:: _static/Console_0.7.2/home_console.png
-.. |Login Screen| image:: _static/Console_0.7.2/login.png
-.. |Dashboard| image:: _static/Console_0.7.2/baasbox_0-7-2-console.png
-.. |News| image:: _static/Console_0.7.2/news.png
-.. |DB Management| image:: _static/Console_0.7.2/baasbox-db-management.png
-.. |Users| image:: _static/Console_0.7.2/users.png
-.. |Create new user| image:: _static/Console_0.7.2/create_new_user.png
-.. |Collections| image:: _static/Console_0.7.2/collections.png
-.. |Create New Collection| image:: _static/Console_0.7.2/create_new_collection.png
-.. |Documents| image:: _static/Console_0.7.2/documents.png
-.. |Documents Table| image:: _static/Console_0.7.2/baasbox-documents-table.png
-.. |Assets| image:: _static/Console_0.7.2/assets.png
-.. |New Asset| image:: _static/Console_0.7.2/new_asset.png
+.. |Home Console| image:: _static/Console_0.7.3/home_console.png
+.. |Login Screen| image:: _static/Console_0.7.3/login.png
+.. |Dashboard| image:: _static/Console_0.7.3/baasbox_console.png
+.. |News| image:: _static/Console_0.7.3/news.png
+.. |DB Management| image:: _static/Console_0.7.3/baasbox-db-management.png
+.. |Users| image:: _static/Console_0.7.3/users.png
+.. |Create new user| image:: _static/Console_0.7.3/create_new_user.png
+.. |Collections| image:: _static/Console_0.7.3/collections.png
+.. |Create New Collection| image:: _static/Console_0.7.3/create_new_collection.png
+.. |Documents| image:: _static/Console_0.7.3/documents.png
+.. |Documents Table| image:: _static/Console_0.7.3/baasbox-documents-table.png
+.. |Assets| image:: _static/Console_0.7.3/assets.png
+.. |New Asset| image:: _static/Console_0.7.3/new_asset.png
