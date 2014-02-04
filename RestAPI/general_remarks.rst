@@ -11,8 +11,8 @@ Request Headers
 
 If not specified otherwise, all requests need some custom HTTP headers.
 
-These are **Authentications headers**\  BaasBox, since the 0.57 version
-supports two authentication method: HTTP Basic Authentication, or via a
+These are BaasBox **Authentications headers**\, since the 0.5.7 version
+supports two authentication methods: HTTP Basic Authentication, or via a
 Session Token.
 
 Basic Authentication
@@ -30,7 +30,7 @@ is: ``1234567890``
 Session Token
 -------------
 
-To use this authentication method, the client have to call
+To use this authentication method, the client has to call
 the ``/users/login`` API. The Server will provide a token to use in the
 subsequent calls. All tokens will be invalidated if the server is stopped. To pass the session
 token to the server, use the following header: 
@@ -93,7 +93,7 @@ These are custom error codes specific to BaasBox
 
 -  40001: You are attempting to update a database object with older
    data. Version is not the same
--  40101: Authentication info not valid or not provided. HINT: is your
+-  40101: Invalid or not provided authentication info. HINT: Has your
    session expired?
 -  50301: Push settings are not properly configured. HINT: go to
    administration console and check the settings
