@@ -17,7 +17,7 @@ Java 1.6
    *  ./start (on *nix) You might need to grant execution permissions via
    ``chmod +x ./start``
 
-BaasBox will start it will listen on port 9000. Visit http://localhost:9000/
+BaasBox will start and listen on port 9000. Visit http://localhost:9000/
 with your preferred browser. If everything worked fine, the BaasBox logo
 should appear. Now you can open the administrator console:
 http://localhost:9000/console 

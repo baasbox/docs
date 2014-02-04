@@ -3,11 +3,11 @@ Custom Error Code
 
 Custom Error Code 
 
-These are custom error code made by BaasBox
+These are the custom error codes made by BaasBox
 
 -  40001: You are attempting to update a database object with older
-   data. Versions is not the same
--  40101: Authentication info not valid or not provided. HINT: is your
+   data. Versions are not the same
+-  40101: Invalid or not provided authentication info. HINT: Has your
    session expired?
 -  50301: Push settings are not properly configured. HINT: go to
    administration console and check the settings
