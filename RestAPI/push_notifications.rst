@@ -58,7 +58,7 @@ user.
    }
    
 
-message field must contain the message to deliver. Please read the Push
+The message field must contain the message to deliver. Please read the Push
 Notification tutorial to know how to handle push notifications and how
 to setup the BaasBox server. **Note**\  In order to work, the Push
 Notification system within BaasBox needs to be configured supplying some
