@@ -19,7 +19,7 @@ Here is the ``typedef`` definition
 	typedef void (^BAAObjectResultBlock)(id object, NSError *error);
 	typedef void (^BAABooleanResultBlock)(BOOL success, NSError *error);
 
-This is a quick example to load a set of files.
+This is a quick example of how to load a set of files.
 
 .. code-block:: objective-c
 
@@ -33,7 +33,7 @@ This is a quick example to load a set of files.
 
 	}];
 
-This returns an array of objects of class ``BAAFile`` and an error.
+This returns an array of objects of the ``BAAFile`` class and an error.
 The suggested pattern within the block is to manipulate returned data if 
 the error is ``nil``, and to deal with the error otherwise.
 
@@ -104,7 +104,7 @@ as a property of the ``BAAClient`` class.
 Users
 =====
 
-On the backend each user has by default four fields: ``visibleByTheUser``, ``visibleByFriends``, ``visibleByRegisteredUsers``, ``visibleByAnonymousUsers``. These fields are automatically populated by the SDK when the JSON is retrieved.
+On the backend each user has four fields by default: ``visibleByTheUser``, ``visibleByFriends``, ``visibleByRegisteredUsers``, ``visibleByAnonymousUsers``. These fields are automatically populated by the SDK when the JSON is retrieved.
 
 
 
@@ -237,7 +237,7 @@ Objects
 Subclassing BAAObject
 ---------------------
 
-You can create custom object in your app by subclassing ``BAAObject``. Here is an example of a custom class representing a post with two custom properties: a title and a body.
+You can create custom objects in your app by subclassing ``BAAObject``. Here is an example of a custom class representing a post with two custom properties: a title and a body.
 
 .. code-block:: objective-c
 
@@ -342,7 +342,7 @@ Once you have an instance of a custom object you can save it this way.
 				}
 	        }];
 
-The ``saveObject:completion:`` automatically manages if an object is "new" (non yet saved on the back end) or simply needs to be updated. In both cases in will return a new instance that you can manipulate within the block.
+The ``saveObject:completion:`` automatically manages if an object is "new" (not yet saved on the back end) or simply needs to be updated. In both cases it will return a new instance that you can manipulate within the block.
 
 Deleting an object
 ------------------
@@ -371,7 +371,7 @@ Initializing a BAAFile instance
 
 The BaasBox SDK supports file upload and download. To manipulate a file you use the ``BAAFile`` class.
 To initialize an instance you need ``NSData``. For example, if you want a ``BAAFile`` to represent an image
-you can do it as follows.
+you can do as follows.
 
 .. code-block:: objective-c
 
