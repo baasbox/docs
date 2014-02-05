@@ -2,7 +2,7 @@ User Guide Android
 ==================
 
 The Baasbox Android SDK is meant to get you quickly started in
-performing CRUD operations on your custom data objects. The goal of
+performing CRUD operations on your custom data objects. The goal of this 
 guide is to illustrate the essential steps to build your first
 application in five minutes. Let's get started!
 
@@ -43,13 +43,13 @@ the following code snippet.
 
 Notice that the information about the user (e.g. username and
 authentication token) is automatically saved by the SDK. After this call
-is successful you are good to make authenticated calls, like loading or
+is successful you are good to go and make authenticated calls, like loading or
 creating new items.
 
 Sign up
 -------
 
-Using the SDK you can even allow the creation of new users. The pattern
+Using the SDK you can also allow the creation of new users. The pattern
 is pretty similar to the login. Here is an example.
 
 .. code-block:: c
@@ -130,7 +130,7 @@ book.
 
 
 Notice that “address-book” in this example has to match the name of the
-colleciton that you have set up on the back end.
+collection that you have set up on the back end.
 
 Deleting objects
 ----------------

@@ -6,7 +6,7 @@ Getting Started iOS
 Introduction
 ------------
 
-BaasBox is a tool that allows you to quickly build a back end for you
+BaasBox is a tool that allows you to quickly build a back end for your
 application. You can install it on your local machine (ideal for
 development and testing) or your own server. It comes with an SDK that
 simplifies the integration of your mobile with BaasBox. To complete this
@@ -26,7 +26,7 @@ of memos. Tap the “+” button to add a new one.
 
 |add new memo| |edit title body|
 
-You will see the updated note in the list. Feel free to add further
+You will see the updated note on the list. Feel free to add further
 notes. The app is pretty simple and works as expected. It has a problem
 though. When you delete it (e.g. reset the simulator or uninstall it
 from the device) all the memos that you have saved are gone and there is
@@ -40,20 +40,20 @@ The first step is to install BaasBox. For sake of simplicity we will
 show how to install it on a local machine. You will see that’s very
 easy. Download the latest version of BaasBox from `here <http://www.baasbox.com/download/>`_. Unzip the file, open Terminal, go to the directory
 unzipped, type “./start” and hit return. BaasBox is now running on your
-local machine. To test visit the following link:
+local machine. To test it, visit the following link:
 `http://localhost:9000/ <http://localhost:9000//>`_ and you should see
 the following screen.
 
 |launch baasbox|
 
 This means BaasBox is correctly running. If you are working on a BaasBox
-running on a remote server, ask your system administrator which is the
+running on a remote server, ask your system administrator what is the
 URL of the console. Tap the administrator login button. This will show
 the following.
 
 |login baasbox|
 
-If you are running BaasBox on a local machine the default the admin
+If you are running BaasBox on a local machine the default admin
 credentials are:
 
 -  username: admin
@@ -82,7 +82,7 @@ situation.
 |new collection baasbox|
 
 Now the back end is ready to store custom objects in the newly created
-collection. Let’s move on to integrate the SDK in your project. 
+collection. Let’s move on to integrating the SDK in your project. 
 
 Importing the iOS SDK
 ---------------------
@@ -102,7 +102,7 @@ to import it globally. Open the DearDiary-Prefix.pch file and import the
 	#import <Availability.h>
 	#ifndef __IPHONE_4_0
 	#warning "This project uses features only available in iOS SDK 
-		4.0 and later."
+		4.0 or above."
 	#endif
 	#ifdef __OBJC__
 		#import <UIKit/UIKit.h>
@@ -120,7 +120,7 @@ Reviewing the Model
 -------------------
 
 The current data model is pretty simple. It’s made of a class ``SMPost``
-which had two fields: title and body. Those hold the data for each
+which has two fields: title and body. Those hold the data for each
 instance of an entry in the application. In this step we need to
 “BaasBoxify” the data model, meaning that the current model (``SMPost``) has
 to adhere to the generic model class of the BaasBox SDK. This will allow
@@ -168,7 +168,7 @@ Authentication
 
 The started project already includes the class ``SMLoginViewController``.
 This is a component that allows both login and signup. Let’s integrate
-is in the application. First make sure the end point and the app code
+it in the application. First make sure the end point and the app code
 are correct. Open **BAAClient.m** and update the value ``BAAEndPointUrl`` and
 ``BAAAppCode`` with the appropriate values. Open **SMMasterViewController.m**
 and change ``viewWillAppear:`` as follows.
@@ -197,12 +197,12 @@ and change ``viewWillAppear:`` as follows.
 	}
 
 This piece of code will load posts stored on the server when the user is
-logged in or show the login view controller when if user has been
+logged in or show the login view controller when the user has been
 authenticated. To load objects from the back end you can call
 ``getObjectsWithCompletion:`` on any class extending ``BAAObject``, as ``SMPost``
 does. This will return an array of objects of the same class. In our
-example we store the returned value and we reload data in the table
-view. If no user has logged in we display the login view controller.
+example, we store the returned value and we reload data in the table
+view. If no user has logged in, we display the login view controller.
 Whenever you need to find out if somebody is logged in on a device you
 can use the following code.
 
@@ -213,7 +213,7 @@ can use the following code.
 
 The method ``isAuthenticated`` will return a boolean value that you can use
 to update the user interface accordingly. The class
-``SMLoginViewController`` includes just graphic elements like the following.
+``SMLoginViewController`` includes only graphic elements like the following.
 
 |signup login|
 
@@ -345,7 +345,7 @@ follows.
 	}
 
 Notice that we are using the same ``saveObject:completion:`` method as
-before, even if the object has already been created and store on the
+before, even if the object has already been created and stored on the
 server. The SDK will internally handle the right API call. It does not
 matter if the object is created for the first time or is already stored
 on the back end: whenever you want to save it just call
@@ -355,9 +355,9 @@ Test the application
 --------------------
 
 Now you are ready to test the new version of DearDiary. Build and run as
-usual and you will see the login screen, because no user has been
-authenticated previously. Moreover, besides admin, there is no user on
-the back end so tap the “Signup” tab, enter a new username and password
+usual and you will see the login screen, because no user has been previously
+authenticated. Moreover, there are no users on the back end besides admin, 
+so tap the “Signup” tab, enter a new username and password
 and tap the button. Notice that after the signup is successful the newly
 created user is already logged in and you can start creating new posts
 right away. Tap on the “+” button to add a new note. It will have the
@@ -371,8 +371,8 @@ will see the new note created as follows.
 |see post collections dashboard|
 
 Great, you have saved your first post on the back end! Feel free to play
-with new notes or by changing titles and contents check how they are
-stored on the back end. Assuming that so far you have run the example on
+with new notes or check how they arestored on the back end by changing titles and contents. 
+Assuming that so far you have run the example on
 the simulator you could run it on a real device and see how the posts
 created by a given users are correctly loaded on that as well. 
 
