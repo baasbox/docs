@@ -116,6 +116,7 @@ Resize image
 **Description:** Resize image with a specified percentual
 
 **Parameters:**
+
 -  name: name of assets
 -  perc: percentual for the image resized
 
@@ -136,6 +137,7 @@ Resize image
 For example: if the settings are [10%,25%,50%,75%] and you use the following API GET /asset/test/resizeId/1, the name test image will be scaled by 10%
 
 **Parameters:**
+
 -  sizeId: the resizing index to be applied.
 
 **Returns:**
