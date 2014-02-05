@@ -159,7 +159,8 @@ Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
 following window: 
 
-|New Asset|\  NOTE: you have to fill in at least the Name
+|New Asset|\  
+NOTE: you have to fill in at least the Name
 field and save the changes to create a new asset.
 
 .. |Home Console| image:: _static/Console_0.7.3/home_console.png
