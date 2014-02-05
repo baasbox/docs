@@ -3,8 +3,9 @@ Assets
 
 Assets are a special kind of records. First of all, they can be both files or JSON documents. Furthermore they are accessible by anyone, even without authentication. They are useful to create publicly accessible elements such as, for example, images. 
 
-**Create an Asset**: ``POST
-/admin/asset`` 
+Create an Asset:
+----------------
+``POST /admin/asset`` 
 
 **Headers**\  See the :doc:`/RestAPI/general_remarks`
 and:
@@ -49,7 +50,9 @@ File Asset:
 
 **Note**: in this case the file pizza.jpg is a file that must be into the same directory in which you run the command
 
-**Retrieve all the assets**: ``GET /admin/asset`` 
+Retrieve all the assets:
+------------------------
+``GET /admin/asset`` 
 
 **Headers**: See the 
 :doc:`/RestAPI/general_remarks`. The user must be an administrator
@@ -83,7 +86,7 @@ File Asset:
 
 
 Resize image
--------------
+------------
 **Remark**: These APIs work only if the parameter asset is an image
 
 **Resize the image with a fixed width and height**:``GET /asset/:name/resize/:w/:h``
