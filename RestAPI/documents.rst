@@ -24,8 +24,6 @@ valid JSON string.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and unique ID will be returned.
 
-The @ID field is the unique ID of the document. 
-
 **NOTE on Record
 Security Level**\ 
 
@@ -58,8 +56,6 @@ users, can modify it.
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
 
-The @ID field is the unique ID of the document.
-
 Retrieve a document
 -------------------
 
@@ -83,8 +79,6 @@ Anonymous users can retrieve documents
    error occurred
 -  Code 404: the collection specified does not exist
 -  Code 200: OK and the internal JSON document representation.
-
-The @ID field is the unique ID of the document.
 
 Delete a document
 -----------------
