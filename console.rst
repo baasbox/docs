@@ -160,6 +160,7 @@ a new asset, click on the New Asset button and you will see the
 following window: 
 
 |New Asset|\  
+
 NOTE: you have to fill in at least the Name
 field and save the changes to create a new asset.
 
