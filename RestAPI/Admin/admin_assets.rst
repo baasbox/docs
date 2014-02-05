@@ -49,8 +49,10 @@ File Asset:
 
 **Note**: in this case the file pizza.jpg is a file that must be into the same directory in which you run the command
 
-**Retrieve all the assets**: ``GET /admin/asset`` 
-
+Retrieve all the assets: 
+------------------------
+``GET /admin/asset``
+ 
 **Headers**: See the 
 :doc:`/RestAPI/general_remarks`. The user must be an administrator
 
@@ -63,7 +65,9 @@ File Asset:
 -  Code 403: the user is not an Admin
 -  Code 200: OK. A JSON collection is provided
 
-**Delete an asset**: ``DELETE /admin/asset/:name`` 
+Delete an asset: 
+----------------
+``DELETE /admin/asset/:name`` 
 
 **Headers**: See the
 :doc:`/RestAPI/general_remarks`. The user must be an administrator
