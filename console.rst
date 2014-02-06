@@ -168,7 +168,7 @@ field and save the changes to create a new asset.
 
 .. |Home Console| image:: _static/Console_0.7.3/home_console.png
 .. |Login Screen| image:: _static/Console_0.7.3/login.png
-.. |Dashboard| image:: _static/Console_0.7.3/baasbox_console.png
+.. |Dashboard| image:: _static/Console_0.7.3/baasbox_0-7-3-console.png
 .. |News| image:: _static/Console_0.7.3/news.png
 .. |DB Management| image:: _static/Console_0.7.3/baasbox-db-management.png
 .. |Users| image:: _static/Console_0.7.3/users.png
