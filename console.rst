@@ -3,7 +3,7 @@ Console
 BaasBox has a web console that allows managing its behavior and performing administrative
 tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. This guide will
-illustrate the console for the version **0.7.2**\  We suppose that
+illustrate the console for the version **0.7.3**\  We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox in the correct way, you can open your browser and open
 the welcome screen: |Home Console|
@@ -65,6 +65,8 @@ dashboard is splitted into several sections:
 13. DB Management: you can create backup of your DB and import/export
 
 14. Roles: you can view and create roles for users
+
+15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 
 NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
