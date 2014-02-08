@@ -670,13 +670,13 @@ BaasUser.current().logout(new BaasHandler<Void>() {
 }
 ```
 
-``POST /logout/:deviceId`` 
+``POST /logout/:pushToken`` 
 
 Allows a user to logout from the app on a specific device. Push notification will not be sent to the user through the specified device.
 
 Parameter | Description
 --------- | -----------
-**deviceId** | Optional. The id of the device on which you have activate push notifications.
+**pushToken** | Optional. The push notification token that you have used to activate push notifications.
 
 
 ## Logged user profile
@@ -3413,9 +3413,88 @@ Parameter | Description
 **value** | The new value for the key. Mandatory.
 
 
-
-
 ## Push Notifications
+
+Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. 
+
+## Enable push notifications
+
+> Example of request to enable push notifications
+
+```shell
+curl -X PUT  http://localhost:9000/push/device/ios/123  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client askToEnablePushNotifications];
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /push/device/:os/:pushToken`
+
+Allows to enable the reception of push notifications.
+
+Parameter | Description
+--------- | -----------
+**os** | The operative system. One of: `ios`, `android`. Mandatory.
+**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+
+
+
+
+
+## Send a push notification
+
+```shell
+curl -X POST  http://localhost:9000/push/message/cesare  \
+	 -d '{"message" : "hi"}' \
+	 -H Content-type:application/json \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+TO BE IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+
+`POST /push/message/:username`
+
+Allows to send a push notification. It will be sent to every device the user has enabled push notifications.
+
+Parameter | Description
+--------- | -----------
+**username** | The username of the user that has to receive the notification. Mandatory.
+
 
 
 
