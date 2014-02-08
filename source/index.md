@@ -2403,7 +2403,19 @@ file.contentType = @"image/jpeg";
 ```
 
 ```java
-TODO
+InputStream data = ...; // input stream to upload
+BaasFile file = new BaasFile();
+
+file.upload(data,new BaasHandler<BaasFile> file) {
+  @Override
+  public void handle(BaasResult<BaasFile> res) {
+    if( res.isSuccess() ) {
+      Log.d("LOG","File uploaded with permissions");
+    } else {
+      Log.e("LOG","Deal with error",res.error());
+    }
+  }
+}
 ```
 
 > Example of response when a file is created
@@ -2440,7 +2452,22 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+byte[] data = ...; // in memory data to upload
+JsonObject attachedData = new JsonObject()
+                              .putString("someInfo","value);
+
+BaasFile file = new BaasFile(attachedData);
+
+file.upload(data,new BaasHandler<BaasFile> file) {
+  @Override
+  public void handle(BaasResult<BaasFile> res) {
+    if( res.isSuccess() ) {
+      Log.d("LOG","File uploaded with permissions");
+    } else {
+      Log.e("LOG","Deal with error",res.error());
+    }
+  }
+}
 ```
 
 > Example of request to create a file with attached data and acl
@@ -2458,7 +2485,23 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+InputStream data = ...; // input stream to upload
+JsonObject attachedData = new JsonObject();
+attachedData.putString("key","value")
+            .putString("num",1);
+BaasFile file = new BaasFile(attachedData);
+BaasACL acl = new BaasACL().grantUsers(Grant.READ,"andrea");
+
+file.upload(acl,data,new BaasHandler<BaasFile> file) {
+  @Override
+  public void handle(BaasResult<BaasFile> res) {
+    if( res.isSuccess() ) {
+      Log.d("LOG","File uploaded with permissions");
+    } else {
+      Log.e("LOG","Deal with error",res.error());
+    }
+  }
+}
 ```
 
 `POST /file`
@@ -2502,7 +2545,17 @@ BAAFile *picture = ...; // instance or subclass of BAAFile
 ```
 
 ```java
-TODO
+BaasFile file = ...; // a file reference
+file.delete(new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if( res.isSuccess() ) {
+      Log.d("LOG","File has been downloaded");
+    } else {
+      Log.e("LOG","Deal with error",res.error());
+    }
+  }
+});
 ```
 
 > Example of response when a file is deleted
@@ -2547,7 +2600,17 @@ BAAFile *picture = ...; // instance or subclass of BAAFile, previously saved on 
 ```
 
 ```java
-TODO
+BaasFile file = ...;
+file.stream(new BaasHandler<BaasFile>() {
+  @Override
+  public void handle(BaasResult<BaasFile> res) {
+    if ( res.isSuccess() ) {
+      Log.d("LOG","File received");  
+    } else {
+      Log.e("LOG","Error while streaming",res.error());
+    }
+  }
+});
 ```
 
 > Example of response
@@ -2604,7 +2667,16 @@ curl http://localhost:9000/file/details/f18e4343-5100-4398-b32f-2e634220bf99  \
 ```
 
 ```java
-TODO
+BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
+  @Override
+  public void handle(BaasResult<BaasFile> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","Your file details"+res);
+    } else {
+      Log.e("LOG","Deal with eror",res.error());
+    }
+  }
+});
 ```
 
 > Example of response with file details
@@ -2653,7 +2725,16 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
+  @Override
+  public void handle(BaasResult<List<BaasFile>> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","Received result");
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
 ```
 
 > Example of response with details of files
@@ -2712,7 +2793,17 @@ BAAFile *file = ... ; // instance of file, already saved on the server
 ```
 
 ```java
-TODO
+BaasFile file=...; // reference to a file already saved on the server
+file.grant(Grant.READ,"andrea",new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if (res.isSuccess()) { 
+      Log.d("LOG","andrea can read the file");
+    } else {
+      Log.e("LOG","deal with error",res.error());
+    }
+  }
+});
 ```
 
 > Example of request to grant write access to role “registered” on a file
@@ -2738,7 +2829,18 @@ BAAFile *file = ... ; // instance of file, already saved on the server
 ```
 
 ```java
-TODO
+BaasFile file=...; // reference to a file already saved on the server
+file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if (res.isSuccess()) { 
+      Log.d("LOG","andrea can read the file");
+    } else {
+      Log.e("LOG","deal with error",res.error());
+    }
+  }
+});
+
 ```
 
 > Example of response 
@@ -2796,7 +2898,18 @@ BAAFile *file = ... ; // instance of file, already saved on the server
 ```
 
 ```java
-TODO
+BaasFile file=...; // reference to a file already saved on the server
+file.revoke(Grant.READ,"andrea",new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if (res.isSuccess()) { 
+      Log.d("LOG","andrea can read the file");
+    } else {
+      Log.e("LOG","deal with error",res.error());
+    }
+  }
+});
+
 ```
 
 > Example of request to revoke write access to role “registered” on a file
@@ -2822,7 +2935,18 @@ BAAFile *file = ... ; // instance of file, already saved on the server
 ```
 
 ```java
-TODO
+BaasFile file=...; // reference to a file already saved on the server
+file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if (res.isSuccess()) { 
+      Log.d("LOG","andrea can read the file");
+    } else {
+      Log.e("LOG","deal with error",res.error());
+    }
+  }
+});
+
 ```
 
 > Example of response 
