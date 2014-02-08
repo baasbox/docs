@@ -3227,7 +3227,7 @@ Allows to retrieve all the assets. Supports [pagination](#pagination).
 
 ## Settings
 
-http://docs.baasbox.com/en/develop/RestAPI/settings.html
+
 
 ## Push Notifications
 
