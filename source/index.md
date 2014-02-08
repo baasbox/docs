@@ -185,7 +185,7 @@ NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
 
 
-## Settings
+## Console settings
 
 
 By selecting the Settings option in the left menu you can access the
@@ -3226,6 +3226,192 @@ Allows to retrieve all the assets. Supports [pagination](#pagination).
 
 
 ## Settings
+
+Settings are app related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
+
+* PasswordRecovery: this section contains many settings that affect the password recovery workflow
+* Application: Application specific parameters, such as the App Name
+* Push: Push notifications related settings
+* Images: specific settings for images (Assets file) processing
+
+
+<aside class="notice">	
+	Only users belonging to administrator roles can call these APIs.
+</aside>
+
+## Fetch current settings
+
+```shell
+curl http://localhost:9000/admin/configuration/dump.json  \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+TO BE IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "section": "PasswordRecovery",
+      "description": "Configurations for password recovery related properties",
+      "sub sections": {
+        "email": [
+          {
+            "email.template.text": "Hi ...",
+            "type": "String"
+          }
+
+        ],
+        "network": [ ]
+      }
+    },
+    {
+      "section": "Application",
+      "description": "Configurations for general App(lication) related properties",
+      "sub sections": { }
+    },
+    {
+      "section": "Push",
+      "description": "Configurations for push related properties",
+      "sub sections": { }
+    },
+    {
+      "section": "Images",
+      "description": "Configurations for Images related stuffs",
+      "sub sections": { }
+    },
+    {
+      "section": "Social",
+      "description": "Configurations for Social Login related stuffs",
+      "sub sections": { }
+    }
+  ],
+  "http_code": 200
+}
+```
+
+`GET /admin/configuration/dump.json`
+
+Returns a JSON representing the current configuration.
+
+
+## Fetch a section of the Settings
+
+> Example of request to retrieve the `Application` section
+
+```shell
+curl http://localhost:9000/admin/configuration/Application  \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+TO BE IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "key": "application.name",
+      "value": "BaasBox",
+      "description": "The App name",
+      "type": "String"
+    },
+    {
+      "key": "session_tokens.timeout",
+      "value": "0",
+      "description": "The expiration time of the session tokens (in minutes). WARNING: the admin console refreshes the session token every 5 minutes, if you set a value lower than 5, you may experience disconnection from the console. To disable expiration set it to 0.",
+      "type": "Integer"
+    },
+    {
+      "key": "network.http.ssl",
+      "value": "false",
+      "description": "Set to TRUE if the BaasBox server is reached via SSL through a reverse proxy.",
+      "type": "Boolean"
+    },
+    {
+      "key": "network.http.url",
+      "value": "localhost",
+      "description": "The public url of the BaasBox server. I.e. the url used by the App to contact BaasBox, without the protocol prefix (i.e. http://) and PORT",
+      "type": "String"
+    },
+    {
+      "key": "network.http.port",
+      "value": "9000",
+      "description": "The public TCP port used by the App to contact BaasBox. Please note: when behind a reverse proxy, this could be different from the port used by BaasBox.",
+      "type": "Integer"
+    }
+  ],
+  "http_code": 200
+}
+```
+
+`GET /admin/configuration/:section`
+
+Returns a JSON representing a section of the configuration.
+
+Parameter | Description
+--------- | -----------
+**section** | The name of a section. One of: `PasswordRecovery`, `Application`, `Push`, `Images`. Mandatory.
+
+
+## Update a value in settings
+
+> Example of request to update the key `application.name`
+
+```shell
+curl -X PUT http://localhost:9000/admin/configuration/Application/application.name/NewName \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+TO BE IMPLEMENTED
+```
+
+```java
+TODO
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+
+`PUT /admin/configuration/:section/:key/:value`
+
+Updates a specific value in the settings.
+
+Parameter | Description
+--------- | -----------
+**section** | The name of a section. One of: `PasswordRecovery`, `Application`, `Push`, `Images`. Mandatory.
+**key** | The name of the key to update. Mandatory.
+**value** | The new value for the key. Mandatory.
+
 
 
 
