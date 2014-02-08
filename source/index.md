@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Baasbox API Reference
 
 language_tabs:
   - shell: cURL
@@ -118,7 +118,7 @@ objects and queries without using specific abstractions or having to simulate th
 BaasBox has a web console that allows managing its behavior and performing administrative
 tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. This guide will
-illustrate the console for the version **0.7.2**  We suppose that
+illustrate the console for the version **0.7.3**  We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox in the correct way, you can open your browser and open
 the welcome screen: ![Console image](images/Console_0.7.2/home_console.png)
