@@ -421,7 +421,7 @@ NSDictionary *parameters = @{kPageNumber : @0,
 
 ```java
 Filter paginate = Filter.paging("user.name",0,20);
-BaasUse.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
+BaasUser.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
   @Override
   public void handle(BaasResult<List<BaasUser>> res) {
     if (res.isSuccess()) {
@@ -1433,7 +1433,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TO DO
+NOT SUPPORTED
 ```
 
 > Example of response
@@ -1471,7 +1471,7 @@ NOT SUPPORTED
 ```
 
 ```java
-TODO
+NOT SUPPORTED
 ```
 
 > Example of response
@@ -2993,7 +2993,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response 
@@ -3033,7 +3033,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response 
@@ -3098,7 +3098,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response
@@ -3132,7 +3132,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response
@@ -3175,7 +3175,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response
@@ -3252,7 +3252,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response
@@ -3320,7 +3320,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response
@@ -3388,7 +3388,7 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+TO BE IMPLEMENTED
 ```
 
 > Example of response
@@ -3433,7 +3433,16 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-TODO
+// Assumes there is a logged in user
+BaasBox box =BaasBox.getDefault();
+box.registerPush("registrationId",new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","You registered successfully");
+    }
+  }
+});
 ```
 
 > Example of response
@@ -3473,7 +3482,19 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-TODO
+JsonObject message = new JsonObject()
+  .putString("greeting","Ciao Mondo!")
+  .putString("from","BaasBox");
+  
+BaasUser user = BaasUser.withUserName("Cesare");
+user.send(message,new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if(res.isFailed()){
+      Log.e("LOG","Something went wrong",res.error());
+    }
+  }
+});
 ```
 
 > Example of response
