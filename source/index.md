@@ -3461,9 +3461,14 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
+GoogleCloudMessaging msg = GoogleCloudMessaging.getInstance(context);
+String registrationId = gcm.register(SENDER_ID);
+// ...
+// ...
+// ...
 // Assumes there is a logged in user
 BaasBox box =BaasBox.getDefault();
-box.registerPush("registrationId",new BaasHandler<Void>() {
+box.registerPush(registrationId,new BaasHandler<Void>() {
   @Override
   public void handle(BaasResult<Void> res) {
     if (res.isSuccess()) {
