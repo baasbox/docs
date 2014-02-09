@@ -3,7 +3,8 @@
 @import 'compass';
 @import 'variables';
 @import 'syntax';
-//@import 'icon-font';
+@import 'icon-font';
+@import 'fix';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -45,6 +46,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
 .content a {
   color:#538378;
+  padding-top:120px;
 }
 .content a:visited {
   color:#343131;
@@ -54,7 +56,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 ////////////////////////////////////////////////////////////////////////////////
 
 .tocify-wrapper {
-  margin-top: 68px;
+  margin-top: 65px;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -182,6 +184,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
     right: 0;
     top: 0;
     bottom: 0;
+    margin-top:68px;
   }
 
   #lang-selector {
@@ -227,8 +230,6 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
   // to place content above the dark box
   position: relative;
   z-index: 30;
-  padding-top: 65px;
-
 
   &>h1, &>h2, &>h3, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;

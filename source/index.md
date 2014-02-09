@@ -627,7 +627,7 @@ Parameter | Description
 
 ## Logout
 
-> Example of logout call
+> Example of logout request
 
 ```shell
 curl -X POST http://localhost:9000/logout \
