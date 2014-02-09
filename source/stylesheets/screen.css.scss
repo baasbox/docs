@@ -3,7 +3,7 @@
 @import 'compass';
 @import 'variables';
 @import 'syntax';
-@import 'icon-font';
+//@import 'icon-font';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -35,6 +35,14 @@ html, body {
   background-color: $main-bg;
 }
 
+button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .block-container .storebuttons .storebutton:hover, .mainmenu, .appsblock .apps .slider .navigation:hover, .priceblock .block-container .pricetable .priceitem, .contactsblock .block-container .wrapper .mailbutton:hover, .contactsblock .input-container input[type="submit"], .footerblock, .blogblock .navigation .page-numbers.current {
+    background-color: #538378;
+}
+
+#toc a {
+	color: #fff;
+}
+
 .content a {
   color:#538378;
 }
@@ -46,6 +54,7 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 
 .tocify-wrapper {
+  margin-top: 68px;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -218,6 +227,7 @@ html, body {
   // to place content above the dark box
   position: relative;
   z-index: 30;
+  padding-top: 65px;
 
 
   &>h1, &>h2, &>h3, &>p, &>table, &>ul, &>ol, &>aside, &>dl {

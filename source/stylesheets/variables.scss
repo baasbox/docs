@@ -64,12 +64,12 @@ $h1-margin-bottom: 21px; // padding under the largest header tags
 // FONTS
 ////////////////////
 %default-font {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-family: Cantarell-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 
 %header-font {
-  @extend %default-font;
+  //@extend %default-font;
   font-weight: bold;
 }
 
