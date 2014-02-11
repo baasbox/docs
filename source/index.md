@@ -367,18 +367,21 @@ It needs to provide the user’s credentials via the basic access authentication
 password must be combined into a string “username:password” and then
 encoded using BASE64. The header must be in the form: 
 
-``Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==``
+``Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtPW==``
 
 If the authentication fails, the
 server replies with BAD REQUEST http error (code 400)
 
-**X-BAASBOX-APPCODE**  This is the application code, by default this
-is: ``1234567890``. It is **strongly recommended** that you change this code when you start production.
+#### Application Code
+This is the application code.
+Every BaasBox instance should have a unique AppCode. 
+By default this is: ``1234567890``, but is **strongly recommended** that you change this code when you start production.
 See [Hacking section](#hacking).
 
+``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
+
+
 #### Session Token
-
-
 To use this authentication method, the client has to call
 the [Login](#login) API. The Server will provide a token to use in the
 subsequent calls. All tokens will be invalidated if the server has stopped. To pass the session
@@ -403,11 +406,11 @@ token to the server, use the following header:
 ```json
 {
 	"result": "error",
-	"bb_code": "",
+	"bb_code": <custom error code, if necessary>,
 	"message": "a message explaining the problem in plain English",
 	"resource": "the REST API called",
 	"method": "the HTTP method used",
-	"request_header": { the headers received by the server },
+	"request_header": { ... the headers received by the server... },
 	"API_version": "...the BaasBox API version..."
 }
 ```
@@ -420,7 +423,7 @@ understand why the request was rejected.
 ### Custom error codes
 
 
-These are custom error codes specific to BaasBox
+These are custom error codes specific to BaasBox, returned into the bb_code field.
 
 -  40001: You are attempting to update a database object with older
    data. Version is not the same
@@ -436,7 +439,7 @@ These are custom error codes specific to BaasBox
    administration console and check the settings
 -  50302: The server cannot resolve the host name. HINT: check your
    internet connection 
--  50303: Could not send push notifications. HINT: Check your API Key(Google).
+-  50303: Could not send push notifications. HINT: Check your API Key (Google).
 
 ### Pagination and query criteria
 
