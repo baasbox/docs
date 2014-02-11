@@ -8,30 +8,39 @@ language_tabs:
 
 toc_footers:
  - <a href='#'></a>
- - <a href='http://github.com/tripit/slate'>Powered by Slate</a>
 ---
 
 # Introduction
 
+```
+In this section you can find code examples for every platform we address.
+Click on an above tab to choose the platform of your interest
+```
+
 BaasBox is a complete solution to implement the back end of your applications.
+
+Latest version is **0.7.3**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
 
 *  the BaasBox features (server side)
    * how to install BaasBox
-   *  how to use admin console and has a detailed section about the REST
-      API that you can use
+   *  how to use admin console and a detailed section about the REST API that you can use
    *  REST API
 
 *  the SDK features
 
-   *  iOS SDK
+   *  [iOS SDK](?objective_c#features)
+   *  [Android SDK](?java#features)
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-server-0-7-2-released)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/category/baasbox-software-version/)
+The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
-The Getting Started section will allow you to rapidly have a first
-result of what BaasBox can give you. Enjoy!
+Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
+result of what BaasBox can give you. 
+Enjoy!
+
 
 # Installation
 
@@ -120,6 +129,16 @@ objects and queries without using specific abstractions or having to simulate th
 
 
 # Console
+
+```
+To run the BaasBox server go into its folder and type
+./start
+on Windows systems type
+start.bat
+
+Once the server is up and running, you can access to the console by open the following link:
+http://127.0.0.1:9000/console
+```
 
 BaasBox has a web console that allows managing its behavior and performing administrative
 tasks. The console is a responsive one-page web application that
@@ -328,7 +347,7 @@ following window:
 
 
 
-# REST API
+# Features
 
 ## General Remarks
 
@@ -341,7 +360,7 @@ If not specified otherwise, all requests need custom HTTP headers.
 BaasBox, since the 0.57 version supports two authentication methods: HTTP Basic Authentication, or via a
 Session Token.
 
-### Basic Authentication
+#### Basic Authentication
 
 It needs to provide the user’s credentials via the basic access authentication method. Username and
 password must be combined into a string “username:password” and then
@@ -353,10 +372,10 @@ If the authentication fails, the
 server replies with BAD REQUEST http error (code 400)
 
 **X-BAASBOX-APPCODE**  This is the application code, by default this
-is: ``1234567890``. It is strongly recommended that you change this code when you start production.
+is: ``1234567890``. It is **strongly recommended** that you change this code when you start production.
 See [Hacking section](#hacking).
 
-## Session Token
+#### Session Token
 
 
 To use this authentication method, the client has to call
@@ -366,7 +385,7 @@ token to the server, use the following header:
 
 ``X-BB-SESSION: 0000-1111-2222-3333`` 
 
-## The JSON response 
+### The JSON response 
 
 > A sample of a JSON response
 
@@ -397,7 +416,7 @@ object. In case of error, the data returned are more detailed and are useful to
 understand why the request was rejected. 
 
 
-## Custom error codes
+### Custom error codes
 
 
 These are custom error codes specific to BaasBox
@@ -418,7 +437,7 @@ These are custom error codes specific to BaasBox
    internet connection 
 -  50303: Could not send push notifications. HINT: Check your API Key(Google).
 
-## Pagination and query criteria
+### Pagination and query criteria
 
 > Example of paginated query
 
@@ -483,8 +502,9 @@ Parameter | Description
 	The value of the parameter must be URL encoded.
 </aside>
 
+##User Management
 
-## Sign up
+### Sign up
 
 > Sample request to create a user
 
@@ -565,7 +585,7 @@ Parameter | Description
 
 
 
-## Login
+### Login
 
 > Sample request to login 
 
@@ -639,7 +659,7 @@ Parameter | Description
 **appcode** | The appcode of your server instance
 
 
-## Logout
+### Logout
 
 > Example of logout request
 
@@ -692,7 +712,7 @@ Parameter | Description
 **pushToken** | Optional. The push notification token that you have used to activate push notifications.
 
 
-## Logged user profile
+### Logged user profile
 
 > Request to fetch user profile currently logged in
 
@@ -753,12 +773,7 @@ BaasUser.current().refresh(new BaasHandler<BaasUser>() {
 Retrieves details about the logged in user.
 
 
-
-
-
-
-
-## Update user profile
+### Update user profile
 
 > PUT request to update the logged in user profile
 
@@ -845,7 +860,7 @@ Parameter | Description
 
 
 
-## Change password
+### Change password
 
 > Example of request
 
@@ -898,303 +913,7 @@ Parameter | Description
 
 
 
-
-
-
-
-
-## Follow a user
-
-> Example of request to follow the user "cesare"
-
-```shell
-curl -X POST http://localhost:9000/follow/cesare \
-	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
-```
-
-```objective_c
-BAAUser *user = ...; // Instance of user to be followed
-
-[BAAUser followUser:user
-         completion:^(BAAUser *user, NSError *error) {
-             
-             if (error == nil) {
-                 NSLog(@"now following user %@", user);                 
-             } else {
-                 // deal with error             
-             }
-                          
-         }];
-```
-
-```java
-BaasUser user = BaasUser.withUsername("cesare");
-user.follow(new BaasHandler<BaasUser>() {
-
-  @Override
-  public void handle(BaasResult<BaasUser> res) {
-    if(res.isSuccess()) {
-     JsonObject profile = res.value().getScope(Scope.FRIEND);
-     Log.d("LOG", "It's profile "+profile);
-    } else{
-      // there was an error
-    }
-  } 
-});
-```
-> Example response
-
-```json
-{
-  "result": "ok",
-  "data": {
-    "user": {
-      "name": "cesare",
-      "roles": [
-        {
-          "name": "registered"
-        },
-        {
-          "name": "friends_of_cesare"
-        }
-      ],
-      "status": "ACTIVE"
-    },
-    "signUpDate": "2014-01-24T11:28:09.009+0100",
-    "visibleByFriends": {
-      "phoneNumber": "+1123456"
-    }
-  },
-  "http_code": 201
-}
-```
-
-``POST /follow/:username``
-
-This API allows a user to follow another user. Once the relation is established
-the follower will be able to see the documents and files created by the followed 
-user as well as its `visibleByFriends` data in the user profile.
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user to be followed. Mandatory.
-
-
-
-
-
-
-
-
-## Unfollow a user
-
-> Example of unfollow request
-
-```shell
-curl -X DELETE http://localhost:9000/follow/cesare \
- 	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
-```
-
-```objective_c
-BAAUser *user = ...; // Instance of user to be unfollowed
-
-[BAAUser unfollowUser:user
-           completion:^(BAAUser *user, NSError *error) {
-             
-	             if (error == nil) {
-	                 NSLog(@"not following anymore user %@", user);                 
-	             } else {
-	                 // deal with error             
-	             }
-                          
-         }];
-```
-
-```java
-BaasUser.withUserName("cesare").unfollow(
-  new BaasHandler<BaasUser>() {
-    @Override
-    public void handle(BaasResult<BaasUser> res) {
-      if(res.isSuccess()) {
-        JsonObject data = res.value().getScope(Scope.FRIEND);
-        Log.d("LOG", "No more friend data:"+(data==null));
-      } else {
-        // there was an error
-      }
-    }
-  });
-```
-> Example of response
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-``DELETE /follow/:username``
-
-This API allows a user to unfollow another user. Once the relation has been deleted, the user 
-won't be able to see the documents and files created by the unfollowed user anymore.
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user to be unfollowed. Mandatory.
-
-
-
-
-
-
-
-## Fetch following
-
-> Example of request to fetch who "cesare" is following
-
-```shell
-curl http://localhost:9000/following/cesare \
- 	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
-```
-
-```objective_c
-BAAUser *user = ... // user representing "cesare"
-
-[user loadFollowingWithCompletion:^(NSArray *following, NSError *error) {
-                        
-            for (BAAUser *u in following) {
-                NSLog("cesare is following %@", u)
-            }
-            
-        }];
-```
-
-```java
-BaasUser user = ... // the user representing "cesare"
-
-user.following(new BaasHandler<List<BaasUser>>() {
-  @Override
-  public void handle(BaasResult<List<BaasUser>> res) {
-    if(res.isSuccess()){
-      for(BaasUser u: res.value()) {
-        Log.d("LOG","Cesare is follwing: "+u.getName());
-      }
-    }
-  }
-});
-```
-
-> Example of response
-
-```json
-{
-  "result": "ok",
-  "data": [
-    {
-      "user": {
-        "roles": [
-          {
-            "name": "registered"
-          }
-        ],
-        "name": "a",
-        "status": "ACTIVE"
-      },
-      "signUpDate": "2014-01-24T12:13:08.008+0100"
-    }
-  ],
-  "http_code": 200
-}
-```
-
-``GET /following/:username``
-
-This API returns a list of users who are followed by the user with `username` passed as parameter. If no username is provided, the API returns all users followed by the user logged in.  In its `data` property the method returns an array filled with the user profiles representing its “friends”. Each profile will contain the `visibleByFriends` data which would be otherwise hidden.
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user whose following list has to be fetched. Optional.
-
-
-
-
-
-
-
-
-## Fetch followers
-
-> Example of request to fetch "cesare"'s followers
-
-```shell
-curl http://localhost:9000/followers/cesare \
-	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
-```
-
-```objective_c
-BAAUser *user = ... // user representing "cesare"
-
-[user loadFollowersWithCompletion:^(NSArray *following, NSError *error) {
-                        
-            for (BAAUser *u in following) {
-                NSLog("%@ is following cesare", u)
-            }
-            
-        }];
-```
-
-```java
-BaasUser user = ... // the user representing "cesare"
-
-user.followers(new BaasHandler<List<BaasUser>>() {
-  @Override
-  public void handle(BaasResult<List<BaasUser>> res) {
-    if(res.isSuccess()){
-      for(BaasUser u: res.value()) {
-        Log.d("LOG", u.getName()+ " is following cesare");
-      }
-    }
-  }
-});
-```
-
-
-> Example of response with "cesare"'s followers
-
-
-```json
-{
-  "result": "ok",
-  "data": [
-    {
-      "user": {
-        "roles": [
-          {
-            "name": "registered"
-          }
-        ],
-        "name": "a",
-        "status": "ACTIVE"
-      },
-      "signUpDate": "2014-01-24T12:13:08.008+0100"
-    }
-  ],
-  "http_code": 200
-}
-```
-
-``GET /followers/:username``
-
-This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the user currently logged in. The method returns in its `data` property an array filled with the user profiles representing its “friends”. Each profile will contain the `visibleByFriends` data which would be otherwise protected. 
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user whose followers list has to be fetched. Optional.
-
-
-
-## Password reset
+### Password reset
 
 > Example of request for password reset
 
@@ -1264,7 +983,7 @@ This API works only if there is an `email` field (populated with a valid email a
 </aside>
 
 
-## Fetch a user profile
+### Fetch a user profile
 
 > example of request to get a user profile
 
@@ -1339,7 +1058,7 @@ Parameter | Description
 
 
 
-## Fetch users
+### Fetch users
 
 > example of request to get a list users
 
@@ -1423,6 +1142,297 @@ BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
 
 Allows to retrieve a list of users. This API supports [pagination](#pagination-and-query-criteria) and [query criteria](#pagination-and-query-criteria).
 
+##Friendship
+
+
+### Follow a user
+
+> Example of request to follow the user "cesare"
+
+```shell
+curl -X POST http://localhost:9000/follow/cesare \
+	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
+```
+
+```objective_c
+BAAUser *user = ...; // Instance of user to be followed
+
+[BAAUser followUser:user
+         completion:^(BAAUser *user, NSError *error) {
+             
+             if (error == nil) {
+                 NSLog(@"now following user %@", user);                 
+             } else {
+                 // deal with error             
+             }
+                          
+         }];
+```
+
+```java
+BaasUser user = BaasUser.withUsername("cesare");
+user.follow(new BaasHandler<BaasUser>() {
+
+  @Override
+  public void handle(BaasResult<BaasUser> res) {
+    if(res.isSuccess()) {
+     JsonObject profile = res.value().getScope(Scope.FRIEND);
+     Log.d("LOG", "It's profile "+profile);
+    } else{
+      // there was an error
+    }
+  } 
+});
+```
+> Example response
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "user": {
+      "name": "cesare",
+      "roles": [
+        {
+          "name": "registered"
+        },
+        {
+          "name": "friends_of_cesare"
+        }
+      ],
+      "status": "ACTIVE"
+    },
+    "signUpDate": "2014-01-24T11:28:09.009+0100",
+    "visibleByFriends": {
+      "phoneNumber": "+1123456"
+    }
+  },
+  "http_code": 201
+}
+```
+
+``POST /follow/:username``
+
+This API allows a user to follow another user. Once the relation is established
+the follower will be able to see the documents and files created by the followed 
+user as well as its `visibleByFriends` data in the user profile.
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user to be followed. Mandatory.
+
+
+
+
+
+
+
+
+### Unfollow a user
+
+> Example of unfollow request
+
+```shell
+curl -X DELETE http://localhost:9000/follow/cesare \
+ 	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
+```
+
+```objective_c
+BAAUser *user = ...; // Instance of user to be unfollowed
+
+[BAAUser unfollowUser:user
+           completion:^(BAAUser *user, NSError *error) {
+             
+	             if (error == nil) {
+	                 NSLog(@"not following anymore user %@", user);                 
+	             } else {
+	                 // deal with error             
+	             }
+                          
+         }];
+```
+
+```java
+BaasUser.withUserName("cesare").unfollow(
+  new BaasHandler<BaasUser>() {
+    @Override
+    public void handle(BaasResult<BaasUser> res) {
+      if(res.isSuccess()) {
+        JsonObject data = res.value().getScope(Scope.FRIEND);
+        Log.d("LOG", "No more friend data:"+(data==null));
+      } else {
+        // there was an error
+      }
+    }
+  });
+```
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+``DELETE /follow/:username``
+
+This API allows a user to unfollow another user. Once the relation has been deleted, the user 
+won't be able to see the documents and files created by the unfollowed user anymore.
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user to be unfollowed. Mandatory.
+
+
+
+
+
+
+
+### Fetch following
+
+> Example of request to fetch who "cesare" is following
+
+```shell
+curl http://localhost:9000/following/cesare \
+ 	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
+```
+
+```objective_c
+BAAUser *user = ... // user representing "cesare"
+
+[user loadFollowingWithCompletion:^(NSArray *following, NSError *error) {
+                        
+            for (BAAUser *u in following) {
+                NSLog("cesare is following %@", u)
+            }
+            
+        }];
+```
+
+```java
+BaasUser user = ... // the user representing "cesare"
+
+user.following(new BaasHandler<List<BaasUser>>() {
+  @Override
+  public void handle(BaasResult<List<BaasUser>> res) {
+    if(res.isSuccess()){
+      for(BaasUser u: res.value()) {
+        Log.d("LOG","Cesare is follwing: "+u.getName());
+      }
+    }
+  }
+});
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "user": {
+        "roles": [
+          {
+            "name": "registered"
+          }
+        ],
+        "name": "a",
+        "status": "ACTIVE"
+      },
+      "signUpDate": "2014-01-24T12:13:08.008+0100"
+    }
+  ],
+  "http_code": 200
+}
+```
+
+``GET /following/:username``
+
+This API returns a list of users who are followed by the user with `username` passed as parameter. If no username is provided, the API returns all users followed by the user logged in.  In its `data` property the method returns an array filled with the user profiles representing its “friends”. Each profile will contain the `visibleByFriends` data which would be otherwise hidden.
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user whose following list has to be fetched. Optional.
+
+
+
+
+
+
+
+
+### Fetch followers
+
+> Example of request to fetch "cesare"'s followers
+
+```shell
+curl http://localhost:9000/followers/cesare \
+	 -H X-BB-SESSION:c6fb7001-ccb5-4048-8935-80ef197e1390
+```
+
+```objective_c
+BAAUser *user = ... // user representing "cesare"
+
+[user loadFollowersWithCompletion:^(NSArray *following, NSError *error) {
+                        
+            for (BAAUser *u in following) {
+                NSLog("%@ is following cesare", u)
+            }
+            
+        }];
+```
+
+```java
+BaasUser user = ... // the user representing "cesare"
+
+user.followers(new BaasHandler<List<BaasUser>>() {
+  @Override
+  public void handle(BaasResult<List<BaasUser>> res) {
+    if(res.isSuccess()){
+      for(BaasUser u: res.value()) {
+        Log.d("LOG", u.getName()+ " is following cesare");
+      }
+    }
+  }
+});
+```
+
+
+> Example of response with "cesare"'s followers
+
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "user": {
+        "roles": [
+          {
+            "name": "registered"
+          }
+        ],
+        "name": "a",
+        "status": "ACTIVE"
+      },
+      "signUpDate": "2014-01-24T12:13:08.008+0100"
+    }
+  ],
+  "http_code": 200
+}
+```
+
+``GET /followers/:username``
+
+This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the user currently logged in. The method returns in its `data` property an array filled with the user profiles representing its “friends”. Each profile will contain the `visibleByFriends` data which would be otherwise protected. 
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user whose followers list has to be fetched. Optional.
 
 
 
@@ -1432,7 +1442,7 @@ A collection is a sort of bucket where you can store documents. Documents are sc
 Another very important feature to know about collections is that the records stored have a per-user-record-security-level, meaning that each record can be accessed only by the user who created it. There are APIs to grant or revoke privileges to other users. See [Grant permissions on a Document](#grant-permissions-on-a-document).
 
 
-## Create a new Collection
+### Create a new Collection
 
 > Example of request to create a collection
 
@@ -1470,7 +1480,7 @@ Parameter | Description
 
 
 
-## Delete a Collection
+### Delete a Collection
 
 > Example of request to delete a collection
 
@@ -1521,7 +1531,7 @@ A document belongs to a [Collection](#collections34). You can create, read, upda
 
 Here are the APIs.
 
-## Create a document
+### Create a document
 
 > Example of request to create a document.
 
@@ -1607,7 +1617,7 @@ Parameter | Description
 
 
 
-## Retrieve a document
+### Retrieve a document
 
 > Example of request to retrieve a specific document
 
@@ -1666,7 +1676,7 @@ Parameter | Description
 
 
 
-## Modify a document
+### Modify a document
 
 > Example of a request to modify a document
 
@@ -1746,7 +1756,7 @@ Parameter | Description
 </aside>
 
 
-## Update a Document's field
+### Update a Document's field
 
 > Example of a request to change the value of the field 'title'
 
@@ -1976,7 +1986,7 @@ The fieldName must start with a .
 </aside>
 
 
-## Delete a document
+### Delete a document
 
 > Example of a request to delete a document
 
@@ -2032,7 +2042,7 @@ Parameter | Description
 
 
 
-## Count documents
+### Count documents
 
 > Example of a request to count documents in a collection
 
@@ -2088,7 +2098,7 @@ Parameter | Description
 
 
 
-## Retrieve documents 
+### Retrieve documents 
 
 > Example of a request to retrieve a list of documents using default pagination
 
@@ -2221,7 +2231,7 @@ Parameter | Description
 
 
 
-## Grant permissions on a Document
+### Grant permissions on a Document
 
 > Example of a request to grant read access to user "a" on document "090dd688"
 
@@ -2307,7 +2317,7 @@ Parameter | Description
 
 
 
-## Revoke permissions on a Document
+### Revoke permissions on a Document
 
 
 > Example of a request to revoke read access to user "a" on document "090dd688"
@@ -2400,7 +2410,7 @@ The maximum size of a file is 2GB, but we do not recommend reaching such size, s
 
 
 
-## Create a file
+### Create a file
 
 > Example of a request to create a file
 
@@ -2549,7 +2559,7 @@ Parameter | Description
 </aside>
 
 
-## Delete a file
+### Delete a file
 
 > Example of a request to delete a file
 
@@ -2610,7 +2620,7 @@ Parameter | Description
 
 
 
-## Retrieve a file
+### Retrieve a file
 
 > Example of a request to retrieve a file.
 
@@ -2672,7 +2682,7 @@ Parameter | Description
 
 
 
-## Retrieve details of a file
+### Retrieve details of a file
 
 > Example of a request to retrieve details of a file
 
@@ -2739,7 +2749,7 @@ Parameter | Description
 
 
 
-## Retrieve details of files
+### Retrieve details of files
 
 > Example of a request to retrieve details of files
 
@@ -2901,7 +2911,7 @@ Parameter | Description
 
 
 
-## Revoke access to a file
+### Revoke access to a file
 
 > Example of a request to revoke read access to user “a” on a file
 
@@ -3006,7 +3016,7 @@ Parameter | Description
 Assets can be either files or JSON objects. **They are public and accessible by anyone**, even if not authenticated. 
 They are useful to create publicly accessible elements such as images or configuration settings. 
 
-## Create an asset
+### Create an asset
 
 > Example of a request to create a JSON asset.
 
@@ -3112,7 +3122,7 @@ Allows to create an asset.
 
 
 
-## Retrieve an Asset
+### Retrieve an Asset
 
 > Example of a request to retrieve an asset.
 
@@ -3146,7 +3156,7 @@ Parameter | Description
 
 
 
-## Delete an asset
+### Delete an asset
 
 > Example of a request to delete an asset
 
@@ -3189,7 +3199,7 @@ Parameter | Description
 
 
 
-## Fetch assets
+### Fetch assets
 
 > Example of a request to fetch assets
 
@@ -3267,7 +3277,7 @@ Settings are app related configuration options. They are intended to set up many
 	Only users belonging to administrator roles can call these APIs.
 </aside>
 
-## Fetch current settings
+### Fetch current settings
 
 ```shell
 curl http://localhost:9000/admin/configuration/dump.json  \
@@ -3333,7 +3343,7 @@ TO BE IMPLEMENTED
 Returns a JSON representing the current configuration.
 
 
-## Fetch a section of the Settings
+### Fetch a section of the Settings
 
 > Example of a request to retrieve the `Application` section
 
@@ -3401,7 +3411,7 @@ Parameter | Description
 **section** | The name of a section. One of: `PasswordRecovery`, `Application`, `Push`, `Images`. Mandatory.
 
 
-## Update a value in settings
+### Update a value in settings
 
 > Example of a request to update the key `application.name`
 
@@ -3445,7 +3455,7 @@ Parameter | Description
 
 Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
 
-## Enable push notifications on a device
+### Enable push notifications on a device
 
 > Example of a request to enable push notifications
 
@@ -3501,7 +3511,7 @@ Parameter | Description
 
 
 
-## Send a push notification
+# Send a push notification
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
@@ -3574,12 +3584,12 @@ Key | Description | Example
 
 Regarding the `config.file` key, a possible example of an external configuration file may be:
 
-```
+`
 include classpath("application.conf")
 application.code="1234-56789"
 orient.baasbox.path=db/baasbox
 logger.application=DEBUG
-```
+`
 
 ## The Play! Framework
 
