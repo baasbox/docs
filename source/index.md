@@ -27,6 +27,7 @@ documentation explains:
 *  the SDK features
 
    *  iOS SDK
+   *  Android SDK
 
 For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-server-0-7-2-released)
 
