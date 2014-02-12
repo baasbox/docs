@@ -205,6 +205,8 @@ dashboard is split into several sections:
     experience with BaasBox
 13. DB Management: you can create backup of your DB and import & export
 14. Roles: you can view and create roles for users
+15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
+
 
 NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
