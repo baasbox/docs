@@ -3515,7 +3515,7 @@ Parameter | Description
 
 
 
-# Send a push notification
+### Send a push notification
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
