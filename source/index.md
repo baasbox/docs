@@ -14,7 +14,7 @@ toc_footers:
 
 ```
 In this section you can find code examples for every platform we address.
-Click on an above tab to choose the platform of your interest
+Click on any tab above to choose the platform of your interest.
 ```
 
 BaasBox is a complete solution to implement the back end of your applications.
@@ -137,7 +137,7 @@ To run the BaasBox server go into its folder and type
 on Windows systems type
 start.bat
 
-Once the server is up and running, you can access to the console by open the following link:
+Once the server is up and running, you can access the console by opening the following link:
 http://127.0.0.1:9000/console
 ```
 
@@ -375,7 +375,7 @@ server replies with BAD REQUEST http error (code 400)
 #### Application Code
 This is the application code.
 Every BaasBox instance should have a unique AppCode. 
-By default this is: ``1234567890``, but is **strongly recommended** that you change this code when you start production.
+By default this is: ``1234567890``, but it is **strongly recommended** that you change this code when you start production.
 See [Hacking section](#hacking).
 
 ``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
