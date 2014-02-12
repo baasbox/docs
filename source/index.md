@@ -186,21 +186,17 @@ dashboard is split into several sections:
 9.  Here you can see all latest news about BaasBox. These are feeds from
     the BaasBox site |News|
 10. System window:
-
     -  Memory: you can find max allocable memory, current allocated
        memory and current used memory
     -  OS: you can find name, version, architecture and processors
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
     -  Database: you can find version with its path and data size
-
 11. Access to a dialog window to change password or to logout
-
     -  Change password: Just insert old and new passwords, then confirm
        the new one
     -  Logout: just logout from the console. Remember that you can also
        logout from the left menu.
-
 12. Feedback tab: from there you can send us a feedback about your
     experience with BaasBox
 13. DB Management: you can create backup of your DB and import & export
