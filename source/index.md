@@ -25,8 +25,8 @@ You can access all sections using the sidebar on the left. The
 documentation explains:
 
 *  the BaasBox features (server side)
-   * how to install BaasBox
-   *  how to use admin console and a detailed section about the REST API that you can use
+   *  how to install BaasBox
+   *  how to use the admin console and a detailed section about the REST API that you can use
    *  REST API
 
 *  the SDK features
@@ -45,7 +45,7 @@ Enjoy!
 
 # Installation
 
-**System Requirements**  [Java VM 6](http://java.com/en/download/) or above. BaasBox is compiled with
+**System Requirements**  [Java VM 6](http://java.com/en/download/) or later. BaasBox is compiled with
 Java 1.6.
 
 1. Download the latest version from [here](http://www.baasbox.com/download/), keep
@@ -71,11 +71,11 @@ That’s all! BaasBox is ready to go and to serve your apps! To stop the server 
 
 BaasBox is a server that makes available a set of functions for the
 backend of mobile applications. All you need is a **Java Virtual Machine
-1.6 or above**. BaasBox already has everything you need
+1.6 or later**. BaasBox already has everything you need
 for it to work: an application server and a DB server. 
 BaasBox was born to be simple to use and manage. To migrate a BaasBox instance from a
 server to another, you just have to zip the database folder and copy it
-in the server target folder. Moreover, it is ready to use without
+into the server target folder. Moreover, it is ready to use without
 changing the configuration parameters. You just have to
 launch the command ``./start`` (or ``start.bat`` on Windows) and BaasBox will
 run. Should you need it, you can apply customized configuration parameters. See the [hacking section](#hacking).
@@ -102,7 +102,7 @@ Available functions are:
 
 -  Users management:
 
-   -  Signup, Login, Logout, profiles management (private, public
+   -  Signup, Login, Logout, profiles management (private features, public
       features and so on), forgotten password recovery, link and log-in
       through Facebook and Google+
    -  Roles management: administrators, registered users, back-office
@@ -154,7 +154,7 @@ When you are in the start view, the administrator console is reachable
 at the `/console` path. 
 
 ![Login image](images/Console_0.7.3/login.png)
-To login in the administrative area you must supply the administrator credentials and the Application Code.
+To login in the administrative area you must supply credentials and Application Code to the administrator.
 By default these values are:
 
 -  Username: admin
@@ -184,7 +184,7 @@ dashboard is split into several sections:
 7.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
     can find the latest version
 8.  Number of collections, documents and total size in one window.
-9.  Here you can see all latest news about BaasBox. These are feeds from
+9.  Here you can see all the latest news about BaasBox. These are feeds from
     the BaasBox site |News|
 10. System window:
     -  Memory: you can find max allocable memory, current allocated
@@ -200,7 +200,7 @@ dashboard is split into several sections:
        logout from the left menu.
 12. Feedback tab: from there you can send us a feedback about your
     experience with BaasBox
-13. DB Management: you can create backup of your DB and import & export
+13. DB Management: you can create a backup of your DB and import & export
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 
@@ -239,9 +239,9 @@ it or delete it.
 To restore a database you have to download a backup file locally, and
 then use the restore feature.
 
-## Image resize
+## Image resizing
 
-In the settings you can define an array of possible resize policies for images.
+In the settings you can define an array of possible resizing policies for images.
 
 ![Image resize settings](images/Console_0.7.3/image_resize.png)
 
@@ -326,7 +326,7 @@ use these names to reference the assets.
 
 ![Assets](images/Console_0.7.3/assets.png)
 
-In this section you have the detailed list of all your assets
+In this section you have a detailed list of all your assets
 with information fields like Icon, Name, Meta, Size, Type, Download and
 Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
@@ -335,7 +335,7 @@ following window:
 ![New asset](images/Console_0.7.3/new_asset.png)
 
 <aside class="notice">
-	You have to fill at least the Name
+	You have to fill in at least the Name
 	field and save the changes to create a new asset.
 </aside>
 
@@ -357,19 +357,19 @@ and its JSON format.
 ### Request Headers
 
 If not specified otherwise, all requests need custom HTTP headers.
-BaasBox, since the 0.57 version supports two authentication methods: HTTP Basic Authentication, or via a
+BaasBox has been supporting two authentication methods since its 0.5.7 version: HTTP Basic Authentication, or via a
 Session Token.
 
 #### Basic Authentication
 
 It needs to provide the user’s credentials via the basic access authentication method. Username and
 password must be combined into a string “username:password” and then
-encoded using BASE64. The header must be in the form: 
+encoded using BASE64. The header must be in this form: 
 
 ``Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtPW==``
 
-If the authentication fails, the
-server replies with BAD REQUEST http error (code 400)
+If authentication fails, the
+server replies with a BAD REQUEST http error (code 400)
 
 #### Application Code
 This is the application code.
@@ -390,7 +390,7 @@ token to the server, use the following header:
 
 ### The JSON response 
 
-> A sample of a JSON response
+> An example of a JSON response
 
 ```json 
 {	
@@ -442,7 +442,7 @@ These are custom error codes specific to BaasBox, returned into the bb_code fiel
 
 ### Pagination and query criteria
 
-> Example of paginated query
+> Example of a paginated query
 
 ```shell
 curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
@@ -492,7 +492,7 @@ Parameter | Description
 **orderBy** | set an order by clause in a SQL-like fashion (i.e.: orderBy name desc). NOTE: the direction of ordering (asc or desc) is mandatory if pagination is used (see below)
 **page** | a 0 based index indicating the page requested
 **recordPerPage** | the number of records per page
-**fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
+**fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exhaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
 **groupBy** | allows to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
 
 **Example of valid calls**:
@@ -582,9 +582,9 @@ Parameter | Description
 **username** | The username for the user. Mandatory
 **password** | Password. Mandatory
 **visibleByTheUser** | an object whose fields are private and visible only by the user
-**visibleByFriends** | an object whose fields are visible by the user and his/her friends (for future friendship management)
-**visibleByRegisteredUsers** | is an object whose fields are visible by the user, his/her friends, any registered user
-**visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, even anonymous users
+**visibleByFriends** | an object whose fields are visible by the user and friends (for future friendship management)
+**visibleByRegisteredUsers** | is an object whose fields are visible by the user, friends, any registered user
+**visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, also anonymous users
 
 
 
@@ -664,7 +664,7 @@ Parameter | Description
 
 ### Logout
 
-> Example of logout request
+> Example of a logout request
 
 ```shell
 curl -X POST http://localhost:9000/logout \
@@ -717,7 +717,7 @@ Parameter | Description
 
 ### Logged user profile
 
-> Request to fetch user profile currently logged in
+> Request to fetch the currently logged in user profile 
 
 ```shell
 curl http://localhost:9000/me \
@@ -835,7 +835,7 @@ user.save(new BaasHandler<BaasUser>() {
 
 Updates details about the logged in user.
 
-The body payload to send has the following form:
+The body payload to be sent has the following form:
 
 ```{
     "visibleByTheUser": {},
@@ -852,8 +852,8 @@ or JSON encoded objects.
 Parameter | Description
 --------- | -----------
 **visibleByTheUser** | fields are private and visible only by the user
-**visibleByFriends** | fields are visible by the user and his friends
-**visibleByRegisteredUsers** | fields are visible by the user, his friends and any registered user
+**visibleByFriends** | fields are visible by the user and friends
+**visibleByRegisteredUsers** | fields are visible by the user, friends and any registered user
 **visibleByAnonymousUsers** | fields are public and visible by everyone, even anonymous users
 
 <aside class="warning">
@@ -918,7 +918,7 @@ Parameter | Description
 
 ### Password reset
 
-> Example of request for password reset
+> Example of a request for password reset
 
 ```shell
 curl http://localhost:9000/user/cesare/password/reset \
@@ -942,7 +942,7 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
 };
 ```
 
-> Example of error
+> Example of an error
 
 ```json
 {
@@ -971,7 +971,7 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
 Allows to reset a user password. This API is useful when a user forgot their password and needs to reset it. This is the workflow: 
 
 - the server checks if the email address is present within the `visibleByTheUser` fields in the user profile 
-- the server sends an email to that address with a generated link to follow to reset the password 
+- the server sends an email to that address with a generated link to follow in order to reset the password 
 - the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
 - the user fills in the two fields and submits the form 
 - a confirmation message is shown by the server 
@@ -988,7 +988,7 @@ This API works only if there is an `email` field (populated with a valid email a
 
 ### Fetch a user profile
 
-> example of request to get a user profile
+> example of a request to get a user profile
 
 ```shell
 curl http://localhost:9000/user/a \
@@ -1026,7 +1026,7 @@ BaasUser.fetch("a",new BaasHandler<BaasUser>() {
 });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1063,7 +1063,7 @@ Parameter | Description
 
 ### Fetch users
 
-> example of request to get a list users
+> example of a request to get the users list
 
 ```shell
 curl http://localhost:9000/users \
@@ -1100,7 +1100,7 @@ BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
 });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1150,7 +1150,7 @@ Allows to retrieve a list of users. This API supports [pagination](#pagination-a
 
 ### Follow a user
 
-> Example of request to follow the user "cesare"
+> Example of a request to follow the user "cesare"
 
 ```shell
 curl -X POST http://localhost:9000/follow/cesare \
@@ -1187,7 +1187,7 @@ user.follow(new BaasHandler<BaasUser>() {
   } 
 });
 ```
-> Example response
+> Example of a response
 
 ```json
 {
@@ -1233,7 +1233,7 @@ Parameter | Description
 
 ### Unfollow a user
 
-> Example of unfollow request
+> Example of an unfollow request
 
 ```shell
 curl -X DELETE http://localhost:9000/follow/cesare \
@@ -1269,7 +1269,7 @@ BaasUser.withUserName("cesare").unfollow(
     }
   });
 ```
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1296,7 +1296,7 @@ Parameter | Description
 
 ### Fetch following
 
-> Example of request to fetch who "cesare" is following
+> Example of a request to fetch who "cesare" is following
 
 ```shell
 curl http://localhost:9000/following/cesare \
@@ -1330,7 +1330,7 @@ user.following(new BaasHandler<List<BaasUser>>() {
 });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1355,7 +1355,7 @@ user.following(new BaasHandler<List<BaasUser>>() {
 
 ``GET /following/:username``
 
-This API returns a list of users who are followed by the user with `username` passed as parameter. If no username is provided, the API returns all users followed by the user logged in.  In its `data` property the method returns an array filled with the user profiles representing its “friends”. Each profile will contain the `visibleByFriends` data which would be otherwise hidden.
+This API returns a list of users who are followed by the user with `username` passed as a parameter. If no username is provided, the API returns all users followed by the logged in user.  In its `data` property the method returns an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be hidden.
 
 Parameter | Description
 --------- | -----------
@@ -1370,7 +1370,7 @@ Parameter | Description
 
 ### Fetch followers
 
-> Example of request to fetch "cesare"'s followers
+> Example of a request to fetch "cesare"'s followers
 
 ```shell
 curl http://localhost:9000/followers/cesare \
@@ -1405,7 +1405,7 @@ user.followers(new BaasHandler<List<BaasUser>>() {
 ```
 
 
-> Example of response with "cesare"'s followers
+> Example of a response with "cesare"'s followers
 
 
 ```json
@@ -1431,7 +1431,7 @@ user.followers(new BaasHandler<List<BaasUser>>() {
 
 ``GET /followers/:username``
 
-This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the user currently logged in. The method returns in its `data` property an array filled with the user profiles representing its “friends”. Each profile will contain the `visibleByFriends` data which would be otherwise protected. 
+This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the currently logged in user. The method returns in its `data` property an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be protected. 
 
 Parameter | Description
 --------- | -----------
@@ -1447,7 +1447,7 @@ Another very important feature to know about collections is that the records sto
 
 ### Create a new Collection
 
-> Example of request to create a collection
+> Example of a request to create a collection
 
 ```shell
 curl -X POST http://localhost:9000/admin/collection/mycollection \
@@ -1462,7 +1462,7 @@ TO BE IMPLEMENTED
 NOT SUPPORTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1485,7 +1485,7 @@ Parameter | Description
 
 ### Delete a Collection
 
-> Example of request to delete a collection
+> Example of a request to delete a collection
 
 ```shell
 curl -X DELETE http://localhost:9000/admin/collection/mycollection \
@@ -1500,7 +1500,7 @@ NOT SUPPORTED
 NOT SUPPORTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1536,7 +1536,7 @@ Here are the APIs.
 
 ### Create a document
 
-> Example of request to create a document.
+> Example of a request to create a document.
 
 ```shell
 curl -X POST http://localhost:9000/document/mycollection \
@@ -1577,7 +1577,7 @@ doc.save(new BaasHandler<BaasDocument>() {
 });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1603,7 +1603,7 @@ The `id` field is unique. By default only the owner can update and delete the do
 The returned document is decorated with the following fields:
 
 id: unique ID 
-`@version`: number indication the version of the record, useful to manage concurrent updates
+`@version`: number indication of the version of the record, useful to manage concurrent updates
 `@class`: name of the collection
 `_creation_date`: timestamp
 `_author`: username of the user who created the document.
@@ -1622,7 +1622,7 @@ Parameter | Description
 
 ### Retrieve a document
 
-> Example of request to retrieve a specific document
+> Example of a request to retrieve a specific document
 
 ```shell
 curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
@@ -1646,7 +1646,7 @@ curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1
 ```java
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1722,7 +1722,7 @@ BaasDocument.fetch("mycollection",
                  }});
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1778,7 +1778,7 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1814,7 +1814,7 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1855,7 +1855,7 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -1897,7 +1897,7 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Response includes new property
+> Response includes a new property
 
 ```json
 {
@@ -1925,7 +1925,7 @@ NOT IMPLEMENTED
 }
 ```
 
-> Example of request to change a nested property
+> Example of a request to change a nested property
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.address/.street  \
@@ -2024,7 +2024,7 @@ doc.delete(new BaasHandler<Void>() {
   }
 });
 ```
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -2070,7 +2070,7 @@ BaasDocument.count("collection",new BaasHandler<Long> () {
   }
 });
 ```
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -2176,7 +2176,7 @@ BaasDocument.fetchAll(filter,new BaasHandler<List<BaasDocument>() {
 
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -2288,7 +2288,7 @@ doc.grantAll(Grant.UPDATE,Role.REGISTERED,
    });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -2309,8 +2309,8 @@ Parameter | Description
 **collection** | The name of the collection. Mandatory.
 **id** | The ID of the document. Mandatory.
 **action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
-**username** | The username of the user to which you want to assign the grant
-**rolename** | The name of role to which you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+**username** | The username of the user to whom you want to assign the grant
+**rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 
 
@@ -2375,7 +2375,7 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
    });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -2600,7 +2600,7 @@ file.delete(new BaasHandler<Void>() {
 });
 ```
 
-> Example of response when a file is deleted
+> Example of a response when a file is deleted
 
 ```json
 {
@@ -2655,7 +2655,7 @@ file.stream(new BaasHandler<BaasFile>() {
 });
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 // Binary of the file
@@ -2668,7 +2668,7 @@ curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
 	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?download=true
 ```
 
-> Example of request to retrieve a resized version of an app.
+> Example of a request to retrieve a resized version of an app.
 
 ```shell
 curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
@@ -2681,7 +2681,7 @@ Parameter | Description
 --------- | -----------
 **id** | The ID of the file to be retrieved. Mandatory.
 **download** | Set it to `true` to download a file (useful from browser). Optional. 
-**resize** | Index to retrieve an element from the array of resize options. Optional. See [Console Settings](#console-settings).
+**resize** | Index to retrieve an element from the array of resizing options. Optional. See [Console Settings](#console-settings).
 
 
 
@@ -2720,7 +2720,7 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
 });
 ```
 
-> Example of response with file details
+> Example of a response with file details
 
 ```json
 {
@@ -2778,7 +2778,7 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
 });
 ```
 
-> Example of response with details of files
+> Example of a response with details of files
 
 ```json
 {
@@ -2884,7 +2884,7 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 ```
 
-> Example of response 
+> Example of a response 
 
 ```json
 {
@@ -2990,7 +2990,7 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 ```
 
-> Example of response 
+> Example of a response 
 
 ```json
 {
@@ -3037,7 +3037,7 @@ TO BE IMPLEMENTED
 TO BE IMPLEMENTED
 ```
 
-> Example of response 
+> Example of a response 
 
 ```json
 {
@@ -3077,7 +3077,7 @@ TO BE IMPLEMENTED
 TO BE IMPLEMENTED
 ```
 
-> Example of response 
+> Example of a response 
 
 ```json
 {
@@ -3142,7 +3142,7 @@ TO BE IMPLEMENTED
 TO BE IMPLEMENTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 The file itself.
@@ -3219,7 +3219,7 @@ TO BE IMPLEMENTED
 TO BE IMPLEMENTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
@@ -3268,7 +3268,7 @@ Allows to retrieve all the assets. Supports [Pagination and query criteria](#pag
 
 ## Settings
 
-Settings are app related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
+Settings are app-related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
 
 * PasswordRecovery: this section contains many settings that affect the password recovery workflow
 * Application: Application specific parameters, such as the App Name
@@ -3296,7 +3296,7 @@ TO BE IMPLEMENTED
 TO BE IMPLEMENTED
 ```
 
-> Example of response
+> Example of a response
 
 ```json
 {
