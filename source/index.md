@@ -152,6 +152,7 @@ the welcome screen: ![Console image](images/Console_0.7.3/home_console.png)
 
 When you are in the start view, the administrator console is reachable
 at the `/console` path. 
+
 ![Login image](images/Console_0.7.3/login.png)
 To login in the administrative area you must supply the administrator credentials and the Application Code.
 By default these values are:
