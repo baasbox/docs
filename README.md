@@ -2,4 +2,4 @@ docs
 ====
 
 BaasBox documentation
-See: [http://docs.baasbox.com](http://docs.baasbox.com)
+See: [http://www.baasbox.com/documentation](http://www.baasbox.com/documentation)
