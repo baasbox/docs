@@ -19,7 +19,7 @@ Click on any tab above to choose the platform of your interest.
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-Latest version is **0.7.3**
+Latest version is **0.7.4**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
