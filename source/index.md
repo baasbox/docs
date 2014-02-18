@@ -3463,6 +3463,34 @@ Push notifications are messages that a user can receive using an APP that has Ba
 > Example of a request to enable push notifications
 
 ```shell
+curl -X PUT  http://localhost:9000/push/enable/ios/123  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /push/enable/:os/:pushToken`
+
+Enables a specific user (logged using a specific device) to receive push notifications.
+
+Parameter | Description
+--------- | -----------
+**os** | The operative system. One of: `ios`, `android`. Mandatory.
+**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+
+### (Deprecated) Enable push notifications on a device
+
+> Example of a request to enable push notifications
+
+```shell
 curl -X PUT  http://localhost:9000/push/device/ios/123  \
  	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
 ```
@@ -3510,9 +3538,32 @@ Parameter | Description
 **os** | The operative system. One of: `ios`, `android`. Mandatory.
 **pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
 
+### Disable push notifications on a device
 
+> Example of a request to enable push notifications
 
+```shell
+curl -X PUT  http://localhost:9000/push/disable/123  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
 
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /push/disable/:pushToken`
+
+Disable a specific user (logged using a specific device) to undeceive push notifications.
+
+Parameter | Description
+--------- | -----------
+**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
 
 ### Send a push notification
 
