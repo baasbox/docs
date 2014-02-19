@@ -12,9 +12,17 @@ toc_footers:
 
 # Introduction
 
-```
+```shell
 In this section you can find code examples for every platform we address.
 Click on any tab above to choose the platform of your interest.
+```
+
+```objective_c
+To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
+and drop on Xcode the folder BaasBox-iOS-SDK.
+Then insert the following statement in the .pch file
+#import "BAAClient.h" 
+and you are good to go. 
 ```
 
 BaasBox is a complete solution to implement the back end of your applications.
