@@ -2142,36 +2142,38 @@ NSDictionary *parameters = @{kPageNumber : @0,
 ```
 
 ```java
-BaasDocument.fetchAll(new BaasHandler<List<BaasDocument>() {
-  @Override
-  public void handle(BaasResult<List<BaasDocument>> res) {
+BaasDocument.fetchAll("collection",
+  new BaasHandler<List<BaasDocument>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
     
-    if (res.isSuccess()) {
-      for (BaasDocument doc:res.value()) {
-        Log.d("LOG","Doc: "+doc);
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
       }
-    } else {
-      Log.e("LOG","Error",res.error());
     }
-  }
 });
 
 // using pagination and selection
 Filter filter = Filter.paging("title",0,20)
                       .setWhere("_author = ?","Cesare");
 
-BaasDocument.fetchAll(filter,new BaasHandler<List<BaasDocument>() {
-  @Override
-  public void handle(BaasResult<List<BaasDocument>> res) {
+BaasDocument.fetchAll("collection",filter,
+  new BaasHandler<List<BaasDocument>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
     
-    if (res.isSuccess()) {
-      for (BaasDocument doc:res.value()) {
-        Log.d("LOG","Doc: "+doc);
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
       }
-    } else {
-      Log.e("LOG","Error",res.error());
     }
-  }
 });
 
 ```
