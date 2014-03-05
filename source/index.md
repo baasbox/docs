@@ -25,6 +25,29 @@ Then insert the following statement in the .pch file
 and you are good to go. 
 ```
 
+```java
+/*
+The Android SDK is distributed as a jar, 
+To get started download it from the download section of the website 
+(http://www.bassbox.com/download/), and put it in your libs folder.
+
+To initialize the client, add the following code to your application
+class.
+*/
+
+public class MyApp extends Application{
+  private BaasBox client;
+  
+  @Override
+  public void onCreate() {
+    BaasBox.Builder builder = new BaasBox.Builder(this);
+    client =builder.setApiDomain("127.0.0.1")
+                   .setAppCode("YOUR-APP-CODE")
+                   .init();
+  }
+}
+```
+
 BaasBox is a complete solution to implement the back end of your applications.
 
 Latest version is **0.7.4**
@@ -1467,7 +1490,20 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-NOT SUPPORTED
+/* this api is usable only as administrator using the raw request interface */
+BaasBox client = BaasBox.getDefault();
+String collectionName = "mycollection";
+client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
+            new BaasHandler<JsonObject>(){
+              @Override
+              public void handle(BaasResult<JsonObject> res) {
+                if (res.isSuccess()) {
+                  Log.d("LOG","Collection created");
+                } else {
+                  Log.e("LOG","Error",res.error());
+                }
+              }
+            });
 ```
 
 > Example of a response
@@ -1505,7 +1541,20 @@ NOT SUPPORTED
 ```
 
 ```java
-NOT SUPPORTED
+/* this api is usable only as administrator using the raw request interface */
+BaasBox client = BaasBox.getDefault();
+String collectionName = "mycollection";
+client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
+            new BaasHandler<JsonObject>(){
+              @Override
+              public void handle(BaasResult<JsonObject> res) {
+                if (res.isSuccess()) {
+                  Log.d("LOG","Collection created");
+                } else {
+                  Log.e("LOG","Error",res.error());
+                }
+              }
+            });
 ```
 
 > Example of a response
@@ -1652,6 +1701,18 @@ curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1
 ```
 
 ```java
+BaasDocument.fetch("mycollection",
+                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+               new BaasHandler<BaasDocument>() {
+                 @Override
+                 public void handler(BaasResult<BaasDocument> res) {
+                   if(res.isSuccess()) {
+                     BaasDocument doc = res.value();
+                     Log.d("LOG","Document: "+doc);
+                   } else {
+                     Log.e("LOG","error",res.error());
+                   }
+                 }});
 ```
 
 > Example of a response
@@ -1716,18 +1777,20 @@ post.body = @"Body of my post.";
 ```
 
 ```java
-BaasDocument.fetch("mycollection",
-                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
-               new BaasHandler<BaasDocument>() {
-                 @Override
-                 public void handler(BaasResult<BaasDocument> res) {
-                   if(res.isSuccess()) {
-                     BaasDocument doc = res.value();
-                     Log.d("LOG","Document: "+doc);
-                   } else {
-                     Log.e("LOG","error",res.error());
-                   }
-                 }});
+BaasDocument doc = new BaasDocument("post");
+doc.putString("title","My new post title")
+   .putString("tags","tag1")
+   .putString("body","Body of my post");
+doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
+  @Override
+  public void handle(BaasResult<BaasDocument> res) {
+    if(res.isSuccess()){
+      Log.d("LOG","Document saved "+res.value().getId());
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
 ```
 
 > Example of a response
@@ -2150,36 +2213,37 @@ NSDictionary *parameters = @{kPageNumber : @0,
 ```
 
 ```java
-BaasDocument.fetchAll(new BaasHandler<List<BaasDocument>() {
-  @Override
-  public void handle(BaasResult<List<BaasDocument>> res) {
+BaasDocument.fetchAll("collection",
+  new BaasHandler<List<BaasDocument>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
     
-    if (res.isSuccess()) {
-      for (BaasDocument doc:res.value()) {
-        Log.d("LOG","Doc: "+doc);
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
       }
-    } else {
-      Log.e("LOG","Error",res.error());
     }
-  }
 });
 
 // using pagination and selection
 Filter filter = Filter.paging("title",0,20)
                       .setWhere("_author = ?","Cesare");
 
-BaasDocument.fetchAll(filter,new BaasHandler<List<BaasDocument>() {
-  @Override
-  public void handle(BaasResult<List<BaasDocument>> res) {
-    
-    if (res.isSuccess()) {
-      for (BaasDocument doc:res.value()) {
-        Log.d("LOG","Doc: "+doc);
+BaasDocument.fetchAll("collection",filter,
+  new BaasHandler<List<BaasDocument>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
       }
-    } else {
-      Log.e("LOG","Error",res.error());
     }
-  }
 });
 
 ```
