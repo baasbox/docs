@@ -12,14 +12,45 @@ toc_footers:
 
 # Introduction
 
-```
+```shell
 In this section you can find code examples for every platform we address.
 Click on any tab above to choose the platform of your interest.
 ```
 
+```objective_c
+To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
+and drop on Xcode the folder BaasBox-iOS-SDK.
+Then insert the following statement in the .pch file
+#import "BAAClient.h" 
+and you are good to go. 
+```
+
+```java
+/*
+The Android SDK is distributed as a jar, 
+To get started download it from the download section of the website 
+(http://www.bassbox.com/download/), and put it in your libs folder.
+
+To initialize the client, add the following code to your application
+class.
+*/
+
+public class MyApp extends Application{
+  private BaasBox client;
+  
+  @Override
+  public void onCreate() {
+    BaasBox.Builder builder = new BaasBox.Builder(this);
+    client =builder.setApiDomain("127.0.0.1")
+                   .setAppCode("YOUR-APP-CODE")
+                   .init();
+  }
+}
+```
+
 BaasBox is a complete solution to implement the back end of your applications.
 
-Latest version is **0.7.3**
+Latest version is **0.7.4**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -125,7 +156,7 @@ Available functions are:
 
 ## Applied Technology
 
-BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play! framework](http://www.playframework.com/) and it incorporates the core of the [OrientDB database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
+BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play! framework](http://www.playframework.com/) 2.1.5 and it incorporates the core of the [OrientDB database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
 objects and queries without using specific abstractions or having to simulate them on the applicative level. OrientDB was recently surveyed and entered Gartner's Magic Quadrant.
 
 
@@ -1459,7 +1490,20 @@ TO BE IMPLEMENTED
 ```
 
 ```java
-NOT SUPPORTED
+/* this api is usable only as administrator using the raw request interface */
+BaasBox client = BaasBox.getDefault();
+String collectionName = "mycollection";
+client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
+            new BaasHandler<JsonObject>(){
+              @Override
+              public void handle(BaasResult<JsonObject> res) {
+                if (res.isSuccess()) {
+                  Log.d("LOG","Collection created");
+                } else {
+                  Log.e("LOG","Error",res.error());
+                }
+              }
+            });
 ```
 
 > Example of a response
@@ -1497,7 +1541,20 @@ NOT SUPPORTED
 ```
 
 ```java
-NOT SUPPORTED
+/* this api is usable only as administrator using the raw request interface */
+BaasBox client = BaasBox.getDefault();
+String collectionName = "mycollection";
+client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
+            new BaasHandler<JsonObject>(){
+              @Override
+              public void handle(BaasResult<JsonObject> res) {
+                if (res.isSuccess()) {
+                  Log.d("LOG","Collection created");
+                } else {
+                  Log.e("LOG","Error",res.error());
+                }
+              }
+            });
 ```
 
 > Example of a response
@@ -1644,6 +1701,18 @@ curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1
 ```
 
 ```java
+BaasDocument.fetch("mycollection",
+                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+               new BaasHandler<BaasDocument>() {
+                 @Override
+                 public void handler(BaasResult<BaasDocument> res) {
+                   if(res.isSuccess()) {
+                     BaasDocument doc = res.value();
+                     Log.d("LOG","Document: "+doc);
+                   } else {
+                     Log.e("LOG","error",res.error());
+                   }
+                 }});
 ```
 
 > Example of a response
@@ -1708,18 +1777,20 @@ post.body = @"Body of my post.";
 ```
 
 ```java
-BaasDocument.fetch("mycollection",
-                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
-               new BaasHandler<BaasDocument>() {
-                 @Override
-                 public void handler(BaasResult<BaasDocument> res) {
-                   if(res.isSuccess()) {
-                     BaasDocument doc = res.value();
-                     Log.d("LOG","Document: "+doc);
-                   } else {
-                     Log.e("LOG","error",res.error());
-                   }
-                 }});
+BaasDocument doc = new BaasDocument("post");
+doc.putString("title","My new post title")
+   .putString("tags","tag1")
+   .putString("body","Body of my post");
+doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
+  @Override
+  public void handle(BaasResult<BaasDocument> res) {
+    if(res.isSuccess()){
+      Log.d("LOG","Document saved "+res.value().getId());
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
 ```
 
 > Example of a response
@@ -2165,7 +2236,6 @@ BaasDocument.fetchAll("collection",filter,
   new BaasHandler<List<BaasDocument>() {
     @Override
     public void handle(BaasResult<List<BaasDocument>> res) {
-    
       if (res.isSuccess()) {
         for (BaasDocument doc:res.value()) {
           Log.d("LOG","Doc: "+doc);
@@ -3465,6 +3535,34 @@ Push notifications are messages that a user can receive using an APP that has Ba
 > Example of a request to enable push notifications
 
 ```shell
+curl -X PUT  http://localhost:9000/push/enable/ios/123  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /push/enable/:os/:pushToken`
+
+Enables a specific user (logged using a specific device) to receive push notifications.
+
+Parameter | Description
+--------- | -----------
+**os** | The operative system. One of: `ios`, `android`. Mandatory.
+**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+
+### (Deprecated) Enable push notifications on a device
+
+> Example of a request to enable push notifications
+
+```shell
 curl -X PUT  http://localhost:9000/push/device/ios/123  \
  	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
 ```
@@ -3512,9 +3610,32 @@ Parameter | Description
 **os** | The operative system. One of: `ios`, `android`. Mandatory.
 **pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
 
+### Disable push notifications on a device
 
+> Example of a request to enable push notifications
 
+```shell
+curl -X PUT  http://localhost:9000/push/disable/123  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
 
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /push/disable/:pushToken`
+
+Disable a specific user (logged using a specific device) to undeceive push notifications.
+
+Parameter | Description
+--------- | -----------
+**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
 
 ### Send a push notification
 
