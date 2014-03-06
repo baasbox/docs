@@ -180,7 +180,6 @@ General options for the App(lication)
 Key | Description | Default
 --------- | ----------- | -------------
 **application.name** | The name of your App |  `BaasBox`
-**application.name** | The name of your App |  `BaasBox`
 **network.http.port** | The TCP port used by the App to contact BaasBox. Please note: when behind a reverse proxy, this could be different from the port used by BaasBox | 9000
 **network.http.ssl**  | Set to `true` if the BaasBox server is reached via SSL through a reverse proxy. | false
 **network.http.url**  | The public URL of the BaasBox server. I.e. the URL used by the App to contact BaasBox, without the protocol prefix (i.e. http://) and PORT |  localhost
