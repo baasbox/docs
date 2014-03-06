@@ -291,8 +291,6 @@ include classpath("application.conf")
 application.code="1234-56789"
 
 orient.baasbox.path=db/baasbox
-
-logger.application=DEBUG
 ```
 <aside class="notice"> 
 **NOTE**: remember to ALWAYS include as first line the statement:
