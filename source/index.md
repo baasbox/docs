@@ -52,6 +52,9 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 Latest version is **0.7.4**
 
+Click [here](http://www.baasbox.com/documentation/previous) for previous releases
+
+
 You can access all sections using the sidebar on the left. The
 documentation explains:
 
@@ -97,6 +100,205 @@ should appear. Now you can open the administrator console: [http://localhost:900
 For further details about the console, you can read [console](#console).
 That’s all! BaasBox is ready to go and to serve your apps! To stop the server just halt (Ctrl-C) the shell script.
 
+# Configuration
+BaasBox does not need any configuration to start. However you can modify many parameters to fit your specific needs.
+You can act on different setting levels depending on your goal.
+The setting levels are:
+
+- [JVM parameters](#jvm-parameters)
+
+- [Play Framework settings](#play-framework-settings) 
+
+- [BaasBox settings](#baasbox-settings)
+
+- [App settings](#app-settings)
+
+
+To set an option you have to type it as a _start_ script parameter.
+
+## JVM Parameters
+
+```shell
+./start -XX:MaxPermSize=64m
+```
+
+Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
+By default no options are used.
+A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html) 
+These settings cannot be modified at runtime.
+
+## Play Framework Settings
+```shell
+./start -Dhttp.port=80
+```
+BaasBox is based on the [Play! Framework](http://www.playframework.com). This means that accepts all the options available for any Play! application.
+A complete reference of these option can be found [here](hhttp://www.playframework.com/documentation/2.1.5/ProductionConfiguration)
+These settings cannot be modified at runtime.
+
+## BaasBox Settings
+There are some settings related to a specific instance of BaasBox server, such as, for example, the AppCode.
+The AppCode is a special code that must be supplied every time an API call is executed.
+These settings cannot be modified at runtime.
+
+Here are the BaasBox settings you can set:
+
+Key | Description | Default
+--------- | ----------- | -------------
+**application.secret** | The secret key is used to secure cryptographics functions |  `A very long string`
+**orient.baasbox.path** |  The path where BaasBox will store the embedded OrientDB data |  `db/baasbox`
+**orient.baasbox.backup.path** |  The path where BaasBox will store the backups |  `db/backup`
+**push.baasbox.certificates.folder** | The folder where the iOS push certificate will be stored  |  `certificates`
+**application.code**| The AppCode of the instance | `1234567890`
+**query.record_per_page** | The number of records returned in case of pagination | `20`
+**baasbox.wrapresponse** | DEPRECATED: Wrap the responses in a JSON object. The SDKs only support the `true` value. | `true`
+**baasbox.statistics.system.memory** | Disable this if you don't want memory information when the /admin/dbStatistics API is called | `true`
+**baasbox.statistics.system.os** | Disable this if you don't want OS information when the /admin/dbStatistics API is called | `true`
+**baasbox.startup.dumpdb** | Dumps DB information on startup | `false`
+**baasbox.server.accesslog** | Enable/disable the access log | `true`
+
+## App Settings
+These are settings related to your App. They are stored into the embedded DB and because of this once they are set they are read from the DB and you are not forced to specify them every time you start BaasBox.
+The App Settings con be configured via the [Administration Console](#console).
+The settings are splitted in five sections:
+
+- Application
+
+- Password Recovery
+
+- Images
+
+- Push Notifications
+
+- Social Login
+
+The available options are:
+
+### Application
+
+General options for the App(lication)
+
+Key | Description | Default
+--------- | ----------- | -------------
+**application.name** | The name of your App |  `BaasBox`
+**application.name** | The name of your App |  `BaasBox`
+**network.http.port** | The TCP port used by the App to contact BaasBox. Please note: when behind a reverse proxy, this could be different from the port used by BaasBox | 9000
+**network.http.ssl**  | Set to `true` if the BaasBox server is reached via SSL through a reverse proxy. | false
+**network.http.url**  | The public URL of the BaasBox server. I.e. the URL used by the App to contact BaasBox, without the protocol prefix (i.e. http://) and PORT |  localhost
+**session_tokens.timeout**  | The expiration time of the session tokens (in minutes). WARNING: the admin console refreshes the session token every 5 minutes, if you set a value lower than 5, you may experience disconnection from the console. To disable expiration set it to 0. | 0
+
+### Password Recovery
+
+Options for the Password Recovery feature
+
+Key | Description | Default
+--------- | ----------- | -------------
+**email.expiration.time** | Minutes before the reset code expires |  `15`
+**email.from** | The name and address to specify in the from field of the email to send |  `info@example.com`
+**email.subject** | The subject of the email to send |  `BaasBox: reset password`
+**email.template.html** | The template (html format) of the email to send to the user when they request a password reset. Please ensure that you have written the keyword $link$ inside the text. This keyword will be replaced with the link that the user has to click on to start the password recovery process. |  `The text of the email`
+**network.smtp.authentication** | Set to `true` if the SMTP server requires authentication |  `true`
+**network.smtp.host ** | IP address or fully qualified name of the SMTP server |  `mail.example.com`
+**network.smtp.password** | The password required by the SMTP server if it requires authentication. Used only if network.smtp.authentication is set to `true |  `password`
+**network.smtp.port** | he TCP port of the SMTP server |  `25`
+**network.smtp.ssl** | Enable or disable the SSL protocol for the SMTP server |  `false`
+
+### Images
+
+Options for the server-side images resizing feature
+
+Key | Description | Default
+--------- | ----------- | -------------
+**image.allows.automatic.resize** | Enable or disable automatic resizing of images | `true`
+**image.allowed.automatic.resize.formats**  | A space-separated-values list of image size, both in px or in % | `25% 50% 75% <=80px`
+
+### Push Notifications
+
+Options for the Push Notifications feature
+
+Key | Description | Default
+--------- | ----------- | -------------
+**push.sandbox.enable** | Specify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server to send the notification| `true` i.e. it is in sandbox mode
+**push.apple.timeout**  | The timeout for push notifications on Apple devices | `0` - no timeout
+**sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode |
+**sandbox.ios.certificate** | The Apple certificate in SANDBOX modified | 
+**sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode |
+**production.android.api.key**  | The key to send push notifications to Android devices in PRODUCTION modified |
+**production.ios.certificate**  | The Apple certificate in PRODUCTION modified |
+**production.ios.certificate.password** | The password of the Apple certificate in PRODUCTION |
+
+### Social Login
+
+Options to use Social Network as user authenticators
+
+Key | Description | Default
+--------- | ----------- | -------------
+**social.facebook.enabled** | Activate the FaceBook authenticator  |  `false`
+**social.facebook.token** | Application Token for Facebook app  | 
+**social.facebook.secret**  | Application secret for Facebook app | 
+**social.google.enabled** | Activate the Google+ authenticator  |  `false`
+**social.google.token** | Application Token for Google+ |
+**social.google.secret**  | Application secret for Google+ |
+
+### Override App Settings ###
+```shell
+./start -Dbaasbox.settings.Application.session_tokens.timeout.value=30
+```
+
+The options and settings defined into the database can be overridden providing new values through CLI parameters.
+
+The stored values are not modified.
+
+To override a specific settings:
+
+`
+baasbox.settings.<section>.<key>.value=<new value>
+`
+
+Where 
+
+- _section_ is one from:
+  - Application
+
+  - PasswordRecovery
+
+  - Push
+
+  - Social
+
+  - Images
+
+- _key_ is one key listed above
+
+Both sections and key names are case-sensitive.
+<aside class="notice"> 
+Note that the Apple certificate for push notifications cannot be supplied via _start_ command.
+</aside>
+
+## External Configuration File
+Instead of to pass every single option as parameter of the _start_ script, you can put all of them in an external file and just tell to BaasBox where is located.
+
+To use an external file, you have to use the following option and instruction
+
+Key   | Description   |   Example
+--------- | ----------- | -------------
+**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
+
+Regarding the `config.file` key, a possible example of an external configuration file may be:
+
+
+```
+include classpath("application.conf")
+
+application.code="1234-56789"
+
+orient.baasbox.path=db/baasbox
+```
+<aside class="notice"> 
+**NOTE**: remember to ALWAYS include as first line the statement:
+`
+include classpath("application.conf")
+`
+</aside>
 
 # General Overview
 
@@ -109,7 +311,7 @@ server to another, you just have to zip the database folder and copy it
 into the server target folder. Moreover, it is ready to use without
 changing the configuration parameters. You just have to
 launch the command ``./start`` (or ``start.bat`` on Windows) and BaasBox will
-run. Should you need it, you can apply customized configuration parameters. See the [hacking section](#hacking).
+run. Should you need it, you can apply customized configuration parameters. See the [configuration section](#configuration).
 
 ## Available Functions
 
@@ -193,7 +395,7 @@ By default these values are:
 -  App Code: 1234567890
 
 You can change the App Code at any time by following the instructions shown
-in the [hacking section](#hacking). By clicking on the question marks, the
+in the [configuration section](#configuration). By clicking on the question marks, the
 fields will be filled with the default values. 
 
 ## Dashboard 
@@ -235,10 +437,10 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 
-
+<aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
-
+</aside>
 
 ## Console settings
 
@@ -406,7 +608,7 @@ server replies with a BAD REQUEST http error (code 400)
 This is the application code.
 Every BaasBox instance should have a unique AppCode. 
 By default this is: ``1234567890``, but it is **strongly recommended** that you change this code when you start production.
-See [Hacking section](#hacking).
+See [configuration section](#configuration).
 
 ``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
 
@@ -3338,15 +3540,11 @@ Allows to retrieve all the assets. Supports [Pagination and query criteria](#pag
 
 
 
-## Settings
+## Settings API
 
 Settings are app-related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
 
-* PasswordRecovery: this section contains many settings that affect the password recovery workflow
-* Application: Application specific parameters, such as the App Name
-* Push: Push notifications related settings
-* Images: specific settings for images (Assets file) processing
-
+More information can be found [here](#app-settings)
 
 <aside class="notice">	
 	Only users belonging to administrator roles can call these APIs.
@@ -3688,35 +3886,3 @@ Parameter | Description
 
 
 
-
-# Hacking
-
-You can override many default values and options by providing them to the JVM. To do so, you have to use the -D parameter in this way
-
-`./start -DBAASBOX_PARAMETER=NEW_VALUE`
-
-Where `BAASBOX_PARAMETER` is the key of the parameter to override and `NEW_VALUE` is the value you want to use. 
-Please note that there is no space between the D and the parameter name. Overridable keys are:
-
-
-Key | Description | Example
---------- | ----------- | -------------
-**http.port** |	The port used by BaasBox |	`-Dhttp.port=80`
-**https.port** |	The SSL port used by BaasBox. By default SSL is disabled |	`-Dhttp.port=443`
-**application.code** |	Your Application Code. You should override the default one and choose a very unique code |	`-Dapplication.code=Zh54re3`
-**orient.baasbox.path** |	The path of the embedded database. By default this is {BAASBOX_HOME/db/baasbox}  |	`-Dorient.baasbox.path=./mydb`
-**logger.application** |	The default level of the logger. By default this is DEBUG. Possible values are ERROR, WARNING, INFO, DEBUG, TRACE |	`-Dlogger.application=INFO`
-**config.file** | 	An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` then you have to create a file named baasbox.config
-
-Regarding the `config.file` key, a possible example of an external configuration file may be:
-
-`
-include classpath("application.conf")
-application.code="1234-56789"
-orient.baasbox.path=db/baasbox
-logger.application=DEBUG
-`
-
-## The Play! Framework
-
-Since BaasBox is based upon the Play! Framework, many configuration options available by Play! could be used with BaasBox. Please refer to the [Play! documentation](http://www.playframework.com/documentation/2.1.x/Configuration) to know how to perform such operations and to customize the default behavior.
