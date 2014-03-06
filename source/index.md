@@ -108,9 +108,9 @@ The setting levels are:
 
 - [Play Framework settings](#play-framework-settings) 
 
-- [BaasBox settings]()
+- [BaasBox settings](#baasbox-settings)
 
-- [App settings]()
+- [App settings](#app-settings)
 
 
 To set an option you have to type it as a _start_ script parameter.
@@ -172,7 +172,7 @@ The settings are splitted in five sections:
 
 The available options are:
 
-**Application**
+### Application
 
 General options for the App(lication)
 
@@ -185,7 +185,7 @@ Key | Description | Default
 **network.http.url**  | The public URL of the BaasBox server. I.e. the URL used by the App to contact BaasBox, without the protocol prefix (i.e. http://) and PORT |  localhost
 **session_tokens.timeout**  | The expiration time of the session tokens (in minutes). WARNING: the admin console refreshes the session token every 5 minutes, if you set a value lower than 5, you may experience disconnection from the console. To disable expiration set it to 0. | 0
 
-**Password Recovery**
+### Password Recovery
 
 Options for the Password Recovery feature
 
@@ -201,7 +201,7 @@ Key | Description | Default
 **network.smtp.port** | he TCP port of the SMTP server |  `25`
 **network.smtp.ssl** | Enable or disable the SSL protocol for the SMTP server |  `false`
 
-**Images**
+### Images
 
 Options for the server-side images resizing feature
 
@@ -210,7 +210,7 @@ Key | Description | Default
 **image.allows.automatic.resize** | Enable or disable automatic resizing of images | `true`
 **image.allowed.automatic.resize.formats**  | A space-separated-values list of image size, both in px or in % | `25% 50% 75% <=80px`
 
-**Push Notifications**
+### Push Notifications
 
 Options for the Push Notifications feature
 
@@ -225,7 +225,7 @@ Key | Description | Default
 **production.ios.certificate**  | The Apple certificate in PRODUCTION modified |
 **production.ios.certificate.password** | The password of the Apple certificate in PRODUCTION |
 
-**Social Login**
+### Social Login
 
 Options to use Social Network as user authenticators
 
@@ -244,11 +244,14 @@ Key | Description | Default
 ```
 
 The options and settings defined into the database can be overridden providing new values through CLI parameters.
+
 The stored values are not modified.
+
 To override a specific settings:
-```
+
+`
 baasbox.settings.<section>.<key>.value=<new value>
-```
+`
 
 Where 
 
@@ -266,8 +269,37 @@ Where
 - _key_ is one key listed above
 
 Both sections and key names are case-sensitive.
+<aside class="notice"> 
 Note that the Apple certificate for push notifications cannot be supplied via _start_ command.
+</aside>
 
+## External Configuration File
+Instead of to pass every single option as parameter of the _start_ script, you can put all of them in an external file and just tell to BaasBox where is located.
+
+To use an external file, you have to use the following option and instruction
+
+Key   | Description   |   Example
+--------- | ----------- | -------------
+**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
+
+Regarding the `config.file` key, a possible example of an external configuration file may be:
+
+
+```
+include classpath("application.conf")
+
+application.code="1234-56789"
+
+orient.baasbox.path=db/baasbox
+
+logger.application=DEBUG
+```
+<aside class="notice"> 
+**NOTE**: remember to ALWAYS include as first line the statement:
+`
+include classpath("application.conf")
+`
+</aside>
 
 # General Overview
 
@@ -280,7 +312,7 @@ server to another, you just have to zip the database folder and copy it
 into the server target folder. Moreover, it is ready to use without
 changing the configuration parameters. You just have to
 launch the command ``./start`` (or ``start.bat`` on Windows) and BaasBox will
-run. Should you need it, you can apply customized configuration parameters. See the [hacking section](#hacking).
+run. Should you need it, you can apply customized configuration parameters. See the [configuration section](#configuration).
 
 ## Available Functions
 
@@ -364,7 +396,7 @@ By default these values are:
 -  App Code: 1234567890
 
 You can change the App Code at any time by following the instructions shown
-in the [hacking section](#hacking). By clicking on the question marks, the
+in the [configuration section](#configuration). By clicking on the question marks, the
 fields will be filled with the default values. 
 
 ## Dashboard 
@@ -406,10 +438,10 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 
-
+<aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
-
+</aside>
 
 ## Console settings
 
@@ -577,7 +609,7 @@ server replies with a BAD REQUEST http error (code 400)
 This is the application code.
 Every BaasBox instance should have a unique AppCode. 
 By default this is: ``1234567890``, but it is **strongly recommended** that you change this code when you start production.
-See [Hacking section](#hacking).
+See [configuration section](#configuration).
 
 ``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
 
@@ -3509,15 +3541,11 @@ Allows to retrieve all the assets. Supports [Pagination and query criteria](#pag
 
 
 
-## Settings
+## Settings API
 
 Settings are app-related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
 
-* PasswordRecovery: this section contains many settings that affect the password recovery workflow
-* Application: Application specific parameters, such as the App Name
-* Push: Push notifications related settings
-* Images: specific settings for images (Assets file) processing
-
+More information can be found [here](#app-settings)
 
 <aside class="notice">	
 	Only users belonging to administrator roles can call these APIs.
@@ -3859,35 +3887,3 @@ Parameter | Description
 
 
 
-
-# Hacking
-
-You can override many default values and options by providing them to the JVM. To do so, you have to use the -D parameter in this way
-
-`./start -DBAASBOX_PARAMETER=NEW_VALUE`
-
-Where `BAASBOX_PARAMETER` is the key of the parameter to override and `NEW_VALUE` is the value you want to use. 
-Please note that there is no space between the D and the parameter name. Overridable keys are:
-
-
-Key | Description | Example
---------- | ----------- | -------------
-**http.port** |	The port used by BaasBox |	`-Dhttp.port=80`
-**https.port** |	The SSL port used by BaasBox. By default SSL is disabled |	`-Dhttp.port=443`
-**application.code** |	Your Application Code. You should override the default one and choose a very unique code |	`-Dapplication.code=Zh54re3`
-**orient.baasbox.path** |	The path of the embedded database. By default this is {BAASBOX_HOME/db/baasbox}  |	`-Dorient.baasbox.path=./mydb`
-**logger.application** |	The default level of the logger. By default this is DEBUG. Possible values are ERROR, WARNING, INFO, DEBUG, TRACE |	`-Dlogger.application=INFO`
-**config.file** | 	An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` then you have to create a file named baasbox.config
-
-Regarding the `config.file` key, a possible example of an external configuration file may be:
-
-`
-include classpath("application.conf")
-application.code="1234-56789"
-orient.baasbox.path=db/baasbox
-logger.application=DEBUG
-`
-
-## The Play! Framework
-
-Since BaasBox is based upon the Play! Framework 2.1.5, many configuration options available by Play! could be used with BaasBox. Please refer to the [Play! documentation](http://www.playframework.com/documentation/2.1.5/Configuration) to know how to perform such operations and to customize the default behavior.
