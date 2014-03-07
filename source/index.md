@@ -101,7 +101,7 @@ For further details about the console, you can read [console](#console).
 That’s all! BaasBox is ready to go and to serve your apps! To stop the server just halt (Ctrl-C) the shell script.
 
 # Configuration
-BaasBox does not need any configuration to start. However you can modify many parameters to fit your specific needs.
+BaasBox does not need any configuration to start. However, you can modify many parameters to fit your specific needs.
 You can act on different setting levels depending on your goal.
 The setting levels are:
 
@@ -131,12 +131,12 @@ These settings cannot be modified at runtime.
 ```shell
 ./start -Dhttp.port=80
 ```
-BaasBox is based on the [Play! Framework](http://www.playframework.com). This means that accepts all the options available for any Play! application.
+BaasBox is based on the [Play! Framework](http://www.playframework.com). This means that it accepts all the options available for any Play! application.
 A complete reference of these option can be found [here](hhttp://www.playframework.com/documentation/2.1.5/ProductionConfiguration)
 These settings cannot be modified at runtime.
 
 ## BaasBox Settings
-There are some settings related to a specific instance of BaasBox server, such as, for example, the AppCode.
+There are some settings relating to a specific instance of the BaasBox server, such as, for example, the AppCode.
 The AppCode is a special code that must be supplied every time an API call is executed.
 These settings cannot be modified at runtime.
 
@@ -150,15 +150,15 @@ Key | Description | Default
 **push.baasbox.certificates.folder** | The folder where the iOS push certificate will be stored  |  `certificates`
 **application.code**| The AppCode of the instance | `1234567890`
 **query.record_per_page** | The number of records returned in case of pagination | `20`
-**baasbox.wrapresponse** | DEPRECATED: Wrap the responses in a JSON object. The SDKs only support the `true` value. | `true`
+**baasbox.wrapresponse** | DEPRECATED: it wraps the responses in a JSON object. The SDKs only support the `true` value. | `true`
 **baasbox.statistics.system.memory** | Disable this if you don't want memory information when the /admin/dbStatistics API is called | `true`
 **baasbox.statistics.system.os** | Disable this if you don't want OS information when the /admin/dbStatistics API is called | `true`
-**baasbox.startup.dumpdb** | Dumps DB information on startup | `false`
+**baasbox.startup.dumpdb** | it dumps DB information on startup | `false`
 **baasbox.server.accesslog** | Enable/disable the access log | `true`
 
 ## App Settings
-These are settings related to your App. They are stored into the embedded DB and because of this once they are set they are read from the DB and you are not forced to specify them every time you start BaasBox.
-The App Settings con be configured via the [Administration Console](#console).
+These are settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you are not forced to specify them every time you start BaasBox.
+The App Settings can be configured via the [Administration Console](#console).
 The settings are splitted in five sections:
 
 - Application
@@ -192,13 +192,13 @@ Options for the Password Recovery feature
 Key | Description | Default
 --------- | ----------- | -------------
 **email.expiration.time** | Minutes before the reset code expires |  `15`
-**email.from** | The name and address to specify in the from field of the email to send |  `info@example.com`
+**email.from** | The name and address to be specified in the 'from' field of the email to send |  `info@example.com`
 **email.subject** | The subject of the email to send |  `BaasBox: reset password`
 **email.template.html** | The template (html format) of the email to send to the user when they request a password reset. Please ensure that you have written the keyword $link$ inside the text. This keyword will be replaced with the link that the user has to click on to start the password recovery process. |  `The text of the email`
 **network.smtp.authentication** | Set to `true` if the SMTP server requires authentication |  `true`
 **network.smtp.host ** | IP address or fully qualified name of the SMTP server |  `mail.example.com`
 **network.smtp.password** | The password required by the SMTP server if it requires authentication. Used only if network.smtp.authentication is set to `true |  `password`
-**network.smtp.port** | he TCP port of the SMTP server |  `25`
+**network.smtp.port** | the TCP port of the SMTP server |  `25`
 **network.smtp.ssl** | Enable or disable the SSL protocol for the SMTP server |  `false`
 
 ### Images
@@ -216,14 +216,14 @@ Options for the Push Notifications feature
 
 Key | Description | Default
 --------- | ----------- | -------------
-**push.sandbox.enable** | Specify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server to send the notification| `true` i.e. it is in sandbox mode
+**push.sandbox.enable** | Specify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server to send the notification| `true` i.e. it is in SANDBOX mode
 **push.apple.timeout**  | The timeout for push notifications on Apple devices | `0` - no timeout
 **sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode |
-**sandbox.ios.certificate** | The Apple certificate in SANDBOX modified | 
+**sandbox.ios.certificate** | The Apple certificate in SANDBOX mode | 
 **sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode |
-**production.android.api.key**  | The key to send push notifications to Android devices in PRODUCTION modified |
-**production.ios.certificate**  | The Apple certificate in PRODUCTION modified |
-**production.ios.certificate.password** | The password of the Apple certificate in PRODUCTION |
+**production.android.api.key**  | The key to send push notifications to Android devices in PRODUCTION mode |
+**production.ios.certificate**  | The Apple certificate in PRODUCTION mode |
+**production.ios.certificate.password** | The password of the Apple certificate in PRODUCTION mode |
 
 ### Social Login
 
@@ -247,7 +247,7 @@ The options and settings defined into the database can be overridden providing n
 
 The stored values are not modified.
 
-To override a specific settings:
+To override a specific setting:
 
 `
 baasbox.settings.<section>.<key>.value=<new value>
@@ -256,6 +256,7 @@ baasbox.settings.<section>.<key>.value=<new value>
 Where 
 
 - _section_ is one from:
+
   - Application
 
   - PasswordRecovery
@@ -274,13 +275,13 @@ Note that the Apple certificate for push notifications cannot be supplied via _s
 </aside>
 
 ## External Configuration File
-Instead of to pass every single option as parameter of the _start_ script, you can put all of them in an external file and just tell to BaasBox where is located.
+Instead of passing every single option as a parameter of the _start_ script, you can put all of them in an external file and simply tell BaasBox where this is located.
 
-To use an external file, you have to use the following option and instruction
+To use an external file, you have to use the following options and instructions
 
 Key   | Description   |   Example
 --------- | ----------- | -------------
-**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
+**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)` directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
 
 Regarding the `config.file` key, a possible example of an external configuration file may be:
 
@@ -293,7 +294,7 @@ application.code="1234-56789"
 orient.baasbox.path=db/baasbox
 ```
 <aside class="notice"> 
-**NOTE**: remember to ALWAYS include as first line the statement:
+**NOTE**: remember to ALWAYS include in the first line the statement:
 `
 include classpath("application.conf")
 `
