@@ -766,7 +766,7 @@
 
             // FIXME HACK to limit toc expansion to thrid level
             // !!!!!!!!!!!!!!!!!!!! should be extracted as a selector
-            if(element.attr("data-tag")== "4") return self;
+            // if(element.attr("data-tag")== "4") return self;
 
             // If the sub-header is not already visible
             if (!elem.is(":visible")) {

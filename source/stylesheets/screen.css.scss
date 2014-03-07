@@ -133,11 +133,11 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
       border-bottom: $nav-embossed-border-bottom;
       box-shadow: none; // otherwise it'll overflow out of the subheader
     }
-	
+
 	.tocify-subheader .tocify-item>a {
 		padding-left: $nav-padding + $nav-indent * 2;
 	}
-	
+
   }
 
   .toc-footer {
@@ -230,7 +230,9 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 // CONTENT STYLES
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
-
+h4 {
+   clear: both;
+}
 .content {
   // to place content above the dark box
   position: relative;
@@ -310,7 +312,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
     margin-bottom: 0.8em;
     text-transform: uppercase;
   }
-  
+
   hr {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
