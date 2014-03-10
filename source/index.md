@@ -21,8 +21,7 @@ Click on any tab above to choose the platform of your interest.
 To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
 and drop on Xcode the folder BaasBox-iOS-SDK.
 Then insert the following statement in the .pch file
-#import "BAAClient.h" 
-and you are good to go. 
+#import "BAAClient.h" and you are good to go. 
 ```
 
 ```java
@@ -1102,13 +1101,24 @@ Parameter | Description
 
 ```shell
 curl -X PUT http://localhost:9000/me/password \
-	-d '{"old" : "password", "new" : "newpassword"}' \
+	-d '{"old" : "oldpass", "new" : "newpass"}' \
 	-H Content-type:application/json \
 	-H X-BB-SESSION:a30e8f43-4d90-4324-91d2-6065fa6ca63c
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAUser *user = ...;
+[user changeOldPassword:@"oldpass"
+          toNewPassword:@"newpass"
+        completionBlock:^(BOOL success, NSError *error) {
+            
+            if (success) {
+                NSLog(@"pass updared");
+            } else {
+                NSLog(@"err %@", error);
+            }
+            
+        }];
 ```
 
 ```java
