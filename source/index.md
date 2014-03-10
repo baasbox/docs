@@ -2701,15 +2701,26 @@ curl -X POST http://localhost:9000/file \
 NSData *data = ...; // data for file
 BAAFile *file = [[BAAFile alloc] initWithData:data];
 file.contentType = @"image/jpeg";
-[file uploadFileWithCompletion:^(BAAFile *uploadedFile, NSError *error) { 
+
+NSDictionary *permissions = 
+    @{kAclReadPermission : @{@"users" : @[@"cesare"], @"roles" : @[kAclRegisteredRole]},
+      kAclUpdatePermission : @{@"users" : @[@"claudio"]},
+      kAclDeletePermission : @{@"roles" : @[@"deleters"]}
+    };
+
+[file uploadFileWithPermissions:permissions 
+                     completion:^(BAAFile *uploadedFile, NSError *e) { 
 	
-	if (error == nil) {
-		NSLog(@"Uploaded file is %@", uploadedFile)
-	} else {
-		// Deal with error
-	}
+                        	if (error == nil) {
+                        		NSLog(@"Uploaded %@", uploadedFile)
+                        	} else {
+                        		// Deal with error
+                        	}
 	
 }];
+
+// "cesare" and registered users can read, "claudio" can update and all those belonging to "deleters" can delete
+
 ```
 
 ```java
