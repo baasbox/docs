@@ -579,7 +579,7 @@ following window:
 
 
 
-# Features
+# API
 
 ## General Remarks
 
@@ -1107,7 +1107,7 @@ curl -X PUT http://localhost:9000/me/password \
 ```
 
 ```objective_c
-BAAUser *user = ...;
+BAAUser *user = ...; // Some user
 [user changeOldPassword:@"oldpass"
           toNewPassword:@"newpass"
         completionBlock:^(BOOL success, NSError *error) {
@@ -1169,7 +1169,16 @@ curl http://localhost:9000/user/cesare/password/reset \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAUser *user = ... ; // Some user
+[user resetPasswordWithCompletion:^(BOOL success, NSError *error) {
+    
+    if (success) {
+        NSLog(@"password reset OK");
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 ```java
@@ -1797,7 +1806,7 @@ Parameter | Description
 
 A document belongs to a [Collection](#collections34). You can create, read, update and delete a document, provided you have access to it.
 
-<aside class="notice">
+<aside class="warning">
   Field names starting with `_` and `@` are reserved and should not be used.
 </aside>
 
