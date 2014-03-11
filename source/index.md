@@ -3085,7 +3085,11 @@ curl http://localhost:9000/file/details \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+[BAAFile loadFilesAndDetailsWithCompletion:^(NSArray *files, NSError *error) {
+        
+        NSLog(@"files are %@", files);
+        
+    }];
 ```
 
 ```java
