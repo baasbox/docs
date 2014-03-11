@@ -3908,7 +3908,17 @@ curl -X PUT  http://localhost:9000/push/disable/123  \
 ```
 
 ```objective_c
-
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client disablePushNotificationsWithCompletion:^(BOOL success, NSError *error) {
+  
+    if (success) {
+        NSLog(@"push notifications disabled");
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 > Example of response
