@@ -2907,7 +2907,7 @@ Parameter | Description
 --------- | -----------
 **file** | The file itself. Mandatory.
 **attachedData** | A valid JSON string to store data associated to a file. Optional.
-**acl** | A valid JSON string to declare access to the file. Optional. See [ACL](#grant-access-to-a-file)
+**acl** | A valid JSON string to declare access to the file. Optional. See [ACL](#grant-access-to-a-file).
 
 
 <aside class="notice">
