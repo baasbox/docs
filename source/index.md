@@ -3612,7 +3612,16 @@ curl http://localhost:9000/admin/configuration/dump.json  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client loadSettingsWithCompletion:^(NSDictionary *settings, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"settings are %@", settings);
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 ```java
