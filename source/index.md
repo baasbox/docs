@@ -3689,7 +3689,17 @@ curl http://localhost:9000/admin/configuration/Application  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client loadSettingsSection:@"Application"
+                 completion:^(NSDictionary *settings, NSError *e) {
+                     
+                     if (error == nil) {
+                         NSLog(@"apps settings %@", settings);
+                     } else {
+                         NSLog(@"error %@", e);
+                     }
+                     
+                 }];
 ```
 
 ```java
