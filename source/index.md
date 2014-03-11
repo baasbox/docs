@@ -2725,9 +2725,9 @@ The maximum size of a file is 2GB, but we do not recommend reaching such size, s
 
 
 
-### Create a file
+### Upload a file
 
-> Example of a request to create a file
+> Example of a request to upload a file
 
 ```shell
 curl -X POST http://localhost:9000/file \
@@ -2739,12 +2739,6 @@ curl -X POST http://localhost:9000/file \
 NSData *data = ...; // data for file
 BAAFile *file = [[BAAFile alloc] initWithData:data];
 file.contentType = @"image/jpeg";
-
-NSDictionary *permissions = 
-    @{kAclReadPermission : @{@"users" : @[@"cesare"], @"roles" : @[kAclRegisteredRole]},
-      kAclUpdatePermission : @{@"users" : @[@"claudio"]},
-      kAclDeletePermission : @{@"roles" : @[@"deleters"]}
-    };
 
 [file uploadFileWithPermissions:permissions 
                      completion:^(BAAFile *uploadedFile, NSError *e) { 
@@ -2807,7 +2801,22 @@ curl -X POST http://localhost:9000/file \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED 
+NSData *data = ...; // data for file
+BAAFile *file = [[BAAFile alloc] initWithData:data];
+file.contentType = @"image/jpeg";
+[file.attachedData setObject:@"My title"
+                      forKey:@"title"];
+[file.attachedData setObject:@[@"tag1", @"tag2"]
+                      forKey:@"tags"];
+
+[file uploadFileWithPermissions:permissions 
+                     completion:^(BAAFile *uploadedFile, NSError *e) { 
+  
+                          if (error == nil) {
+                            NSLog(@"Uploaded %@", uploadedFile)
+                          } else {
+                            // Deal with error
+                          }
 ```
 
 ```java
@@ -2840,7 +2849,28 @@ curl -X POST http://localhost:9000/file \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED 
+NSData *data = ...; // data for file
+BAAFile *file = [[BAAFile alloc] initWithData:data];
+file.contentType = @"image/jpeg";
+[file.attachedData setObject:@"My title"
+                      forKey:@"title"];
+[file.attachedData setObject:@[@"tag1", @"tag2"]
+                      forKey:@"tags"];
+
+NSDictionary *permissions = 
+    @{kAclReadPermission : @{@"users" : @[@"cesare"], @"roles" : @[kAclRegisteredRole]},
+      kAclUpdatePermission : @{@"users" : @[@"claudio"]},
+      kAclDeletePermission : @{@"roles" : @[@"deleters"]}
+    };
+
+[file uploadFileWithPermissions:permissions 
+                     completion:^(BAAFile *uploadedFile, NSError *e) { 
+  
+                          if (error == nil) {
+                            NSLog(@"Uploaded %@", uploadedFile)
+                          } else {
+                            // Deal with error
+                          }
 ```
 
 ```java
