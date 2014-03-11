@@ -3767,7 +3767,19 @@ curl -X PUT http://localhost:9000/admin/configuration/Application/application.na
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client setValue:@"MyAppName"
+          forKey:@"application.name"
+       inSection:@"Application"
+      completion:^(NSDictionary *settings, NSError *e) {
+          
+          if (e == nil) {
+              NSLog(@"settings are %@", settings);
+          } else {
+              NSLog(@"error %@", e);
+          }
+          
+      }];
 ```
 
 ```java
@@ -3807,6 +3819,12 @@ Push notifications are messages that a user can receive using an APP that has Ba
 ```shell
 curl -X PUT  http://localhost:9000/push/enable/ios/123  \
  	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client askToEnablePushNotifications];
 ```
 
 > Example of response
@@ -3887,6 +3905,10 @@ Parameter | Description
 ```shell
 curl -X PUT  http://localhost:9000/push/disable/123  \
  	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+
 ```
 
 > Example of response
