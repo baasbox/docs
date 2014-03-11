@@ -1717,7 +1717,13 @@ curl -X POST http://localhost:9000/admin/collection/mycollection \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client createCollection:@"mynewcollection"
+              completion:^(id object, NSError *error) {
+                  
+                  NSLog(@"collection created");
+                  
+              }];
 ```
 
 ```java
