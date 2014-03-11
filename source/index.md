@@ -1020,7 +1020,17 @@ curl -X PUT http://localhost:9000/me \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAUser *user = ... ; // some user
+[user.visibleByAnonymousUsers setObject:@"mail@mail.com" forKey:@"email"];
+[user updateWithCompletion:^(BAAUser *user, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"user is %@", [user jsonString]);
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 ```java
@@ -1739,12 +1749,15 @@ client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
 
 ``POST /admin/collection/:collection-name``
 
-Creates a new collection. The user calling this API must be admin or belong to the admin role.
+Creates a new collection.
 
 Parameter | Description
 --------- | -----------
 **collection-name** | The name of the new collection. Mandatory.
 
+<aside class="warning">
+  The user calling this API must be admin or belong to the admin role.
+</aside>
 
 
 
