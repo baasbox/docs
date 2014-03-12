@@ -684,8 +684,8 @@ curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
 
 ```objective_c
 NSDictionary *parameters = 
-  @{kPageNumber : @0,
-    kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+  @{kPageNumberKey : @0,
+    kPageSizeKey : [NSNumber numberWithInteger:kPageLength]};
 [BAAUser loadUsersWithParameters:parameters
                       completion:^(NSArray *users, NSError *e) {
                           
@@ -1483,8 +1483,8 @@ curl http://localhost:9000/users \
 ```
 
 ```objective_c
-NSDictionary *parameters = @{kPageNumber : @0,
-                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+NSDictionary *parameters = @{kPageNumberKey : @0,
+                             kPageSizeKey : [NSNumber numberWithInteger:kPageLength]};
 [BAAUser loadUsersWithParameters:parameters
                       completion:^(NSArray *users, NSError *error) {
                           
@@ -2600,8 +2600,8 @@ curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
 }];
 
 // Version with pagination
-NSDictionary *parameters = @{kPageNumber : @0,
-                             kPageSize : @20};
+NSDictionary *parameters = @{kPageNumberKey : @0,
+                             kPageSizeKey : @20};
 [Post getObjectsWithParams:parameters
                 completion:^(NSArray *posts, NSError *error) {
 
