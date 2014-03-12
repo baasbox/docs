@@ -828,10 +828,11 @@ curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
 ```
 
 ```objective_c
-NSDictionary *parameters = @{kPageNumber : @0,
-                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+NSDictionary *parameters = 
+  @{kPageNumber : @0,
+    kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
 [BAAUser loadUsersWithParameters:parameters
-                      completion:^(NSArray *users, NSError *error) {
+                      completion:^(NSArray *users, NSError *e) {
                           
 						  if (error == nil) {
                           	NSLog(@"users are %@", users);
