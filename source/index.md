@@ -2082,7 +2082,18 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+// Assumes post is an instance of Post, which subclasses BAAObject with properties "title".
+Post *post = [[Post alloc] init];
+post.title = @"My new title";
+[post saveObjectWithCompletion:^(Post *p, NSError *error) {
+
+    if (error == nil) {
+        NSLog(@"saved post is %@", p)
+    } else {
+        // deal with error
+    }
+
+}];
 ```
 
 ```java
