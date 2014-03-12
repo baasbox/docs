@@ -740,6 +740,75 @@ Parameter | Description
 
 ### iOS SDK
 
+The SDK is distributed as a zip file (Cocoapod is coming up, bear with us). To get started download it from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+
+#### Importing
+
+The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
+
+```
+#ifdef __OBJC__
+  #import <UIKit/UIKit.h>
+  #import <Foundation/Foundation.h>
+  #import "BAAClient.h"
+#endif
+```
+
+#### Initialization
+
+You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
+
+```
+[BaasBox setBaseURL:@"http://localhost:9000"
+            appCode:@"1234567890"];
+```
+
+#### Architecture and pass through
+
+The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
+On the right there is an example of a GET request.
+
+```
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"/file/details"
+     parameters:parameters
+        success:^(id responseObject) {
+          
+          NSLog(@"response is %@", responseObject);         
+          
+        } failure:^(NSError *error) {
+          
+          NSLog(@"error is %@", error); 
+          
+        }];
+```
+
+There are four methods, one for each HTTP verb.
+
+``- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id responseObject))success
+        failure:(void (^)(NSError *error))failure;``
+
+
+``- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id responseObject))success
+         failure:(void (^)(NSError *error))failure;``
+
+``- (void)putPath:(NSString *)path
+    parameters:(NSDictionary *)parameters
+       success:(void (^)(id responseObject))success
+       failure:(void (^)(NSError *error))failure;``
+
+``- (void)deletePath:(NSString *)path
+       parameters:(NSDictionary *)parameters
+          success:(void (^)(id responseObject))success
+          failure:(void (^)(NSError *error))failure;``
+
+
+As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
 
 
 
