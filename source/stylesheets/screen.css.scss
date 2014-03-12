@@ -368,8 +368,9 @@ h4 {
   }
 
   code {
-    background-color: rgba(0,0,0,0.30);
+    background-color: rgba(0,0,0,0.05);
     padding: 3px;
+    border-radius: 3px;
     @extend %break-words;
     @extend %code-font;
   }
