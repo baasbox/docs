@@ -2597,7 +2597,21 @@ curl http://localhost:9000/document/mycollection/count \
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+
+[client getPath:@"document/mycollection/count"
+     parameters:nil
+        success:^(id responseObject) {
+            
+            NSLog(@"resp %@", responseObject);
+            
+        }
+ 
+        failure:^(NSError *error) {
+            
+            NSLog(@"err %@", error);
+            
+        }];
 ```
 
 ```java
@@ -3618,7 +3632,8 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
+// It's only for admins. You can do it in the web console.
 ```
 
 ```java
@@ -3658,7 +3673,8 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
+// It's only for admins. You can do it in the web console.
 ```
 
 ```java
@@ -3723,7 +3739,37 @@ curl http://localhost:9000/asset/margherita \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+// If the asset is a JSON
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"asset/margherita/data"
+     parameters:nil
+        success:^(id responseObject) {
+            
+            NSLog(@"resp %@", responseObject);
+            
+        }
+ 
+        failure:^(NSError *error) {
+            
+            NSLog(@"err %@", error);
+            
+        }];
+
+// If the asset is a file
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"asset/margherita"
+     parameters:nil
+        success:^(id responseObject) {
+            
+            NSLog(@"resp %@", responseObject);
+            
+        }
+ 
+        failure:^(NSError *error) {
+            
+            NSLog(@"err %@", error);
+            
+        }];
 ```
 
 ```java
@@ -3733,7 +3779,7 @@ TO BE IMPLEMENTED
 > Example of a response
 
 ```json
-The file itself.
+The file itself or the JSON
 ```
 
 `GET /asset/:name`
@@ -3757,7 +3803,21 @@ curl -X DELETE http://localhost:9000/admin/asset/margherita  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+
+[client deletePath:@"admin/asset/margherita"
+        parameters:nil
+           success:^(id responseObject) {
+               
+               NSLog(@"resp %@", responseObject);
+               
+           }
+ 
+           failure:^(NSError *error) {
+               
+               NSLog(@"err %@", error);
+               
+           }];
 ```
 
 ```java
@@ -3800,7 +3860,21 @@ curl http://localhost:9000/admin/asset  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+
+[client getPath:@"admin/asset"
+        parameters:nil
+           success:^(id responseObject) {
+               
+               NSLog(@"resp %@", responseObject);
+               
+           }
+ 
+           failure:^(NSError *error) {
+               
+               NSLog(@"err %@", error);
+               
+           }];
 ```
 
 ```java
