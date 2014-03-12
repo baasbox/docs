@@ -752,7 +752,7 @@ The SDK is distributed as a jar. To get started download it from the [download s
 
 > Example initialization
 
-```java
+```
 //...
 import com.baasbox.android.BaasBox;
 
@@ -783,7 +783,7 @@ using the ``BaasBox.Builder`` class.
 
 > Example requests
 
-```java
+```
 // Here  BaasDocument is used as an example
 // it represents documents on the server, 
 // more on this later
@@ -815,7 +815,7 @@ You can control asynchronous requests thorugh the returned RequestToken.
 
 #### Asynchronous requests management
 
-```java
+```
 // an example asynchronous request in an activity
 public class MyActivity extends Activity implements
   BaasHandler<BaasUser>{
@@ -864,7 +864,7 @@ this is useful in testing or if you want to parallelize your http requests.
 
 #### Pass through API
 
-```java
+```
 BaasBox cli  = BaasBox.getDefault();
 cli.rest(HttpRequest.GET,
          "endpoint",
