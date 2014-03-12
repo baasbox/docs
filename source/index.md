@@ -2129,7 +2129,8 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+// Extend the Post class by adding a property named "tags"
+// then use the method saveObjectWithCompletion: to save the object.
 ```
 
 ```java
