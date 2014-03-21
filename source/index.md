@@ -2197,7 +2197,7 @@ BaasDocument.fetch("mycollection",
 `GET /document/:collection/:ID`
 
 Retrieves the document in the collection specified with the ID provided as parameter. 
-Only the owner of the document (besides his friends and users with admin role) can retrieve it.
+Only the owner of the document (users with admin role) can retrieve it.
 
 Parameter | Description
 --------- | -----------
@@ -2275,7 +2275,7 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
 `PUT /document/:collection/:ID`
 
 Updates the document with the ID provided in the specified collection. 
-Only the owner of the document (besides the admin and backoffice users), can call this API.
+Only the owner of the document (besides backoffice users), can call this API.
 
 Parameter | Description
 --------- | -----------
