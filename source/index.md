@@ -2197,7 +2197,7 @@ BaasDocument.fetch("mycollection",
 `GET /document/:collection/:ID`
 
 Retrieves the document in the collection specified with the ID provided as parameter. 
-Only the owner of the document (users with admin role) can retrieve it.
+Only the owner of the document (besides users with admin role) can retrieve it.
 
 Parameter | Description
 --------- | -----------
