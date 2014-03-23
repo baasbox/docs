@@ -837,6 +837,11 @@ As stated above we strongly suggest to use higher level methods available in the
 
 BaasBox provides a native Android SDK, to further ease development of mobile applications.
 The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
+You can also use maven gradle or maven to depend on the library:
+
+``compile 'com.baasbox:baasbox-android:0.7.4'``
+
+
 
 #### Initialization
 
