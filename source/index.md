@@ -697,7 +697,11 @@ NSDictionary *parameters =
 ```
 
 ```java
-Filter paginate = Filter.paging("user.name",0,20);
+Filter paginate = BaasQuery.builder()
+                           .pagination(0,30)
+                           .orderBy("user.name")
+                           .filter();
+
 BaasUser.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
   @Override
   public void handle(BaasResult<List<BaasUser>> res) {
@@ -708,6 +712,25 @@ BaasUser.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
     } else {
       Log.e("LOG","error",res.error());
     }
+  }
+});
+
+// aggregate operations and complex queries
+private static final BaasQuery PREPARED_QUERY =
+   BaasQuery.builder()
+            .collection("collection")
+            .projection("field","aggreateOp")
+            .where("condition")
+            .whereParams("positionalParam","positionalParam2")
+            .groupBy("field")
+            .orderBy("field asc")
+            .pagination(2,20)
+            .build();
+// then
+PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
+  @Override
+  public void handle(BaasResult<List<JsonObjec>> res){
+    // handle result or failure
   }
 });
 ```
@@ -1064,8 +1087,8 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-BaasUser user = BaasUser.withUserName("andrea");
-user.setPassword("password");
+BaasUser user = BaasUser.withUserName("andrea")
+                        .setPassword("password");
 user.login(new BaasHandler<BaasUser>() {
   @Override
   public void handle(BaasResult<BaasUser> result) {
@@ -1566,7 +1589,11 @@ NSDictionary *parameters = @{kPageNumberKey : @0,
 ```
 
 ```java
-BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
+Filter filter = BaasQuery.builder()
+                         .pagination(0,2)
+                         .orderBy("user.name")
+                         .filter();
+BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
   @Override
   public void handle(BaasResult<List<BaasUser>> res) {
     if(res.isSuccess()) {
@@ -2713,8 +2740,11 @@ BaasDocument.fetchAll("collection",
 });
 
 // using pagination and selection
-Filter filter = Filter.paging("title",0,20)
-                      .setWhere("_author = ?","Cesare");
+Filter filter = BaasQuery.builder().pagination(0,20)
+                      .orderBy("field desc")
+                      .where("_author = ?")
+                      .whereParams("Cesare")
+                      .filter();
 
 BaasDocument.fetchAll("collection",filter,
   new BaasHandler<List<BaasDocument>() {
@@ -3121,7 +3151,7 @@ NSDictionary *permissions =
 InputStream data = ...; // input stream to upload
 JsonObject attachedData = new JsonObject();
 attachedData.putString("key","value")
-            .putString("num",1);
+            .putLong("num",1);
 BaasFile file = new BaasFile(attachedData);
 BaasACL acl = new BaasACL().grantUsers(Grant.READ,"andrea");
 
@@ -3195,6 +3225,10 @@ file.delete(new BaasHandler<Void>() {
     }
   }
 });
+// if you don't have a reference to the file
+// object but you know it's id
+BaasFile.delete("fileId",handler);
+
 ```
 
 > Example of a response when a file is deleted
@@ -3239,17 +3273,29 @@ BAAFile *picture = ...; // instance or subclass of BAAFile, previously saved on 
 ```
 
 ```java
+// load file in memory
 BaasFile file = ...;
 file.stream(new BaasHandler<BaasFile>() {
   @Override
   public void handle(BaasResult<BaasFile> res) {
     if ( res.isSuccess() ) {
+      byte[] data = res.value().getData();
       Log.d("LOG","File received");  
     } else {
       Log.e("LOG","Error while streaming",res.error());
     }
   }
 });
+
+//save a file on disk
+BaasFile file =...;
+file.download("path-to-save-the-file.to",
+              new BaasHandler<Pair<BaasFile,String>>(){
+                @Override
+                public void handle(BaasResult<Pair<BaasFile,String>> res)P{
+                
+                }
+              });
 ```
 
 > Example of a response
@@ -3677,7 +3723,7 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```java
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
 ```
 
 > Example of a response 
@@ -3772,7 +3818,29 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-TO BE IMPLEMENTED
+// if it's json
+BaasAsset.fetchData("name",new BaasHandler<JsonObject>() {
+  @Override
+  public void handler(BaasResult<JsonObject> res) {
+     if(res.isSuccess()){
+       // do something with the object
+     } else {
+       Log.e("ERROR","Error while retrieving asset",res.error());
+     }
+  }
+});
+
+// if it's binary
+BaasAsset.streamAsset("name",new BaasHandler<byte[]>() {
+  @Override
+  public void handler(BaasResult<byte[]> res){
+    if(res.isSuccess()) {
+      // do something with content
+    } else {
+      Log.e("ERROR","Error while retrieving asset",res.error());
+    }
+  }
+});
 ```
 
 > Example of a response
@@ -4160,7 +4228,19 @@ curl -X PUT  http://localhost:9000/push/enable/ios/123  \
 BAAClient *client = [BAAClient sharedClient];
 [client askToEnablePushNotifications];
 ```
+```java
+BaasBox box=BaasBox.getDefault();
+box.enablePush("registrationIdByGoogle",
+     new BaasHandler<Void>() {
+       @Override
+       public void handle(BaasResult<Void> res){
+         if(res.isSuccess()){
+           // registrationid saved on the server
+         }
+       }
+     });
 
+```
 > Example of response
 
 ```json
@@ -4205,6 +4285,17 @@ BAAClient *client = [BAAClient sharedClient];
 }];
 ```
 
+```java
+BaasBox client = BaasBox.getDefault();
+client.disablePush("registration-id",new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if(res.isSuccess()){
+      // successfully unregistered
+    }
+  }
+});
+```
 > Example of response
 
 ```json
