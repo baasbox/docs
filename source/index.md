@@ -56,14 +56,14 @@ You can access all sections using the sidebar on the left. The
 documentation explains:
 
 *  the BaasBox features (server side)
-   *  how to install BaasBox
-   *  how to use the admin console and a detailed section about the REST API that you can use
-   *  REST API
+   *  [how to install BaasBox](?shell#installation)
+   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
+   *  [REST API](http://localhost:4567/?shell#api)
 
 *  the SDK features
 
-   *  [iOS SDK](?objective_c#features)
-   *  [Android SDK](?java#features)
+   *  [iOS SDK](?objective_c#ios-sdk)
+   *  [Android SDK](?java#android-sdk)
 
 
 For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-7-4-released/)
