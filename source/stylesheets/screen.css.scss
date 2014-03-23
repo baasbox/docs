@@ -46,7 +46,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
 .content a {
   color:#538378;
-  padding-top:120px;
+  padding-top:0px;
 }
 .content a:visited {
   color:#343131;
@@ -258,7 +258,7 @@ h4 {
   h1 {
     @extend %header-font;
     font-size: 36px;
-    padding-top: 0.5em;
+    padding-top: 1.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
     margin-top: 2em;
