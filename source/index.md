@@ -51,8 +51,6 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 Latest version is **0.7.4**
 
-Click [here](http://www.baasbox.com/documentation/previous) for previous releases
-
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -195,7 +193,7 @@ Key | Description | Default
 **email.subject** | The subject of the email to send |  `BaasBox: reset password`
 **email.template.html** | The template (html format) of the email to send to the user when they request a password reset. Please ensure that you have written the keyword $link$ inside the text. This keyword will be replaced with the link that the user has to click on to start the password recovery process. |  `The text of the email`
 **network.smtp.authentication** | Set to `true` if the SMTP server requires authentication |  `true`
-**network.smtp.host ** | IP address or fully qualified name of the SMTP server |  `mail.example.com`
+**network.smtp.host** | IP address or fully qualified name of the SMTP server |  `mail.example.com`
 **network.smtp.password** | The password required by the SMTP server if it requires authentication. Used only if network.smtp.authentication is set to `true |  `password`
 **network.smtp.port** | the TCP port of the SMTP server |  `25`
 **network.smtp.ssl** | Enable or disable the SSL protocol for the SMTP server |  `false`
@@ -2198,7 +2196,7 @@ BaasDocument.fetch("mycollection",
 `GET /document/:collection/:ID`
 
 Retrieves the document in the collection specified with the ID provided as parameter. 
-Only the owner of the document (besides his friends and users with admin role) can retrieve it.
+Only the owner of the document (besides users with admin role) can retrieve it.
 
 Parameter | Description
 --------- | -----------
@@ -2276,7 +2274,7 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
 `PUT /document/:collection/:ID`
 
 Updates the document with the ID provided in the specified collection. 
-Only the owner of the document (besides the admin and backoffice users), can call this API.
+Only the owner of the document (besides backoffice users), can call this API.
 
 Parameter | Description
 --------- | -----------
