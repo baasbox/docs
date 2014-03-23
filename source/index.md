@@ -66,7 +66,7 @@ documentation explains:
    *  [Android SDK](?java#features)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-server-0-7-3-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-7-4-released/)
 The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
 Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
