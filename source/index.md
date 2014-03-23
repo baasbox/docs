@@ -947,6 +947,7 @@ cli.rest(HttpRequest.GET,
 Some rest endpoints have no direct equivalent in the api.
 For them you can use the lower level pass through api provided by the sdk
 through the ``rest()`` and ``restSync()`` methods.
+Whenever you see a "TO BE IMPLEMENTED in the Android section you can recur to this methods.
 Using these methods you can access these apis while still enjoing the rest
 of the sdk features, such as concurrency and lifecycle management, caching,
 handling of the authentication.
