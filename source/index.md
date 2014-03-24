@@ -761,7 +761,16 @@ Parameter | Description
 
 ### iOS SDK
 
-The SDK is distributed as a zip file (Cocoapod is coming up, bear with us). To get started download it from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+The SDK is distributed in two ways: 
+
+* as a Cocoapod
+* as a zip file 
+
+We recommend to install it using Cocoapods. Just add the following line to your Podfile.
+
+`pod 'BaasBoxSDK', '~> 0.7'`
+
+If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
 #### Importing
 
