@@ -46,7 +46,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
 .content a {
   color:#538378;
-  padding-top:120px;
+  padding-top:0px;
 }
 .content a:visited {
   color:#343131;
@@ -65,7 +65,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
 
   // This is the logo at the top of the ToC
@@ -133,11 +133,11 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
       border-bottom: $nav-embossed-border-bottom;
       box-shadow: none; // otherwise it'll overflow out of the subheader
     }
-	
+
 	.tocify-subheader .tocify-item>a {
 		padding-left: $nav-padding + $nav-indent * 2;
 	}
-	
+
   }
 
   .toc-footer {
@@ -230,7 +230,9 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 // CONTENT STYLES
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
-
+h4 {
+   clear: both;
+}
 .content {
   // to place content above the dark box
   position: relative;
@@ -255,8 +257,8 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
   h1 {
     @extend %header-font;
-    font-size: 32px;
-    padding-top: 0.5em;
+    font-size: 36px;
+    padding-top: 1.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
     margin-top: 2em;
@@ -276,7 +278,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
   h2 {
     @extend %header-font;
-    font-size: 24px;
+    font-size: 32px;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
@@ -296,21 +298,19 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
   h3 {
     @extend %header-font;
-    font-size: 16px;
+    font-size: 24px;
     margin-top: 2.5em;
-	padding-top: 1.2em;
+	  padding-top: 1.2em;
     margin-bottom: 0.8em;
-    text-transform: uppercase;
   }
 
    h4 {
     @extend %header-font;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
-    text-transform: uppercase;
   }
-  
+
   hr {
     margin: 2em 0;
     border-top: 2px solid $examples-bg;
