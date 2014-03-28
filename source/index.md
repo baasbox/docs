@@ -1013,7 +1013,9 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```java
 BaasUser user = BaasUser.withUserName("andrea");
-user.setPassword("password");
+                        .setPassword("password");
+JsonObject extras = user.getScope(Scope.PRIVATE)
+                        .putInt("age_info",27);
 user.signup(new BaasHandler<BaasUser>(){
   @Override
   public void handle(BaasResult<BaasUser> result){
@@ -1093,7 +1095,7 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```java
 BaasUser user = BaasUser.withUserName("andrea")
-                        .setPassword("password");
+                        .setPassword("password");                        
 user.login(new BaasHandler<BaasUser>() {
   @Override
   public void handle(BaasResult<BaasUser> result) {
