@@ -4278,7 +4278,7 @@ Parameter | Description
 
 ### Disable push notifications
 
-> Example of a request to enable push notifications
+> Example of a request to disable push notifications
 
 ```shell
 curl -X PUT  http://localhost:9000/push/disable/123  \
