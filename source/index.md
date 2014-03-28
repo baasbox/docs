@@ -56,17 +56,17 @@ You can access all sections using the sidebar on the left. The
 documentation explains:
 
 *  the BaasBox features (server side)
-   *  how to install BaasBox
-   *  how to use the admin console and a detailed section about the REST API that you can use
-   *  REST API
+   *  [how to install BaasBox](?shell#installation)
+   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
+   *  [REST API](http://localhost:4567/?shell#api)
 
 *  the SDK features
 
-   *  [iOS SDK](?objective_c#features)
-   *  [Android SDK](?java#features)
+   *  [iOS SDK](?objective_c#ios-sdk)
+   *  [Android SDK](?java#android-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-server-0-7-3-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-7-4-released/)
 The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
 Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
@@ -761,7 +761,16 @@ Parameter | Description
 
 ### iOS SDK
 
-The SDK is distributed as a zip file (Cocoapod is coming up, bear with us). To get started download it from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+The SDK is distributed in two ways: 
+
+* as a Cocoapod
+* as a zip file 
+
+We recommend to install it using Cocoapods. Just add the following line to your Podfile.
+
+`pod 'BaasBoxSDK', '~> 0.7'`
+
+If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
 #### Importing
 
