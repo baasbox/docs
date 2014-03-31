@@ -1157,7 +1157,7 @@ Parameter | Description
 
 ```shell
 curl -X POST http://localhost:9000/logout \
-	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a -H X-BAASBOX-APPCODE:1234567890
 ```
 
 ```objective_c
@@ -1202,6 +1202,49 @@ Allows a user to logout from the app on a specific device. A push notification w
 Parameter | Description
 --------- | -----------
 **pushToken** | Optional. The push notification token that you have used to activate push notifications.
+
+
+### Suspend a user
+
+``PUT 	/me/suspend	`` 
+
+```shell
+curl -X PUT http://localhost:9000/me/suspend \
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4341a \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+Allows a user to suspend their account.
+
+Only administators can reactivate it.
+
+
+``PUT 	/admin/user/suspend/:username`` 
+
+```shell
+curl -X PUT http://localhost:9000/admin/user/suspend/user1 \
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+Suspends a given user.
+
+Only administrators can call this API.
+
+
+### Reactivate a user
+
+``PUT 	/admin/user/activate/:username`` 
+
+```shell
+curl -X PUT http://localhost:9000/admin/user/activate/user1 \
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+Reactivate a previoulsy suspended user.
+
+Only administrators can call this API.
 
 
 ### Logged user profile
