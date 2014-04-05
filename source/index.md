@@ -58,7 +58,7 @@ documentation explains:
 *  the BaasBox features (server side)
    *  [how to install BaasBox](?shell#installation)
    *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
-   *  [REST API](http://localhost:4567/?shell#api)
+   *  [REST API](?shell#api)
 
 *  the SDK features
 
