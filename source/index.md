@@ -3515,7 +3515,7 @@ Supports [Pagination and query criteria](#pagination-and-query-criteria).
 
 
 
-## Grant access to a file
+### Grant access to a file
 
 > Example of a request to grant read access to user “a” on a file
 
