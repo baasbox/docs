@@ -2739,7 +2739,7 @@ NSDictionary *parameters = @{kPageNumberKey : @0,
 
 ```java
 BaasDocument.fetchAll("collection",
-  new BaasHandler<List<BaasDocument>() {
+  new BaasHandler<List<BaasDocument>>() {
     @Override
     public void handle(BaasResult<List<BaasDocument>> res) {
     
