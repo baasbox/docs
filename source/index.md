@@ -793,7 +793,7 @@ You need to initialize the SDK before making any API call. The best place to do 
             appCode:@"1234567890"];
 ```
 
-#### Architecture and pass through
+#### Architecture and pass-through
 
 The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
 On the right there is an example of a GET request.
@@ -966,7 +966,7 @@ acitivities.
 Request tokens let you cancel/abort requests, or wait for their completion,
 this is useful in testing or if you want to parallelize your http requests.
 
-#### Pass through API
+#### Pass-through API
 
 ```
 BaasBox cli  = BaasBox.getDefault();
