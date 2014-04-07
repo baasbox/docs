@@ -3366,15 +3366,15 @@ file.download("path-to-save-the-file.to",
 > Example of a request to suggest the browser to download an app
 
 ```shell
-curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
-	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?download=true
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99?download=true \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
 ```
 
 > Example of a request to retrieve a resized version of an app.
 
 ```shell
-curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
-	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?sizeId=0
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99?sizeId=0 \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
 ```
 
 `GET /file/:id`
