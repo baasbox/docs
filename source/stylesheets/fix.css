@@ -124,13 +124,14 @@ nav {
   position:absolute;
   background:url(http://www.baasbox.com/wp-content/uploads/testata_marchio.png);
   margin-top: 11px;
-  margin-left:-87px;
+  margin-left:-106px;
   height: 50px;
   width: 50px;
 }
 
 .items {
 	margin-top: -1px;
+	margin-right:-38px;
 }
 
 .content {
