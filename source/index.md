@@ -49,7 +49,7 @@ public class MyApp extends Application{
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-Latest version is **0.7.4**
+Latest version is **0.8.0**
 
 
 You can access all sections using the sidebar on the left. The
