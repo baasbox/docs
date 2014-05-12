@@ -49,7 +49,7 @@ public class MyApp extends Application{
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-Latest version is **0.7.4**
+Latest version is **0.8.0**
 
 
 You can access all sections using the sidebar on the left. The
@@ -352,6 +352,9 @@ Available functions are:
 
    -  Backup/restore and reset of the integrated database
 
+-  Api Access management:
+
+   - Enable/disable groups of rest endpoints from external access
 
 ## Applied Technology
 
@@ -446,6 +449,14 @@ settings section. You can choose settings for applications, password
 recovery, images and push notifications. Each record has the Edit button
 that allows you to modify its action. 
 See also [Settings](#settings).
+
+## Api Access
+
+The Api Access section allows you to manage which rest endpoints are accessible
+to non administrator users.
+Those are grouped by functionality under a **Function** group.
+Each record has a button to switch on and off the endpoints in the
+named group.
 
 ## Database Management
 
@@ -848,7 +859,7 @@ BaasBox provides a native Android SDK, to further ease development of mobile app
 The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
 You can also use maven gradle or maven to depend on the library:
 
-``compile 'com.baasbox:baasbox-android:0.7.4'``
+``compile 'com.baasbox:baasbox-android:0.8.0'``
 
 
 
@@ -1059,6 +1070,8 @@ user.signup(new BaasHandler<BaasUser>(){
 
 ``POST /user``
 
+**Group**: [baasbox.account.create](#list-groups)
+
 **Headers**: See authorization header in the [General Remarks](#general-remarks)
 
 **Description**: This API allows a user to sign up to the App. Users will belong to the registered user role and
@@ -1138,6 +1151,8 @@ user.login(new BaasHandler<BaasUser>() {
 
 ``POST /login``
 
+**Group**: [baasbox.account](#list-groups)
+
 Checks username/password and grants the user the right to execute other calls. 
 This API returns a session token (**X-BB-SESSION**) that must be provided into 
 all authenticated calls.
@@ -1194,6 +1209,8 @@ BaasUser.current().logout(new BaasHandler<Void>() {
 ```
 
 ``POST /logout/:pushToken`` 
+
+**Group**: [baasbox.account](#list-groups)
 
 Allows a user to logout from the app on a specific device. A push notification will not be sent to the user through the specified device.
 
@@ -1259,6 +1276,8 @@ BaasUser.current().refresh(new BaasHandler<BaasUser>() {
 ```
 
 ``GET /me``
+
+**Group**: [baasbox.account](#list-groups)
 
 Retrieves details about the logged in user.
 
@@ -1329,6 +1348,8 @@ user.save(new BaasHandler<BaasUser>() {
 ```
 
 ``PUT /me``
+
+**Group**: [baasbox.account](#list-groups)
 
 Updates details about the logged in user.
 
@@ -1410,6 +1431,8 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
 
 ``PUT /me/password`` 
 
+**Group**: [baasbox.account](#list-groups)
+
 To change the password of the logged in user.
 
 Parameter | Description
@@ -1484,6 +1507,8 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
 
 
 ``GET /user/:username/password/reset``
+
+**Group**: [baasbox.account.lost_password](#list-groups)
 
 Allows to reset a user password. This API is useful when a user forgot their password and needs to reset it. This is the workflow: 
 
@@ -1566,6 +1591,8 @@ BaasUser.fetch("a",new BaasHandler<BaasUser>() {
 
 
 ``GET /user/:username``
+
+**Group**: [baasbox.users](#list-groups)
 
 Allows to retrieve information about a user profile.
 
@@ -1664,6 +1691,8 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
 
 ``GET /users``
 
+**Group**: [baasbox.users](#list-groups)
+
 Allows to retrieve a list of users. This API supports [pagination](#pagination-and-query-criteria) and [query criteria](#pagination-and-query-criteria).
 
 ##Friendship
@@ -1737,6 +1766,8 @@ user.follow(new BaasHandler<BaasUser>() {
 
 ``POST /follow/:username``
 
+**Group**: [baasbox.friendship.create](#list-groups)
+
 This API allows a user to follow another user. Once the relation is established
 the follower will be able to see the documents and files created by the followed 
 user as well as its `visibleByFriends` data in the user profile.
@@ -1801,6 +1832,8 @@ BaasUser.withUserName("cesare").unfollow(
 ```
 
 ``DELETE /follow/:username``
+
+**Group**: [baasbox.friendship.create](#list-groups)
 
 This API allows a user to unfollow another user. Once the relation has been deleted, the user 
 won't be able to see the documents and files created by the unfollowed user anymore.
@@ -1875,6 +1908,8 @@ user.following(new BaasHandler<List<BaasUser>>() {
 ```
 
 ``GET /following/:username``
+
+**Group**: [baasbox.friendship](#list-groups)
 
 This API returns a list of users who are followed by the user with `username` passed as a parameter. If no username is provided, the API returns all users followed by the logged in user.  In its `data` property the method returns an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be hidden.
 
@@ -1951,6 +1986,8 @@ user.followers(new BaasHandler<List<BaasUser>>() {
 ```
 
 ``GET /followers/:username``
+
+**Group**: [baasbox.friendship](#list-groups)
 
 This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the currently logged in user. The method returns in its `data` property an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be protected. 
 
@@ -2154,6 +2191,8 @@ doc.save(new BaasHandler<BaasDocument>() {
 
 `POST /document/:collection-name`
 
+**Group**: [baasbox.data.write](#list-groups)
+
 Creates a document in the collection specified in the parameter. The collection must have been created in advance. See [here](#create-a-new-collection).
 The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
 The returned document is decorated with the following fields:
@@ -2236,6 +2275,8 @@ BaasDocument.fetch("mycollection",
 
 `GET /document/:collection/:ID`
 
+**Group**: [baasbox.data.read](#list-groups)
+
 Retrieves the document in the collection specified with the ID provided as parameter. 
 Only the owner of the document (besides users with admin role) can retrieve it.
 
@@ -2313,6 +2354,8 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
 ```
 
 `PUT /document/:collection/:ID`
+
+**Group**: [baasbox.data.update](#list-groups)
 
 Updates the document with the ID provided in the specified collection. 
 Only the owner of the document (besides backoffice users), can call this API.
@@ -2556,6 +2599,8 @@ NOT IMPLEMENTED
 
 `PUT /document/:collection/:id/.:fieldname`
 
+**Group**: [baasbox.data.update](#list-groups)
+
 Updates a single field of an existing object. The field can be a simple property, 
 a complex JSON object or even an array using the notation `.array[index]` .
 
@@ -2618,6 +2663,8 @@ doc.delete(new BaasHandler<Void>() {
 
 `DELETE /document/:collection/:ID`
 
+**Group**: [baasbox.data.write](#list-groups)
+
 Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (plus  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
 
 Parameter | Description
@@ -2679,6 +2726,8 @@ BaasDocument.count("collection",new BaasHandler<Long> () {
 ```
 
 `GET /document/:collection/count`
+
+**Group**: [baasbox.data.read](#list-groups)
 
 Returns the number of documents that the **user can read** in a collection. 
 Supports [Pagination and Query Criteria](#pagination-and-query-criteria).
@@ -2809,6 +2858,8 @@ BaasDocument.fetchAll("collection",filter,
 
 `GET /document/:collection`
 
+**Group**: [baasbox.data.read](#list-groups)
+
 Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria).
 
 Parameter | Description
@@ -2900,7 +2951,11 @@ doc.grantAll(Grant.UPDATE,Role.REGISTERED,
 
 `PUT /document/:collection/:id/:action/user/:username`
 
+**Group**: [baasbox.data.grants](#list-groups)
+
 `PUT /document/:collection/:id/:action/role/:rolename`
+
+**Group**: [baasbox.data.grants](#list-groups)
 
 Grants permission on a document. You can set permissions for a single user or a role name.
 
@@ -2987,7 +3042,11 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
 
 `DELETE /document/:collection/:id/:action/user/:username`
 
+**Group**: [baasbox.data.grants](#list-groups)
+
 `DELETE /document/:collection/:id/:action/role/:rolename`
+
+**Group**: [baasbox.data.grants](#list-groups)
 
 Revokes permission on a document. You can revoke permissions to a single user or a role name.
 
@@ -3183,6 +3242,8 @@ file.upload(acl,data,new BaasHandler<BaasFile> file) {
 
 `POST /file`
 
+**Group**: [baasbox.file.write](#list-groups)
+
 API to create and upload a file. By default the uploaded file will be accessible only by the owner, backoffice and admin users. After the uploaded metadata (and exif data in case of images) are extracted and attached to the file. 
 The returned object is decorated with the following fields:
 
@@ -3256,6 +3317,8 @@ BaasFile.delete("fileId",handler);
 ```
 
 `DELETE /file/:id`
+
+**Group**: [baasbox.file.write](#list-groups)
 
 API to delete a file. 
 
@@ -3334,6 +3397,8 @@ curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
 
 `GET /file/:id`
 
+**Group**: [baasbox.file.read](#list-groups)
+
 Parameter | Description
 --------- | -----------
 **id** | The ID of the file to be retrieved. Mandatory.
@@ -3399,6 +3464,8 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
 
 `GET /file/details/:id`
 
+**Group**: [baasbox.file.read](#list-groups)
+
 Retrieves the details of a file, including `attachedData` and `metadata`.
 
 
@@ -3463,6 +3530,8 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
 ```
 
 `GET /file/details`
+
+**Group**: [baasbox.file.read](#list-groups)
 
 Returns a list of details about the files that the user has access to.
 Supports [Pagination and query criteria](#pagination-and-query-criteria).
@@ -3558,7 +3627,11 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 `PUT /file/:id/:action/user/:username` 
 
+**Group**: [baasbox.file.grants](#list-groups)
+
 `PUT /file/:id/:action/role/:rolename`
+
+**Group**: [baasbox.file.grants](#list-groups)
 
 API to grant access on a file to a specific user or role.
 
@@ -3663,6 +3736,8 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 
 `DELETE /file/:id/:action/user/:username or DELETE /file/:id/:action/role/:rolename`
+
+**Group**: [baasbox.file.grants](#list-groups)
 
 API to revoke access on a file to a specific user or role.
 
@@ -3864,6 +3939,8 @@ The file itself or the JSON
 ```
 
 `GET /asset/:name`
+
+**Group**: [baasbox.assets](#list-groups)
 
 To retrieve an asset by name. 
 
@@ -4224,6 +4301,177 @@ Parameter | Description
 **value** | The new value for the key. Mandatory.
 
 
+
+## Api Access
+
+Api access control lets you manage which endpoints are accessible from the *outside world*.
+Each endpoint belongs to a named group, identified by a key.
+
+Disabled groups render their endpoints inaccessible to clients, unless the user is authenticated as
+an administrator: the client will receive a **forbidden** status code instead of the usual
+response.
+
+By default all groups are enabled.
+
+
+### List groups
+
+> Example of a request to list endpoint groups
+
+```shell
+curl -X GET http://localhost:9000/admin/endpoints \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+```
+
+```java
+```
+
+> Example of a response
+
+```json
+{
+    "result": "ok",
+    "data": {
+        "baasbox.assets": true,
+        "baasbox.account": true,
+        "baasbox.account.create": true,
+        "baasbox.social": true,
+        "baasbox.account.lost_password": true,
+        "baasbox.users": true,
+        "baasbox.friendship": true,
+        "baasbox.friendship.create": true,
+        "baasbox.notifications.send": true,
+        "baasbox.notifications.receive": true,
+        "baasbox.data.write": true,
+        "baasbox.data.read": true,
+        "baasbox.data.update": true,
+        "baasbox.data.grants": true,
+        "baasbox.file.read": true,
+        "baasbox.file.write": true,
+        "baasbox.file.grants": true
+    },
+    "http_code": 200
+}
+```
+
+`GET /admin/endpoints`
+
+The predefined groups are all prefixed with *baasbox.*, and cover
+all the endpoints except for the administrative ones that cannot
+be turned off.
+
+Function Group                    | Description
+--------------------------------- | ---------------------------------------------------
+**baasbox.assets**                | rules the read access to assets and related content
+**baasbox.account**               | rules the login/logout and account modification endpoints
+**baasbox.account.create**        | rules the ability to create a new user account (signup)
+**baasbox.social**                | rules the ability to use social login APIs
+**baasbox.account.lost_password** | rules the ability to use the recover password functionality
+**baasbox.users**                 | rules the access to the baasbox users
+**baasbox.friendship**            | rules the read access to friendship endpoints
+**baasbox.friendship.create**     | rules the write access to friendship endpoints
+**baasbox.notifications.send**    | rules the ability to send notifications (push messages)
+**baasbox.notifications.receive** | rules the ability to subscribe to notifications (push messages)
+**baasbox.data.write**            | rules the ability to create new documents in collections
+**baasbox.data.read**             | rules the read access to collections and documents
+**baasbox.data.update**           | rules the ability to update existing documents
+**baasbox.data.grants**           | rules the ability to modify grants on documents
+**baasbox.file.read**             | rules the ability to read/list files
+**baasbox.file.write**            | rules the ability to create new files
+**baasbox.file.grants**           | rules the ability to modify grants on files
+
+### Read specific group
+
+> Example of a request to get a specific endpoint group
+
+```shell
+curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+```
+
+```java
+```
+
+> Example of a response
+
+```json
+{
+    "result": "ok",
+    "data": {
+        "tag": "baasbox.assets",
+        "enabled": true
+    },
+    "http_code": 200
+}
+```
+
+`GET /admin/endpoints/:group-name`
+
+### Enable an endpoint group
+
+> Example of a request to enable an endpoint group
+
+```shell
+curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+```
+
+```java
+```
+
+> Example of a response
+
+```json
+{
+    "result": "ok",
+    "data": "success",
+    "http_code": 200
+}
+```
+
+`PUT /admin/endpoints/:group-name/enabled`
+
+### Disable an endpoint group
+
+> Example of a request to disable an endpoint group
+
+```shell
+curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+```
+
+```java
+```
+
+> Example of a response
+
+```json
+{
+    "result": "ok",
+    "data": "success",
+    "http_code": 200
+}
+```
+
+`DELETE /admin/endpoints/:group-name/enabled`
+
+
 ## Push Notifications
 
 Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
@@ -4266,6 +4514,8 @@ box.enablePush("registrationIdByGoogle",
 ```
 
 `PUT /push/enable/:os/:pushToken`
+
+**Group**: [baasbox.notifications.receive](#list-groups)
 
 Enables a specific user (logged using a specific device) to receive push notifications.
 
@@ -4322,6 +4572,8 @@ client.disablePush("registration-id",new BaasHandler<Void>(){
 
 `PUT /push/disable/:pushToken`
 
+**Group**: [baasbox.notifications.receive](#list-groups)
+
 Disable a specific user (logged using a specific device) to undeceive push notifications.
 
 Parameter | Description
@@ -4369,6 +4621,8 @@ user.send(message,new BaasHandler<Void>(){
 
 
 `POST /push/message/:username`
+
+**Group**: [baasbox.notifications.send](#list-groups)
 
 Allows to send a push notification. It will be sent to every device on which the user has enabled push notifications.
 
