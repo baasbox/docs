@@ -58,7 +58,7 @@ documentation explains:
 *  the BaasBox features (server side)
    *  [how to install BaasBox](?shell#installation)
    *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
-   *  [REST API](http://localhost:4567/?shell#api)
+   *  [REST API](?shell#api)
 
 *  the SDK features
 
@@ -804,7 +804,7 @@ You need to initialize the SDK before making any API call. The best place to do 
             appCode:@"1234567890"];
 ```
 
-#### Architecture and pass through
+#### Architecture and pass-through
 
 The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
 On the right there is an example of a GET request.
@@ -977,7 +977,7 @@ acitivities.
 Request tokens let you cancel/abort requests, or wait for their completion,
 this is useful in testing or if you want to parallelize your http requests.
 
-#### Pass through API
+#### Pass-through API
 
 ```
 BaasBox cli  = BaasBox.getDefault();
@@ -1696,7 +1696,37 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
 Allows to retrieve a list of users. This API supports [pagination](#pagination-and-query-criteria) and [query criteria](#pagination-and-query-criteria).
 
 ##Friendship
+BaasBox is able to manage relations among users, implementing a concept of friendship similar (but not identical) to the one used by Twitter.
+A user registered on BaasBox can "follow" another user calling the _follow_ API.
 
+What happens is that such user is added to a special role called _friends_of__&lt;followed user&gt;.
+
+For example, let's say we have three users: _user_a_, _user_b_, _user_c_.
+_user_b_ and _user_c_ decide to follow _user_a_, and therefore, each of them with their own credentials will call the API _follow__:
+
+``PUT /follow/user_a``
+
+now _user_b__ and _user_c_ belong to the group _friends_of_user_a_.
+
+When _user_a_ wants to share something with his followers, he just has to grant reading access to his content to users belonging to the role _friends_of_user_a_.
+
+For example, supposing that there is a defined collection called _posts_, and that _user_a_ had created in it a document with id _aaa-bbb-ccc-ddd_.
+
+_user_a_ in order to share this document with his friends has to call the _grant_ API:
+
+```PUT /document/posts/aaa-bbb-ccc-ddd/read/role/friends_of_user_a```
+
+Now everytime _user_b_ or _user_c_ query for posts they will see the _user_a aaa-bbb-ccc-ddd document as well. 
+
+To revoke such grant, and therefore not to share the content any longer:
+
+```DELETE /document/posts/aaa-bbb-ccc-ddd/read/role/friends_of_user_a```
+
+Finally, if _user_b_ doesn't want to follow _user_a_ anymore, he can invoke the _unfollow_ API:
+
+```DELETE /follow/user_a```
+
+Note that the _follow_ API is not mutual, just like in Twitter.
 
 ### Follow a user
 
@@ -2788,7 +2818,7 @@ NSDictionary *parameters = @{kPageNumberKey : @0,
 
 ```java
 BaasDocument.fetchAll("collection",
-  new BaasHandler<List<BaasDocument>() {
+  new BaasHandler<List<BaasDocument>>() {
     @Override
     public void handle(BaasResult<List<BaasDocument>> res) {
     
@@ -3384,15 +3414,15 @@ file.download("path-to-save-the-file.to",
 > Example of a request to suggest the browser to download an app
 
 ```shell
-curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
-	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?download=true
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99?download=true \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
 ```
 
 > Example of a request to retrieve a resized version of an app.
 
 ```shell
-curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
-	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786?sizeId=0
+curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99?sizeId=0 \
+	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
 ```
 
 `GET /file/:id`
@@ -3539,7 +3569,7 @@ Supports [Pagination and query criteria](#pagination-and-query-criteria).
 
 
 
-## Grant access to a file
+### Grant access to a file
 
 > Example of a request to grant read access to user “a” on a file
 
@@ -4629,6 +4659,180 @@ Allows to send a push notification. It will be sent to every device on which the
 Parameter | Description
 --------- | -----------
 **username** | The username of the user who has to receive the notification. Mandatory.
+
+## Social Login ##
+
+BaasBox provides an API that allows you to connect/create your users
+through social networks.
+
+BaasBox social API is integrated with the following social networks: -
+Facebook - Google +
+
+We are planning on adding more in the near future.
+
+The use of an API in a client application needs an *appKey* and an
+*appSecret* usually provided by the social network itself. More
+information on how you can get those values can be found here:
+
+-  facebook (http://developers.facebook.com/docs/)
+-  google+ (http://code.google.com/apis/console)
+
+Once you create your app inside the social network you will have access
+to the *apiKey* / *apiSecret* values; those values must be stored into
+the BaasBox database in order to use BaasBox social feature: you can
+access the social login tab from the settings menu in the admin console.
+
+![Social login tab](images/Social_login/social_login_tab.png)
+
+Then click on the specific social network you are working on and fill in
+the form with the keys and press Save. You can disable the social
+feature for a specific social network by pressing the **disable xxx
+button**
+
+![Disable](images/Social_login/disable.png)
+
+Once you have connected to a social network you can use any client
+library to obtain the OAuth tokens for users account, and store them
+with the social API provided by BaasBox.
+
+You can find an application example and tutorial [here](http://www.baasbox.com/social-login/)
+
+API documentation
+
+###Retrieve all social network connections for connected user
+
+`GET /social`
+
+Headers:
+
+-  X-BAASBOX-APPCODE: App Code
+-  X-BB-SESSION: Session token for current user
+
+Returns a JSON representation of the social network connected to the
+user along with all the information retrieved at the moment of
+login/linking. An example of the returned data is:
+
+> Example of response
+
+```json
+   data": [
+        {
+            "username": "xxx",
+            "password": null,
+            "from": "google",
+            "token": "<token>",
+            "secret": "<secret>",
+            "id": "<userid>",
+            "additionalData": {
+                "email": "<email>",
+                "name": "<name>",
+                "avatarUrl": "<avatar>",
+                "personal_url": "<personal_url>"
+            }
+        }
+```
+
+This API should be invoked with a valid X-BB-SESSION header and a valid
+X-BAASBOX-APPCODE header as specified in the authorization section of
+the doc.
+
+This method can be used to retrieve the tokens to post on the social
+network wall using a client SDK provided by the social network itself.
+
+Returns:
+
+-  200 code with a JSON object which data property contains all the
+   linked social networks to the current user.
+-  404 code if the user does not have any social network linked to their
+   account
+-  401 code (Unauthorized) if one of the mandatory headers are missing
+
+###Login a User with a specified social network
+
+`POST /social/:socialNetwork`
+
+Headers: X-BAASBOX-APPCODE = App code
+
+Url parameters
+
+:socialNetwork could be **facebook** or **google**
+
+Parameters:
+
+-  oauth\_token: the **oauth\_token** obtained after user authentication
+   and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+-  oauth\_secret: the **oauth\_secret** obtained after user
+   authentication and authorization with a client library (see example
+   [here](http://www.baasbox.com/social-login/))
+
+This method allows to login into the BaasBox app using the tokens
+obtained by a social network client library. If the user has already
+logged in with same tokens the server will simply return the
+X-BB-SESSION token that will be used for further requests.
+
+If the user does not exist it will be created and an X-BB-SESSION token
+will be returned. Upon user creation some data will be extracted from
+the social network profile and they will be stored inside the user
+object. A username will be uniquely generated (to prevent username
+collision). Therefore after a succesfull login, if necessary, the client
+app may ask for a username and update the user object accordingly.(See
+the example [here](http://www.baasbox.com/social-login/))
+
+Returns:
+
+-  200 code with the user's X-BB-SESSION token
+-  400 code if one of the oauth\_token or oauth\_secret was missing
+-  401 code if the X-BAASBOX-APPCODE header was missing
+-  500 code if something on the server went wrong (i.e. another user
+   with the same tokens already exists)
+
+###Link a user to a specified social network
+
+`PUT /social/:socialNetwork`
+
+Headers:
+
+-  X-BAASBOX-APPCODE = App code
+-  X-BB-SESSION = Session token for the current user
+
+Url parameters
+
+:socialNetwork could be **facebook** or **google**
+
+Parameters: oauth\_token: the **oauth\_token** obtained after user
+authentication and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+oauth\_secret: the **oauth\_secret** obtained after user authentication
+and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+This method allows an existing user to connect their account to a
+specified social network.
+
+This procedure is very similar to the Login method with a difference:
+this is a PUT request and it must be invoked with the X-BB-SESSION
+header.
+
+Returns: 
+-  200 code with an empty response if the linking was succesful, 
+-  401 code if any of the mandatory headers was missing, 
+-  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
+
+###Unlink a user from a specified social network
+
+`DELETE /social/:socialNetwork`
+
+Headers:
+
+-  X-BAASBOX-APPCODE = App code
+-  X-BB-SESSION = Session token for current user
+
+Url parameters :socialNetwork could be **facebook** or **google**
+
+This method unlinks the current user account from a specified social
+network. If the user was generated by a social network login and the
+specified social network is the only one linked to the user, an error
+will be raised (as the user will not be available to connect anymore).
 
 
 
