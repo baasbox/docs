@@ -710,10 +710,10 @@
 
                             if(window.location.hash !== "#" + anchorText) {
 
-                                if(history.replaceState) { 
+                                if(history.replaceState) {
                                     history.replaceState({}, "", "#" + anchorText);
                                 // provide a fallback
-                                } else { 
+                                } else {
                                     scrollV = document.body.scrollTop;
                                     scrollH = document.body.scrollLeft;
                                     location.hash = "#" + anchorText;
@@ -763,6 +763,10 @@
             // Stores the plugin context in the `self` variable
             var self = this,
                 element = elem;
+
+            // FIXME HACK to limit toc expansion to thrid level
+            // !!!!!!!!!!!!!!!!!!!! should be extracted as a selector
+            // if(element.attr("data-tag")== "4") return self;
 
             // If the sub-header is not already visible
             if (!elem.is(":visible")) {

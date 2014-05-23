@@ -12,30 +12,61 @@ toc_footers:
 
 # Introduction
 
-```
+```shell
 In this section you can find code examples for every platform we address.
 Click on any tab above to choose the platform of your interest.
 ```
 
+```objective_c
+To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
+and drop on Xcode the folder BaasBox-iOS-SDK.
+Then insert the following statement in the .pch file
+#import "BAAClient.h" and you are good to go. 
+```
+
+```java
+/*
+The Android SDK is distributed as a jar, 
+To get started download it from the download section of the website 
+(http://www.bassbox.com/download/), and put it in your libs folder.
+
+To initialize the client, add the following code to your application
+class.
+*/
+
+public class MyApp extends Application{
+  private BaasBox client;
+  
+  @Override
+  public void onCreate() {
+    BaasBox.Builder builder = new BaasBox.Builder(this);
+    client =builder.setApiDomain("127.0.0.1")
+                   .setAppCode("YOUR-APP-CODE")
+                   .init();
+  }
+}
+```
+
 BaasBox is a complete solution to implement the back end of your applications.
 
-Latest version is **0.7.3**
+Latest version is **0.7.4**
+
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
 
 *  the BaasBox features (server side)
-   *  how to install BaasBox
-   *  how to use the admin console and a detailed section about the REST API that you can use
-   *  REST API
+   *  [how to install BaasBox](?shell#installation)
+   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
+   *  [REST API](/?shell#api)
 
 *  the SDK features
 
-   *  [iOS SDK](?objective_c#features)
-   *  [Android SDK](?java#features)
+   *  [iOS SDK](?objective_c#ios-sdk)
+   *  [Android SDK](?java#android-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-server-0-7-3-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-7-4-released/)
 The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
 Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
@@ -66,6 +97,205 @@ should appear. Now you can open the administrator console: [http://localhost:900
 For further details about the console, you can read [console](#console).
 That’s all! BaasBox is ready to go and to serve your apps! To stop the server just halt (Ctrl-C) the shell script.
 
+# Configuration
+BaasBox does not need any configuration to start. However, you can modify many parameters to fit your specific needs.
+You can act on different setting levels depending on your goal.
+The setting levels are:
+
+- [JVM parameters](#jvm-parameters)
+
+- [Play Framework settings](#play-framework-settings) 
+
+- [BaasBox settings](#baasbox-settings)
+
+- [App settings](#app-settings)
+
+
+To set an option you have to type it as a _start_ script parameter.
+
+## JVM Parameters
+
+```shell
+./start -XX:MaxPermSize=64m
+```
+
+Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
+By default no options are used.
+A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html) 
+These settings cannot be modified at runtime.
+
+## Play Framework Settings
+```shell
+./start -Dhttp.port=80
+```
+BaasBox is based on the [Play! Framework](http://www.playframework.com). This means that it accepts all the options available for any Play! application.
+A complete reference of these option can be found [here](hhttp://www.playframework.com/documentation/2.1.5/ProductionConfiguration)
+These settings cannot be modified at runtime.
+
+## BaasBox Settings
+There are some settings relating to a specific instance of the BaasBox server, such as, for example, the AppCode.
+The AppCode is a special code that must be supplied every time an API call is executed.
+These settings cannot be modified at runtime.
+
+Here are the BaasBox settings you can set:
+
+Key | Description | Default
+--------- | ----------- | -------------
+**application.secret** | The secret key is used to secure cryptographics functions |  `A very long string`
+**orient.baasbox.path** |  The path where BaasBox will store the embedded OrientDB data |  `db/baasbox`
+**orient.baasbox.backup.path** |  The path where BaasBox will store the backups |  `db/backup`
+**push.baasbox.certificates.folder** | The folder where the iOS push certificate will be stored  |  `certificates`
+**application.code**| The AppCode of the instance | `1234567890`
+**query.record_per_page** | The number of records returned in case of pagination | `20`
+**baasbox.wrapresponse** | DEPRECATED: it wraps the responses in a JSON object. The SDKs only support the `true` value. | `true`
+**baasbox.statistics.system.memory** | Disable this if you don't want memory information when the /admin/dbStatistics API is called | `true`
+**baasbox.statistics.system.os** | Disable this if you don't want OS information when the /admin/dbStatistics API is called | `true`
+**baasbox.startup.dumpdb** | it dumps DB information on startup | `false`
+**baasbox.server.accesslog** | Enable/disable the access log | `true`
+
+## App Settings
+These are settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you are not forced to specify them every time you start BaasBox.
+The App Settings can be configured via the [Administration Console](#console).
+The settings are splitted in five sections:
+
+- Application
+
+- Password Recovery
+
+- Images
+
+- Push Notifications
+
+- Social Login
+
+The available options are:
+
+### Application
+
+General options for the App(lication)
+
+Key | Description | Default
+--------- | ----------- | -------------
+**application.name** | The name of your App |  `BaasBox`
+**network.http.port** | The TCP port used by the App to contact BaasBox. Please note: when behind a reverse proxy, this could be different from the port used by BaasBox | 9000
+**network.http.ssl**  | Set to `true` if the BaasBox server is reached via SSL through a reverse proxy. | false
+**network.http.url**  | The public URL of the BaasBox server. I.e. the URL used by the App to contact BaasBox, without the protocol prefix (i.e. http://) and PORT |  localhost
+**session_tokens.timeout**  | The expiration time of the session tokens (in minutes). WARNING: the admin console refreshes the session token every 5 minutes, if you set a value lower than 5, you may experience disconnection from the console. To disable expiration set it to 0. | 0
+
+### Password Recovery
+
+Options for the Password Recovery feature
+
+Key | Description | Default
+--------- | ----------- | -------------
+**email.expiration.time** | Minutes before the reset code expires |  `15`
+**email.from** | The name and address to be specified in the 'from' field of the email to send |  `info@example.com`
+**email.subject** | The subject of the email to send |  `BaasBox: reset password`
+**email.template.html** | The template (html format) of the email to send to the user when they request a password reset. Please ensure that you have written the keyword $link$ inside the text. This keyword will be replaced with the link that the user has to click on to start the password recovery process. |  `The text of the email`
+**network.smtp.authentication** | Set to `true` if the SMTP server requires authentication |  `true`
+**network.smtp.host** | IP address or fully qualified name of the SMTP server |  `mail.example.com`
+**network.smtp.password** | The password required by the SMTP server if it requires authentication. Used only if network.smtp.authentication is set to `true |  `password`
+**network.smtp.port** | the TCP port of the SMTP server |  `25`
+**network.smtp.ssl** | Enable or disable the SSL protocol for the SMTP server |  `false`
+
+### Images
+
+Options for the server-side images resizing feature
+
+Key | Description | Default
+--------- | ----------- | -------------
+**image.allows.automatic.resize** | Enable or disable automatic resizing of images | `true`
+**image.allowed.automatic.resize.formats**  | A space-separated-values list of image size, both in px or in % | `25% 50% 75% <=80px`
+
+### Push Notifications
+
+Options for the Push Notifications feature
+
+Key | Description | Default
+--------- | ----------- | -------------
+**push.sandbox.enable** | Specify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server to send the notification| `true` i.e. it is in SANDBOX mode
+**push.apple.timeout**  | The timeout for push notifications on Apple devices | `0` - no timeout
+**sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode |
+**sandbox.ios.certificate** | The Apple certificate in SANDBOX mode | 
+**sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode |
+**production.android.api.key**  | The key to send push notifications to Android devices in PRODUCTION mode |
+**production.ios.certificate**  | The Apple certificate in PRODUCTION mode |
+**production.ios.certificate.password** | The password of the Apple certificate in PRODUCTION mode |
+
+### Social Login
+
+Options to use Social Network as user authenticators
+
+Key | Description | Default
+--------- | ----------- | -------------
+**social.facebook.enabled** | Activate the FaceBook authenticator  |  `false`
+**social.facebook.token** | Application Token for Facebook app  | 
+**social.facebook.secret**  | Application secret for Facebook app | 
+**social.google.enabled** | Activate the Google+ authenticator  |  `false`
+**social.google.token** | Application Token for Google+ |
+**social.google.secret**  | Application secret for Google+ |
+
+### Override App Settings ###
+```shell
+./start -Dbaasbox.settings.Application.session_tokens.timeout.value=30
+```
+
+The options and settings defined into the database can be overridden providing new values through CLI parameters.
+
+The stored values are not modified.
+
+To override a specific setting:
+
+`
+baasbox.settings.<section>.<key>.value=<new value>
+`
+
+Where 
+
+- _section_ is one from:
+
+  - Application
+
+  - PasswordRecovery
+
+  - Push
+
+  - Social
+
+  - Images
+
+- _key_ is one key listed above
+
+Both sections and key names are case-sensitive.
+<aside class="notice"> 
+Note that the Apple certificate for push notifications cannot be supplied via _start_ command.
+</aside>
+
+## External Configuration File
+Instead of passing every single option as a parameter of the _start_ script, you can put all of them in an external file and simply tell BaasBox where this is located.
+
+To use an external file, you have to use the following options and instructions
+
+Key   | Description   |   Example
+--------- | ----------- | -------------
+**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)` directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
+
+Regarding the `config.file` key, a possible example of an external configuration file may be:
+
+
+```
+include classpath("application.conf")
+
+application.code="1234-56789"
+
+orient.baasbox.path=db/baasbox
+```
+<aside class="notice"> 
+**NOTE**: remember to ALWAYS include in the first line the statement:
+`
+include classpath("application.conf")
+`
+</aside>
 
 # General Overview
 
@@ -78,7 +308,7 @@ server to another, you just have to zip the database folder and copy it
 into the server target folder. Moreover, it is ready to use without
 changing the configuration parameters. You just have to
 launch the command ``./start`` (or ``start.bat`` on Windows) and BaasBox will
-run. Should you need it, you can apply customized configuration parameters. See the [hacking section](#hacking).
+run. Should you need it, you can apply customized configuration parameters. See the [configuration section](#configuration).
 
 ## Available Functions
 
@@ -125,7 +355,7 @@ Available functions are:
 
 ## Applied Technology
 
-BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play! framework](http://www.playframework.com/) and it incorporates the core of the [OrientDB database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
+BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play! framework](http://www.playframework.com/) 2.1.5 and it incorporates the core of the [OrientDB database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
 objects and queries without using specific abstractions or having to simulate them on the applicative level. OrientDB was recently surveyed and entered Gartner's Magic Quadrant.
 
 
@@ -162,7 +392,7 @@ By default these values are:
 -  App Code: 1234567890
 
 You can change the App Code at any time by following the instructions shown
-in the [hacking section](#hacking). By clicking on the question marks, the
+in the [configuration section](#configuration). By clicking on the question marks, the
 fields will be filled with the default values. 
 
 ## Dashboard 
@@ -204,10 +434,10 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 
-
+<aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
 the right.
-
+</aside>
 
 ## Console settings
 
@@ -347,7 +577,7 @@ following window:
 
 
 
-# Features
+# API
 
 ## General Remarks
 
@@ -375,7 +605,7 @@ server replies with a BAD REQUEST http error (code 400)
 This is the application code.
 Every BaasBox instance should have a unique AppCode. 
 By default this is: ``1234567890``, but it is **strongly recommended** that you change this code when you start production.
-See [Hacking section](#hacking).
+See [configuration section](#configuration).
 
 ``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
 
@@ -451,10 +681,11 @@ curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
 ```
 
 ```objective_c
-NSDictionary *parameters = @{kPageNumber : @0,
-                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+NSDictionary *parameters = 
+  @{kPageNumberKey : @0,
+    kPageSizeKey : [NSNumber numberWithInteger:kPageLength]};
 [BAAUser loadUsersWithParameters:parameters
-                      completion:^(NSArray *users, NSError *error) {
+                      completion:^(NSArray *users, NSError *e) {
                           
 						  if (error == nil) {
                           	NSLog(@"users are %@", users);
@@ -466,7 +697,11 @@ NSDictionary *parameters = @{kPageNumber : @0,
 ```
 
 ```java
-Filter paginate = Filter.paging("user.name",0,20);
+Filter paginate = BaasQuery.builder()
+                           .pagination(0,30)
+                           .orderBy("user.name")
+                           .filter();
+
 BaasUser.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
   @Override
   public void handle(BaasResult<List<BaasUser>> res) {
@@ -477,6 +712,25 @@ BaasUser.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
     } else {
       Log.e("LOG","error",res.error());
     }
+  }
+});
+
+// aggregate operations and complex queries
+private static final BaasQuery PREPARED_QUERY =
+   BaasQuery.builder()
+            .collection("collection")
+            .projection("field","aggreateOp")
+            .where("condition")
+            .whereParams("positionalParam","positionalParam2")
+            .groupBy("field")
+            .orderBy("field asc")
+            .pagination(2,20)
+            .build();
+// then
+PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
+  @Override
+  public void handle(BaasResult<List<JsonObjec>> res){
+    // handle result or failure
   }
 });
 ```
@@ -504,6 +758,239 @@ Parameter | Description
 <aside class="notice">
 	The value of the parameter must be URL encoded.
 </aside>
+
+### iOS SDK
+
+The SDK is distributed in two ways: 
+
+* as a Cocoapod
+* as a zip file 
+
+We recommend to install it using Cocoapods. Just add the following line to your Podfile.
+
+`pod 'BaasBoxSDK', '~> 0.7'`
+
+If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+
+#### Importing
+
+The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
+
+```
+#ifdef __OBJC__
+  #import <UIKit/UIKit.h>
+  #import <Foundation/Foundation.h>
+  #import "BAAClient.h"
+#endif
+```
+
+#### Initialization
+
+You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
+
+```
+[BaasBox setBaseURL:@"http://localhost:9000"
+            appCode:@"1234567890"];
+```
+
+#### Architecture and pass through
+
+The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
+On the right there is an example of a GET request.
+
+```
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"/file/details"
+     parameters:parameters
+        success:^(id responseObject) {
+          
+          NSLog(@"response is %@", responseObject);         
+          
+        } failure:^(NSError *error) {
+          
+          NSLog(@"error is %@", error); 
+          
+        }];
+```
+
+There are four methods, one for each HTTP verb.
+
+``- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(id responseObject))success
+        failure:(void (^)(NSError *error))failure;``
+
+
+``- (void)postPath:(NSString *)path
+      parameters:(NSDictionary *)parameters
+         success:(void (^)(id responseObject))success
+         failure:(void (^)(NSError *error))failure;``
+
+``- (void)putPath:(NSString *)path
+    parameters:(NSDictionary *)parameters
+       success:(void (^)(id responseObject))success
+       failure:(void (^)(NSError *error))failure;``
+
+``- (void)deletePath:(NSString *)path
+       parameters:(NSDictionary *)parameters
+          success:(void (^)(id responseObject))success
+          failure:(void (^)(NSError *error))failure;``
+
+
+As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
+
+
+
+### Android SDK
+
+BaasBox provides a native Android SDK, to further ease development of mobile applications.
+The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
+You can also use maven gradle or maven to depend on the library:
+
+``compile 'com.baasbox:baasbox-android:0.7.4'``
+
+
+
+#### Initialization
+
+> Example initialization
+
+```
+//...
+import com.baasbox.android.BaasBox;
+
+public class MyApp extends Application {
+  
+  private BaasBox client;
+  
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    BaasBox.Builder b = 
+        new BaasBox.Builder(this);
+    client = b.setApiDomain("address")
+              .setAppCode("appcode")
+              .init();
+  }
+}
+```
+
+Currently, you can have only one client per application. 
+The client must be initialized before you can use  any of the provided features.
+The preferred way to initialize the it is to override the default 
+application and configure it in the ``onCreate()`` method, 
+using the ``BaasBox.Builder`` class.
+
+
+#### General usage
+
+> Example requests
+
+```
+// Here  BaasDocument is used as an example
+// it represents documents on the server, 
+// more on this later
+
+// asynchronous request
+RequestToken tok = BaasDocument.fetchAll("coll",
+  new BaasHandler<List<BaasDocument>>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
+      // res is the result of the request
+    }
+});
+
+// syncrhonous equivalent BLOCKS!!!
+BaasResult<List<BaasDocument>> res = 
+  BaasDocument.fetchAllSync("coll");
+```
+
+
+Most BaasBox rest resources are exposed through wrapper classes.
+Endpoints are accessible through asynchronous methods, that accept a general callback interface
+``BaasHandler<T>``
+
+You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
+
+Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
+
+You can control asynchronous requests thorugh the returned RequestToken.
+
+#### Asynchronous requests management
+
+```
+// an example asynchronous request in an activity
+public class MyActivity extends Activity implements
+  BaasHandler<BaasUser>{
+  private final statis String BAAS_REQ = "tag";
+  private RequestToken token;
+  
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    // you resume suspended requests
+    // and obtain the token back
+    token = RequestToken.loadAndResume(
+      savedInstanceState,
+      BAAS_REQ,
+      this);
+   if(token!=null){
+    // a request has been resumed
+   }
+  }
+  
+  public void onSaveInstanceSate(Bundle state){
+    super.onSaveInstanceState(state);
+    if(token!=null){
+      token.suspendAndSave(state,TAG);
+    }
+  }
+  
+  public void handle(BaasResult<BaasUser> res){
+    token = null;
+    // process result
+  }
+}
+
+
+```
+Asynchronous requests are executed by a pool of threads.
+While an asynchronous request is running you can manage it
+using the return value of the method, a ``RequestToken``.
+Tokens are designed to let you *suspend* the assigned callback without
+interrupting the real request, allowing the later resumption of
+result processing on the main thread when you are ready to handle it.
+This is quite useful when callbacks are tied to the lifecycle of your
+acitivities.
+
+Request tokens let you cancel/abort requests, or wait for their completion,
+this is useful in testing or if you want to parallelize your http requests.
+
+#### Pass through API
+
+```
+BaasBox cli  = BaasBox.getDefault();
+cli.rest(HttpRequest.GET,
+         "endpoint",
+         optJsonBody,
+         authenticate,
+         new BaasHandler<JsonObject>(){
+  @Override
+  public void handle(BaasResult<JsonObject> res){
+  }});
+```
+Some rest endpoints have no direct equivalent in the api.
+For them you can use the lower level pass through api provided by the sdk
+through the ``rest()`` and ``restSync()`` methods.
+Whenever you see a "TO BE IMPLEMENTED in the Android section you can recur to this methods.
+Using these methods you can access these apis while still enjoing the rest
+of the sdk features, such as concurrency and lifecycle management, caching,
+handling of the authentication.
+
+
+
+
+
 
 ##User Management
 
@@ -535,7 +1022,9 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```java
 BaasUser user = BaasUser.withUserName("andrea");
-user.setPassword("password");
+                        .setPassword("password");
+JsonObject extras = user.getScope(Scope.PRIVATE)
+                        .putInt("age_info",27);
 user.signup(new BaasHandler<BaasUser>(){
   @Override
   public void handle(BaasResult<BaasUser> result){
@@ -614,8 +1103,8 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-BaasUser user = BaasUser.withUserName("andrea");
-user.setPassword("password");
+BaasUser user = BaasUser.withUserName("andrea")
+                        .setPassword("password");                        
 user.login(new BaasHandler<BaasUser>() {
   @Override
   public void handle(BaasResult<BaasUser> result) {
@@ -668,7 +1157,7 @@ Parameter | Description
 
 ```shell
 curl -X POST http://localhost:9000/logout \
-	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a -H X-BAASBOX-APPCODE:1234567890
 ```
 
 ```objective_c
@@ -713,6 +1202,49 @@ Allows a user to logout from the app on a specific device. A push notification w
 Parameter | Description
 --------- | -----------
 **pushToken** | Optional. The push notification token that you have used to activate push notifications.
+
+
+### Suspend a user
+
+``PUT 	/me/suspend	`` 
+
+```shell
+curl -X PUT http://localhost:9000/me/suspend \
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4341a \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+Allows a user to suspend their account.
+
+Only administators can reactivate it.
+
+
+``PUT 	/admin/user/suspend/:username`` 
+
+```shell
+curl -X PUT http://localhost:9000/admin/user/suspend/user1 \
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+Suspends a given user.
+
+Only administrators can call this API.
+
+
+### Reactivate a user
+
+``PUT 	/admin/user/activate/:username`` 
+
+```shell
+curl -X PUT http://localhost:9000/admin/user/activate/user1 \
+	-H X-BB-SESSION:da506029-4512-45a9-9606-43fcdda4121a \
+	-H X-BAASBOX-APPCODE:1234567890
+```
+
+Reactivate a previoulsy suspended user.
+
+Only administrators can call this API.
 
 
 ### Logged user profile
@@ -788,7 +1320,17 @@ curl -X PUT http://localhost:9000/me \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAUser *user = ... ; // some user
+[user.visibleByAnonymousUsers setObject:@"mail@mail.com" forKey:@"email"];
+[user updateWithCompletion:^(BAAUser *user, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"user is %@", [user jsonString]);
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 ```java
@@ -869,13 +1411,24 @@ Parameter | Description
 
 ```shell
 curl -X PUT http://localhost:9000/me/password \
-	-d '{"old" : "password", "new" : "newpassword"}' \
+	-d '{"old" : "oldpass", "new" : "newpass"}' \
 	-H Content-type:application/json \
 	-H X-BB-SESSION:a30e8f43-4d90-4324-91d2-6065fa6ca63c
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAUser *user = ...; // Some user
+[user changeOldPassword:@"oldpass"
+          toNewPassword:@"newpass"
+        completionBlock:^(BOOL success, NSError *error) {
+            
+            if (success) {
+                NSLog(@"pass updared");
+            } else {
+                NSLog(@"err %@", error);
+            }
+            
+        }];
 ```
 
 ```java
@@ -926,7 +1479,16 @@ curl http://localhost:9000/user/cesare/password/reset \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAUser *user = ... ; // Some user
+[user resetPasswordWithCompletion:^(BOOL success, NSError *error) {
+    
+    if (success) {
+        NSLog(@"password reset OK");
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 ```java
@@ -1071,8 +1633,8 @@ curl http://localhost:9000/users \
 ```
 
 ```objective_c
-NSDictionary *parameters = @{kPageNumber : @0,
-                           kPageSize : [NSNumber numberWithInteger:BAAPageLength]};
+NSDictionary *parameters = @{kPageNumberKey : @0,
+                             kPageSizeKey : [NSNumber numberWithInteger:kPageLength]};
 [BAAUser loadUsersWithParameters:parameters
                       completion:^(NSArray *users, NSError *error) {
                           
@@ -1086,7 +1648,11 @@ NSDictionary *parameters = @{kPageNumber : @0,
 ```
 
 ```java
-BaasUser.fetchAll(new BaasHandler<List<BaasUser>>() {
+Filter filter = BaasQuery.builder()
+                         .pagination(0,2)
+                         .orderBy("user.name")
+                         .filter();
+BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
   @Override
   public void handle(BaasResult<List<BaasUser>> res) {
     if(res.isSuccess()) {
@@ -1455,11 +2021,30 @@ curl -X POST http://localhost:9000/admin/collection/mycollection \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client createCollection:@"mynewcollection"
+              completion:^(id object, NSError *error) {
+                  
+                  NSLog(@"collection created");
+                  
+              }];
 ```
 
 ```java
-NOT SUPPORTED
+/* this api is usable only as administrator using the raw request interface */
+BaasBox client = BaasBox.getDefault();
+String collectionName = "mycollection";
+client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
+            new BaasHandler<JsonObject>(){
+              @Override
+              public void handle(BaasResult<JsonObject> res) {
+                if (res.isSuccess()) {
+                  Log.d("LOG","Collection created");
+                } else {
+                  Log.e("LOG","Error",res.error());
+                }
+              }
+            });
 ```
 
 > Example of a response
@@ -1474,12 +2059,15 @@ NOT SUPPORTED
 
 ``POST /admin/collection/:collection-name``
 
-Creates a new collection. The user calling this API must be admin or belong to the admin role.
+Creates a new collection.
 
 Parameter | Description
 --------- | -----------
 **collection-name** | The name of the new collection. Mandatory.
 
+<aside class="warning">
+  The user calling this API must be admin or belong to the admin role.
+</aside>
 
 
 
@@ -1497,7 +2085,20 @@ NOT SUPPORTED
 ```
 
 ```java
-NOT SUPPORTED
+/* this api is usable only as administrator using the raw request interface */
+BaasBox client = BaasBox.getDefault();
+String collectionName = "mycollection";
+client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
+            new BaasHandler<JsonObject>(){
+              @Override
+              public void handle(BaasResult<JsonObject> res) {
+                if (res.isSuccess()) {
+                  Log.d("LOG","Collection created");
+                } else {
+                  Log.e("LOG","Error",res.error());
+                }
+              }
+            });
 ```
 
 > Example of a response
@@ -1528,7 +2129,7 @@ Parameter | Description
 
 A document belongs to a [Collection](#collections34). You can create, read, update and delete a document, provided you have access to it.
 
-<aside class="notice">
+<aside class="warning">
   Field names starting with `_` and `@` are reserved and should not be used.
 </aside>
 
@@ -1644,6 +2245,18 @@ curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1
 ```
 
 ```java
+BaasDocument.fetch("mycollection",
+                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
+               new BaasHandler<BaasDocument>() {
+                 @Override
+                 public void handler(BaasResult<BaasDocument> res) {
+                   if(res.isSuccess()) {
+                     BaasDocument doc = res.value();
+                     Log.d("LOG","Document: "+doc);
+                   } else {
+                     Log.e("LOG","error",res.error());
+                   }
+                 }});
 ```
 
 > Example of a response
@@ -1669,7 +2282,7 @@ curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1
 `GET /document/:collection/:ID`
 
 Retrieves the document in the collection specified with the ID provided as parameter. 
-Only the owner of the document (besides his friends and users with admin role) can retrieve it.
+Only the owner of the document (besides users with admin role) can retrieve it.
 
 Parameter | Description
 --------- | -----------
@@ -1708,18 +2321,20 @@ post.body = @"Body of my post.";
 ```
 
 ```java
-BaasDocument.fetch("mycollection",
-                   "090dd688-2e9a-4dee-9afa-aad72a1efa93",
-               new BaasHandler<BaasDocument>() {
-                 @Override
-                 public void handler(BaasResult<BaasDocument> res) {
-                   if(res.isSuccess()) {
-                     BaasDocument doc = res.value();
-                     Log.d("LOG","Document: "+doc);
-                   } else {
-                     Log.e("LOG","error",res.error());
-                   }
-                 }});
+BaasDocument doc = new BaasDocument("post");
+doc.putString("title","My new post title")
+   .putString("tags","tag1")
+   .putString("body","Body of my post");
+doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
+  @Override
+  public void handle(BaasResult<BaasDocument> res) {
+    if(res.isSuccess()){
+      Log.d("LOG","Document saved "+res.value().getId());
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
 ```
 
 > Example of a response
@@ -1745,7 +2360,7 @@ BaasDocument.fetch("mycollection",
 `PUT /document/:collection/:ID`
 
 Updates the document with the ID provided in the specified collection. 
-Only the owner of the document (besides the admin and backoffice users), can call this API.
+Only the owner of the document (besides backoffice users), can call this API.
 
 Parameter | Description
 --------- | -----------
@@ -1771,7 +2386,18 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+// Assumes post is an instance of Post, which subclasses BAAObject with properties "title".
+Post *post = [[Post alloc] init];
+post.title = @"My new title";
+[post saveObjectWithCompletion:^(Post *p, NSError *error) {
+
+    if (error == nil) {
+        NSLog(@"saved post is %@", p)
+    } else {
+        // deal with error
+    }
+
+}];
 ```
 
 ```java
@@ -1807,7 +2433,8 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+// Extend the Post class by adding a property named "tags"
+// then use the method saveObjectWithCompletion: to save the object.
 ```
 
 ```java
@@ -2055,7 +2682,21 @@ curl http://localhost:9000/document/mycollection/count \
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+
+[client getPath:@"document/mycollection/count"
+     parameters:nil
+        success:^(id responseObject) {
+            
+            NSLog(@"resp %@", responseObject);
+            
+        }
+ 
+        failure:^(NSError *error) {
+            
+            NSLog(@"err %@", error);
+            
+        }];
 ```
 
 ```java
@@ -2127,8 +2768,8 @@ curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
 }];
 
 // Version with pagination
-NSDictionary *parameters = @{kPageNumber : @0,
-                             kPageSize : @20};
+NSDictionary *parameters = @{kPageNumberKey : @0,
+                             kPageSizeKey : @20};
 [Post getObjectsWithParams:parameters
                 completion:^(NSArray *posts, NSError *error) {
 
@@ -2158,14 +2799,16 @@ BaasDocument.fetchAll("collection",
 });
 
 // using pagination and selection
-Filter filter = Filter.paging("title",0,20)
-                      .setWhere("_author = ?","Cesare");
+Filter filter = BaasQuery.builder().pagination(0,20)
+                      .orderBy("field desc")
+                      .where("_author = ?")
+                      .whereParams("Cesare")
+                      .filter();
 
 BaasDocument.fetchAll("collection",filter,
   new BaasHandler<List<BaasDocument>() {
     @Override
     public void handle(BaasResult<List<BaasDocument>> res) {
-    
       if (res.isSuccess()) {
         for (BaasDocument doc:res.value()) {
           Log.d("LOG","Doc: "+doc);
@@ -2415,9 +3058,9 @@ The maximum size of a file is 2GB, but we do not recommend reaching such size, s
 
 
 
-### Create a file
+### Upload a file
 
-> Example of a request to create a file
+> Example of a request to upload a file
 
 ```shell
 curl -X POST http://localhost:9000/file \
@@ -2429,15 +3072,20 @@ curl -X POST http://localhost:9000/file \
 NSData *data = ...; // data for file
 BAAFile *file = [[BAAFile alloc] initWithData:data];
 file.contentType = @"image/jpeg";
-[file uploadFileWithCompletion:^(BAAFile *uploadedFile, NSError *error) { 
+
+[file uploadFileWithPermissions:permissions 
+                     completion:^(BAAFile *uploadedFile, NSError *e) { 
 	
-	if (error == nil) {
-		NSLog(@"Uploaded file is %@", uploadedFile)
-	} else {
-		// Deal with error
-	}
+                        	if (error == nil) {
+                        		NSLog(@"Uploaded %@", uploadedFile)
+                        	} else {
+                        		// Deal with error
+                        	}
 	
 }];
+
+// "cesare" and registered users can read, "claudio" can update and all those belonging to "deleters" can delete
+
 ```
 
 ```java
@@ -2486,7 +3134,22 @@ curl -X POST http://localhost:9000/file \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED 
+NSData *data = ...; // data for file
+BAAFile *file = [[BAAFile alloc] initWithData:data];
+file.contentType = @"image/jpeg";
+[file.attachedData setObject:@"My title"
+                      forKey:@"title"];
+[file.attachedData setObject:@[@"tag1", @"tag2"]
+                      forKey:@"tags"];
+
+[file uploadFileWithPermissions:permissions 
+                     completion:^(BAAFile *uploadedFile, NSError *e) { 
+  
+                          if (error == nil) {
+                            NSLog(@"Uploaded %@", uploadedFile)
+                          } else {
+                            // Deal with error
+                          }
 ```
 
 ```java
@@ -2519,14 +3182,35 @@ curl -X POST http://localhost:9000/file \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED 
+NSData *data = ...; // data for file
+BAAFile *file = [[BAAFile alloc] initWithData:data];
+file.contentType = @"image/jpeg";
+[file.attachedData setObject:@"My title"
+                      forKey:@"title"];
+[file.attachedData setObject:@[@"tag1", @"tag2"]
+                      forKey:@"tags"];
+
+NSDictionary *permissions = 
+    @{kAclReadPermission : @{@"users" : @[@"cesare"], @"roles" : @[kAclRegisteredRole]},
+      kAclUpdatePermission : @{@"users" : @[@"claudio"]},
+      kAclDeletePermission : @{@"roles" : @[@"deleters"]}
+    };
+
+[file uploadFileWithPermissions:permissions 
+                     completion:^(BAAFile *uploadedFile, NSError *e) { 
+  
+                          if (error == nil) {
+                            NSLog(@"Uploaded %@", uploadedFile)
+                          } else {
+                            // Deal with error
+                          }
 ```
 
 ```java
 InputStream data = ...; // input stream to upload
 JsonObject attachedData = new JsonObject();
 attachedData.putString("key","value")
-            .putString("num",1);
+            .putLong("num",1);
 BaasFile file = new BaasFile(attachedData);
 BaasACL acl = new BaasACL().grantUsers(Grant.READ,"andrea");
 
@@ -2556,7 +3240,7 @@ Parameter | Description
 --------- | -----------
 **file** | The file itself. Mandatory.
 **attachedData** | A valid JSON string to store data associated to a file. Optional.
-**acl** | A valid JSON string to declare access to the file. Optional. See [ACL](#grant-access-to-a-file)
+**acl** | A valid JSON string to declare access to the file. Optional. See [ACL](#grant-access-to-a-file).
 
 
 <aside class="notice">
@@ -2600,6 +3284,10 @@ file.delete(new BaasHandler<Void>() {
     }
   }
 });
+// if you don't have a reference to the file
+// object but you know it's id
+BaasFile.delete("fileId",handler);
+
 ```
 
 > Example of a response when a file is deleted
@@ -2644,17 +3332,29 @@ BAAFile *picture = ...; // instance or subclass of BAAFile, previously saved on 
 ```
 
 ```java
+// load file in memory
 BaasFile file = ...;
 file.stream(new BaasHandler<BaasFile>() {
   @Override
   public void handle(BaasResult<BaasFile> res) {
     if ( res.isSuccess() ) {
+      byte[] data = res.value().getData();
       Log.d("LOG","File received");  
     } else {
       Log.e("LOG","Error while streaming",res.error());
     }
   }
 });
+
+//save a file on disk
+BaasFile file =...;
+file.download("path-to-save-the-file.to",
+              new BaasHandler<Pair<BaasFile,String>>(){
+                @Override
+                public void handle(BaasResult<Pair<BaasFile,String>> res)P{
+                
+                }
+              });
 ```
 
 > Example of a response
@@ -2764,7 +3464,11 @@ curl http://localhost:9000/file/details \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+[BAAFile loadFilesAndDetailsWithCompletion:^(NSArray *files, NSError *error) {
+        
+        NSLog(@"files are %@", files);
+        
+    }];
 ```
 
 ```java
@@ -3032,7 +3736,8 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
+// It's only for admins. You can do it in the web console.
 ```
 
 ```java
@@ -3072,11 +3777,12 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
+// It's only for admins. You can do it in the web console.
 ```
 
 ```java
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
 ```
 
 > Example of a response 
@@ -3137,17 +3843,69 @@ curl http://localhost:9000/asset/margherita \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+// If the asset is a JSON
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"asset/margherita/data"
+     parameters:nil
+        success:^(id responseObject) {
+            
+            NSLog(@"resp %@", responseObject);
+            
+        }
+ 
+        failure:^(NSError *error) {
+            
+            NSLog(@"err %@", error);
+            
+        }];
+
+// If the asset is a file
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"asset/margherita"
+     parameters:nil
+        success:^(id responseObject) {
+            
+            NSLog(@"resp %@", responseObject);
+            
+        }
+ 
+        failure:^(NSError *error) {
+            
+            NSLog(@"err %@", error);
+            
+        }];
 ```
 
 ```java
-TO BE IMPLEMENTED
+// if it's json
+BaasAsset.fetchData("name",new BaasHandler<JsonObject>() {
+  @Override
+  public void handler(BaasResult<JsonObject> res) {
+     if(res.isSuccess()){
+       // do something with the object
+     } else {
+       Log.e("ERROR","Error while retrieving asset",res.error());
+     }
+  }
+});
+
+// if it's binary
+BaasAsset.streamAsset("name",new BaasHandler<byte[]>() {
+  @Override
+  public void handler(BaasResult<byte[]> res){
+    if(res.isSuccess()) {
+      // do something with content
+    } else {
+      Log.e("ERROR","Error while retrieving asset",res.error());
+    }
+  }
+});
 ```
 
 > Example of a response
 
 ```json
-The file itself.
+The file itself or the JSON
 ```
 
 `GET /asset/:name`
@@ -3171,7 +3929,21 @@ curl -X DELETE http://localhost:9000/admin/asset/margherita  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+
+[client deletePath:@"admin/asset/margherita"
+        parameters:nil
+           success:^(id responseObject) {
+               
+               NSLog(@"resp %@", responseObject);
+               
+           }
+ 
+           failure:^(NSError *error) {
+               
+               NSLog(@"err %@", error);
+               
+           }];
 ```
 
 ```java
@@ -3214,7 +3986,21 @@ curl http://localhost:9000/admin/asset  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+
+[client getPath:@"admin/asset"
+        parameters:nil
+           success:^(id responseObject) {
+               
+               NSLog(@"resp %@", responseObject);
+               
+           }
+ 
+           failure:^(NSError *error) {
+               
+               NSLog(@"err %@", error);
+               
+           }];
 ```
 
 ```java
@@ -3268,15 +4054,11 @@ Allows to retrieve all the assets. Supports [Pagination and query criteria](#pag
 
 
 
-## Settings
+## Settings API
 
 Settings are app-related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
 
-* PasswordRecovery: this section contains many settings that affect the password recovery workflow
-* Application: Application specific parameters, such as the App Name
-* Push: Push notifications related settings
-* Images: specific settings for images (Assets file) processing
-
+More information can be found [here](#app-settings)
 
 <aside class="notice">	
 	Only users belonging to administrator roles can call these APIs.
@@ -3291,7 +4073,16 @@ curl http://localhost:9000/admin/configuration/dump.json  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client loadSettingsWithCompletion:^(NSDictionary *settings, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"settings are %@", settings);
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
 ```
 
 ```java
@@ -3359,7 +4150,17 @@ curl http://localhost:9000/admin/configuration/Application  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client loadSettingsSection:@"Application"
+                 completion:^(NSDictionary *settings, NSError *e) {
+                     
+                     if (error == nil) {
+                         NSLog(@"apps settings %@", settings);
+                     } else {
+                         NSLog(@"error %@", e);
+                     }
+                     
+                 }];
 ```
 
 ```java
@@ -3427,7 +4228,19 @@ curl -X PUT http://localhost:9000/admin/configuration/Application/application.na
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client setValue:@"MyAppName"
+          forKey:@"application.name"
+       inSection:@"Application"
+      completion:^(NSDictionary *settings, NSError *e) {
+          
+          if (e == nil) {
+              NSLog(@"settings are %@", settings);
+          } else {
+              NSLog(@"error %@", e);
+          }
+          
+      }];
 ```
 
 ```java
@@ -3460,12 +4273,12 @@ Parameter | Description
 
 Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
 
-### Enable push notifications on a device
+### Enable push notifications
 
 > Example of a request to enable push notifications
 
 ```shell
-curl -X PUT  http://localhost:9000/push/device/ios/123  \
+curl -X PUT  http://localhost:9000/push/enable/ios/123  \
  	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
 ```
 
@@ -3474,25 +4287,19 @@ curl -X PUT  http://localhost:9000/push/device/ios/123  \
 BAAClient *client = [BAAClient sharedClient];
 [client askToEnablePushNotifications];
 ```
-
 ```java
-GoogleCloudMessaging msg = GoogleCloudMessaging.getInstance(context);
-String registrationId = gcm.register(SENDER_ID);
-// ...
-// ...
-// ...
-// Assumes there is a logged in user
-BaasBox box =BaasBox.getDefault();
-box.registerPush(registrationId,new BaasHandler<Void>() {
-  @Override
-  public void handle(BaasResult<Void> res) {
-    if (res.isSuccess()) {
-      Log.d("LOG","You registered successfully");
-    }
-  }
-});
-```
+BaasBox box=BaasBox.getDefault();
+box.enablePush("registrationIdByGoogle",
+     new BaasHandler<Void>() {
+       @Override
+       public void handle(BaasResult<Void> res){
+         if(res.isSuccess()){
+           // registrationid saved on the server
+         }
+       }
+     });
 
+```
 > Example of response
 
 ```json
@@ -3503,7 +4310,7 @@ box.registerPush(registrationId,new BaasHandler<Void>() {
 }
 ```
 
-`PUT /push/device/:os/:pushToken`
+`PUT /push/enable/:os/:pushToken`
 
 Enables a specific user (logged using a specific device) to receive push notifications.
 
@@ -3514,7 +4321,57 @@ Parameter | Description
 
 
 
+### Disable push notifications
 
+> Example of a request to enable push notifications
+
+```shell
+curl -X PUT  http://localhost:9000/push/disable/123  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client disablePushNotificationsWithCompletion:^(BOOL success, NSError *error) {
+  
+    if (success) {
+        NSLog(@"push notifications disabled");
+    } else {
+        NSLog(@"error %@", error);
+    }
+    
+}];
+```
+
+```java
+BaasBox client = BaasBox.getDefault();
+client.disablePush("registration-id",new BaasHandler<Void>(){
+  @Override
+  public void handle(BaasResult<Void> res){
+    if(res.isSuccess()){
+      // successfully unregistered
+    }
+  }
+});
+```
+> Example of response
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
+
+`PUT /push/disable/:pushToken`
+
+Disable a specific user (logged using a specific device) to undeceive push notifications.
+
+Parameter | Description
+--------- | -----------
+**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
 
 ### Send a push notification
 
@@ -3567,35 +4424,3 @@ Parameter | Description
 
 
 
-
-# Hacking
-
-You can override many default values and options by providing them to the JVM. To do so, you have to use the -D parameter in this way
-
-`./start -DBAASBOX_PARAMETER=NEW_VALUE`
-
-Where `BAASBOX_PARAMETER` is the key of the parameter to override and `NEW_VALUE` is the value you want to use. 
-Please note that there is no space between the D and the parameter name. Overridable keys are:
-
-
-Key | Description | Example
---------- | ----------- | -------------
-**http.port** |	The port used by BaasBox |	`-Dhttp.port=80`
-**https.port** |	The SSL port used by BaasBox. By default SSL is disabled |	`-Dhttp.port=443`
-**application.code** |	Your Application Code. You should override the default one and choose a very unique code |	`-Dapplication.code=Zh54re3`
-**orient.baasbox.path** |	The path of the embedded database. By default this is {BAASBOX_HOME/db/baasbox}  |	`-Dorient.baasbox.path=./mydb`
-**logger.application** |	The default level of the logger. By default this is DEBUG. Possible values are ERROR, WARNING, INFO, DEBUG, TRACE |	`-Dlogger.application=INFO`
-**config.file** | 	An external configuration file. You can put all your parameters in a file. This file MUST include the include classpath(“application.conf”) directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` then you have to create a file named baasbox.config
-
-Regarding the `config.file` key, a possible example of an external configuration file may be:
-
-`
-include classpath("application.conf")
-application.code="1234-56789"
-orient.baasbox.path=db/baasbox
-logger.application=DEBUG
-`
-
-## The Play! Framework
-
-Since BaasBox is based upon the Play! Framework, many configuration options available by Play! could be used with BaasBox. Please refer to the [Play! documentation](http://www.playframework.com/documentation/2.1.x/Configuration) to know how to perform such operations and to customize the default behavior.
