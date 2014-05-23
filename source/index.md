@@ -66,7 +66,8 @@ documentation explains:
    *  [Android SDK](?java#android-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-7-4-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-0-released/)
+
 The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
 Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
@@ -450,9 +451,9 @@ recovery, images and push notifications. Each record has the Edit button
 that allows you to modify its action. 
 See also [Settings](#settings).
 
-## Api Access
+## API Access
 
-The Api Access section allows you to manage which rest endpoints are accessible
+The [API Access](#api-access83) section allows you to manage which rest endpoints are accessible
 to non administrator users.
 Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
@@ -759,6 +760,7 @@ Parameter | Description
 **recordPerPage** | the number of records per page
 **fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exhaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
 **groupBy** | allows to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
+**count** | if set to "true", returns the number of records that match the query instead of the entire recordset
 
 **Example of valid calls**:
 
@@ -779,7 +781,7 @@ The SDK is distributed in two ways:
 
 We recommend to install it using Cocoapods. Just add the following line to your Podfile.
 
-`pod 'BaasBoxSDK', '~> 0.7'`
+`pod 'BaasBoxSDK', '~> 0.8'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
@@ -2196,9 +2198,7 @@ Parameter | Description
 
 A document belongs to a [Collection](#collections34). You can create, read, update and delete a document, provided you have access to it.
 
-<aside class="warning">
-  Field names starting with `_` and `@` are reserved and should not be used.
-</aside>
+
 
 Here are the APIs.
 
@@ -2272,11 +2272,11 @@ Creates a document in the collection specified in the parameter. The collection 
 The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
 The returned document is decorated with the following fields:
 
-id: unique ID 
-`@version`: number indication of the version of the record, useful to manage concurrent updates
-`@class`: name of the collection
-`_creation_date`: timestamp
-`_author`: username of the user who created the document.
+- `id`: unique ID 
+- `@version`: number indication of the version of the record, useful to manage concurrent updates
+- `@class`: name of the collection
+- `_creation_date`: timestamp
+- `_author`: username of the user who created the document.
 
 These fields **cannot** be overwritten. 
 
@@ -3824,6 +3824,220 @@ Parameter | Description
 **rolename** | The name of role to whom you want to revoke the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator.  Mandatory.
 
 
+## Links
+
+Available since 0.8.0
+
+This function is still **experimental**
+
+Links allow to connect documents and files each other. They are similar to the relations in a relational database.
+Of course there are differences between relations and links. First, links have versus, second they have a name.
+
+Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
+
+For an example please see the code aside.
+
+```
+                             customer
+Document A          (out) -------------> (in)   Document B
+Invoices										Customers
+
+                              item
+Document A     		(out) -------------> (in)	Document C
+Invoices              							Items
+
+```
+
+
+Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
+Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
+For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
+
+You can query links by name and/or use filters to select linked documents (or file). 
+At the moment is it possible only to execute query on links, there are not APIs to traverse them or to query linked documents from a given one.
+
+
+### Create a link
+
+```shell
+curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
+	 
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+> Example of a response 
+
+```json
+{
+	"result":"ok",
+	"data":{
+		"@version":3,
+		"@class":"E",
+		"label":"customer",
+		"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
+		"_author":"admin",
+		"_creation_date":"2014-05-23T14:37:27.027+0200",
+		"out":{
+			"@version":2,
+			"@class":"Invoices",
+			"number":345,
+			"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
+			"_creation_date":"2014-05-23T14:32:40.040+0200",
+			"_author":"admin"
+		},
+		"in":{
+			"@version":2,
+			"@class":"Customers",
+			"name":"John Doe",
+			"age":31,
+			"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
+			"_creation_date":"2014-05-23T14:32:03.003+0200",
+			"_author":"admin"
+		}
+	},
+	"http_code":200
+}
+```
+
+
+`POST /link/:sourceId/:label/:destId`
+
+**Group**: [baasbox.data.write](#list-groups)
+
+To create a link you must provide the two documents you want to connect and the link name.
+Since links have direction the first document will be the source node of the link and the second one will be the destination node.
+
+Parameter | Description
+--------- | -----------
+**sourceId** | The id of the first document or file to link.
+**label** | The link name. Can be any valid string
+**destId** | The id of the second document or file to link.
+
+The returned link is decorated with the following fields:
+
+- `id`: unique ID 
+- `@version`: number indication of the version of the link, just like documents
+- `@class`: always equals to "E"
+- `_creation_date`: timestamp 
+- `_author`: username of the user who created the link.
+- `label': the provided label
+- `out`: the source object (the first one provided)
+- `in`: the destination object (the second one provided)
+
+These fields **cannot** be overwritten. 
+
+The `out` and `in` fields contain the content of both objects. 
+
+**REMEMBER**: the `out` field points to the source, the `in` points to the destination. Use the following simple schema as reference:
+
+` Source Doc ----->(out) link (in)----> Dest Doc `
+
+
+Please note that you can have as many links you want between two document or file even with the same label.
+
+To create a link, a user has to have at least the read permission on both of them.
+
+### Retrieves links
+
+```shell
+curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 "http://localhost:9000/link?where=in.name.toLowerCase()%20like%20%27john%25%27%20and%20label%3D%27customer%27"
+	 
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+> Example of a response 
+
+```json
+{
+	"result":"ok",
+	"data":{
+		"@version":3,
+		"@class":"E",
+		"label":"customer",
+		"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
+		"_author":"admin",
+		"_creation_date":"2014-05-23T14:37:27.027+0200",
+		"out":{
+			"@version":2,
+			"@class":"Invoices",
+			"number":345,
+			"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
+			"_creation_date":"2014-05-23T14:32:40.040+0200",
+			"_author":"admin"
+		},
+		"in":{
+			"@version":2,
+			"@class":"Customers",
+			"name":"John Doe",
+			"age":31,
+			"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
+			"_creation_date":"2014-05-23T14:32:03.003+0200",
+			"_author":"admin"
+		}
+	},
+	"http_code":200
+}
+```
+
+`GET /link/:id`
+
+`GET /link`
+
+You can retrieve a single link by its ID, or query the entire link-space. Be carefull because too many links could be returned.
+The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask to the server to filter the response.
+
+You can of course apply filters to the fields of the nodes linked as well.
+
+`GET /link?where=in.name.toLowerCase() like 'john%%' and label="customer" `
+
+In this case the %% are necessary to escape the % character sent in querystring.
+
+
+### Delete links
+
+```shell
+curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+> Example of a response 
+
+```json
+{
+	"result": "ok",
+	"data": "",
+	"http_code": 200
+}
+```
+
+`DELETE /link/:id`
+
+Deletes a link. 
+
+At the moment the link can be deleted by anyone. The RSL (Record Security Level) has not implemented yet on links.
+
+
 
 ## Assets
 
@@ -3846,7 +4060,8 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```java
-TO BE IMPLEMENTED
+// TO BE IMPLEMENTED
+// It's only for admins. You can do it in the web console.
 ```
 
 > Example of a response 
@@ -4377,9 +4592,9 @@ Parameter | Description
 
 
 
-## Api Access
+## API Access
 
-Api access control lets you manage which endpoints are accessible from the *outside world*.
+API access control lets you manage which endpoints are accessible from the *outside world*.
 Each endpoint belongs to a named group, identified by a key.
 
 Disabled groups render their endpoints inaccessible to clients, unless the user is authenticated as
@@ -4387,6 +4602,8 @@ an administrator: the client will receive a **forbidden** status code instead of
 response.
 
 By default all groups are enabled.
+
+Only administrators can call these APIs.
 
 
 ### List groups
@@ -4490,6 +4707,12 @@ curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
 
 `GET /admin/endpoints/:group-name`
 
+Returns details about a group. Useful to know if a specific group of APIs is enabled or not.
+
+Parameter | Description
+--------- | -----------
+**group-name** | The name of the group of endpoints
+
 ### Enable an endpoint group
 
 > Example of a request to enable an endpoint group
@@ -4517,6 +4740,12 @@ curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```
 
 `PUT /admin/endpoints/:group-name/enabled`
+
+This API enables a group of endpoints
+
+Parameter | Description
+--------- | -----------
+**group-name** | The name of the group of endpoints
 
 ### Disable an endpoint group
 
@@ -4546,6 +4775,12 @@ curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 
 `DELETE /admin/endpoints/:group-name/enabled`
 
+This API disable a group of endpoints.
+Calls to endpoints belonging to this group will returl an error 403.
+
+Parameter | Description
+--------- | -----------
+**group-name** | The name of the group of endpoints
 
 ## Push Notifications
 
