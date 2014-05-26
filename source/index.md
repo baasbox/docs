@@ -3831,7 +3831,7 @@ Available since 0.8.0
 This function is still **experimental**
 
 Links allow to connect documents and files each other. They are similar to the relations in a relational database.
-Of course there are differences between relations and links. First, links have versus, second they have a name.
+Of course there are differences between relations and links. First of all, links have versus, secondly   they have a name.
 
 Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
 
@@ -3935,14 +3935,14 @@ These fields **cannot** be overwritten.
 
 The `out` and `in` fields contain the content of both objects. 
 
-**REMEMBER**: the `out` field points to the source, the `in` points to the destination. Use the following simple schema as reference:
+**REMEMBER**: the `out` field points to the source, the `in` points to the destination, like in the following schema:
 
 ` Source Doc ----->(out) link (in)----> Dest Doc `
 
 
 Please note that you can have as many links you want between two document or file even with the same label.
 
-To create a link, a user has to have at least the read permission on both of them.
+To create a link, a user has to have at least the read permission on both objects to link.
 
 ### Retrieves links
 
@@ -4002,9 +4002,7 @@ The endpoint supports [selection and query criteria](#pagination-and-query-crite
 
 You can of course apply filters to the fields of the nodes linked as well.
 
-`GET /link?where=in.name.toLowerCase() like 'john%%' and label="customer" `
-
-In this case the %% are necessary to escape the % character sent in querystring.
+`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
 
 
 ### Delete links
