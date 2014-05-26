@@ -380,14 +380,14 @@ tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox in the correct way, you can open your browser and open
-the welcome screen: ![Console image](images/Console_0.7.3/home_console.png)
+the welcome screen: ![Console image](images/Console_0.8.0/home_console.png)
 
 ## Login screen
 
 When you are in the start view, the administrator console is reachable
 at the `/console` path. 
 
-![Login image](images/Console_0.7.3/login.png)
+![Login image](images/Console_0.8.0/login.png)
 To login in the administrative area you must supply credentials and Application Code to the administrator.
 By default these values are:
 
@@ -403,7 +403,7 @@ fields will be filled with the default values.
 
 Once you logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.7.3/baasbox_0-7-3-console.png)
+![Dashboard image](images/Console_0.8.0/baasbox_0-8-0-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -432,11 +432,10 @@ dashboard is split into several sections:
        the new one
     -  Logout: just logout from the console. Remember that you can also
        logout from the left menu.
-12. Feedback tab: from there you can send us a feedback about your
-    experience with BaasBox
-13. DB Management: you can create a backup of your DB and import & export
-14. Roles: you can view and create roles for users
-15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
+12. DB Management: you can create a backup of your DB and import & export
+13. Roles: you can view and create roles for users
+14. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
+15. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
 
 <aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
@@ -459,12 +458,15 @@ Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
 named group.
 
+![Api access control](images/Console_0.8.0/api_access_control.png)
+
+
 ## Database Management
 
 The item **DB Management** allows you to perform some operations on the
 database. 
 
-![Dashboard image](images/Console_0.7.3/baasbox-db-management.png)
+![Dashboard image](images/Console_0.8.0/baasbox-db-management.png)
 
 1. Restore a previously created backup file
 2. Create a new backup
@@ -485,7 +487,7 @@ then use the restore feature.
 
 In the settings you can define an array of possible resizing policies for images.
 
-![Image resize settings](images/Console_0.7.3/image_resize.png)
+![Image resize settings](images/Console_0.8.0/image_resize.png)
 
 Examples are: 
 
@@ -502,7 +504,7 @@ See [Retrieve a file](#retrieve-a-file) on how to use these values.
 By selecting the Users option on the menu you can access the users
 section. 
 
-![Users image](images/Console_0.7.3/users.png)
+![Users image](images/Console_0.8.0/users.png)
 
 
 In this section you have the list of all users. A
@@ -511,7 +513,7 @@ registereduser), a creation date, a status and actions. You also have a
 search tool. If you want to create a new user, click on the New User
 button and you will see this window:
 
-![New user image](images/Console_0.7.3/create_new_user.png)
+![New user image](images/Console_0.8.0/create_new_user.png)
 
 <aside class="notice">
 	Starred fields are mandatory. After you have filled in at least the mandatory fields, you have to save the changes.
@@ -525,13 +527,13 @@ By selecting the Collections option on the menu you can access the
 collection administration page. Collections are a sort of buckets where
 you can store objects, also known as "documents". 
 
-![Collections](images/Console_0.7.3/collections.png)
+![Collections](images/Console_0.8.0/collections.png)
 
 In this section you have a list of all your collections and you can quickly
 find them with the search tool. To create a new collection, click on the
 New Collection button and insert its name, then save the changes.
 
-![New collection](images/Console_0.7.3/create_new_collection.png)
+![New collection](images/Console_0.8.0/create_new_collection.png)
 
 
 ## Documents
@@ -540,14 +542,14 @@ New Collection button and insert its name, then save the changes.
 Documents are objects stored in the embedded NoSQL database and grouped
 in "Collections".
 
-![Documents](images/Console_0.7.3/documents.png)
+![Documents](images/Console_0.8.0/documents.png)
 
 In this section you have the list of all
 your documents, but you have to select an existing collection at first.
 In fact you can see all the documents relating to a specific collection.
 Of course you also have the search tool. 
 
-![Documents table](images/Console_0.7.3/baasbox-documents-table.png)
+![Documents table](images/Console_0.8.0/baasbox-documents-table.png)
 
 Each document has a unique ID, generated by the server once it is stored.
 Data documents are stored and retrieved JSON format.
@@ -566,7 +568,7 @@ associated data. Assets do not have IDs generated by the server, but you
 can, indeed you MUST, assign a unique name to them. You can subsequently
 use these names to reference the assets.
 
-![Assets](images/Console_0.7.3/assets.png)
+![Assets](images/Console_0.8.0/assets.png)
 
 In this section you have a detailed list of all your assets
 with information fields like Icon, Name, Meta, Size, Type, Download and
@@ -574,7 +576,7 @@ Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
 following window: 
 
-![New asset](images/Console_0.7.3/new_asset.png)
+![New asset](images/Console_0.8.0/new_asset.png)
 
 <aside class="notice">
 	You have to fill in at least the Name
