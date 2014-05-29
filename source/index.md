@@ -4995,7 +4995,7 @@ login/linking. An example of the returned data is:
 > Example of response
 
 ```json
-   data": [
+   "data": [
         {
             "username": "xxx",
             "password": null,
