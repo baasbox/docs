@@ -916,7 +916,7 @@ RequestToken tok = BaasDocument.fetchAll("coll",
     }
 });
 
-// syncrhonous equivalent BLOCKS!!!
+// synchronous equivalent BLOCKS!!!
 BaasResult<List<BaasDocument>> res = 
   BaasDocument.fetchAllSync("coll");
 ```
