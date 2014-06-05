@@ -29,7 +29,19 @@ under the License.
     <%= javascript_include_tag  "all" %>
 
     <script>
-      $(function() {
+	function start() {
+   	   var languagesTags='<div class="lang-selector">';
+   		<% current_page.data.language_tabs.each do |lang| %>
+   			<% if lang.is_a? Hash %>
+   				languagesTags += '<a href="#" data-language-name="<%= lang.keys[0] %>"><%= lang.values[0] %></a>';
+   			<% else %>
+   				languagesTags += '<a href="#" data-language-name="<%= lang %>"><%= lang %></a>';
+   			<% end %>
+   		<% end %>
+   		languagesTags += '</div>';
+   		console.log(languagesTags);
+   	  	$(".highlight").before(languagesTags)
+
         var toc = $("#toc").tocify({
           selectors: "h1,h2,h3",
           extendPage: false,
@@ -62,6 +74,17 @@ under the License.
             <% end %>
           <% end %>
         ]);
+      }
+	
+	  function after_main(){
+  		$(".lang-selector").each(function(){
+  			var display=$(this).next().css("display");
+  			$(this).css("display",display);
+  		});
+	  }
+	
+      $(function(){
+		  $.when(start()).done(after_main());
       });
     </script>
 
@@ -124,19 +147,21 @@ under the License.
       <div class="content">
         <%= yield %>
       </div>
-      <div class="dark-box">
-        <div id="lang-selector">
-          <% if current_page.data.language_tabs %>
-            <% current_page.data.language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys[0] %>"><%= lang.values[0] %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+	  <!--
+	      <div class="dark-box">
+	        <div id="lang-selector">
+	          <% if current_page.data.language_tabs %>
+	            <% current_page.data.language_tabs.each do |lang| %>
+	              <% if lang.is_a? Hash %>
+	                <a href="#" data-language-name="<%= lang.keys[0] %>"><%= lang.values[0] %></a>
+	              <% else %>
+	                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+	              <% end %>
+	            <% end %>
+	          <% end %>
+	        </div>
+	      </div>
+	  -->
     </div>
   </body>
 </html>

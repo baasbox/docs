@@ -1697,7 +1697,7 @@ Finally, if _user_b_ doesn't want to follow _user_a_ anymore, he can invoke the 
 
 ```DELETE /follow/user_a```
 
-Note that the _follow_ API is not mutual, just like in Twitter.
+Note that the _follow_ API is not mutual, just like in Twitter. 
 
 ### Follow a user
 
