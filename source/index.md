@@ -18,10 +18,13 @@ Click on any tab above to choose the platform of your interest.
 ```
 
 ```objective_c
-To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
-and drop on Xcode the folder BaasBox-iOS-SDK.
-Then insert the following statement in the .pch file
-#import "BAAClient.h" and you are good to go. 
+To install the iOS SDK you have two ways.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.1'" to your pod file.
+As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop on Xcode the folder BaasBox-iOS-SDK.
+
+Finally insert the following statement in the .pch file
+#import "BAAClient.h" 
+and you are good to go. 
 ```
 
 ```java
@@ -2972,7 +2975,22 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p grantAccessToUser:@"a"
+              ofType:kAclReadPermission
+          completion:^(id object, NSError *error) {
+   
+    if (error == nil) {
+        
+        NSLog(@"permission granted");
+        
+    } else {
+        
+        NSLog(@"error in granting permission");
+        
+    }
+    
+}];
 ```
 
 ```java
@@ -2998,7 +3016,23 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/reg
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p grantAccessToRole:kAclRegisteredRole
+              ofType:kAclUpdatePermission
+          completion:^(SMPost *post, NSError *error) {
+    
+              if (error == nil) {
+                  
+                  NSLog(@"permission granted");
+                  
+              } else {
+              
+                  NSLog(@"error in granting permission");
+                  
+              }
+              
+              
+}];
 ```
 
 ```java
@@ -3063,7 +3097,22 @@ curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a 
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p revokeAccessToUser:@"a"
+               ofType:kAclUpdatePermission
+           completion:^(SMPost *post, NSError *error) {
+     
+               if (error == nil) {
+                   
+                   NSLog(@"permission granted");
+                   
+               } else {
+               
+                   NSLog(@"error in granting permission");
+                   
+               }
+               
+ }];
 ```
 
 ```java
@@ -3089,7 +3138,22 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/reg
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p revokeAccessToRole:kAclRegisteredRole
+              ofType:kAclUpdatePermission
+          completion:^(SMPost *post, NSError *error) {
+    
+              if (error == nil) {
+                  
+                  NSLog(@"permission granted");
+                  
+              } else {
+              
+                  NSLog(@"error in granting permission");
+                  
+              }
+               
+}];
 ```
 
 ```java
@@ -4995,7 +5059,7 @@ login/linking. An example of the returned data is:
 > Example of response
 
 ```json
-   data": [
+   "data": [
         {
             "username": "xxx",
             "password": null,
