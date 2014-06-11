@@ -2972,7 +2972,22 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p grantAccessToUser:@"a"
+              ofType:kAclReadPermission
+          completion:^(id object, NSError *error) {
+   
+    if (error == nil) {
+        
+        NSLog(@"permission granted");
+        
+    } else {
+        
+        NSLog(@"error in granting permission");
+        
+    }
+    
+}];
 ```
 
 ```java
@@ -2998,7 +3013,23 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/reg
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p grantAccessToRole:kAclRegisteredRole
+              ofType:kAclUpdatePermission
+          completion:^(SMPost *post, NSError *error) {
+    
+              if (error == nil) {
+                  
+                  NSLog(@"permission granted");
+                  
+              } else {
+              
+                  NSLog(@"error in granting permission");
+                  
+              }
+              
+              
+}];
 ```
 
 ```java
@@ -3063,7 +3094,22 @@ curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a 
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p revokeAccessToUser:@"a"
+               ofType:kAclUpdatePermission
+           completion:^(SMPost *post, NSError *error) {
+     
+               if (error == nil) {
+                   
+                   NSLog(@"permission granted");
+                   
+               } else {
+               
+                   NSLog(@"error in granting permission");
+                   
+               }
+               
+ }];
 ```
 
 ```java
@@ -3089,7 +3135,22 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/reg
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p revokeAccessToRole:kAclRegisteredRole
+              ofType:kAclUpdatePermission
+          completion:^(SMPost *post, NSError *error) {
+    
+              if (error == nil) {
+                  
+                  NSLog(@"permission granted");
+                  
+              } else {
+              
+                  NSLog(@"error in granting permission");
+                  
+              }
+               
+}];
 ```
 
 ```java
