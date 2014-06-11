@@ -18,10 +18,13 @@ Click on any tab above to choose the platform of your interest.
 ```
 
 ```objective_c
-To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
-and drop on Xcode the folder BaasBox-iOS-SDK.
-Then insert the following statement in the .pch file
-#import "BAAClient.h" and you are good to go. 
+To install the iOS SDK you have two ways.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.1'" to your pod file.
+As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop on Xcode the folder BaasBox-iOS-SDK.
+
+Finally insert the following statement in the .pch file
+#import "BAAClient.h" 
+and you are good to go. 
 ```
 
 ```java
