@@ -2764,21 +2764,20 @@ curl http://localhost:9000/document/mycollection/count \
 ```
 
 ```objective_c
-BAAClient *client = [BAAClient sharedClient];
-
-[client getPath:@"document/mycollection/count"
-     parameters:nil
-        success:^(id responseObject) {
-            
-            NSLog(@"resp %@", responseObject);
-            
-        }
- 
-        failure:^(NSError *error) {
-            
-            NSLog(@"err %@", error);
-            
-        }];
+// Assumes Post is a subclass of BAAObject
+[Post fetchCountForObjectsWithCompletion:^(NSInteger count, NSError *error) {
+                                               
+                                                if (error == nil) {
+                                                
+                                                    NSLog(@"count is %i", count);
+                                                    
+                                                } else {
+                                                
+                                                    NSLog(@"error is %@", error);
+                                                    
+                                                }
+                                                
+                                            }];
 ```
 
 ```java
