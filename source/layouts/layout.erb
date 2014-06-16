@@ -29,7 +29,19 @@ under the License.
     <%= javascript_include_tag  "all" %>
 
     <script>
-      $(function() {
+	function start() {
+   	   var languagesTags='<div class="lang-selector">';
+   		<% current_page.data.language_tabs.each do |lang| %>
+   			<% if lang.is_a? Hash %>
+   				languagesTags += '<a href="#" data-language-name="<%= lang.keys[0] %>"><%= lang.values[0] %></a>';
+   			<% else %>
+   				languagesTags += '<a href="#" data-language-name="<%= lang %>"><%= lang %></a>';
+   			<% end %>
+   		<% end %>
+   		languagesTags += '</div>';
+   		console.log(languagesTags);
+   	  	$(".highlight").before(languagesTags)
+
         var toc = $("#toc").tocify({
           selectors: "h1,h2,h3",
           extendPage: false,
@@ -62,6 +74,17 @@ under the License.
             <% end %>
           <% end %>
         ]);
+      }
+	
+	  function after_main(){
+  		$(".lang-selector").each(function(){
+  			var display=$(this).next().css("display");
+  			$(this).css("display",display);
+  		});
+	  }
+	
+      $(function(){
+		  $.when(start()).done(after_main());
       });
     </script>
 
@@ -97,8 +120,9 @@ under the License.
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6640" id="menu-item-6640"><a href="http://www.baasbox.com/download/" title="Downloads">Downloads</a></li>
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6641" id="menu-item-6641"><a href="http://www.baasbox.com/blog" title="Blog">Blog</a></li>
 	</ul>            </nav>
+	            <a href="http://www.baasbox.com/#home"><a cl<span class="boxincloud"></span></a>
 	            <a class="logoblock" href="http://www.baasbox.com/#home">
-	                        	            		<img class="companylogo" src="http://www.baasbox.com/wp-content/uploads/2014/06/marchio_bianco.png">
+	                        	            		<img class="companylogo" src="http://www.baasbox.com/wp-content/uploads/2013/12/logo_baasbox.png">
 	            	                        </a>
 
 	            <div class="socialblock">
@@ -126,19 +150,21 @@ under the License.
       <div class="content">
         <%= yield %>
       </div>
-      <div class="dark-box">
-        <div id="lang-selector">
-          <% if current_page.data.language_tabs %>
-            <% current_page.data.language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys[0] %>"><%= lang.values[0] %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+	  <!--
+	      <div class="dark-box">
+	        <div id="lang-selector">
+	          <% if current_page.data.language_tabs %>
+	            <% current_page.data.language_tabs.each do |lang| %>
+	              <% if lang.is_a? Hash %>
+	                <a href="#" data-language-name="<%= lang.keys[0] %>"><%= lang.values[0] %></a>
+	              <% else %>
+	                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+	              <% end %>
+	            <% end %>
+	          <% end %>
+	        </div>
+	      </div>
+	  -->
     </div>
   </body>
 </html>
