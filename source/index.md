@@ -880,7 +880,7 @@ using the ``BaasBox.Builder`` class.
 
 > Example initialization
 
-```java
+```
 //...
 import com.baasbox.android.BaasBox;
 
@@ -914,7 +914,7 @@ You can control asynchronous requests thorugh the returned RequestToken.
 
 > Example requests
 
-```java
+```
 // Here  BaasDocument is used as an example
 // it represents documents on the server, 
 // more on this later
@@ -993,7 +993,7 @@ Using these methods you can access these apis while still enjoing the rest
 of the sdk features, such as concurrency and lifecycle management, caching,
 handling of the authentication.
 
-```java
+```
 BaasBox cli  = BaasBox.getDefault();
 cli.rest(HttpRequest.GET,
          "endpoint",
