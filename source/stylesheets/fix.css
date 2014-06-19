@@ -172,7 +172,7 @@ nav {
 .content pre, .content blockquote {
 	background-color:#e9f2ff !important;
 	color:#111111 !important;
-    border:2px solid #5298fc !important;
+    border:1px solid #5298fc !important;
 
 }
 
@@ -191,6 +191,20 @@ nav {
 	color:#111111 !important;
 }
 
+.content blockquote>p {
+	background-color:#5298fc !important;
+	color:#111111 !important;
+	border:1px solid #5298fc !important
+}
+
 #toc a {
 	color:#000000 !important;
+}
+
+.highlight, .highlight .w {
+	background-color:#e9f2ff !important;
+}
+
+.highlight .err {
+	background-color:#e9f2ff !important;
 }
