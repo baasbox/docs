@@ -12,6 +12,34 @@ toc_footers:
 
 # Introduction
 
+BaasBox is a complete solution to implement the back end of your applications.
+
+Latest version is **0.8.0**
+
+
+You can access all sections using the sidebar on the left. The
+documentation explains:
+
+*  the BaasBox features (server side)
+   *  [how to install BaasBox](?shell#installation)
+   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
+   *  [REST API](?shell#api)
+
+*  the SDK features
+
+   *  [iOS SDK](?objective_c#ios-sdk)
+   *  [Android SDK](?java#android-sdk)
+
+
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-0-released/)
+
+The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
+
+Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
+result of what BaasBox can give you. 
+Enjoy!
+
+
 ```shell
 In this section you can find code examples for every platform we address.
 Click on any tab above to choose the platform of your interest.
@@ -49,33 +77,6 @@ public class MyApp extends Application{
   }
 }
 ```
-
-BaasBox is a complete solution to implement the back end of your applications.
-
-Latest version is **0.8.0**
-
-
-You can access all sections using the sidebar on the left. The
-documentation explains:
-
-*  the BaasBox features (server side)
-   *  [how to install BaasBox](?shell#installation)
-   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
-   *  [REST API](?shell#api)
-
-*  the SDK features
-
-   *  [iOS SDK](?objective_c#ios-sdk)
-   *  [Android SDK](?java#android-sdk)
-
-
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-0-released/)
-
-The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
-
-Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
-result of what BaasBox can give you. 
-Enjoy!
 
 
 # Installation
