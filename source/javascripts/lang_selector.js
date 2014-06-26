@@ -15,8 +15,8 @@ under the License.
 */
 languages = []
 function activateLanguage(language) {
-  $("#lang-selector a").removeClass('active');
-  $("#lang-selector a[data-language-name='" + language + "']").addClass('active');
+  $(".lang-selector a").removeClass('active');
+  $(".lang-selector a[data-language-name='" + language + "']").addClass('active');
   for (var i=0; i < languages.length; i++) {
     $(".highlight." + languages[i]).hide();
   }
@@ -28,6 +28,8 @@ function setupLanguages(l) {
   languages = l;
   currentLanguage = languages[0];
   defaultLanguage = localStorage.getItem("language");
+
+  //$(".highlight").before('<div id="lang-selector"><a href="#" data-language-name="java">java</a></div>');
 
   if ((location.search.substr(1) != "") && (jQuery.inArray(location.search.substr(1), languages)) != -1) {
     // the language is in the URL, so use that language!
@@ -44,7 +46,7 @@ function setupLanguages(l) {
   }
 
   // if we click on a language tab, reload the page with that language in the URL
-  $("#lang-selector a").bind("click", function() {
+  $(".lang-selector a").bind("click", function() {
     window.location.replace("?" + $(this).data("language-name") + window.location.hash);
     return false;
   });
