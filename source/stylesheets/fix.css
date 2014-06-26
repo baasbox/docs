@@ -17,6 +17,22 @@
     src: local("Lato Bold"), local("Lato-Bold"), url("http://themes.googleusercontent.com/static/fonts/lato/v7/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff") format("woff");
 }
 
+@font-face { font-family: Lato-Regular; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/lato-regular.svg'); } 
+
+@font-face { font-family: Lato-Bold; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/lato-bold.svg'); } 
+
+body {
+  background: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: #282828;
+}
+
 .mainmenu .menuwrapper .menulist {
     display: inline-block;
     float: right;
@@ -42,7 +58,7 @@ nav {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
     left: 0;
-    height: 68px;
+    height: 73px;
     position: fixed;
     text-align: center;
     width: 100%;
@@ -50,16 +66,27 @@ nav {
 }
 
 .mainmenu .menuwrapper .menulist ul li a {
-    border-radius: 4px;
-    color: #FFFFFF;
-    display: inline-block;
-    font-weight: 700;
-    margin: 0 0.5em;
-    padding: 0.6em 1em;
-    text-transform: uppercase;
-    transition: all 0.3s ease 0s;
-    text-decoration: none;
-    font-family: 'Lato Bold';
+  color: #fff;
+  display: inline-block;
+  padding: 0.6em 1em;
+  margin: 0 0.5em;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration:none;
+  font-family:Lato-Regular, sans-serif !important;
+  font-size:17px;
+}
+.mainmenu .menuwrapper .menulist ul li a:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+.mainmenu .menuwrapper .menulist ul li a:active {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .mainmenu .menuwrapper .menulist ul li {
@@ -85,9 +112,32 @@ nav {
     padding: 0.8em 1em;
     position: absolute;
 }
+.mainmenu .menuwrapper .logoblock .companylogo {
+  max-height: 40px;
+  opacity: 1;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  margin-left:53px;
+}
+.mainmenu .menuwrapper .logoblock .companylogo:hover {
+  opacity: 0.7;
+}
+
+.boxincloud{
+  position:absolute;
+  background:url(http://www.baasbox.com/wp-content/uploads/testata_marchio.png);
+  margin-top: 11px;
+  margin-left:-105px;
+  height: 50px;
+  width: 50px;
+}
 
 .items {
-	margin-top: 3px;
+  margin-top: -1px;
+  margin-right:-29px;
 }
 
 .content {
