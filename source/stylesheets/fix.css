@@ -177,7 +177,7 @@ nav {
 
 .page-wrapper .lang-selector {
 	width:80% !important;
-	background-color:#fff !important;
+	background-color:#F9F9F9 !important;
 	color:#111111 !important;
 	border-bottom:none !important;
 	margin-left:16px;
@@ -196,7 +196,7 @@ nav {
 .content blockquote>p {
 	background-color:rgba(246, 217, 154, 0.25) !important;
 	color:#111111 !important;
-	border:1px solid #5298fc !important
+	border:1px solid #E3D08D !important
 }
 
 #toc a {
@@ -209,4 +209,34 @@ nav {
 
 .highlight .err {
 	background-color:#fff !important;
+}
+
+.content aside.notice:before{
+	content:"■";
+}
+
+.snippet-title {
+	background-color: #111111;
+	padding: 2em 15px;
+	margin: 0;
+	width: 100%;
+	clear: right;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 83% !important;
+	background-color: #F9F9F9 !important;
+	color: #111111 !important;
+	border: none;
+	margin-top: 0px !important;
+}
+.snippet-title>p {
+	border-radius: 5px;
+	padding: 13px;
+	color: #ccc;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #404040;
+	background-color:rgba(246, 217, 154, 0.25) !important;
+	color:#111111 !important;
+	border:1px solid #E3D08D !important
 }
