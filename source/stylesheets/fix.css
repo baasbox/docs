@@ -173,7 +173,7 @@ nav {
     border:1px solid #538378 !important;
     margin-top:0px !important;
     margin-left:16px !important;
-    margin-bottom:40px !important;
+    margin-bottom:45px !important;
 
 }
 
@@ -182,8 +182,8 @@ nav {
 	background-color:#F9F9F9 !important;
 	color:#111111 !important;
 	border-bottom:none !important;
-	margin-left:16px;
-	margin-top:-30px;
+	margin-left:16px !important;
+	margin-top:0px !important;
 }
 
 .page-wrapper .lang-selector a{
