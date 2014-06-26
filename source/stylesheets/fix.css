@@ -142,6 +142,7 @@ nav {
 
 .tocify-wrapper{
 	background-color:#F2F2F2 !important;
+	margin-top:54px !important;
 }
 
 .tocify-wrapper .toc-footer{
@@ -172,6 +173,7 @@ nav {
     border:1px solid #538378 !important;
     margin-top:0px !important;
     margin-left:16px !important;
+    margin-bottom:40px !important;
 
 }
 
@@ -181,6 +183,7 @@ nav {
 	color:#111111 !important;
 	border-bottom:none !important;
 	margin-left:16px;
+	margin-top:-30px;
 }
 
 .page-wrapper .lang-selector a{
