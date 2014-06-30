@@ -191,10 +191,17 @@ nav {
 	margin-left:16px !important
 }
 
+.page-wrapper .lang-selector a:active {
+	background-color:#538378 !important;
+	color:#fff !important;
+}
+
 .page-wrapper .lang-selector a.active {
 	background-color:#538378 !important;
 	color:#fff !important;
 }
+
+
 
 .content blockquote>p {
 	background-color:rgba(246, 217, 154, 0.25) !important;
