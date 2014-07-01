@@ -14,7 +14,7 @@ toc_footers:
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-Latest version is **0.8.1**
+The latest version is **0.8.1**
 
 
 You can access all sections using the sidebar on the left. The
@@ -48,7 +48,7 @@ Click on any tab above to choose the platform of your interest.
 ```objective_c
 To install the iOS SDK you have two ways.
 We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.1'" to your pod file.
-As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop on Xcode the folder BaasBox-iOS-SDK.
+As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the folder BaasBox-iOS-SDK on Xcode.
 
 Finally insert the following statement in the .pch file
 #import "BAAClient.h" 
@@ -57,7 +57,7 @@ and you are good to go.
 
 ```java
 /*
-The Android SDK is distributed as a jar, 
+The Android SDK is distributed as a jar. 
 To get started download it from the download section of the website 
 (http://www.bassbox.com/download/), and put it in your libs folder.
 
@@ -707,7 +707,7 @@ Parameter | Description
 **recordPerPage** | the number of records per page
 **fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exhaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
 **groupBy** | allows to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
-**count** | if set to "true", returns the number of records that match the query instead of the entire recordset
+**count** | if set to "true", it returns the number of records that match the query instead of the entire record-set
 
 **Example of valid calls**:
 
@@ -880,8 +880,8 @@ You can also use maven gradle or maven to depend on the library:
 #### Initialization
 
 Currently, you can have only one client per application. 
-The client must be initialized before you can use  any of the provided features.
-The preferred way to initialize the it is to override the default 
+The client must be initialized before you can use any of the provided features.
+The preferred way to initialize the SDK is to override the default 
 application and configure it in the ``onCreate()`` method, 
 using the ``BaasBox.Builder`` class.
 
@@ -996,12 +996,12 @@ public class MyActivity extends Activity implements
 
 #### Pass-through API
 
-Some rest endpoints have no direct equivalent in the api.
-For them you can use the lower level pass through api provided by the sdk
+Some rest endpoints have no direct equivalent in the API.
+For them you can use the lower level pass through API provided by the SDK
 through the ``rest()`` and ``restSync()`` methods.
-Whenever you see a "TO BE IMPLEMENTED in the Android section you can recur to this methods.
-Using these methods you can access these apis while still enjoing the rest
-of the sdk features, such as concurrency and lifecycle management, caching,
+Whenever you see a "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
+Using these methods you can access these APIs while still enjoying the rest
+of the SDK features, such as concurrency and lifecycle management, caching,
 handling of the authentication.
 
 ```
@@ -1039,7 +1039,7 @@ Parameter | Description
 **password** | Password. Mandatory
 **visibleByTheUser** | an object whose fields are private and visible only by the user
 **visibleByFriends** | an object whose fields are visible by the user and friends (for future friendship management)
-**visibleByRegisteredUsers** | is an object whose fields are visible by the user, friends, any registered user
+**visibleByRegisteredUsers** | an object whose fields are visible by the user, friends, any registered user
 **visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, also anonymous users
 
 <div class="snippet-title">
@@ -1533,7 +1533,7 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
 
 **Group**: [baasbox.account.lost_password](#list-groups)
 
-Allows to reset a user password. This API is useful when a user forgot their password and needs to reset it. This is the workflow: 
+Allows to reset a user password. This API is useful when users forget their password and need to reset it. This is the workflow: 
 
 - the server checks if the email address is present within the `visibleByTheUser` fields in the user profile 
 - the server sends an email to that address with a generated link to follow in order to reset the password 
@@ -2126,7 +2126,7 @@ Parameter | Description
 **collection-name** | The name of the new collection. Mandatory.
 
 <aside class="warning">
-  The user calling this API must be admin or belong to the admin role.
+  The user calling this API must be the admin or belong to the admin role.
 </aside>
 
 <div class="snippet-title">
@@ -2182,7 +2182,7 @@ client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
 
 `DELETE /admin/collection/:collection-name`
 
-Deletes an existing collection with the name specified in the URL. The user calling this API must be admin or belong to the admin role.
+Deletes an existing collection with the name specified in the URL. The user calling this API must be the admin or belong to the admin role.
 
 Parameter | Description
 --------- | -----------
@@ -2509,7 +2509,7 @@ The fieldName must start with a .
 </aside>
 
 <div class="snippet-title">
-	<p>Example of a request to change the value of the field 'title'</p>
+	<p>Example of a request to change the value of the 'title' field </p>
 </div>
 
 ```shell
@@ -2721,7 +2721,7 @@ NOT IMPLEMENTED
 ```
 
 <div class="snippet-title">
-	<p>Response includes new value for the property</p>
+	<p>Response includes a new value for the property</p>
 </div>
 
 ```json
@@ -3854,7 +3854,7 @@ Parameter | Description
 **id** | The ID of the file. Mandatory.
 **action** | The grant you want to revoke. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to whom you want to revoke the grant. Mandatory.
-**rolename** | The name of role to whom you want to revoke the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator.  Mandatory.
+**rolename** | The name of the role to whom you want to revoke the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator.  Mandatory.
 
 <div class="snippet-title">
 	<p>Example of a request to revoke read access to user “a” on a file</p>
@@ -3991,9 +3991,9 @@ Since links have direction the first document will be the source node of the lin
 
 Parameter | Description
 --------- | -----------
-**sourceId** | The id of the first document or file to link.
+**sourceId** | The ID of the first document or file to link.
 **label** | The link name. Can be any valid string
-**destId** | The id of the second document or file to link.
+**destId** | The ID of the second document or file to link.
 
 ```shell
 curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
@@ -4064,7 +4064,7 @@ The `out` and `in` fields contain the content of both objects.
 ` Source Doc ----->(out) link (in)----> Dest Doc `
 
 
-Please note that you can have as many links you want between two document or file even with the same label.
+Please note that you can have as many links as you want between two documents or files even with the same label.
 
 To create a link, a user has to have at least the read permission on both objects to link.
 
@@ -4076,10 +4076,10 @@ To create a link, a user has to have at least the read permission on both object
 
 `GET /link`
 
-You can retrieve a single link by its ID, or query the entire link-space. Be carefull because too many links could be returned.
-The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask to the server to filter the response.
+You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
+The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
 
-You can of course apply filters to the fields of the nodes linked as well.
+Of course you can apply filters to the fields of linked nodes as well.
 
 `GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
 
@@ -4138,7 +4138,7 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 
 Deletes a link. 
 
-At the moment the link can be deleted by anyone. The RSL (Record Security Level) has not implemented yet on links.
+At the moment links can be deleted by anyone. The RSL (Record Security Level) has not yet been implemented on links.
 
 ```shell
 curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
@@ -4899,8 +4899,8 @@ curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 
 `DELETE /admin/endpoints/:group-name/enabled`
 
-This API disable a group of endpoints.
-Calls to endpoints belonging to this group will returl an error 403.
+This API disables a group of endpoints.
+Calls to endpoints belonging to this group will return an error 403.
 
 Parameter | Description
 --------- | -----------
@@ -4996,7 +4996,7 @@ box.enablePush("registrationIdByGoogle",
 
 **Group**: [baasbox.notifications.receive](#list-groups)
 
-Disable a specific user (logged using a specific device) to undeceive push notifications.
+Disable a specific user (logged using a specific device) to unreceive push notifications.
 
 Parameter | Description
 --------- | -----------
@@ -5054,7 +5054,7 @@ client.disablePush("registration-id",new BaasHandler<Void>(){
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. It will be sent to every device on which the user has enabled push notifications.
+Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
 
 Parameter | Description
 --------- | -----------
