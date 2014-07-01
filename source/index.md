@@ -930,7 +930,7 @@ You can also access endpoints using synchronous alternatives using the ``*Sync``
 
 Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
 
-You can control asynchronous requests thorugh the returned RequestToken.
+You can control asynchronous requests through the returned RequestToken.
 
 #### Asynchronous requests management
 
