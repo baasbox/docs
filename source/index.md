@@ -53,6 +53,8 @@ As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK
 Finally insert the following statement in the .pch file
 #import "BAAClient.h" 
 and you are good to go. 
+
+Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one add the following statement and you are good to go: #import "BAAClient.h" 
 ```
 
 ```java
