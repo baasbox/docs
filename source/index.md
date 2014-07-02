@@ -407,7 +407,7 @@ fields will be filled with the default values.
 
 Once you logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.8.1/baasbox_0-8-0-console.png)
+![Dashboard image](images/Console_0.8.1/baasbox_0-8-1-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -419,28 +419,29 @@ dashboard is split into several sections:
 5.  Number of users and rapid access to the relative section
 6.  Number of documents (objects) stored in the embedded database and
     rapid access to the relative section
-7.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
+7.  Number of files stored and rapid access to the relative section
+8.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
     can find the latest version
-8.  Number of collections, documents and total size in one window.
-9.  Here you can see all the latest news about BaasBox. These are feeds from
+9.  Number of collections, documents and total size in one window.
+10. Here you can see all the latest news about BaasBox. These are feeds from
     the BaasBox site |News|
-10. System window:
+11. System window:
     -  Memory: you can find max allocable memory, current allocated
        memory and current used memory
     -  OS: you can find name, version, architecture and processors
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
     -  Database: you can find version with its path and data size
-11. Access to a dialog window to change password or to logout
+12. Access to a dialog window to change password or to logout
     -  Change password: Just insert old and new passwords, then confirm
        the new one
     -  Logout: just logout from the console. Remember that you can also
        logout from the left menu.
-12. DB Management: you can create a backup of your DB and import & export
-13. Roles: you can view and create roles for users
-14. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-15. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
-16. Number of files stored and rapid access to the relative section
+13. DB Management: you can create a backup of your DB and import & export
+14. Roles: you can view and create roles for users
+15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
+16. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
+
 
 <aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
