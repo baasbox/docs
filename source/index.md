@@ -124,6 +124,14 @@ To set an option you have to type it as a _start_ script parameter.
 ./start -XX:MaxPermSize=64m
 ```
 
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
 Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
 By default no options are used.
 A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html) 
@@ -133,6 +141,15 @@ These settings cannot be modified at runtime.
 ```shell
 ./start -Dhttp.port=80
 ```
+
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
 BaasBox is based on the [Play! Framework](http://www.playframework.com). This means that it accepts all the options available for any Play! application.
 A complete reference of these option can be found [here](hhttp://www.playframework.com/documentation/2.1.5/ProductionConfiguration)
 These settings cannot be modified at runtime.
@@ -288,13 +305,22 @@ To use an external file, you have to use the following options and instructions
 Regarding the `config.file` key, a possible example of an external configuration file may be:
 
 
-```
+```shell
 include classpath("application.conf")
 
 application.code="1234-56789"
 
 orient.baasbox.path=db/baasbox
 ```
+
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
 <aside class="notice"> 
 **NOTE**: remember to ALWAYS include in the first line the statement:
 `
@@ -369,7 +395,7 @@ objects and queries without using specific abstractions or having to simulate th
 
 # Console
 
-```
+```shell
 To run the BaasBox server go into its folder and type
 ./start
 on Windows systems type
@@ -377,6 +403,14 @@ start.bat
 
 Once the server is up and running, you can access the console by opening the following link:
 http://127.0.0.1:9000/console
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
 ```
 
 BaasBox has a web console that allows managing its behavior and performing administrative
@@ -804,7 +838,15 @@ If you prefer the good old way, download the SDK from the [download section](htt
 
 The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
 
+```shell
+NOTHING HERE
 ```
+
+```java
+NOTHING HERE
+```
+
+```objective_c
 #ifdef __OBJC__
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
@@ -816,9 +858,17 @@ The simplest way to import the SDK is to add this line ``#import "BAAClient.h"``
 
 You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
 
-```
+```objective_c
 [BaasBox setBaseURL:@"http://localhost:9000"
             appCode:@"1234567890"];
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
 ```
 
 #### Architecture and pass-through
@@ -852,7 +902,7 @@ There are four methods, one for each HTTP verb.
 
 As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
 
-```
+```objective_c
 // Assumes there is a logged in user
 BAAClient *client = [BAAClient sharedClient];
 [client getPath:@"/file/details"
@@ -866,6 +916,14 @@ BAAClient *client = [BAAClient sharedClient];
           NSLog(@"error is %@", error); 
           
         }];
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
 ```
 
 
@@ -891,7 +949,7 @@ using the ``BaasBox.Builder`` class.
 	<p>Example initialization</p>
 </div>
 
-```
+```java
 //...
 import com.baasbox.android.BaasBox;
 
@@ -911,6 +969,14 @@ public class MyApp extends Application {
 }
 ```
 
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
 #### General usage
 
 Most BaasBox rest resources are exposed through wrapper classes.
@@ -927,7 +993,7 @@ You can control asynchronous requests thorugh the returned RequestToken.
 	<p>Example requests</p>
 </div>
 
-```
+```java
 // Here  BaasDocument is used as an example
 // it represents documents on the server, 
 // more on this later
@@ -944,6 +1010,14 @@ RequestToken tok = BaasDocument.fetchAll("coll",
 // synchronous equivalent BLOCKS!!!
 BaasResult<List<BaasDocument>> res = 
   BaasDocument.fetchAllSync("coll");
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
 ```
 
 #### Asynchronous requests management
@@ -996,6 +1070,14 @@ public class MyActivity extends Activity implements
 
 ```
 
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
 #### Pass-through API
 
 Some rest endpoints have no direct equivalent in the API.
@@ -1006,7 +1088,7 @@ Using these methods you can access these APIs while still enjoying the rest
 of the SDK features, such as concurrency and lifecycle management, caching,
 handling of the authentication.
 
-```
+```java
 BaasBox cli  = BaasBox.getDefault();
 cli.rest(HttpRequest.GET,
          "endpoint",
@@ -1016,6 +1098,14 @@ cli.rest(HttpRequest.GET,
   @Override
   public void handle(BaasResult<JsonObject> res){
   }});
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
 ```
 
 
