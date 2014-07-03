@@ -78,7 +78,7 @@ nav {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   text-decoration:none;
-  font-family:Lato-Regular, sans-serif !important;
+  font-family:"Lato", sans-serif !important;
   font-size:17px;
 }
 .mainmenu .menuwrapper .menulist ul li a:hover {
