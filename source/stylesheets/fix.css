@@ -17,7 +17,7 @@
     src: local("Lato Bold"), local("Lato-Bold"), url("http://themes.googleusercontent.com/static/fonts/lato/v7/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff") format("woff");
 }
 
-@font-face { font-family: Lato-Regular; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/lato-regular.svg'); } 
+@font-face { font-family: Lato-Regular; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/Lato-Regular.ttf'); } 
 
 @font-face { font-family: Lato-Bold; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/lato-bold.svg'); } 
 
@@ -72,7 +72,6 @@ nav {
   margin: 0 0.5em;
   border-radius: 4px;
   text-transform: uppercase;
-  font-weight: 700;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -96,11 +95,10 @@ nav {
 
 .mainmenu .menuwrapper .menulist {
     text-align: center;
-}
-
-.mainmenu .menuwrapper .menulist {
+    margin-right:163px;
+    margin-top:5px;
+    float:right;
     display: inline-block;
-    float: right;
     padding: 0.5em 1em;
     position: relative;
     text-align: center;
@@ -120,7 +118,7 @@ nav {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  margin-left:53px;
+  margin-left:37px;
 }
 .mainmenu .menuwrapper .logoblock .companylogo:hover {
   opacity: 0.7;
@@ -137,9 +135,122 @@ nav {
 
 .items {
   margin-top: -1px;
-  margin-right:-29px;
 }
 
 .content {
     padding-top:100px;
 }
+<<<<<<< HEAD
+=======
+
+.tocify-wrapper{
+	background-color:#F2F2F2 !important;
+	margin-top:54px !important;
+}
+
+.tocify-wrapper .toc-footer{
+	border-top:none !important;
+}
+
+.tocify-wrapper .tocify-subheader{
+	background-color:#cccccc !important;
+	background-image:none !important;
+}
+
+.tocify-wrapper .tocify-focus {
+	background-color:#999 !important;
+}
+
+.tocify-wrapper .tocify-subheader > li:first-child{
+	border-top:none !important;
+}
+
+.tocify-wrapper .tocify-subheader > li:last-child{
+	border-bottom-color:#EDEDED !important;
+}
+
+.content pre, .content blockquote {
+	width:80% !important;
+	background-color:#fff !important;
+	color:#111111 !important;
+    border:1px solid #538378 !important;
+    margin-top:0px !important;
+    margin-left:16px !important;
+    margin-bottom:45px !important;
+
+}
+
+.page-wrapper .lang-selector {
+	width:80% !important;
+	background-color:#F9F9F9 !important;
+	color:#111111 !important;
+	border-bottom:none !important;
+	margin-left:16px !important;
+	margin-top:0px !important;
+}
+
+.page-wrapper .lang-selector a{
+	color:#111111 !important;
+	margin-left:16px !important
+}
+
+.page-wrapper .lang-selector a:active {
+	background-color:#538378 !important;
+	color:#fff !important;
+}
+
+.page-wrapper .lang-selector a.active {
+	background-color:#538378 !important;
+	color:#fff !important;
+}
+
+
+
+.content blockquote>p {
+	background-color:rgba(246, 217, 154, 0.25) !important;
+	color:#111111 !important;
+	border:1px solid #E3D08D !important
+}
+
+#toc a {
+	color:#000000 !important;
+}
+
+.highlight, .highlight .w {
+	background-color:#fff !important;
+}
+
+.highlight .err {
+	background-color:#fff !important;
+}
+
+.content aside.notice:before{
+	content:"■";
+}
+
+.snippet-title {
+	background-color: #111111;
+	padding: 2em 15px;
+	margin: 0;
+	width: 100%;
+	clear: right;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 83% !important;
+	background-color: #F9F9F9 !important;
+	color: #111111 !important;
+	border: none;
+	margin-top: 0px !important;
+}
+.snippet-title>p {
+	border-radius: 5px;
+	padding: 13px;
+	color: #ccc;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #404040;
+	background-color:rgba(246, 217, 154, 0.25) !important;
+	color:#111111 !important;
+	border:1px solid #E3D08D !important
+}
+>>>>>>> 0.8.1

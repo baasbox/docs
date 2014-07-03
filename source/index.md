@@ -12,21 +12,54 @@ toc_footers:
 
 # Introduction
 
+BaasBox is a complete solution to implement the back end of your applications.
+
+The latest version is **0.8.1**
+
+
+You can access all sections using the sidebar on the left. The
+documentation explains:
+
+*  the BaasBox features (server side)
+   *  [how to install BaasBox](?shell#installation)
+   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
+   *  [REST API](?shell#api)
+
+*  the SDK features
+
+   *  [iOS SDK](?objective_c#ios-sdk)
+   *  [Android SDK](?java#android-sdk)
+
+
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-1-released/)
+
+The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
+
+Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
+result of what BaasBox can give you. 
+Enjoy!
+
+
 ```shell
 In this section you can find code examples for every platform we address.
 Click on any tab above to choose the platform of your interest.
 ```
 
 ```objective_c
-To install the iOS SDK download this repo (https://github.com/baasbox/iOS-SDK) and drag
-and drop on Xcode the folder BaasBox-iOS-SDK.
-Then insert the following statement in the .pch file
-#import "BAAClient.h" and you are good to go. 
+To install the iOS SDK you have two ways.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.1'" to your pod file.
+As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the folder BaasBox-iOS-SDK on Xcode.
+
+Finally insert the following statement in the .pch file
+#import "BAAClient.h" 
+and you are good to go. 
+
+Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one add the following statement and you are good to go: #import "BAAClient.h" 
 ```
 
 ```java
 /*
-The Android SDK is distributed as a jar, 
+The Android SDK is distributed as a jar. 
 To get started download it from the download section of the website 
 (http://www.bassbox.com/download/), and put it in your libs folder.
 
@@ -46,33 +79,6 @@ public class MyApp extends Application{
   }
 }
 ```
-
-BaasBox is a complete solution to implement the back end of your applications.
-
-Latest version is **0.8.0**
-
-
-You can access all sections using the sidebar on the left. The
-documentation explains:
-
-*  the BaasBox features (server side)
-   *  [how to install BaasBox](?shell#installation)
-   *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
-   *  [REST API](?shell#api)
-
-*  the SDK features
-
-   *  [iOS SDK](?objective_c#ios-sdk)
-   *  [Android SDK](?java#android-sdk)
-
-
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-0-released/)
-
-The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
-
-Our [tutorials](http://www.baasbox.com/tutorial/) will allow you to rapidly have a first
-result of what BaasBox can give you. 
-Enjoy!
 
 
 # Installation
@@ -187,7 +193,7 @@ Key | Description | Default
 
 Options for the Password Recovery feature
 
-Key | Description | Default
+<span style="color:#F9F9F9;">(snippetcode)__</span><br/>Key | <span style="color:#F9F9F9;">(snippetcode)__</span><br/>Description |<span style="color:#F9F9F9;">(snippetcode)__<br/></span>Default
 --------- | ----------- | -------------
 **email.expiration.time** | Minutes before the reset code expires |  `15`
 **email.from** | The name and address to be specified in the 'from' field of the email to send |  `info@example.com`
@@ -277,7 +283,7 @@ Instead of passing every single option as a parameter of the _start_ script, you
 
 To use an external file, you have to use the following options and instructions
 
-Key   | Description   |   Example
+<span style="color:#F9F9F9;">(keysnippetcode)_____</span><br/>Key   | <span style="color:#F9F9F9;">(descriptionsnippetcode)_____</span><br/>Description   |   <span style="color:#F9F9F9;">(examplesnippetcode)_____</span><br/>Example
 --------- | ----------- | -------------
 **config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)` directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
 
@@ -380,14 +386,14 @@ tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox in the correct way, you can open your browser and open
-the welcome screen: ![Console image](images/Console_0.8.0/home_console.png)
+the welcome screen: ![Console image](images/Console_0.8.1/home_console.png)
 
 ## Login screen
 
 When you are in the start view, the administrator console is reachable
 at the `/console` path. 
 
-![Login image](images/Console_0.8.0/login.png)
+![Login image](images/Console_0.8.1/login.png)
 To login in the administrative area you must supply credentials and Application Code to the administrator.
 By default these values are:
 
@@ -403,7 +409,7 @@ fields will be filled with the default values.
 
 Once you logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.8.0/baasbox_0-8-0-console.png)
+![Dashboard image](images/Console_0.8.1/baasbox_0-8-1-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -415,27 +421,29 @@ dashboard is split into several sections:
 5.  Number of users and rapid access to the relative section
 6.  Number of documents (objects) stored in the embedded database and
     rapid access to the relative section
-7.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
+7.  Number of files stored and rapid access to the relative section
+8.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
     can find the latest version
-8.  Number of collections, documents and total size in one window.
-9.  Here you can see all the latest news about BaasBox. These are feeds from
+9.  Number of collections, documents and total size in one window.
+10. Here you can see all the latest news about BaasBox. These are feeds from
     the BaasBox site |News|
-10. System window:
+11. System window:
     -  Memory: you can find max allocable memory, current allocated
        memory and current used memory
     -  OS: you can find name, version, architecture and processors
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
     -  Database: you can find version with its path and data size
-11. Access to a dialog window to change password or to logout
+12. Access to a dialog window to change password or to logout
     -  Change password: Just insert old and new passwords, then confirm
        the new one
     -  Logout: just logout from the console. Remember that you can also
        logout from the left menu.
-12. DB Management: you can create a backup of your DB and import & export
-13. Roles: you can view and create roles for users
-14. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-15. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
+13. DB Management: you can create a backup of your DB and import & export
+14. Roles: you can view and create roles for users
+15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
+16. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
+
 
 <aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
@@ -458,7 +466,7 @@ Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
 named group.
 
-![Api access control](images/Console_0.8.0/api_access_control.png)
+![Api access control](images/Console_0.8.1/api_access_control.png)
 
 
 ## Database Management
@@ -466,7 +474,7 @@ named group.
 The item **DB Management** allows you to perform some operations on the
 database. 
 
-![Dashboard image](images/Console_0.8.0/baasbox-db-management.png)
+![Dashboard image](images/Console_0.8.1/baasbox-db-management.png)
 
 1. Restore a previously created backup file
 2. Create a new backup
@@ -487,7 +495,7 @@ then use the restore feature.
 
 In the settings you can define an array of possible resizing policies for images.
 
-![Image resize settings](images/Console_0.8.0/image_resize.png)
+![Image resize settings](images/Console_0.8.1/image_resize.png)
 
 Examples are: 
 
@@ -504,7 +512,7 @@ See [Retrieve a file](#retrieve-a-file) on how to use these values.
 By selecting the Users option on the menu you can access the users
 section. 
 
-![Users image](images/Console_0.8.0/users.png)
+![Users image](images/Console_0.8.1/users.png)
 
 
 In this section you have the list of all users. A
@@ -513,7 +521,7 @@ registereduser), a creation date, a status and actions. You also have a
 search tool. If you want to create a new user, click on the New User
 button and you will see this window:
 
-![New user image](images/Console_0.8.0/create_new_user.png)
+![New user image](images/Console_0.8.1/create_new_user.png)
 
 <aside class="notice">
 	Starred fields are mandatory. After you have filled in at least the mandatory fields, you have to save the changes.
@@ -527,13 +535,13 @@ By selecting the Collections option on the menu you can access the
 collection administration page. Collections are a sort of buckets where
 you can store objects, also known as "documents". 
 
-![Collections](images/Console_0.8.0/collections.png)
+![Collections](images/Console_0.8.1/collections.png)
 
 In this section you have a list of all your collections and you can quickly
 find them with the search tool. To create a new collection, click on the
 New Collection button and insert its name, then save the changes.
 
-![New collection](images/Console_0.8.0/create_new_collection.png)
+![New collection](images/Console_0.8.1/create_new_collection.png)
 
 
 ## Documents
@@ -542,14 +550,14 @@ New Collection button and insert its name, then save the changes.
 Documents are objects stored in the embedded NoSQL database and grouped
 in "Collections".
 
-![Documents](images/Console_0.8.0/documents.png)
+![Documents](images/Console_0.8.1/documents.png)
 
 In this section you have the list of all
 your documents, but you have to select an existing collection at first.
 In fact you can see all the documents relating to a specific collection.
 Of course you also have the search tool. 
 
-![Documents table](images/Console_0.8.0/baasbox-documents-table.png)
+![Documents table](images/Console_0.8.1/baasbox-documents-table.png)
 
 Each document has a unique ID, generated by the server once it is stored.
 Data documents are stored and retrieved JSON format.
@@ -568,7 +576,7 @@ associated data. Assets do not have IDs generated by the server, but you
 can, indeed you MUST, assign a unique name to them. You can subsequently
 use these names to reference the assets.
 
-![Assets](images/Console_0.8.0/assets.png)
+![Assets](images/Console_0.8.1/assets.png)
 
 In this section you have a detailed list of all your assets
 with information fields like Icon, Name, Meta, Size, Type, Download and
@@ -576,7 +584,7 @@ Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
 following window: 
 
-![New asset](images/Console_0.8.0/new_asset.png)
+![New asset](images/Console_0.8.1/new_asset.png)
 
 <aside class="notice">
 	You have to fill in at least the Name
@@ -634,7 +642,13 @@ token to the server, use the following header:
 
 ### The JSON response 
 
-> An example of a JSON response
+Every response generated by BaasBox as a result of a REST call is a JSON
+object. In case of error, the data returned are more detailed and are useful to
+understand why the request was rejected. 
+
+<div class="snippet-title">
+	<p>An example of a JSON response</p>
+</div>
 
 ```json 
 {	
@@ -644,7 +658,9 @@ token to the server, use the following header:
 }
 ```
 
-> An example of JSON error
+<div class="snippet-title">
+	<p>An example of JSON error</p>
+</div>
 
 ```json
 {
@@ -657,10 +673,6 @@ token to the server, use the following header:
 	"API_version": "...the BaasBox API version..."
 }
 ```
-
-Every response generated by BaasBox as a result of a REST call is a JSON
-object. In case of error, the data returned are more detailed and are useful to
-understand why the request was rejected. 
 
 
 ### Custom error codes
@@ -686,7 +698,31 @@ These are custom error codes specific to BaasBox, returned into the bb_code fiel
 
 ### Pagination and query criteria
 
-> Example of a paginated query
+Some queries support pagination. There are two important parameters in paginated calls.
+
+Parameter | Description
+--------- | -----------
+**page** | O indexed page number. Optional
+**recordsPerPage** | Number of elements to be retrieved per page. Optional
+**where** | set a filter criteria in a SQL-like fashion (i.e.: ``“color=’yellow’ or address.city=’rome’”``). It is possible to use the positional mode, for example: ``“color=? or address.city=?”``. In this case you must supply the parameters’ values using the ``params`` querystring parameter.
+**params** | an array of value for the where clause. For example: ``/API\_URL/WHERECLAUSE/&params=yellow&params=cyan``
+**orderBy** | set an order by clause in a SQL-like fashion (i.e.: orderBy name desc). NOTE: the direction of ordering (asc or desc) is mandatory if pagination is used (see below)
+**page** | a 0 based index indicating the page requested
+**recordPerPage** | the number of records per page
+**fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exhaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
+**groupBy** | allows to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
+**count** | if set to "true", it returns the number of records that match the query instead of the entire record-set
+
+**Example of valid calls**:
+
+* ``/document/mycollection/count?where=color%3D’yellow’``
+* ``/document/mycollection/count?where=color%3D%3F&params%3dyellow``
+* ``/document/documents/count?where=color%3D%3F%20or%20color%3D%3F&params=yellow&params=cyan``
+
+
+<div class="snippet-title">
+	<p>Example of a paginated query</p>
+</div>
 
 ```shell
 curl 'http://localhost:9000/users?page=0&recordsPerPage=1' \
@@ -749,27 +785,6 @@ PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
 });
 ```
 
-Some queries support pagination. There are two important parameters in paginated calls.
-
-Parameter | Description
---------- | -----------
-**page** | O indexed page number. Optional
-**recordsPerPage** | Number of elements to be retrieved per page. Optional
-**where** | set a filter criteria in a SQL-like fashion (i.e.: ``“color=’yellow’ or address.city=’rome’”``). It is possible to use the positional mode, for example: ``“color=? or address.city=?”``. In this case you must supply the parameters’ values using the ``params`` querystring parameter.
-**params** | an array of value for the where clause. For example: ``/API\_URL/WHERECLAUSE/&params=yellow&params=cyan``
-**orderBy** | set an order by clause in a SQL-like fashion (i.e.: orderBy name desc). NOTE: the direction of ordering (asc or desc) is mandatory if pagination is used (see below)
-**page** | a 0 based index indicating the page requested
-**recordPerPage** | the number of records per page
-**fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exhaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
-**groupBy** | allows to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
-**count** | if set to "true", returns the number of records that match the query instead of the entire recordset
-
-**Example of valid calls**:
-
-* ``/document/mycollection/count?where=color%3D’yellow’``
-* ``/document/mycollection/count?where=color%3D%3F&params%3dyellow``
-* ``/document/documents/count?where=color%3D%3F%20or%20color%3D%3F&params=yellow&params=cyan``
-
 <aside class="notice">
 	The value of the parameter must be URL encoded.
 </aside>
@@ -813,22 +828,6 @@ You need to initialize the SDK before making any API call. The best place to do 
 The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
 On the right there is an example of a GET request.
 
-```
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client getPath:@"/file/details"
-     parameters:parameters
-        success:^(id responseObject) {
-          
-          NSLog(@"response is %@", responseObject);         
-          
-        } failure:^(NSError *error) {
-          
-          NSLog(@"error is %@", error); 
-          
-        }];
-```
-
 There are four methods, one for each HTTP verb.
 
 ``- (void)getPath:(NSString *)path
@@ -855,6 +854,21 @@ There are four methods, one for each HTTP verb.
 
 As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
 
+```
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"/file/details"
+     parameters:parameters
+        success:^(id responseObject) {
+          
+          NSLog(@"response is %@", responseObject);         
+          
+        } failure:^(NSError *error) {
+          
+          NSLog(@"error is %@", error); 
+          
+        }];
+```
 
 
 ### Android SDK
@@ -869,7 +883,15 @@ You can also use maven gradle or maven to depend on the library:
 
 #### Initialization
 
-> Example initialization
+Currently, you can have only one client per application. 
+The client must be initialized before you can use any of the provided features.
+The preferred way to initialize the SDK is to override the default 
+application and configure it in the ``onCreate()`` method, 
+using the ``BaasBox.Builder`` class.
+
+<div class="snippet-title">
+	<p>Example initialization</p>
+</div>
 
 ```
 //...
@@ -891,16 +913,21 @@ public class MyApp extends Application {
 }
 ```
 
-Currently, you can have only one client per application. 
-The client must be initialized before you can use  any of the provided features.
-The preferred way to initialize the it is to override the default 
-application and configure it in the ``onCreate()`` method, 
-using the ``BaasBox.Builder`` class.
-
-
 #### General usage
 
-> Example requests
+Most BaasBox rest resources are exposed through wrapper classes.
+Endpoints are accessible through asynchronous methods, that accept a general callback interface
+``BaasHandler<T>``
+
+You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
+
+Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
+
+You can control asynchronous requests thorugh the returned RequestToken.
+
+<div class="snippet-title">
+	<p>Example requests</p>
+</div>
 
 ```
 // Here  BaasDocument is used as an example
@@ -921,20 +948,21 @@ BaasResult<List<BaasDocument>> res =
   BaasDocument.fetchAllSync("coll");
 ```
 
-
-Most BaasBox rest resources are exposed through wrapper classes.
-Endpoints are accessible through asynchronous methods, that accept a general callback interface
-``BaasHandler<T>``
-
-You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
-
-Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
-
-You can control asynchronous requests thorugh the returned RequestToken.
-
 #### Asynchronous requests management
 
-```
+Asynchronous requests are executed by a pool of threads.
+While an asynchronous request is running you can manage it
+using the return value of the method, a ``RequestToken``.
+Tokens are designed to let you *suspend* the assigned callback without
+interrupting the real request, allowing the later resumption of
+result processing on the main thread when you are ready to handle it.
+This is quite useful when callbacks are tied to the lifecycle of your
+acitivities.
+
+Request tokens let you cancel/abort requests, or wait for their completion,
+this is useful in testing or if you want to parallelize your http requests.
+
+```java
 // an example asynchronous request in an activity
 public class MyActivity extends Activity implements
   BaasHandler<BaasUser>{
@@ -969,19 +997,16 @@ public class MyActivity extends Activity implements
 
 
 ```
-Asynchronous requests are executed by a pool of threads.
-While an asynchronous request is running you can manage it
-using the return value of the method, a ``RequestToken``.
-Tokens are designed to let you *suspend* the assigned callback without
-interrupting the real request, allowing the later resumption of
-result processing on the main thread when you are ready to handle it.
-This is quite useful when callbacks are tied to the lifecycle of your
-acitivities.
-
-Request tokens let you cancel/abort requests, or wait for their completion,
-this is useful in testing or if you want to parallelize your http requests.
 
 #### Pass-through API
+
+Some rest endpoints have no direct equivalent in the API.
+For them you can use the lower level pass through API provided by the SDK
+through the ``rest()`` and ``restSync()`` methods.
+Whenever you see a "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
+Using these methods you can access these APIs while still enjoying the rest
+of the SDK features, such as concurrency and lifecycle management, caching,
+handling of the authentication.
 
 ```
 BaasBox cli  = BaasBox.getDefault();
@@ -994,14 +1019,6 @@ cli.rest(HttpRequest.GET,
   public void handle(BaasResult<JsonObject> res){
   }});
 ```
-Some rest endpoints have no direct equivalent in the api.
-For them you can use the lower level pass through api provided by the sdk
-through the ``rest()`` and ``restSync()`` methods.
-Whenever you see a "TO BE IMPLEMENTED in the Android section you can recur to this methods.
-Using these methods you can access these apis while still enjoing the rest
-of the sdk features, such as concurrency and lifecycle management, caching,
-handling of the authentication.
-
 
 
 
@@ -1011,7 +1028,27 @@ handling of the authentication.
 
 ### Sign up
 
-> Sample request to create a user
+``POST /user``
+
+**Group**: [baasbox.account.create](#list-groups)
+
+**Headers**: See authorization header in the [General Remarks](#general-remarks)
+
+**Description**: This API allows a user to sign up to the App. Users will belong to the registered user role and
+they will post new content, will retrieve their own content, will change their password. 
+
+Parameter | Description
+--------- | -----------
+**username** | The username for the user. Mandatory
+**password** | Password. Mandatory
+**visibleByTheUser** | an object whose fields are private and visible only by the user
+**visibleByFriends** | an object whose fields are visible by the user and friends (for future friendship management)
+**visibleByRegisteredUsers** | an object whose fields are visible by the user, friends, any registered user
+**visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, also anonymous users
+
+<div class="snippet-title">
+	<p>Sample request to create a user</p>
+</div>
 
 ```shell
 curl http://localhost:9000/user \
@@ -1052,7 +1089,9 @@ user.signup(new BaasHandler<BaasUser>(){
 });
 ```
 
-> Sample response when a user is created
+<div class="snippet-title">
+	<p>Sample response when a user is created</p>
+</div>
 
 ```json
 {
@@ -1074,29 +1113,27 @@ user.signup(new BaasHandler<BaasUser>(){
 }
 ```
 
-``POST /user``
 
-**Group**: [baasbox.account.create](#list-groups)
 
-**Headers**: See authorization header in the [General Remarks](#general-remarks)
+### Login
 
-**Description**: This API allows a user to sign up to the App. Users will belong to the registered user role and
-they will post new content, will retrieve their own content, will change their password. 
+``POST /login``
+
+**Group**: [baasbox.account](#list-groups)
+
+Checks username/password and grants the user the right to execute other calls. 
+This API returns a session token (**X-BB-SESSION**) that must be provided into 
+all authenticated calls.
 
 Parameter | Description
 --------- | -----------
 **username** | The username for the user. Mandatory
 **password** | Password. Mandatory
-**visibleByTheUser** | an object whose fields are private and visible only by the user
-**visibleByFriends** | an object whose fields are visible by the user and friends (for future friendship management)
-**visibleByRegisteredUsers** | is an object whose fields are visible by the user, friends, any registered user
-**visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, also anonymous users
+**appcode** | The appcode of your server instance
 
-
-
-### Login
-
-> Sample request to login 
+<div class="snippet-title">
+	<p>Sample request to login</p>
+</div> 
 
 ```shell
 curl http://localhost:9000/login \
@@ -1133,7 +1170,9 @@ user.login(new BaasHandler<BaasUser>() {
   }
 });
 ```
-> Sample response when a user is logged in
+<div class="snippet-title">
+	<p>Sample response when a user is logged in</p>
+</div> 
 
 ```json
 {
@@ -1155,24 +1194,23 @@ user.login(new BaasHandler<BaasUser>() {
 }
 ```
 
-``POST /login``
-
-**Group**: [baasbox.account](#list-groups)
-
-Checks username/password and grants the user the right to execute other calls. 
-This API returns a session token (**X-BB-SESSION**) that must be provided into 
-all authenticated calls.
-
-Parameter | Description
---------- | -----------
-**username** | The username for the user. Mandatory
-**password** | Password. Mandatory
-**appcode** | The appcode of your server instance
-
 
 ### Logout
 
-> Example of a logout request
+
+``POST /logout/:pushToken`` 
+
+**Group**: [baasbox.account](#list-groups)
+
+Allows a user to logout from the app on a specific device. A push notification will not be sent to the user through the specified device.
+
+Parameter | Description
+--------- | -----------
+**pushToken** | Optional. The push notification token that you have used to activate push notifications.
+
+<div class="snippet-title">
+	<p>Example of a logout request</p>
+</div> 
 
 ```shell
 curl -X POST http://localhost:9000/logout \
@@ -1204,7 +1242,9 @@ BaasUser.current().logout(new BaasHandler<Void>() {
 });
 ```
 
-> Sample response when a user logs out
+<div class="snippet-title">
+	<p>Sample response when a user logs out</p>
+</div> 
 
 ```json
 {
@@ -1214,18 +1254,11 @@ BaasUser.current().logout(new BaasHandler<Void>() {
 }
 ```
 
-``POST /logout/:pushToken`` 
-
-**Group**: [baasbox.account](#list-groups)
-
-Allows a user to logout from the app on a specific device. A push notification will not be sent to the user through the specified device.
-
-Parameter | Description
---------- | -----------
-**pushToken** | Optional. The push notification token that you have used to activate push notifications.
-
-
 ### Suspend a user
+
+Suspends a given user.
+
+Only administrators can call this API.
 
 ``PUT 	/me/suspend	`` 
 
@@ -1248,11 +1281,6 @@ curl -X PUT http://localhost:9000/admin/user/suspend/user1 \
 	-H X-BAASBOX-APPCODE:1234567890
 ```
 
-Suspends a given user.
-
-Only administrators can call this API.
-
-
 ### Reactivate a user
 
 ``PUT 	/admin/user/activate/:username`` 
@@ -1270,7 +1298,15 @@ Only administrators can call this API.
 
 ### Logged user profile
 
-> Request to fetch the currently logged in user profile 
+``GET /me``
+
+**Group**: [baasbox.account](#list-groups)
+
+Retrieves details about the logged in user.
+
+<div class="snippet-title">
+	<p> Request to fetch the currently logged in user profile</p>
+</div> 
 
 ```shell
 curl http://localhost:9000/me \
@@ -1303,7 +1339,9 @@ BaasUser.current().refresh(new BaasHandler<BaasUser>() {
   }
 });
 ```
-> Sample response 
+<div class="snippet-title">
+	<p>Sample response</p>
+</div>  
 
 ```json
 {
@@ -1324,16 +1362,42 @@ BaasUser.current().refresh(new BaasHandler<BaasUser>() {
 }
 ```
 
-``GET /me``
+### Update user profile
+
+``PUT /me``
 
 **Group**: [baasbox.account](#list-groups)
 
-Retrieves details about the logged in user.
+Updates details about the logged in user.
 
+The body payload to be sent has the following form:
 
-### Update user profile
+```{
+    "visibleByTheUser": {},
+    "visibleByFriends": {},
+    "visibleByRegisteredUsers": {},
+    "visibleByAnonymousUsers": {}
+}```
 
-> PUT request to update the logged in user profile
+All four properties are optional. You can send just
+one of them or all four. See example on the right.
+The values for this fields can be anything you like: string, numbers, arrays
+or JSON encoded objects.
+
+Parameter | Description
+--------- | -----------
+**visibleByTheUser** | fields are private and visible only by the user
+**visibleByFriends** | fields are visible by the user and friends
+**visibleByRegisteredUsers** | fields are visible by the user, friends and any registered user
+**visibleByAnonymousUsers** | fields are public and visible by everyone, even anonymous users
+
+<aside class="warning">
+	The previously stored content for each of the four fields will be overwritten.
+</aside>
+
+<div class="snippet-title">
+	<p>PUT request to update the logged in user profile</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/me \
@@ -1372,7 +1436,9 @@ user.save(new BaasHandler<BaasUser>() {
 ```
 
 
-> Sample JSON response
+<div class="snippet-title">
+	<p>Sample JSON response</p>
+</div>
 
 ```json
 {
@@ -1396,43 +1462,27 @@ user.save(new BaasHandler<BaasUser>() {
 }
 ```
 
-``PUT /me``
+### Change password
+
+
+``PUT /me/password`` 
 
 **Group**: [baasbox.account](#list-groups)
 
-Updates details about the logged in user.
-
-The body payload to be sent has the following form:
-
-```{
-    "visibleByTheUser": {},
-    "visibleByFriends": {},
-    "visibleByRegisteredUsers": {},
-    "visibleByAnonymousUsers": {}
-}```
-
-All four properties are optional. You can send just
-one of them or all four. See example on the right.
-The values for this fields can be anything you like: string, numbers, arrays
-or JSON encoded objects.
+To change the password of the logged in user.
 
 Parameter | Description
 --------- | -----------
-**visibleByTheUser** | fields are private and visible only by the user
-**visibleByFriends** | fields are visible by the user and friends
-**visibleByRegisteredUsers** | fields are visible by the user, friends and any registered user
-**visibleByAnonymousUsers** | fields are public and visible by everyone, even anonymous users
+**old** | The old password. Mandatory.
+**new** | The new password. Mandatory.
 
 <aside class="warning">
-	The previously stored content for each of the four fields will be overwritten.
+	After you call this API the authentication token is not valid anymore and should call [Login](#login) again.
 </aside>
 
-
-
-
-### Change password
-
-> Example of request
+<div class="snippet-title">
+	<p>Example of request</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/me/password \
@@ -1468,7 +1518,9 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
   }
 });
 ```
-> Example of response
+<div class="snippet-title">
+	<p>Example of response</p>
+</div>
 
 ```json
 {
@@ -1478,27 +1530,29 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
 }
 ```
 
-``PUT /me/password`` 
-
-**Group**: [baasbox.account](#list-groups)
-
-To change the password of the logged in user.
-
-Parameter | Description
---------- | -----------
-**old** | The old password. Mandatory.
-**new** | The new password. Mandatory.
-
-<aside class="warning">
-	After you call this API the authentication token is not valid anymore and should call [Login](#login) again.
-</aside>
-
-
-
 
 ### Password reset
 
-> Example of a request for password reset
+``GET /user/:username/password/reset``
+
+**Group**: [baasbox.account.lost_password](#list-groups)
+
+Allows to reset a user password. This API is useful when users forget their password and need to reset it. This is the workflow: 
+
+- the server checks if the email address is present within the `visibleByTheUser` fields in the user profile 
+- the server sends an email to that address with a generated link to follow in order to reset the password 
+- the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
+- the user fills in the two fields and submits the form 
+- a confirmation message is shown by the server 
+- the settings (SMTP configuration, email message to be sent, html form, confirmation and error web page) can be set up by the administrator via the [Settings](#settings) menu in the admin console
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user who wants to reset the password. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request for password reset</p>
+</div>
 
 ```shell
 curl http://localhost:9000/user/cesare/password/reset \
@@ -1531,7 +1585,10 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
 };
 ```
 
-> Example of an error
+<div class="snippet-title">
+	<p>Example of an error</p>
+</div>
+
 
 ```json
 {
@@ -1554,24 +1611,6 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
 }
 ```
 
-
-``GET /user/:username/password/reset``
-
-**Group**: [baasbox.account.lost_password](#list-groups)
-
-Allows to reset a user password. This API is useful when a user forgot their password and needs to reset it. This is the workflow: 
-
-- the server checks if the email address is present within the `visibleByTheUser` fields in the user profile 
-- the server sends an email to that address with a generated link to follow in order to reset the password 
-- the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
-- the user fills in the two fields and submits the form 
-- a confirmation message is shown by the server 
-- the settings (SMTP configuration, email message to be sent, html form, confirmation and error web page) can be set up by the administrator via the [Settings](#settings) menu in the admin console
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user who wants to reset the password. Mandatory.
-
 <aside class="warning">
 This API works only if there is an `email` field (populated with a valid email address) in the `visibleByTheUser` field of the user profile
 </aside>
@@ -1579,7 +1618,19 @@ This API works only if there is an `email` field (populated with a valid email a
 
 ### Fetch a user profile
 
-> example of a request to get a user profile
+``GET /user/:username``
+
+**Group**: [baasbox.users](#list-groups)
+
+Allows to retrieve information about a user profile.
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user. Mandatory.
+ 
+<div class="snippet-title">
+	<p>Example of a request to get a user profile</p>
+</div>
 
 ```shell
 curl http://localhost:9000/user/a \
@@ -1617,7 +1668,9 @@ BaasUser.fetch("a",new BaasHandler<BaasUser>() {
 });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -1637,26 +1690,17 @@ BaasUser.fetch("a",new BaasHandler<BaasUser>() {
   }
 ```
 
+### Fetch users
 
-
-``GET /user/:username``
+``GET /users``
 
 **Group**: [baasbox.users](#list-groups)
 
-Allows to retrieve information about a user profile.
+Allows to retrieve a list of users. This API supports [pagination](#pagination-and-query-criteria) and [query criteria](#pagination-and-query-criteria).
 
-Parameter | Description
---------- | -----------
-**username** | Username of the user. Mandatory.
-
-
-
-
-
-
-### Fetch users
-
-> example of a request to get the users list
+<div class="snippet-title">
+	<p>Example of a request to get the users list</p>
+</div>
 
 ```shell
 curl http://localhost:9000/users \
@@ -1697,7 +1741,9 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
 });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -1738,11 +1784,6 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
 }
 ```
 
-``GET /users``
-
-**Group**: [baasbox.users](#list-groups)
-
-Allows to retrieve a list of users. This API supports [pagination](#pagination-and-query-criteria) and [query criteria](#pagination-and-query-criteria).
 
 ##Friendship
 BaasBox is able to manage relations among users, implementing a concept of friendship similar (but not identical) to the one used by Twitter.
@@ -1779,7 +1820,21 @@ Note that the _follow_ API is not mutual, just like in Twitter.
 
 ### Follow a user
 
-> Example of a request to follow the user "cesare"
+``POST /follow/:username``
+
+**Group**: [baasbox.friendship.create](#list-groups)
+
+This API allows a user to follow another user. Once the relation is established
+the follower will be able to see the documents and files created by the followed 
+user as well as its `visibleByFriends` data in the user profile.
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user to be followed. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request to follow the user "cesare"</p>
+</div>
 
 ```shell
 curl -X POST http://localhost:9000/follow/cesare \
@@ -1816,7 +1871,10 @@ user.follow(new BaasHandler<BaasUser>() {
   } 
 });
 ```
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
+
 
 ```json
 {
@@ -1843,28 +1901,22 @@ user.follow(new BaasHandler<BaasUser>() {
 }
 ```
 
-``POST /follow/:username``
+### Unfollow a user
+
+``DELETE /follow/:username``
 
 **Group**: [baasbox.friendship.create](#list-groups)
 
-This API allows a user to follow another user. Once the relation is established
-the follower will be able to see the documents and files created by the followed 
-user as well as its `visibleByFriends` data in the user profile.
+This API allows a user to unfollow another user. Once the relation has been deleted, the user 
+won't be able to see the documents and files created by the unfollowed user anymore.
 
 Parameter | Description
 --------- | -----------
-**username** | Username of the user to be followed. Mandatory.
+**username** | Username of the user to be unfollowed. Mandatory.
 
-
-
-
-
-
-
-
-### Unfollow a user
-
-> Example of an unfollow request
+<div class="snippet-title">
+	<p>Example of an unfollow request</p>
+</div>
 
 ```shell
 curl -X DELETE http://localhost:9000/follow/cesare \
@@ -1900,7 +1952,9 @@ BaasUser.withUserName("cesare").unfollow(
     }
   });
 ```
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -1910,26 +1964,21 @@ BaasUser.withUserName("cesare").unfollow(
 }
 ```
 
-``DELETE /follow/:username``
+### Fetch following
 
-**Group**: [baasbox.friendship.create](#list-groups)
+``GET /following/:username``
 
-This API allows a user to unfollow another user. Once the relation has been deleted, the user 
-won't be able to see the documents and files created by the unfollowed user anymore.
+**Group**: [baasbox.friendship](#list-groups)
+
+This API returns a list of users who are followed by the user with `username` passed as a parameter. If no username is provided, the API returns all users followed by the logged in user.  In its `data` property the method returns an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be hidden.
 
 Parameter | Description
 --------- | -----------
-**username** | Username of the user to be unfollowed. Mandatory.
+**username** | Username of the user whose following list has to be fetched. Optional.
 
-
-
-
-
-
-
-### Fetch following
-
-> Example of a request to fetch who "cesare" is following
+<div class="snippet-title">
+	<p>Example of a request to fetch who "cesare" is following</p>
+</div>
 
 ```shell
 curl http://localhost:9000/following/cesare \
@@ -1963,7 +2012,9 @@ user.following(new BaasHandler<List<BaasUser>>() {
 });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -1986,26 +2037,22 @@ user.following(new BaasHandler<List<BaasUser>>() {
 }
 ```
 
-``GET /following/:username``
+### Fetch followers
+
+``GET /followers/:username``
 
 **Group**: [baasbox.friendship](#list-groups)
 
-This API returns a list of users who are followed by the user with `username` passed as a parameter. If no username is provided, the API returns all users followed by the logged in user.  In its `data` property the method returns an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be hidden.
+This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the currently logged in user. The method returns in its `data` property an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be protected. 
 
 Parameter | Description
 --------- | -----------
-**username** | Username of the user whose following list has to be fetched. Optional.
+**username** | Username of the user whose followers list has to be fetched. Optional.
 
+<div class="snippet-title">
+	<p>Example of a request to fetch "cesare"'s followers</p>
+</div>
 
-
-
-
-
-
-
-### Fetch followers
-
-> Example of a request to fetch "cesare"'s followers
 
 ```shell
 curl http://localhost:9000/followers/cesare \
@@ -2040,7 +2087,9 @@ user.followers(new BaasHandler<List<BaasUser>>() {
 ```
 
 
-> Example of a response with "cesare"'s followers
+<div class="snippet-title">
+	<p>Example of a response with "cesare"'s followers</p>
+</div>
 
 
 ```json
@@ -2064,18 +2113,6 @@ user.followers(new BaasHandler<List<BaasUser>>() {
 }
 ```
 
-``GET /followers/:username``
-
-**Group**: [baasbox.friendship](#list-groups)
-
-This API returns the list of followers for the user with `username` specified in the parameter. If no `username` is provided the API returns the list of followers for the currently logged in user. The method returns in its `data` property an array filled with the user profiles representing their “friends”. Each profile will contain the `visibleByFriends` data which would otherwise be protected. 
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user whose followers list has to be fetched. Optional.
-
-
-
 ## Collections
 
 A collection is a sort of bucket where you can store documents. Documents are schema-less, which means that there are no constraints on their fields definition or data type.
@@ -2084,7 +2121,21 @@ Another very important feature to know about collections is that the records sto
 
 ### Create a new Collection
 
-> Example of a request to create a collection
+``POST /admin/collection/:collection-name``
+
+Creates a new collection.
+
+Parameter | Description
+--------- | -----------
+**collection-name** | The name of the new collection. Mandatory.
+
+<aside class="warning">
+  The user calling this API must be the admin or belong to the admin role.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to create a collection</p>
+</div>
 
 ```shell
 curl -X POST http://localhost:9000/admin/collection/mycollection \
@@ -2118,7 +2169,9 @@ client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
             });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2128,23 +2181,24 @@ client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
 }
 ```
 
-``POST /admin/collection/:collection-name``
-
-Creates a new collection.
-
-Parameter | Description
---------- | -----------
-**collection-name** | The name of the new collection. Mandatory.
-
-<aside class="warning">
-  The user calling this API must be admin or belong to the admin role.
-</aside>
-
-
 
 ### Delete a Collection
 
-> Example of a request to delete a collection
+`DELETE /admin/collection/:collection-name`
+
+Deletes an existing collection with the name specified in the URL. The user calling this API must be the admin or belong to the admin role.
+
+Parameter | Description
+--------- | -----------
+**collection-name** | The name of the collection to be deleted. Mandatory.
+
+<aside class="warning">
+	The deletion of a collection deletes all the objects belonging to it. 
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to delete a collection</p>
+</div>
 
 ```shell
 curl -X DELETE http://localhost:9000/admin/collection/mycollection \
@@ -2172,7 +2226,9 @@ client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
             });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2182,31 +2238,38 @@ client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
 }
 ```
 
-`DELETE /admin/collection/:collection-name`
-
-Deletes an existing collection with the name specified in the URL. The user calling this API must be admin or belong to the admin role.
-
-Parameter | Description
---------- | -----------
-**collection-name** | The name of the collection to be deleted. Mandatory.
-
-<aside class="warning">
-	The deletion of a collection deletes all the objects belonging to it. 
-</aside>
-
-
-
 ## Documents
 
 A document belongs to a [Collection](#collections34). You can create, read, update and delete a document, provided you have access to it.
-
-
 
 Here are the APIs.
 
 ### Create a document
 
-> Example of a request to create a document.
+`POST /document/:collection-name`
+
+**Group**: [baasbox.data.write](#list-groups)
+
+Creates a document in the collection specified in the parameter. The collection must have been created in advance. See [here](#create-a-new-collection).
+The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
+The returned document is decorated with the following fields:
+
+- `id`: unique ID 
+- `@version`: number indication of the version of the record, useful to manage concurrent updates
+- `@class`: name of the collection
+- `_creation_date`: timestamp
+- `_author`: username of the user who created the document.
+
+These fields **cannot** be overwritten. 
+
+Parameter | Description
+--------- | -----------
+**collection-name** | The name of the collection. Mandatory.
+ | A valid JSON as the body of the POST call. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request to create a document</p>
+</div>
 
 ```shell
 curl -X POST http://localhost:9000/document/mycollection \
@@ -2247,7 +2310,9 @@ doc.save(new BaasHandler<BaasDocument>() {
 });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2266,35 +2331,24 @@ doc.save(new BaasHandler<BaasDocument>() {
 }
 ```
 
-`POST /document/:collection-name`
+### Retrieve a document
 
-**Group**: [baasbox.data.write](#list-groups)
 
-Creates a document in the collection specified in the parameter. The collection must have been created in advance. See [here](#create-a-new-collection).
-The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
-The returned document is decorated with the following fields:
+`GET /document/:collection/:ID`
 
-- `id`: unique ID 
-- `@version`: number indication of the version of the record, useful to manage concurrent updates
-- `@class`: name of the collection
-- `_creation_date`: timestamp
-- `_author`: username of the user who created the document.
+**Group**: [baasbox.data.read](#list-groups)
 
-These fields **cannot** be overwritten. 
+Retrieves the document in the collection specified with the ID provided as parameter. 
+Only the owner of the document (besides users with admin role) can retrieve it.
 
 Parameter | Description
 --------- | -----------
-**collection-name** | The name of the collection. Mandatory.
- | A valid JSON as the body of the POST call. Mandatory.
+**collection** | The name of the collection. Mandatory.
+**ID** | The unique ID of the document. Mandatory.
 
-
-
-
-
-
-### Retrieve a document
-
-> Example of a request to retrieve a specific document
+<div class="snippet-title">
+	<p>Example of a request to retrieve a specific document</p>
+</div>
 
 ```shell
 curl http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
@@ -2330,7 +2384,9 @@ BaasDocument.fetch("mycollection",
                  }});
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2350,24 +2406,29 @@ BaasDocument.fetch("mycollection",
 ```
 
 
-`GET /document/:collection/:ID`
+### Modify a document
 
-**Group**: [baasbox.data.read](#list-groups)
+`PUT /document/:collection/:ID`
 
-Retrieves the document in the collection specified with the ID provided as parameter. 
-Only the owner of the document (besides users with admin role) can retrieve it.
+**Group**: [baasbox.data.update](#list-groups)
+
+Updates the document with the ID provided in the specified collection. 
+Only the owner of the document (besides backoffice users), can call this API.
 
 Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
 **ID** | The unique ID of the document. Mandatory.
+  | A valid JSON as the body of the PUT. 
 
 
+<aside class="warning">
+	The document is fully replaced with the new content. 
+</aside>
 
-
-### Modify a document
-
-> Example of a request to modify a document
+<div class="snippet-title">
+	<p>Example of a request to modify a document</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
@@ -2410,7 +2471,9 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
 });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2429,29 +2492,29 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
   "http_code": 200
 }
 ```
+### Update a Document's field
 
-`PUT /document/:collection/:ID`
+`PUT /document/:collection/:id/.:fieldname`
 
 **Group**: [baasbox.data.update](#list-groups)
 
-Updates the document with the ID provided in the specified collection. 
-Only the owner of the document (besides backoffice users), can call this API.
+Updates a single field of an existing object. The field can be a simple property, 
+a complex JSON object or even an array using the notation `.array[index]` .
 
 Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
-**ID** | The unique ID of the document. Mandatory.
-  | A valid JSON as the body of the PUT. 
-
+**id** | The ID of the document. Mandatory.
+**fieldname** | The name of the field that you want to update
+**data** | A JSON object in the body of the PUT. The new value must have a key named `data`.
 
 <aside class="warning">
-	The document is fully replaced with the new content. 
+The fieldName must start with a .
 </aside>
 
-
-### Update a Document's field
-
-> Example of a request to change the value of the field 'title'
+<div class="snippet-title">
+	<p>Example of a request to change the value of the 'title' field </p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.title  \
@@ -2479,7 +2542,9 @@ post.title = @"My new title";
 NOT IMPLEMENTED
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2498,7 +2563,9 @@ NOT IMPLEMENTED
 }
 ```
 
-> Example of a request to add a new value named 'tags'
+<div class="snippet-title">
+	<p>Example of a request to add a new value named 'tags'</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.tags  \
@@ -2516,7 +2583,9 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 NOT IMPLEMENTED
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2539,7 +2608,9 @@ NOT IMPLEMENTED
 }
 ```
 
-> Example of a request to add a new value to the 'tags' array property
+<div class="snippet-title">
+	<p>Example of a request to add a new value to the 'tags' array property</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.tags[3]  \
@@ -2557,7 +2628,9 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2581,7 +2654,9 @@ NOT IMPLEMENTED
 }
 ```
 
-> Example of a request to add a JSON object as a property.
+<div class="snippet-title">
+	<p>Example of a request to add a JSON object as a property</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.address  \
@@ -2599,7 +2674,9 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Response includes a new property
+<div class="snippet-title">
+	<p>Response includes a new property</p>
+</div>
 
 ```json
 {
@@ -2627,7 +2704,9 @@ NOT IMPLEMENTED
 }
 ```
 
-> Example of a request to change a nested property
+<div class="snippet-title">
+	<p>Example of a request to change a nested property</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-e4c823ae7666/.address/.street  \
@@ -2645,7 +2724,9 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
-> Response includes new value for the property
+<div class="snippet-title">
+	<p>Response includes a new value for the property</p>
+</div>
 
 ```json
 {
@@ -2672,30 +2753,22 @@ NOT IMPLEMENTED
   "http_code": 200
 }
 ```
+### Delete a document
 
+`DELETE /document/:collection/:ID`
 
-`PUT /document/:collection/:id/.:fieldname`
+**Group**: [baasbox.data.write](#list-groups)
 
-**Group**: [baasbox.data.update](#list-groups)
-
-Updates a single field of an existing object. The field can be a simple property, 
-a complex JSON object or even an array using the notation `.array[index]` .
+Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (plus  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
 
 Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
-**id** | The ID of the document. Mandatory.
-**fieldname** | The name of the field that you want to update
-**data** | A JSON object in the body of the PUT. The new value must have a key named `data`.
+**ID** | The unique ID of the document. Mandatory.
 
-<aside class="warning">
-The fieldName must start with a .
-</aside>
-
-
-### Delete a document
-
-> Example of a request to delete a document
+<div class="snippet-title">
+	<p>Example of a request to delete a document</p>
+</div>
 
 ```shell
 curl -X DELETE http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-aad72a1efa93 \
@@ -2728,7 +2801,9 @@ doc.delete(new BaasHandler<Void>() {
   }
 });
 ```
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2738,69 +2813,7 @@ doc.delete(new BaasHandler<Void>() {
 }
 ```
 
-`DELETE /document/:collection/:ID`
-
-**Group**: [baasbox.data.write](#list-groups)
-
-Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (plus  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
-
-Parameter | Description
---------- | -----------
-**collection** | The name of the collection. Mandatory.
-**ID** | The unique ID of the document. Mandatory.
-
-
-
 ### Count documents
-
-> Example of a request to count documents in a collection
-
-```shell
-curl http://localhost:9000/document/mycollection/count \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-BAAClient *client = [BAAClient sharedClient];
-
-[client getPath:@"document/mycollection/count"
-     parameters:nil
-        success:^(id responseObject) {
-            
-            NSLog(@"resp %@", responseObject);
-            
-        }
- 
-        failure:^(NSError *error) {
-            
-            NSLog(@"err %@", error);
-            
-        }];
-```
-
-```java
-BaasDocument.count("collection",new BaasHandler<Long> () {
-  @Override
-  public void handle(BaasResult<Long> res) {
-    if (res.isSuccess()) {
-      Log.d("LOG","visible document count is: "+res.value());
-    } else {
-      Log.e("LOG","Error",res.value());
-    }
-  }
-});
-```
-> Example of a response
-
-```json
-{
-  "result": "ok",
-  "data": {
-    "count": 1
-  },
-  "http_code": 200
-}
-```
 
 `GET /document/:collection/count`
 
@@ -2817,15 +2830,77 @@ Parameter | Description
 	A collection could contain documents that the user cannot read and therefore they are not included in the count.
 </aside>
 
+<div class="snippet-title">
+	<p>Example of a request to count documents in a collection</p>
+</div>
 
+```shell
+curl http://localhost:9000/document/mycollection/count \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
 
+```objective_c
+// Assumes Post is a subclass of BAAObject
+[Post fetchCountForObjectsWithCompletion:^(NSInteger count, NSError *error) {
+                                               
+                                                if (error == nil) {
+                                                
+                                                    NSLog(@"count is %i", count);
+                                                    
+                                                } else {
+                                                
+                                                    NSLog(@"error is %@", error);
+                                                    
+                                                }
+                                                
+                                            }];
+```
 
+```java
+BaasDocument.count("collection",new BaasHandler<Long> () {
+  @Override
+  public void handle(BaasResult<Long> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","visible document count is: "+res.value());
+    } else {
+      Log.e("LOG","Error",res.value());
+    }
+  }
+});
+```
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
-
+```json
+{
+  "result": "ok",
+  "data": {
+    "count": 1
+  },
+  "http_code": 200
+}
+```
 
 ### Retrieve documents 
 
-> Example of a request to retrieve a list of documents using default pagination
+`GET /document/:collection`
+
+**Group**: [baasbox.data.read](#list-groups)
+
+Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria).
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read and therefore they are not included in the result.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to retrieve a list of documents using default pagination</p>
+</div>
 
 ```shell
 curl http://localhost:9000/document/mycollection \
@@ -2902,7 +2977,9 @@ BaasDocument.fetchAll("collection",filter,
 
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -2933,98 +3010,7 @@ BaasDocument.fetchAll("collection",filter,
 }
 ```
 
-`GET /document/:collection`
-
-**Group**: [baasbox.data.read](#list-groups)
-
-Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria).
-
-Parameter | Description
---------- | -----------
-**collection** | The name of the collection. Mandatory.
-
-<aside class="notice">
-	A collection could contain documents that the user cannot read and therefore they are not included in the result.
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Grant permissions on a Document
-
-> Example of a request to grant read access to user "a" on document "090dd688"
-
-```shell
-curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-NOT YET IMPLEMENTED
-```
-
-```java
-// assuming doc is an instance of the document
-doc.grant(Grant.READ,"a",new BaasHandler<Void>() {
-  @Override
-  public void handle(BaasResult<Void> res) {
-    if (res.isSuccess()) {
-      Log.d("LOG","Permission granted");
-    } else {
-      Log.e("LOG","Error",res.error());
-    }
-  }
-});
-```
-
-
-> Example of a request to grant update access to all registered users on a document
-
-```shell
-curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/registered \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-NOT YET IMPLEMENTED
-```
-
-```java
-// assumes doc is an instance of the document
-doc.grantAll(Grant.UPDATE,Role.REGISTERED,
-   new BaasHandler<Void>() {
-     @Override
-     public void handle(BaasResult<Void> res) {
-       if (res.isSuccess()) {
-         Log.d("LOG","Permission granted");
-       } else {
-         Log.e("LOG","Error",res.error());
-       }
-     }
-   });
-```
-
-> Example of a response
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
 
 `PUT /document/:collection/:id/:action/user/:username`
 
@@ -3044,31 +3030,37 @@ Parameter | Description
 **username** | The username of the user to whom you want to assign the grant
 **rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
-
-
-
-
-
-
-
-
-### Revoke permissions on a Document
-
-
-> Example of a request to revoke read access to user "a" on document "090dd688"
+<div class="snippet-title">
+	<p>Example of a request to grant read access to user "a" on document "090dd688"</p>
+</div>
 
 ```shell
-curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a \
+curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
 	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p grantAccessToUser:@"a"
+              ofType:kAclReadPermission
+          completion:^(id object, NSError *error) {
+   
+    if (error == nil) {
+        
+        NSLog(@"permission granted");
+        
+    } else {
+        
+        NSLog(@"error in granting permission");
+        
+    }
+    
+}];
 ```
 
 ```java
 // assuming doc is an instance of the document
-doc.revoke(Grant.READ,"a",new BaasHandler<Void>() {
+doc.grant(Grant.READ,"a",new BaasHandler<Void>() {
   @Override
   public void handle(BaasResult<Void> res) {
     if (res.isSuccess()) {
@@ -3080,8 +3072,9 @@ doc.revoke(Grant.READ,"a",new BaasHandler<Void>() {
 });
 ```
 
-
-> Example of a request to revoke update access to all registered users on a document
+<div class="snippet-title">
+	<p>Example of a request to grant update access to all registered users on a document</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/registered \
@@ -3089,12 +3082,28 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/reg
 ```
 
 ```objective_c
-NOT YET IMPLEMENTED
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p grantAccessToRole:kAclRegisteredRole
+              ofType:kAclUpdatePermission
+          completion:^(SMPost *post, NSError *error) {
+    
+              if (error == nil) {
+                  
+                  NSLog(@"permission granted");
+                  
+              } else {
+              
+                  NSLog(@"error in granting permission");
+                  
+              }
+              
+              
+}];
 ```
 
 ```java
 // assumes doc is an instance of the document
-doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
+doc.grantAll(Grant.UPDATE,Role.REGISTERED,
    new BaasHandler<Void>() {
      @Override
      public void handle(BaasResult<Void> res) {
@@ -3107,7 +3116,9 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
    });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -3116,6 +3127,8 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
   "http_code": 200
 }
 ```
+
+### Revoke permissions on a Document
 
 `DELETE /document/:collection/:id/:action/user/:username`
 
@@ -3135,8 +3148,104 @@ Parameter | Description
 **username** | The username of the user to whom you want to assign the grant
 **rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
+<div class="snippet-title">
+	<p>Example of a request to revoke read access to user "a" on document "090dd688"</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p revokeAccessToUser:@"a"
+               ofType:kAclUpdatePermission
+           completion:^(SMPost *post, NSError *error) {
+     
+               if (error == nil) {
+                   
+                   NSLog(@"permission granted");
+                   
+               } else {
+               
+                   NSLog(@"error in granting permission");
+                   
+               }
+               
+ }];
+```
+
+```java
+// assuming doc is an instance of the document
+doc.revoke(Grant.READ,"a",new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","Permission granted");
+    } else {
+      Log.e("LOG","Error",res.error());
+    }
+  }
+});
+```
 
 
+<div class="snippet-title">
+	<p>Example of a request to revoke update access to all registered users on a document</p>
+</div>
+
+
+```shell
+curl -X PUT http://localhost:9000/document/mycollection/090dd688/update/role/registered \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes p is an instance of Post, which is a subclass of BAAObject
+[p revokeAccessToRole:kAclRegisteredRole
+              ofType:kAclUpdatePermission
+          completion:^(SMPost *post, NSError *error) {
+    
+              if (error == nil) {
+                  
+                  NSLog(@"permission granted");
+                  
+              } else {
+              
+                  NSLog(@"error in granting permission");
+                  
+              }
+               
+}];
+```
+
+```java
+// assumes doc is an instance of the document
+doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
+   new BaasHandler<Void>() {
+     @Override
+     public void handle(BaasResult<Void> res) {
+       if (res.isSuccess()) {
+         Log.d("LOG","Permission granted");
+       } else {
+         Log.e("LOG","Error",res.error());
+       }
+     }
+   });
+```
+
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
+
+```json
+{
+  "result": "ok",
+  "data": "",
+  "http_code": 200
+}
+```
 
 ## Files
 
@@ -3144,14 +3253,34 @@ Users can upload files. Only the user who created them can access such files, be
 The maximum size of a file is 2GB, but we do not recommend reaching such size, since BaasBox is a software that provides backend services for mobile Apps. Currently we do not support resume functions for upload and download.
 
 
-
-
-
-
-
 ### Upload a file
 
-> Example of a request to upload a file
+`POST /file`
+
+**Group**: [baasbox.file.write](#list-groups)
+
+API to create and upload a file. By default the uploaded file will be accessible only by the owner, backoffice and admin users. After the uploaded metadata (and exif data in case of images) are extracted and attached to the file. 
+The returned object is decorated with the following fields:
+
+* contetType 
+* contentLength
+* metadata
+* textContent
+
+Parameter | Description
+--------- | -----------
+**file** | The file itself. Mandatory.
+**attachedData** | A valid JSON string to store data associated to a file. Optional.
+**acl** | A valid JSON string to declare access to the file. Optional. See [ACL](#grant-access-to-a-file).
+
+
+<aside class="notice">
+	The metadata field of the JSON response may vary according to the type of file uploaded.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to upload a file</p>
+</div>
 
 ```shell
 curl -X POST http://localhost:9000/file \
@@ -3195,7 +3324,9 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
-> Example of a response when a file is created
+<div class="snippet-title">
+	<p>Example of a response when a file is created</p>
+</div>
 
 ```json
 {
@@ -3215,7 +3346,9 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
-> Example of a request to create a file with attached data
+<div class="snippet-title">
+	<p>Example of a request to create a file with attached data</p>
+</div>
 
 ```shell
 curl -X POST http://localhost:9000/file \
@@ -3262,7 +3395,9 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
-> Example of a request to create a file with attached data and acl
+<div class="snippet-title">
+	<p>Example of a request to create a file with attached data and acl</p>
+</div>
 
 ```shell
 curl -X POST http://localhost:9000/file \
@@ -3317,33 +3452,21 @@ file.upload(acl,data,new BaasHandler<BaasFile> file) {
 }
 ```
 
-`POST /file`
+### Delete a file
+
+`DELETE /file/:id`
 
 **Group**: [baasbox.file.write](#list-groups)
 
-API to create and upload a file. By default the uploaded file will be accessible only by the owner, backoffice and admin users. After the uploaded metadata (and exif data in case of images) are extracted and attached to the file. 
-The returned object is decorated with the following fields:
-
-* contetType 
-* contentLength
-* metadata
-* textContent
+API to delete a file. 
 
 Parameter | Description
 --------- | -----------
-**file** | The file itself. Mandatory.
-**attachedData** | A valid JSON string to store data associated to a file. Optional.
-**acl** | A valid JSON string to declare access to the file. Optional. See [ACL](#grant-access-to-a-file).
+**id** | The ID of the file to be deleted. Mandatory.
 
-
-<aside class="notice">
-	The metadata field of the JSON response may vary according to the type of file uploaded.
-</aside>
-
-
-### Delete a file
-
-> Example of a request to delete a file
+<div class="snippet-title">
+	<p>Example of a request to delete a file</p>
+</div>
 
 ```shell
 curl -X DELETE http://localhost:9000/file/a57b33ce-7f4d-4ff7-bf8c-f8c0f973b9d8 \
@@ -3383,7 +3506,9 @@ BaasFile.delete("fileId",handler);
 
 ```
 
-> Example of a response when a file is deleted
+<div class="snippet-title">
+	<p>Example of a response when a file is deleted</p>
+</div>
 
 ```json
 {
@@ -3393,24 +3518,21 @@ BaasFile.delete("fileId",handler);
 }
 ```
 
-`DELETE /file/:id`
+### Retrieve a file
 
-**Group**: [baasbox.file.write](#list-groups)
+`GET /file/:id`
 
-API to delete a file. 
+**Group**: [baasbox.file.read](#list-groups)
 
 Parameter | Description
 --------- | -----------
-**id** | The ID of the file to be deleted. Mandatory.
+**id** | The ID of the file to be retrieved. Mandatory.
+**download** | Set it to `true` to download a file (useful from browser). Optional. 
+**resize** | Index to retrieve an element from the array of resizing options. Optional. See [Console Settings](#console-settings).
 
-
-
-
-
-
-### Retrieve a file
-
-> Example of a request to retrieve a file.
+<div class="snippet-title">
+	<p>Example of a request to retrieve a file</p>
+</div>
 
 ```shell
 curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99 \
@@ -3452,41 +3574,48 @@ file.download("path-to-save-the-file.to",
               });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 // Binary of the file
 ```
 
-> Example of a request to suggest the browser to download an app
+<div class="snippet-title">
+	<p>Example of a request to suggest the browser to download an app</p>
+</div>
 
 ```shell
 curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99?download=true \
 	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
 ```
 
-> Example of a request to retrieve a resized version of an app.
+<div class="snippet-title">
+	<p>Example of a request to retrieve a resized version of an app</p>
+</div>
 
 ```shell
 curl http://localhost:9000/file/f18e4343-5100-4398-b32f-2e634220bf99?sizeId=0 \
 	 -H X-BB-SESSION:9952384d-8d78-4399-82d0-7039f832a786
 ```
 
-`GET /file/:id`
+### Retrieve details of a file
+
+`GET /file/details/:id`
 
 **Group**: [baasbox.file.read](#list-groups)
 
+Retrieves the details of a file, including `attachedData` and `metadata`.
+
+
 Parameter | Description
 --------- | -----------
-**id** | The ID of the file to be retrieved. Mandatory.
-**download** | Set it to `true` to download a file (useful from browser). Optional. 
-**resize** | Index to retrieve an element from the array of resizing options. Optional. See [Console Settings](#console-settings).
+**id** | The ID of the file whose details are to be retrieved. Mandatory.
 
-
-
-### Retrieve details of a file
-
-> Example of a request to retrieve details of a file
+<div class="snippet-title">
+	<p>Example of a request to retrieve details of a file</p>
+</div>
 
 ```shell
 curl http://localhost:9000/file/details/f18e4343-5100-4398-b32f-2e634220bf99  \
@@ -3518,8 +3647,10 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
   }
 });
 ```
-
-> Example of a response with file details
+ 
+<div class="snippet-title">
+	<p>Example of a response with file details</p>
+</div>
 
 ```json
 {
@@ -3539,23 +3670,18 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
 }
 ```
 
-`GET /file/details/:id`
+### Retrieve details of files
+
+`GET /file/details`
 
 **Group**: [baasbox.file.read](#list-groups)
 
-Retrieves the details of a file, including `attachedData` and `metadata`.
+Returns a list of details about the files that the user has access to.
+Supports [Pagination and query criteria](#pagination-and-query-criteria).
 
-
-Parameter | Description
---------- | -----------
-**id** | The ID of the file whose details are to be retrieved. Mandatory.
-
-
-
-
-### Retrieve details of files
-
-> Example of a request to retrieve details of files
+<div class="snippet-title">
+	<p>Example of a request to retrieve details of files</p>
+</div>
 
 ```shell
 curl http://localhost:9000/file/details \
@@ -3583,7 +3709,9 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
 });
 ```
 
-> Example of a response with details of files
+<div class="snippet-title">
+	<p>Example of a response with details of files</p>
+</div>
 
 ```json
 {
@@ -3606,19 +3734,30 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
 }
 ```
 
-`GET /file/details`
-
-**Group**: [baasbox.file.read](#list-groups)
-
-Returns a list of details about the files that the user has access to.
-Supports [Pagination and query criteria](#pagination-and-query-criteria).
-
-
-
 
 ### Grant access to a file
 
-> Example of a request to grant read access to user “a” on a file
+
+`PUT /file/:id/:action/user/:username` 
+
+**Group**: [baasbox.file.grants](#list-groups)
+
+`PUT /file/:id/:action/role/:rolename`
+
+**Group**: [baasbox.file.grants](#list-groups)
+
+API to grant access on a file to a specific user or role.
+
+Parameter | Description
+--------- | -----------
+**id** | The ID of the file. Mandatory.
+**action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
+**username** | The username of the user to whom you want to assign the grant. Mandatory.
+**rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request to grant read access to user “a” on a file</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/file/41368ee4/read/user/a \
@@ -3654,7 +3793,9 @@ file.grant(Grant.READ,"andrea",new BaasHandler<Void>(){
 });
 ```
 
-> Example of a request to grant write access to role “registered” on a file
+<div class="snippet-title">
+	<p>Example of a request to grant write access to role “registered” on a file</p>
+</div>
 
 ```shell
 curl -X PUT http://localhost:9000/file/41368ee4/update/role/registered \
@@ -3691,7 +3832,9 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div> 
 
 ```json
 {
@@ -3702,32 +3845,24 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
 ```
 
 
-`PUT /file/:id/:action/user/:username` 
+### Revoke access to a file
+
+`DELETE /file/:id/:action/user/:username or DELETE /file/:id/:action/role/:rolename`
 
 **Group**: [baasbox.file.grants](#list-groups)
 
-`PUT /file/:id/:action/role/:rolename`
-
-**Group**: [baasbox.file.grants](#list-groups)
-
-API to grant access on a file to a specific user or role.
+API to revoke access on a file to a specific user or role.
 
 Parameter | Description
 --------- | -----------
 **id** | The ID of the file. Mandatory.
-**action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
-**username** | The username of the user to whom you want to assign the grant. Mandatory.
-**rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+**action** | The grant you want to revoke. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
+**username** | The username of the user to whom you want to revoke the grant. Mandatory.
+**rolename** | The name of the role to whom you want to revoke the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator.  Mandatory.
 
-
-
-
-
-
-
-### Revoke access to a file
-
-> Example of a request to revoke read access to user “a” on a file
+<div class="snippet-title">
+	<p>Example of a request to revoke read access to user “a” on a file</p>
+</div> 
 
 ```shell
 curl -X DELETE http://localhost:9000/file/41368ee4/read/user/a \
@@ -3764,7 +3899,9 @@ file.revoke(Grant.READ,"andrea",new BaasHandler<Void>(){
 
 ```
 
-> Example of a request to revoke write access to role “registered” on a file
+<div class="snippet-title">
+	<p>Example of a request to revoke write access to role “registered” on a file</p>
+</div> 
 
 ```shell
 curl -X DELETE http://localhost:9000/file/41368ee4/update/role/registered \
@@ -3801,7 +3938,9 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -3810,20 +3949,6 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
   "http_code": 200
 }
 ```
-
-
-`DELETE /file/:id/:action/user/:username or DELETE /file/:id/:action/role/:rolename`
-
-**Group**: [baasbox.file.grants](#list-groups)
-
-API to revoke access on a file to a specific user or role.
-
-Parameter | Description
---------- | -----------
-**id** | The ID of the file. Mandatory.
-**action** | The grant you want to revoke. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
-**username** | The username of the user to whom you want to revoke the grant. Mandatory.
-**rolename** | The name of role to whom you want to revoke the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator.  Mandatory.
 
 
 ## Links
@@ -3861,6 +3986,19 @@ At the moment is it possible only to execute query on links, there are not APIs 
 
 ### Create a link
 
+`POST /link/:sourceId/:label/:destId`
+
+**Group**: [baasbox.data.write](#list-groups)
+
+To create a link you must provide the two documents you want to connect and the link name.
+Since links have direction the first document will be the source node of the link and the second one will be the destination node.
+
+Parameter | Description
+--------- | -----------
+**sourceId** | The ID of the first document or file to link.
+**label** | The link name. Can be any valid string
+**destId** | The ID of the second document or file to link.
+
 ```shell
 curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
 	 
@@ -3874,7 +4012,9 @@ curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-a
 //Please see the "pass-through" functionality of the Android SDK
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -3907,20 +4047,6 @@ curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-a
 	"http_code":200
 }
 ```
-
-
-`POST /link/:sourceId/:label/:destId`
-
-**Group**: [baasbox.data.write](#list-groups)
-
-To create a link you must provide the two documents you want to connect and the link name.
-Since links have direction the first document will be the source node of the link and the second one will be the destination node.
-
-Parameter | Description
---------- | -----------
-**sourceId** | The id of the first document or file to link.
-**label** | The link name. Can be any valid string
-**destId** | The id of the second document or file to link.
 
 The returned link is decorated with the following fields:
 
@@ -3942,11 +4068,24 @@ The `out` and `in` fields contain the content of both objects.
 ` Source Doc ----->(out) link (in)----> Dest Doc `
 
 
-Please note that you can have as many links you want between two document or file even with the same label.
+Please note that you can have as many links as you want between two documents or files even with the same label.
 
 To create a link, a user has to have at least the read permission on both objects to link.
 
+
 ### Retrieves links
+
+
+`GET /link/:id`
+
+`GET /link`
+
+You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
+The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
+
+Of course you can apply filters to the fields of linked nodes as well.
+
+`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
 
 ```shell
 curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 "http://localhost:9000/link?where=in.name.toLowerCase()%20like%20%27john%25%27%20and%20label%3D%27customer%27"
@@ -3961,7 +4100,9 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 //Please see the "pass-through" functionality of the Android SDK
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -3995,19 +4136,13 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 }
 ```
 
-`GET /link/:id`
-
-`GET /link`
-
-You can retrieve a single link by its ID, or query the entire link-space. Be carefull because too many links could be returned.
-The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask to the server to filter the response.
-
-You can of course apply filters to the fields of the nodes linked as well.
-
-`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
-
-
 ### Delete links
+
+`DELETE /link/:id`
+
+Deletes a link. 
+
+At the moment links can be deleted by anyone. The RSL (Record Security Level) has not yet been implemented on links.
 
 ```shell
 curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
@@ -4021,7 +4156,9 @@ curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox
 //Please see the "pass-through" functionality of the Android SDK
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4031,14 +4168,6 @@ curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox
 }
 ```
 
-`DELETE /link/:id`
-
-Deletes a link. 
-
-At the moment the link can be deleted by anyone. The RSL (Record Security Level) has not implemented yet on links.
-
-
-
 ## Assets
 
 Assets can be either files or JSON objects. **They are public and accessible by anyone**, even if not authenticated. 
@@ -4046,7 +4175,19 @@ They are useful to create publicly accessible elements such as images or configu
 
 ### Create an asset
 
-> Example of a request to create a JSON asset.
+`POST /admin/asset`
+
+Parameter | Description
+--------- | -----------
+**name** | The name of the asset. Must be unique. Mandatory. 
+**meta** | A string representing a valid JSON object. Here you can store any data associated with the asset. Optional.
+**file** | The file you want to upload. Optional.
+
+Allows to create an asset.
+
+<div class="snippet-title">
+	<p>Example of a request to create a JSON asset</p>
+</div> 
 
 ```shell
 curl http://localhost:9000/admin/asset \
@@ -4064,7 +4205,9 @@ curl http://localhost:9000/admin/asset \
 // It's only for admins. You can do it in the web console.
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4086,7 +4229,9 @@ curl http://localhost:9000/admin/asset \
 }
 ```
 
-> Example of a request to create a file asset with JSON metadata attached.
+<div class="snippet-title">
+	<p>Example of a request to create a file asset with JSON metadata attached</p>
+</div>  
 
 ```shell
 curl http://localhost:9000/admin/asset \
@@ -4105,7 +4250,9 @@ curl http://localhost:9000/admin/asset \
 // NOT IMPLEMENTED
 ```
 
-> Example of a response 
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4130,16 +4277,6 @@ curl http://localhost:9000/admin/asset \
 }
 ```
 
-`POST /admin/asset`
-
-Parameter | Description
---------- | -----------
-**name** | The name of the asset. Must be unique. Mandatory. 
-**meta** | A string representing a valid JSON object. Here you can store any data associated with the asset. Optional.
-**file** | The file you want to upload. Optional.
-
-Allows to create an asset.
-
 <aside class="notice">
 	The `name` field must be unique. An error will be returned if an asset with the same name has already been uploaded.
 	
@@ -4147,15 +4284,21 @@ Allows to create an asset.
 </aside>
 
 
-
-
-
-
-
-
 ### Retrieve an Asset
 
-> Example of a request to retrieve an asset.
+`GET /asset/:name`
+
+**Group**: [baasbox.assets](#list-groups)
+
+To retrieve an asset by name. 
+
+Parameter | Description
+--------- | -----------
+**name** | The name of the asset. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request to retrieve an asset</p>
+</div>  
 
 ```shell
 curl http://localhost:9000/asset/margherita \
@@ -4222,26 +4365,24 @@ BaasAsset.streamAsset("name",new BaasHandler<byte[]>() {
 });
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 The file itself or the JSON
 ```
 
-`GET /asset/:name`
 
-**Group**: [baasbox.assets](#list-groups)
+### Delete an asset
 
-To retrieve an asset by name. 
+`DELETE /admin/asset/:name`
+
+Allows to delete an asset.
 
 Parameter | Description
 --------- | -----------
 **name** | The name of the asset. Mandatory.
-
-
-
-
-### Delete an asset
 
 > Example of a request to delete an asset
 
@@ -4272,7 +4413,9 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4282,25 +4425,20 @@ TO BE IMPLEMENTED
 }
 ```
 
-`DELETE /admin/asset/:name`
-
-Allows to delete an asset.
-
-Parameter | Description
---------- | -----------
-**name** | The name of the asset. Mandatory.
-
 <aside class="notice">	
 	Only a user with an admin role can delete an asset.
 </aside>
 
 
-
-
-
 ### Fetch assets
 
-> Example of a request to fetch assets
+`GET /admin/asset` 
+
+Allows to retrieve all the assets. Supports [Pagination and query criteria](#pagination-and-query-criteria).
+
+<div class="snippet-title">
+	<p>Example of a request to fetch assets</p>
+</div>  
 
 ```shell
 curl http://localhost:9000/admin/asset  \
@@ -4329,7 +4467,9 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4366,14 +4506,9 @@ TO BE IMPLEMENTED
 }
 ```
 
-`GET /admin/asset` 
-
-Allows to retrieve all the assets. Supports [Pagination and query criteria](#pagination-and-query-criteria).
-
 <aside class="notice">	
 	Only a user with an admin role can call this API.
 </aside>
-
 
 
 ## Settings API
@@ -4387,6 +4522,10 @@ More information can be found [here](#app-settings)
 </aside>
 
 ### Fetch current settings
+
+`GET /admin/configuration/dump.json`
+
+Returns a JSON representing the current configuration.
 
 ```shell
 curl http://localhost:9000/admin/configuration/dump.json  \
@@ -4411,7 +4550,9 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4456,14 +4597,19 @@ TO BE IMPLEMENTED
 }
 ```
 
-`GET /admin/configuration/dump.json`
-
-Returns a JSON representing the current configuration.
-
-
 ### Fetch a section of the Settings
 
-> Example of a request to retrieve the `Application` section
+`GET /admin/configuration/:section`
+
+Returns a JSON representing a section of the configuration.
+
+Parameter | Description
+--------- | -----------
+**section** | The name of a section. One of: `PasswordRecovery`, `Application`, `Push`, `Images`. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request to retrieve the `Application` section</p>
+</div>  
 
 ```shell
 curl http://localhost:9000/admin/configuration/Application  \
@@ -4489,7 +4635,9 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4530,18 +4678,21 @@ TO BE IMPLEMENTED
 }
 ```
 
-`GET /admin/configuration/:section`
+### Update a value in settings
 
-Returns a JSON representing a section of the configuration.
+`PUT /admin/configuration/:section/:key/:value`
+
+Updates a specific value in the settings.
 
 Parameter | Description
 --------- | -----------
 **section** | The name of a section. One of: `PasswordRecovery`, `Application`, `Push`, `Images`. Mandatory.
+**key** | The name of the key to update. Mandatory.
+**value** | The new value for the key. Mandatory.
 
-
-### Update a value in settings
-
-> Example of a request to update the key `application.name`
+<div class="snippet-title">
+	<p>Example of a request to update the key `application.name`</p>
+</div>  
 
 ```shell
 curl -X PUT http://localhost:9000/admin/configuration/Application/application.name/NewName \
@@ -4569,7 +4720,9 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
 
 ```json
 {
@@ -4578,19 +4731,6 @@ TO BE IMPLEMENTED
   "http_code": 200
 }
 ```
-
-
-`PUT /admin/configuration/:section/:key/:value`
-
-Updates a specific value in the settings.
-
-Parameter | Description
---------- | -----------
-**section** | The name of a section. One of: `PasswordRecovery`, `Application`, `Push`, `Images`. Mandatory.
-**key** | The name of the key to update. Mandatory.
-**value** | The new value for the key. Mandatory.
-
-
 
 ## API Access
 
@@ -4607,48 +4747,6 @@ Only administrators can call these APIs.
 
 
 ### List groups
-
-> Example of a request to list endpoint groups
-
-```shell
-curl -X GET http://localhost:9000/admin/endpoints \
-	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
-	 -H X-BAASBOX-APPCODE:1234567890
-```
-
-```objective_c
-```
-
-```java
-```
-
-> Example of a response
-
-```json
-{
-    "result": "ok",
-    "data": {
-        "baasbox.assets": true,
-        "baasbox.account": true,
-        "baasbox.account.create": true,
-        "baasbox.social": true,
-        "baasbox.account.lost_password": true,
-        "baasbox.users": true,
-        "baasbox.friendship": true,
-        "baasbox.friendship.create": true,
-        "baasbox.notifications.send": true,
-        "baasbox.notifications.receive": true,
-        "baasbox.data.write": true,
-        "baasbox.data.read": true,
-        "baasbox.data.update": true,
-        "baasbox.data.grants": true,
-        "baasbox.file.read": true,
-        "baasbox.file.write": true,
-        "baasbox.file.grants": true
-    },
-    "http_code": 200
-}
-```
 
 `GET /admin/endpoints`
 
@@ -4676,9 +4774,65 @@ Function Group                    | Description
 **baasbox.file.write**            | rules the ability to create new files
 **baasbox.file.grants**           | rules the ability to modify grants on files
 
+<div class="snippet-title">
+	<p>Example of a request to list endpoint groups</p>
+</div>  
+
+```shell
+curl -X GET http://localhost:9000/admin/endpoints \
+	 -H X-BB-SESSION:4efcd048-8865-4047-94c9-8ac58e511b4b  \
+	 -H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+```
+
+```java
+```
+
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>  
+
+```json
+{
+    "result": "ok",
+    "data": {
+        "baasbox.assets": true,
+        "baasbox.account": true,
+        "baasbox.account.create": true,
+        "baasbox.social": true,
+        "baasbox.account.lost_password": true,
+        "baasbox.users": true,
+        "baasbox.friendship": true,
+        "baasbox.friendship.create": true,
+        "baasbox.notifications.send": true,
+        "baasbox.notifications.receive": true,
+        "baasbox.data.write": true,
+        "baasbox.data.read": true,
+        "baasbox.data.update": true,
+        "baasbox.data.grants": true,
+        "baasbox.file.read": true,
+        "baasbox.file.write": true,
+        "baasbox.file.grants": true
+    },
+    "http_code": 200
+}
+```
+
 ### Read specific group
 
-> Example of a request to get a specific endpoint group
+`GET /admin/endpoints/:group-name`
+
+Returns details about a group. Useful to know if a specific group of APIs is enabled or not.
+
+Parameter | Description
+--------- | -----------
+**group-name** | The name of the group of endpoints
+
+<div class="snippet-title">
+	<p>Example of a request to get a specific endpoint group</p>
+</div> 
 
 ```shell
 curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
@@ -4692,7 +4846,9 @@ curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
 ```java
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div> 
 
 ```json
 {
@@ -4705,17 +4861,19 @@ curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
 }
 ```
 
-`GET /admin/endpoints/:group-name`
+### Enable an endpoint group
 
-Returns details about a group. Useful to know if a specific group of APIs is enabled or not.
+`PUT /admin/endpoints/:group-name/enabled`
+
+This API enables a group of endpoints
 
 Parameter | Description
 --------- | -----------
 **group-name** | The name of the group of endpoints
 
-### Enable an endpoint group
-
-> Example of a request to enable an endpoint group
+<div class="snippet-title">
+	<p>Example of a request to enable an endpoint group</p>
+</div> 
 
 ```shell
 curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
@@ -4729,7 +4887,9 @@ curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```java
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -4739,17 +4899,20 @@ curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 }
 ```
 
-`PUT /admin/endpoints/:group-name/enabled`
+### Disable an endpoint group
 
-This API enables a group of endpoints
+`DELETE /admin/endpoints/:group-name/enabled`
+
+This API disables a group of endpoints.
+Calls to endpoints belonging to this group will return an error 403.
 
 Parameter | Description
 --------- | -----------
 **group-name** | The name of the group of endpoints
 
-### Disable an endpoint group
-
-> Example of a request to disable an endpoint group
+<div class="snippet-title">
+	<p>Example of a request to disable an endpoint group</p>
+</div>
 
 ```shell
 curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
@@ -4763,7 +4926,9 @@ curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```java
 ```
 
-> Example of a response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -4773,22 +4938,26 @@ curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 }
 ```
 
-`DELETE /admin/endpoints/:group-name/enabled`
-
-This API disable a group of endpoints.
-Calls to endpoints belonging to this group will returl an error 403.
-
-Parameter | Description
---------- | -----------
-**group-name** | The name of the group of endpoints
-
 ## Push Notifications
 
 Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
 
 ### Enable push notifications
 
-> Example of a request to enable push notifications
+`PUT /push/enable/:os/:pushToken`
+
+**Group**: [baasbox.notifications.receive](#list-groups)
+
+Enables a specific user (logged using a specific device) to receive push notifications.
+
+Parameter | Description
+--------- | -----------
+**os** | The operative system. One of: `ios`, `android`. Mandatory.
+**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+
+<div class="snippet-title">
+	<p>Example of a request to enable push notifications</p>
+</div>
 
 ```shell
 curl -X PUT  http://localhost:9000/push/enable/ios/123  \
@@ -4813,7 +4982,9 @@ box.enablePush("registrationIdByGoogle",
      });
 
 ```
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -4823,22 +4994,21 @@ box.enablePush("registrationIdByGoogle",
 }
 ```
 
-`PUT /push/enable/:os/:pushToken`
+### Disable push notifications
+
+`PUT /push/disable/:pushToken`
 
 **Group**: [baasbox.notifications.receive](#list-groups)
 
-Enables a specific user (logged using a specific device) to receive push notifications.
+Disable a specific user (logged using a specific device) to unreceive push notifications.
 
 Parameter | Description
 --------- | -----------
-**os** | The operative system. One of: `ios`, `android`. Mandatory.
-**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
 
-
-
-### Disable push notifications
-
-> Example of a request to disable push notifications
+<div class="snippet-title">
+	<p>Example of a request to disable push notifications</p>
+</div>
 
 ```shell
 curl -X PUT  http://localhost:9000/push/disable/123  \
@@ -4870,7 +5040,9 @@ client.disablePush("registration-id",new BaasHandler<Void>(){
   }
 });
 ```
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -4880,17 +5052,17 @@ client.disablePush("registration-id",new BaasHandler<Void>(){
 }
 ```
 
-`PUT /push/disable/:pushToken`
+### Send a push notification
 
-**Group**: [baasbox.notifications.receive](#list-groups)
+`POST /push/message/:username`
 
-Disable a specific user (logged using a specific device) to undeceive push notifications.
+**Group**: [baasbox.notifications.send](#list-groups)
+
+Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
 
 Parameter | Description
 --------- | -----------
-**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
-
-### Send a push notification
+**username** | The username of the user who has to receive the notification. Mandatory.
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
@@ -4919,7 +5091,9 @@ user.send(message,new BaasHandler<Void>(){
 });
 ```
 
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
 {
@@ -4928,17 +5102,6 @@ user.send(message,new BaasHandler<Void>(){
   "http_code": 200
 }
 ```
-
-
-`POST /push/message/:username`
-
-**Group**: [baasbox.notifications.send](#list-groups)
-
-Allows to send a push notification. It will be sent to every device on which the user has enabled push notifications.
-
-Parameter | Description
---------- | -----------
-**username** | The username of the user who has to receive the notification. Mandatory.
 
 ## Social Login ##
 
@@ -4992,7 +5155,9 @@ Returns a JSON representation of the social network connected to the
 user along with all the information retrieved at the moment of
 login/linking. An example of the returned data is:
 
-> Example of response
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
 
 ```json
    "data": [
