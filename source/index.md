@@ -966,6 +966,7 @@ public class MyApp extends Application {
         new BaasBox.Builder(this);
     client = b.setApiDomain("address")
               .setAppCode("appcode")
+	      .setPushSenderIds("your google sender id") //used for push notifications
               .init();
   }
 }
@@ -5060,9 +5061,9 @@ BAAClient *client = [BAAClient sharedClient];
 [client askToEnablePushNotifications];
 ```
 ```java
-BaasBox box=BaasBox.getDefault();
-box.enablePush("registrationIdByGoogle",
-     new BaasHandler<Void>() {
+// given you have provided one or more sender ids to the initial configuration
+BaasCloudMessagingService box=BaasBox.messagingService();
+box.enable(new BaasHandler<Void>() {
        @Override
        public void handle(BaasResult<Void> res){
          if(res.isSuccess()){
@@ -5120,8 +5121,8 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-BaasBox client = BaasBox.getDefault();
-client.disablePush("registration-id",new BaasHandler<Void>(){
+BaasCloudMessagingService client = BaasBox.messagingService();
+client.disable(new BaasHandler<Void>(){
   @Override
   public void handle(BaasResult<Void> res){
     if(res.isSuccess()){
