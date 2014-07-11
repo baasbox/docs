@@ -14,7 +14,7 @@ toc_footers:
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-The latest version is **0.8.1**
+The latest version is **0.8.2**
 
 
 You can access all sections using the sidebar on the left. The
