@@ -5247,6 +5247,34 @@ user along with all the information retrieved at the moment of
 login/linking. An example of the returned data is:
 
 <div class="snippet-title">
+	<p>Example of a request</p>
+</div>
+
+```shell
+curl http://localhost:9000/social  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser fetchLinkedSocialNetworksWithCompletion:^(NSArray *objects, NSError *error) {
+                                                
+                                                 if (error == nil) {     
+	                                        
+                                                     NSLog(@"social are %@", objects);
+
+                                                 } else {
+	
+                                                     NSLog(@"%@", error);
+
+                                                 }
+                                                 
+                                             }];
+
+```
+
+<div class="snippet-title">
 	<p>Example of a response</p>
 </div>
 
@@ -5266,6 +5294,7 @@ login/linking. An example of the returned data is:
                 "personal_url": "<personal_url>"
             }
         }
+	]
 ```
 
 This API should be invoked with a valid X-BB-SESSION header and a valid
