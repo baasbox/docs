@@ -5329,8 +5329,8 @@ Returns:
 
 ```shell
 curl -X POST  http://localhost:9000/social/facebook  \
-	 -d "oauth_token=OAUTH_TOKEN}" \
-	 -d "oauth_secret=OAUTH_SECRET}" \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
  	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
 ```
 
@@ -5384,6 +5384,32 @@ Returns:
 -  401 code if any of the mandatory headers was missing, 
 -  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
 
+<div class="snippet-title">
+	<p>Example of a request to link an account to Facebook</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/facebook  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Facebook
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToFacebookWithToken:token
+                                     completion:^(BOOL success, NSError *error) {
+        
+                                         if (success) {
+                                             NSLog(@"user linked to FB");                                                                                         
+                                         } else {
+                                             NSLog(@"error %@", error);
+                                         }
+                                     }];
+```
+
 ###Unlink a user from a specified social network
 
 `DELETE /social/:socialNetwork`
@@ -5401,5 +5427,24 @@ specified social network is the only one linked to the user, an error
 will be raised (as the user will not be available to connect anymore).
 
 
+<div class="snippet-title">
+	<p>Example of a request to unlink an account from Facebook</p>
+</div>
 
+```shell
+curl -X DELETE http://localhost:9000/social/facebook  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
 
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromFacebookWithCompletion:^(BOOL success, NSError *error) {
+                                                 
+                                                 if (success) {
+                                                     NSLog(@"account unlinked");
+                                                 } else {
+                                                     NSLog(@"error %@", error);
+                                                 }
+                                             }];
+```
