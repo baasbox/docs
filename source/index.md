@@ -5323,6 +5323,36 @@ Returns:
 -  500 code if something on the server went wrong (i.e. another user
    with the same tokens already exists)
 
+<div class="snippet-title">
+	<p>Example of a request to login with Facebook</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/facebook  \
+	 -d "oauth_token=OAUTH_TOKEN}" \
+	 -d "oauth_secret=OAUTH_SECRET}" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Facebook.
+[BAAUser loginWithFacebookToken:token
+                     completion:^(BOOL success, NSError *error) {
+
+                         if (success) {
+
+                             BAAClient *c = [BAAClient sharedClient];
+                             NSLog(@"logged in with facebook %@", c.currentUser);
+
+                         } else {
+
+                             NSLog(@"error %@", error);
+
+                         }
+
+                     }];
+```
+
 ###Link a user to a specified social network
 
 `PUT /social/:socialNetwork`
