@@ -5274,6 +5274,10 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```
 
+```java
+To be implemented 
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -5381,6 +5385,9 @@ NSString *token = ... ; // Valid authentication token obtained by Facebook.
 
                      }];
 ```
+```java
+To be implemented 
+```
 
 <div class="snippet-title">
 	<p>Example of a request to login with Google</p>
@@ -5410,6 +5417,10 @@ NSString *token = ... ; // Valid authentication token obtained by Google.
                          }
 
                    }];
+```
+
+```java
+To be implemented 
 ```
 
 ###Link a user to a specified social network
@@ -5470,6 +5481,10 @@ BAAClient *client = [BAAClient sharedClient];
                                   }];
 ```
 
+```java
+To be implemented 
+```
+
 <div class="snippet-title">
 	<p>Example of a request to link an account to Google</p>
 </div>
@@ -5495,6 +5510,10 @@ BAAClient *client = [BAAClient sharedClient];
                                          }
 
                                  }];
+```
+
+```java
+To be implemented 
 ```
 
 ###Unlink a user from a specified social network
@@ -5537,6 +5556,10 @@ BAAClient *client = [BAAClient sharedClient];
                                              }];
 ```
 
+```java
+To be implemented 
+```
+
 <div class="snippet-title">
 	<p>Example of a request to unlink an account from Google</p>
 </div>
@@ -5558,4 +5581,8 @@ BAAClient *client = [BAAClient sharedClient];
                                                  }
 
                                              }];
+```
+
+```java
+To be implemented 
 ```
