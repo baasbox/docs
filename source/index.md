@@ -5382,6 +5382,36 @@ NSString *token = ... ; // Valid authentication token obtained by Facebook.
                      }];
 ```
 
+<div class="snippet-title">
+	<p>Example of a request to login with Google</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/google  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Google.
+[BAAUser loginWithGoogleToken:token
+                    completion:^(BOOL success, NSError *error) {
+
+                         if (success) {
+
+                             BAAClient *c = [BAAClient sharedClient];
+                             NSLog(@"logged in with facebook %@", c.currentUser);
+
+                         } else {
+
+                             NSLog(@"error %@", error);
+
+                         }
+
+                   }];
+```
+
 ###Link a user to a specified social network
 
 `PUT /social/:socialNetwork`
@@ -5429,14 +5459,42 @@ curl -X PUT http://localhost:9000/social/facebook  \
 NSString *token = ...; // Token obtained by Facebook
 BAAClient *client = [BAAClient sharedClient];
 [client.currentUser linkToFacebookWithToken:token
-                                     completion:^(BOOL success, NSError *error) {
+                                  completion:^(BOOL success, NSError *error) {
         
                                          if (success) {
                                              NSLog(@"user linked to FB");                                                                                         
                                          } else {
                                              NSLog(@"error %@", error);
                                          }
-                                     }];
+
+                                  }];
+```
+
+<div class="snippet-title">
+	<p>Example of a request to link an account to Google</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/google  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Google
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToGoogleWithToken:token
+                                completion:^(BOOL success, NSError *error) {
+        
+                                         if (success) {
+                                             NSLog(@"user linked to FB");                                                                                         
+                                         } else {
+                                             NSLog(@"error %@", error);
+                                         }
+
+                                 }];
 ```
 
 ###Unlink a user from a specified social network
@@ -5475,5 +5533,29 @@ BAAClient *client = [BAAClient sharedClient];
                                                  } else {
                                                      NSLog(@"error %@", error);
                                                  }
+
+                                             }];
+```
+
+<div class="snippet-title">
+	<p>Example of a request to unlink an account from Google</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/social/google  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromGoogleWithCompletion:^(BOOL success, NSError *error) {
+                                                 
+                                                 if (success) {
+                                                     NSLog(@"account unlinked");
+                                                 } else {
+                                                     NSLog(@"error %@", error);
+                                                 }
+
                                              }];
 ```
