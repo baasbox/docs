@@ -5385,6 +5385,7 @@ NSString *token = ... ; // Valid authentication token obtained by Facebook.
 
                      }];
 ```
+
 ```java
 To be implemented 
 ```
@@ -5422,6 +5423,8 @@ NSString *token = ... ; // Valid authentication token obtained by Google.
 ```java
 To be implemented 
 ```
+=======
+>>>>>>> master
 
 ###Link a user to a specified social network
 
