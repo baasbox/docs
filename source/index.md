@@ -14,7 +14,7 @@ toc_footers:
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-The latest version is **0.8.1**
+The latest version is **0.8.2**
 
 
 You can access all sections using the sidebar on the left. The
@@ -966,6 +966,7 @@ public class MyApp extends Application {
         new BaasBox.Builder(this);
     client = b.setApiDomain("address")
               .setAppCode("appcode")
+	      .setPushSenderIds("your google sender id") //used for push notifications
               .init();
   }
 }
@@ -989,7 +990,7 @@ You can also access endpoints using synchronous alternatives using the ``*Sync``
 
 Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
 
-You can control asynchronous requests thorugh the returned RequestToken.
+You can control asynchronous requests through the returned RequestToken.
 
 <div class="snippet-title">
 	<p>Example requests</p>
@@ -5060,9 +5061,9 @@ BAAClient *client = [BAAClient sharedClient];
 [client askToEnablePushNotifications];
 ```
 ```java
-BaasBox box=BaasBox.getDefault();
-box.enablePush("registrationIdByGoogle",
-     new BaasHandler<Void>() {
+// given you have provided one or more sender ids to the initial configuration
+BaasCloudMessagingService box=BaasBox.messagingService();
+box.enable(new BaasHandler<Void>() {
        @Override
        public void handle(BaasResult<Void> res){
          if(res.isSuccess()){
@@ -5120,8 +5121,8 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-BaasBox client = BaasBox.getDefault();
-client.disablePush("registration-id",new BaasHandler<Void>(){
+BaasCloudMessagingService client = BaasBox.messagingService();
+client.disable(new BaasHandler<Void>(){
   @Override
   public void handle(BaasResult<Void> res){
     if(res.isSuccess()){
@@ -5246,6 +5247,38 @@ user along with all the information retrieved at the moment of
 login/linking. An example of the returned data is:
 
 <div class="snippet-title">
+	<p>Example of a request</p>
+</div>
+
+```shell
+curl http://localhost:9000/social  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser fetchLinkedSocialNetworksWithCompletion:^(NSArray *objects, NSError *error) {
+                                                
+                                                 if (error == nil) {     
+	                                        
+                                                     NSLog(@"social are %@", objects);
+
+                                                 } else {
+	
+                                                     NSLog(@"%@", error);
+
+                                                 }
+                                                 
+                                             }];
+
+```
+
+```java
+To be implemented 
+```
+
+<div class="snippet-title">
 	<p>Example of a response</p>
 </div>
 
@@ -5265,6 +5298,7 @@ login/linking. An example of the returned data is:
                 "personal_url": "<personal_url>"
             }
         }
+	]
 ```
 
 This API should be invoked with a valid X-BB-SESSION header and a valid
@@ -5322,6 +5356,73 @@ Returns:
 -  500 code if something on the server went wrong (i.e. another user
    with the same tokens already exists)
 
+<div class="snippet-title">
+	<p>Example of a request to login with Facebook</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/facebook  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Facebook.
+[BAAUser loginWithFacebookToken:token
+                     completion:^(BOOL success, NSError *error) {
+
+                         if (success) {
+
+                             BAAClient *c = [BAAClient sharedClient];
+                             NSLog(@"logged in with facebook %@", c.currentUser);
+
+                         } else {
+
+                             NSLog(@"error %@", error);
+
+                         }
+
+                     }];
+```
+```java
+To be implemented 
+```
+
+<div class="snippet-title">
+	<p>Example of a request to login with Google</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/google  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Google.
+[BAAUser loginWithGoogleToken:token
+                    completion:^(BOOL success, NSError *error) {
+
+                         if (success) {
+
+                             BAAClient *c = [BAAClient sharedClient];
+                             NSLog(@"logged in with facebook %@", c.currentUser);
+
+                         } else {
+
+                             NSLog(@"error %@", error);
+
+                         }
+
+                   }];
+```
+
+```java
+To be implemented 
+```
+
 ###Link a user to a specified social network
 
 `PUT /social/:socialNetwork`
@@ -5353,6 +5454,68 @@ Returns:
 -  401 code if any of the mandatory headers was missing, 
 -  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
 
+<div class="snippet-title">
+	<p>Example of a request to link an account to Facebook</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/facebook  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Facebook
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToFacebookWithToken:token
+                                  completion:^(BOOL success, NSError *error) {
+        
+                                         if (success) {
+                                             NSLog(@"user linked to FB");                                                                                         
+                                         } else {
+                                             NSLog(@"error %@", error);
+                                         }
+
+                                  }];
+```
+
+```java
+To be implemented 
+```
+
+<div class="snippet-title">
+	<p>Example of a request to link an account to Google</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/google  \
+	 -d "oauth_token=OAUTH_TOKEN" \
+	 -d "oauth_secret=OAUTH_SECRET" \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Google
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToGoogleWithToken:token
+                                completion:^(BOOL success, NSError *error) {
+        
+                                         if (success) {
+                                             NSLog(@"user linked to FB");                                                                                         
+                                         } else {
+                                             NSLog(@"error %@", error);
+                                         }
+
+                                 }];
+```
+
+```java
+To be implemented 
+```
+
 ###Unlink a user from a specified social network
 
 `DELETE /social/:socialNetwork`
@@ -5370,5 +5533,56 @@ specified social network is the only one linked to the user, an error
 will be raised (as the user will not be available to connect anymore).
 
 
+<div class="snippet-title">
+	<p>Example of a request to unlink an account from Facebook</p>
+</div>
 
+```shell
+curl -X DELETE http://localhost:9000/social/facebook  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
 
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromFacebookWithCompletion:^(BOOL success, NSError *error) {
+                                                 
+                                                 if (success) {
+                                                     NSLog(@"account unlinked");
+                                                 } else {
+                                                     NSLog(@"error %@", error);
+                                                 }
+
+                                             }];
+```
+
+```java
+To be implemented 
+```
+
+<div class="snippet-title">
+	<p>Example of a request to unlink an account from Google</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/social/google  \
+ 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromGoogleWithCompletion:^(BOOL success, NSError *error) {
+                                                 
+                                                 if (success) {
+                                                     NSLog(@"account unlinked");
+                                                 } else {
+                                                     NSLog(@"error %@", error);
+                                                 }
+
+                                             }];
+```
+
+```java
+To be implemented 
+```
