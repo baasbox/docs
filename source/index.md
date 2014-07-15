@@ -5435,7 +5435,6 @@ NSString *token = ... ; // Valid authentication token obtained by Google.
 To be implemented 
 ```
 =======
->>>>>>> master
 
 ###Link a user to a specified social network
 
