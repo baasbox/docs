@@ -5163,7 +5163,18 @@ curl -X POST  http://localhost:9000/push/message/cesare  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
+BAAClient *client = [BAAClient sharedClient];
+[client postPath:@"/push/message/cesare"
+      parameters:@{@"message" : @"Hi there"}
+         success:^(id responseObject) {
+             
+             NSLog(@"Notification sent");
+             
+         } failure:^(NSError *error) {
+             
+             NSLog(@"error %@", error);
+             
+         }];
 ```
 
 ```java
@@ -5424,7 +5435,6 @@ NSString *token = ... ; // Valid authentication token obtained by Google.
 To be implemented 
 ```
 =======
->>>>>>> master
 
 ###Link a user to a specified social network
 
