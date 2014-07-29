@@ -646,6 +646,14 @@ If not specified otherwise, all requests need custom HTTP headers.
 BaasBox has been supporting two authentication methods since its 0.5.7 version: HTTP Basic Authentication, or via a
 Session Token.
 
+#### Application Code
+This is the application code.
+Every BaasBox instance should have a unique AppCode. 
+By default this is: ``1234567890``, but it is **strongly recommended** that you change this code when you start production.
+See [configuration section](#configuration).
+
+``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
+
 #### Basic Authentication
 
 It needs to provide the user’s credentials via the basic access authentication method. Username and
@@ -656,14 +664,6 @@ encoded using BASE64. The header must be in this form:
 
 If authentication fails, the
 server replies with a BAD REQUEST http error (code 400)
-
-#### Application Code
-This is the application code.
-Every BaasBox instance should have a unique AppCode. 
-By default this is: ``1234567890``, but it is **strongly recommended** that you change this code when you start production.
-See [configuration section](#configuration).
-
-``X-BAASBOX-APPCODE: AAAABBBBCCCCDDDD``
 
 
 #### Session Token
