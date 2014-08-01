@@ -5398,7 +5398,14 @@ NSString *token = ... ; // Valid authentication token obtained by Facebook.
 ```
 
 ```java
-To be implemented 
+String token= ...;// a valid token from the provider
+BaasUser.signupWithProvider(Social.FACEBOOK,token,token,new BaasHandler<BaasUser>(){
+@Override
+  public void handler(BaasResult<BaasUser> res) {
+   if(res.isSuccess()){
+     BaasUser current = res.value(); 
+   }
+});
 ```
 
 <div class="snippet-title">
