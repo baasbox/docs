@@ -930,6 +930,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 
 ### Android SDK
 
@@ -982,6 +986,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 #### General usage
 
 Most BaasBox rest resources are exposed through wrapper classes.
@@ -1022,6 +1030,10 @@ NOTHING HERE
 ```
 
 ```shell
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -1083,6 +1095,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 #### Pass-through API
 
 Some rest endpoints have no direct equivalent in the API.
@@ -1113,6 +1129,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 
 ### JavaScript SDK
 The JavaScript SDK is based on [jQuery](http://jquery.com/). The [example page](https://github.com/baasbox/JS-SDK/blob/master/example/index.html) contains an example of each API
@@ -1135,7 +1155,6 @@ NOTHING HERE
 NOTHING HERE
 ```
 
-
 ```javascript
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
 <script src="../baasbox.js"></script>
@@ -1143,6 +1162,11 @@ NOTHING HERE
 
 The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
 The SDK also supports [Zepto](http://zeptojs.com/).
+
+#### Pass-through API
+
+For any non implemented API you can use jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
+
 
 ##User Management
 
