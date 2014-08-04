@@ -738,6 +738,7 @@ Parameter | Description
 --------- | -----------
 **page** | O indexed page number. Optional
 **recordsPerPage** | Number of elements to be retrieved per page. Optional
+**skip**	|	similar to the [‘skip’ keyword](https://github.com/orientechnologies/orientdb/wiki/Pagination) available for OrientDB queries, it allows to specify the number of records to be skipped before BaasBox starts collecting them as a result set.
 **where** | In order to search a condition, set a filter criteria in a SQL-like fashion (i.e.: ``“color=’yellow’ or address.city=’rome’”``). It is possible to use the positional mode, for example: ``“color=? or address.city=?”``. In this case you must supply the parameters’ values using the ``params`` querystring parameter.
 **params** | an array of value for the where clause. For example: ``/API\_URL/WHERECLAUSE/&params=yellow&params=cyan``
 **orderBy** | set an order by clause in a SQL-like fashion (i.e.: orderBy name desc). NOTE: the direction of ordering (asc or desc) is mandatory if pagination is used (see below)
