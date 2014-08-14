@@ -771,14 +771,23 @@ NSDictionary *parameters =
     kPageSizeKey : [NSNumber numberWithInteger:kPageLength]};
 [BAAUser loadUsersWithParameters:parameters
                       completion:^(NSArray *users, NSError *e) {
-                          
 						  if (error == nil) {
                           	NSLog(@"users are %@", users);
 					  	  } else {
 							// deal with error
 					      }
-                          
                       }];
+					  
+// Apply a filter using the where keyword
+NSDictionary *parameters = @{@"where" : "color=‘red'"};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+                }];
 ```
 
 ```java
