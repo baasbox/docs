@@ -3753,7 +3753,19 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+// Assumes 'uploadForm' is a form with an input tag of type 'file'
+$("#uploadForm").submit(function(e) {
+  e.preventDefault();
+  var formObj = $(this);
+  var formData = new FormData(this);
+  BaasBox.uploadFile(formData)
+    .done(function(res) {
+      console.log("res ", res);
+    })
+    .fail(function(error) {
+      console.log("error ", error);
+    })
+});
 ```
 
 <div class="snippet-title">
@@ -3946,7 +3958,13 @@ BaasFile.delete("fileId",handler);
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.deleteFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4018,7 +4036,13 @@ file.download("path-to-save-the-file.to",
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.fetchFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4096,7 +4120,13 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.fetchFileDetails("7491d26b-b730-40e7-9587-c0c3f58193c7")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
  
 <div class="snippet-title">
@@ -4249,7 +4279,13 @@ file.grant(Grant.READ,"andrea",new BaasHandler<Void>(){
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.grantUserAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4291,7 +4327,13 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.grantRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4361,7 +4403,13 @@ file.revoke(Grant.READ,"andrea",new BaasHandler<Void>(){
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.revokeUserAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4403,7 +4451,13 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+BaasBox.revokeRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
