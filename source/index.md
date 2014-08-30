@@ -5,6 +5,7 @@ language_tabs:
   - shell: cURL
   - objective_c: iOS
   - java: Android
+  - javascript: JavaScript
 
 toc_footers:
  - <a href='#'></a>
@@ -29,6 +30,7 @@ documentation explains:
 
    *  [iOS SDK](?objective_c#ios-sdk)
    *  [Android SDK](?java#android-sdk)
+   *  [JavaScript](?javascript#javascript-sdk)
 
 
 For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-1-released/)
@@ -771,14 +773,23 @@ NSDictionary *parameters =
     kPageSizeKey : [NSNumber numberWithInteger:kPageLength]};
 [BAAUser loadUsersWithParameters:parameters
                       completion:^(NSArray *users, NSError *e) {
-                          
 						  if (error == nil) {
                           	NSLog(@"users are %@", users);
 					  	  } else {
 							// deal with error
 					      }
-                          
                       }];
+					  
+// Apply a filter using the where keyword
+NSDictionary *parameters = @{@"where" : "color=‘red'"};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+                }];
 ```
 
 ```java
@@ -828,12 +839,12 @@ PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
 
 The SDK is distributed in two ways: 
 
-* as a Cocoapod
+* as a [Cocoapod](http://cocoapods.org/?q=baasBox)
 * as a zip file 
 
 We recommend to install it using Cocoapods. Just add the following line to your Podfile.
 
-`pod 'BaasBoxSDK', '~> 0.8'`
+`pod 'BaasBoxSDK', '~> 0.8.2'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
@@ -876,7 +887,7 @@ NOTHING HERE
 
 #### Architecture and pass-through
 
-The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
+The iOS SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
 On the right there is an example of a GET request.
 
 There are four methods, one for each HTTP verb.
@@ -926,6 +937,10 @@ NOTHING HERE
 ```
 
 ```java
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -981,6 +996,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 #### General usage
 
 Most BaasBox rest resources are exposed through wrapper classes.
@@ -1021,6 +1040,10 @@ NOTHING HERE
 ```
 
 ```shell
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -1082,6 +1105,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 #### Pass-through API
 
 Some rest endpoints have no direct equivalent in the API.
@@ -1112,8 +1139,43 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
 
 
+### JavaScript SDK
+The JavaScript SDK is based on [jQuery](http://jquery.com/). The [example page](https://github.com/baasbox/JS-SDK/blob/master/example/index.html) contains an example of each API
+call available. 
+
+#### Importing
+
+You can download the SDK from the [download page](http://www.baasbox.com/download/).
+To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
+
+```shell
+NOTHING HERE
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
+<script src="../baasbox.js"></script>
+```
+
+The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
+The SDK also supports [Zepto](http://zeptojs.com/).
+
+#### Pass-through API
+
+For any non implemented API you can use jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
 
 
 ##User Management
@@ -1179,6 +1241,16 @@ user.signup(new BaasHandler<BaasUser>(){
     }
   }
 });
+```
+
+```javascript
+BaasBox.signup("cesare", "password")
+	.done(function (res) {
+  	console.log("signup ", res);
+  })
+  .fail(function (error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1262,6 +1334,17 @@ user.login(new BaasHandler<BaasUser>() {
   }
 });
 ```
+
+```javascript
+BaasBox.login("cesare", "password")
+	.done(function (user) {
+		console.log("Logged in ", user);
+	})
+	.fail(function (err) {
+		console.log("error ", err);
+	})
+```
+
 <div class="snippet-title">
 	<p>Sample response when a user is logged in</p>
 </div> 
@@ -1332,6 +1415,16 @@ BaasUser.current().logout(new BaasHandler<Void>() {
     }
   };
 });
+```
+
+```javascript
+BaasBox.logout()
+  .done(function (res) {
+  	console.log(res);
+  })
+  .fail(function (error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1431,6 +1524,17 @@ BaasUser.current().refresh(new BaasHandler<BaasUser>() {
   }
 });
 ```
+
+```javascript
+BaasBox.fetchCurrentUser()
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Sample response</p>
 </div>  
@@ -1527,6 +1631,16 @@ user.save(new BaasHandler<BaasUser>() {
 });
 ```
 
+```javascript
+BaasBox.updateUserProfile({"visibleByAnonymousUsers": {"email" : "mail@mail.com"}})
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 
 <div class="snippet-title">
 	<p>Sample JSON response</p>
@@ -1610,6 +1724,18 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
   }
 });
 ```
+
+```javascript
+BaasBox.changePassword("oldpass", "newpass")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+
 <div class="snippet-title">
 	<p>Example of response</p>
 </div>
@@ -1677,6 +1803,16 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
 };
 ```
 
+```javascript
+BaasBox.resetPassword()
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of an error</p>
 </div>
@@ -1725,12 +1861,12 @@ Parameter | Description
 </div>
 
 ```shell
-curl http://localhost:9000/user/a \
+curl http://localhost:9000/user/cesare \
 	 -H X-BB-SESSION:f083f676-65d0-45bd-bfe5-e876ef3f659e
 ```
 
 ```objective_c
-[BAAUser loadUserDetails:@"a"
+[BAAUser loadUserDetails:@"cesare"
               completion:^(BAAUser *user, NSError *error) {
     
     if (error == nil) {
@@ -1758,6 +1894,16 @@ BaasUser.fetch("a",new BaasHandler<BaasUser>() {
     }
   }
 });
+```
+
+```javascript
+BaasBox.fetchUserProfile("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1831,6 +1977,16 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
     }
   }
 });
+```
+
+```javascript
+BaasBox.fetchUsers()
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1963,6 +2119,17 @@ user.follow(new BaasHandler<BaasUser>() {
   } 
 });
 ```
+
+```javascript
+BaasBox.followUser("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2044,6 +2211,17 @@ BaasUser.withUserName("cesare").unfollow(
     }
   });
 ```
+
+```javascript
+BaasBox.unfollowUser("cesare")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2102,6 +2280,16 @@ user.following(new BaasHandler<List<BaasUser>>() {
     }
   }
 });
+```
+
+```javascript
+BaasBox.fetchFollowing("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -2176,6 +2364,16 @@ user.followers(new BaasHandler<List<BaasUser>>() {
     }
   }
 });
+```
+
+```javascript
+BaasBox.fetchFollowers("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 
@@ -2261,6 +2459,16 @@ client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
             });
 ```
 
+```javascript
+BaasBox.createCollection("pizzas")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2316,6 +2524,16 @@ client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
                 }
               }
             });
+```
+
+```javascript
+BaasBox.deleteCollection("pizzas")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -2402,6 +2620,20 @@ doc.save(new BaasHandler<BaasDocument>() {
 });
 ```
 
+```javascript
+// Assumes a collection named "posts" has been created
+var post = new Object();
+post.title = "My new post title";
+post.body = "Body of my post.";		
+BaasBox.save(post, "posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2476,6 +2708,16 @@ BaasDocument.fetch("mycollection",
                  }});
 ```
 
+```javascript
+BaasBox.loadObject("posts", "090dd688-2e9a-4dee-9afa-aad72a1efa93")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2531,7 +2773,6 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-
 
 ```objective_c
 // Assumes post is an instance of Post, which subclasses BAAObject with properties "title", "body" and "tags".
-Post *post = [[Post alloc] init];
 post.title = @"My new post title";
 post.tags = @"tag1"
 post.body = @"Body of my post.";
@@ -2562,6 +2803,21 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
   }
 });
 ```
+
+```javascript
+// Assumes posts has properties "title", "body" and "tags".
+post.title = @"My new post title";
+post.tags = @"tag1"
+post.body = @"Body of my post.";
+BaasBox.save(post, "posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 
 <div class="snippet-title">
 	<p>Example of a response</p>
@@ -2617,7 +2873,6 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 
 ```objective_c
 // Assumes post is an instance of Post, which subclasses BAAObject with properties "title".
-Post *post = [[Post alloc] init];
 post.title = @"My new title";
 [post saveObjectWithCompletion:^(Post *p, NSError *error) {
 
@@ -2632,6 +2887,17 @@ post.title = @"My new title";
 
 ```java
 NOT IMPLEMENTED
+```
+
+```javascript
+// Assumes post is an instance of Post, which subclasses BAAObject with properties "title".
+BaasBox.updateField(post.id, "posts", "title", "My new title")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -2893,6 +3159,17 @@ doc.delete(new BaasHandler<Void>() {
   }
 });
 ```
+
+```javascript
+BaasBox.delete("090dd688-2e9a-4dee-9afa-aad72a1efa93", "posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2960,6 +3237,17 @@ BaasDocument.count("collection",new BaasHandler<Long> () {
   }
 });
 ```
+
+```javascript
+BaasBox.fetchObjectsCount("posts")
+  .done(function(res) {
+  	console.log("res ", res['data']['count']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -3066,7 +3354,25 @@ BaasDocument.fetchAll("collection",filter,
       }
     }
 });
+```
 
+```javascript
+BaasBox.loadCollection("posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+  
+// Version with pagination
+BaasBox.loadCollectionWithParams("pizzas", {page: 0, recordsPerPage: BaasBox.pagelength})
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3123,7 +3429,7 @@ Parameter | Description
 **rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
-	<p>Example of a request to grant read access to user "a" on document "090dd688"</p>
+	<p>Example of a request to grant read access to user "a" on document "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e"</p>
 </div>
 
 ```shell
@@ -3133,7 +3439,7 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
 
 ```objective_c
 // Assumes p is an instance of Post, which is a subclass of BAAObject
-[p grantAccessToUser:@"a"
+[p grantAccessToUser:@"cesare"
               ofType:kAclReadPermission
           completion:^(id object, NSError *error) {
    
@@ -3163,6 +3469,17 @@ doc.grant(Grant.READ,"a",new BaasHandler<Void>() {
   }
 });
 ```
+
+```javascript
+BaasBox.grantAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 
 <div class="snippet-title">
 	<p>Example of a request to grant update access to all registered users on a document</p>
@@ -3208,6 +3525,16 @@ doc.grantAll(Grant.UPDATE,Role.REGISTERED,
    });
 ```
 
+```javascript
+BaasBox.grantAccessToRole("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -3241,7 +3568,7 @@ Parameter | Description
 **rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
-	<p>Example of a request to revoke read access to user "a" on document "090dd688"</p>
+	<p>Example of a request to revoke read access to user "a" on document "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e"</p>
 </div>
 
 ```shell
@@ -3252,7 +3579,7 @@ curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a 
 ```objective_c
 // Assumes p is an instance of Post, which is a subclass of BAAObject
 [p revokeAccessToUser:@"a"
-               ofType:kAclUpdatePermission
+               ofType:kAclReadPermission
            completion:^(SMPost *post, NSError *error) {
      
                if (error == nil) {
@@ -3282,6 +3609,15 @@ doc.revoke(Grant.READ,"a",new BaasHandler<Void>() {
 });
 ```
 
+```javascript
+BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
 
 <div class="snippet-title">
 	<p>Example of a request to revoke update access to all registered users on a document</p>
@@ -3325,6 +3661,16 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
        }
      }
    });
+```
+
+```javascript
+BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3416,6 +3762,22 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
+```javascript
+// Assumes 'uploadForm' is a form with an input tag of type 'file'
+$("#uploadForm").submit(function(e) {
+  e.preventDefault();
+  var formObj = $(this);
+  var formData = new FormData(this);
+  BaasBox.uploadFile(formData)
+    .done(function(res) {
+      console.log("res ", res);
+    })
+    .fail(function(error) {
+      console.log("error ", error);
+    })
+});
+```
+
 <div class="snippet-title">
 	<p>Example of a response when a file is created</p>
 </div>
@@ -3487,6 +3849,10 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a request to create a file with attached data and acl</p>
 </div>
@@ -3544,6 +3910,10 @@ file.upload(acl,data,new BaasHandler<BaasFile> file) {
 }
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 ### Delete a file
 
 `DELETE /file/:id`
@@ -3595,7 +3965,16 @@ file.delete(new BaasHandler<Void>() {
 // if you don't have a reference to the file
 // object but you know it's id
 BaasFile.delete("fileId",handler);
+```
 
+```javascript
+BaasBox.deleteFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3664,6 +4043,16 @@ file.download("path-to-save-the-file.to",
                 
                 }
               });
+```
+
+```javascript
+BaasBox.fetchFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3739,6 +4128,16 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
   }
 });
 ```
+
+```javascript
+BaasBox.fetchFileDetails("7491d26b-b730-40e7-9587-c0c3f58193c7")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
+```
  
 <div class="snippet-title">
 	<p>Example of a response with file details</p>
@@ -3799,6 +4198,10 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
     }
   }
 });
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -3885,6 +4288,16 @@ file.grant(Grant.READ,"andrea",new BaasHandler<Void>(){
 });
 ```
 
+```javascript
+BaasBox.grantUserAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a request to grant write access to role “registered” on a file</p>
 </div>
@@ -3921,7 +4334,16 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
     }
   }
 });
+```
 
+```javascript
+BaasBox.grantRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3988,7 +4410,16 @@ file.revoke(Grant.READ,"andrea",new BaasHandler<Void>(){
     }
   }
 });
+```
 
+```javascript
+BaasBox.revokeUserAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4027,7 +4458,16 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
     }
   }
 });
+```
 
+```javascript
+BaasBox.revokeRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4102,6 +4542,10 @@ curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-a
 
 ```java
 //Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4192,6 +4636,10 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 //Please see the "pass-through" functionality of the Android SDK
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4248,6 +4696,10 @@ curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox
 //Please see the "pass-through" functionality of the Android SDK
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4293,8 +4745,12 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```java
-// TO BE IMPLEMENTED
+// NOT IMPLEMENTED
 // It's only for admins. You can do it in the web console.
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4340,6 +4796,10 @@ curl http://localhost:9000/admin/asset \
 
 ```java
 // NOT IMPLEMENTED
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4455,6 +4915,10 @@ BaasAsset.streamAsset("name",new BaasHandler<byte[]>() {
     }
   }
 });
+```1
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4502,6 +4966,10 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
+TO BE IMPLEMENTED
+```
+
+```javascript
 TO BE IMPLEMENTED
 ```
 
@@ -4556,6 +5024,10 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
+TO BE IMPLEMENTED
+```
+
+```javascript
 TO BE IMPLEMENTED
 ```
 
@@ -4639,6 +5111,10 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
+TO BE IMPLEMENTED
+```
+
+```javascript
 TO BE IMPLEMENTED
 ```
 
@@ -4727,6 +5203,10 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4812,6 +5292,10 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4882,6 +5366,10 @@ curl -X GET http://localhost:9000/admin/endpoints \
 ```java
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4938,6 +5426,10 @@ curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
 ```java
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div> 
@@ -4979,6 +5471,10 @@ curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```java
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -5016,6 +5512,10 @@ curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```
 
 ```java
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -5074,6 +5574,11 @@ box.enable(new BaasHandler<Void>() {
      });
 
 ```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -5132,6 +5637,11 @@ client.disable(new BaasHandler<Void>(){
   }
 });
 ```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -5192,6 +5702,10 @@ user.send(message,new BaasHandler<Void>(){
     }
   }
 });
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -5288,6 +5802,10 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```java
 To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -5409,6 +5927,10 @@ BaasUser.signupWithProvider(Social.FACEBOOK,token,token,new BaasHandler<BaasUser
 });
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a request to login with Google</p>
 </div>
@@ -5441,6 +5963,10 @@ NSString *token = ... ; // Valid authentication token obtained by Google.
 
 ```java
 To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 ###Link a user to a specified social network
@@ -5505,6 +6031,10 @@ BAAClient *client = [BAAClient sharedClient];
 To be implemented 
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a request to link an account to Google</p>
 </div>
@@ -5534,6 +6064,10 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```java
 To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 ###Unlink a user from a specified social network
@@ -5580,6 +6114,10 @@ BAAClient *client = [BAAClient sharedClient];
 To be implemented 
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a request to unlink an account from Google</p>
 </div>
@@ -5605,4 +6143,8 @@ BAAClient *client = [BAAClient sharedClient];
 
 ```java
 To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
