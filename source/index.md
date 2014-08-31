@@ -3307,8 +3307,11 @@ BaasBox.save(post, "posts")
 }
 ```
 
-### Retrieve a document
+### Retrieve documents
+You can get documents in two ways: using their unique ids, or executing a query to perform a search.
+Both methods are described below.   
 
+#### Retrieve a document by its id
 
 `GET /document/:collection/:ID`
 
@@ -3391,6 +3394,244 @@ BaasBox.loadObject("posts", "090dd688-2e9a-4dee-9afa-aad72a1efa93")
 }
 ```
 
+#### Retrieve documents by a query
+
+`GET /document/:collection`
+
+**Group**: [baasbox.data.read](#list-groups)
+
+Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria). 
+This means that you can use, for example, the _where_ criteria to filter the result, the _recordsPerPage_ criteria to limit the number of records to retrieve, and so on.
+In the _where_ clause you can use the [SQL-FILTERING](http://www.orientechnologies.com/docs/last/orientdb.wiki/SQL-Where.html) syntax of OrientDB
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read and therefore they are not included in the result.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to retrieve a list of documents using default pagination</p>
+</div>
+
+```shell
+curl http://localhost:9000/document/mycollection \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+	
+// Version with pagination
+curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes Post as a subclass of BAAObject
+[Post getObjectsWithCompletion:^(NSArray *posts, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"Posts are %@", posts);
+    } else {
+        // deal with error
+    }
+    
+}];
+
+// Version with pagination
+NSDictionary *parameters = @{kPageNumberKey : @0,
+                             kPageSizeKey : @20};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+
+                }];
+				
+// Apply a filter using the where keyword
+NSDictionary *parameters = @{@"where" : "color=‘red'"};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+                }];
+```
+
+```java
+BaasDocument.fetchAll("collection",
+  new BaasHandler<List<BaasDocument>>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
+    
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
+      }
+    }
+});
+
+// using pagination and selection
+Filter filter = BaasQuery.builder().pagination(0,20)
+                      .orderBy("field desc")
+                      .where("_author = ?")
+                      .whereParams("Cesare")
+                      .filter();
+
+BaasDocument.fetchAll("collection",filter,
+  new BaasHandler<List<BaasDocument>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
+      }
+    }
+});
+```
+
+```javascript
+BaasBox.loadCollection("posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+  
+// Version with pagination
+BaasBox.loadCollectionWithParams("pizzas", {page: 0, recordsPerPage: BaasBox.pagelength})
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "@rid": "#25:1",
+      "@version": 5,
+      "@class": "mycollection",
+      "title": "My new post title",
+      "body": "Body of my post.",
+      "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+      "_creation_date": "2014-01-30T22:22:36.036+0100",
+      "_author": "cesare"
+    },
+	{
+      "@rid": "#26:1",
+      "@version": 5,
+      "@class": "mycollection",
+      "title": "My second post title",
+      "body": "Body of my second post.",
+      "id": "af1236fe-c8bs-4r6f-866b-e4cnkutd8636",
+      "_creation_date": "2014-01-30T22:22:38.031+0100",
+      "_author": "cesare"
+    }
+  ],
+  "http_code": 200
+}
+```
+
+### Count documents
+
+`GET /document/:collection/count`
+
+**Group**: [baasbox.data.read](#list-groups)
+
+Returns the number of documents that the **user can read** in a collection. 
+Supports [Pagination and Query Criteria](#pagination-and-query-criteria).
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read and therefore they are not included in the count.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to count documents in a collection</p>
+</div>
+
+```shell
+curl http://localhost:9000/document/mycollection/count \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes Post is a subclass of BAAObject
+[Post fetchCountForObjectsWithCompletion:^(NSInteger count, NSError *error) {
+                                               
+                                                if (error == nil) {
+                                                
+                                                    NSLog(@"count is %i", count);
+                                                    
+                                                } else {
+                                                
+                                                    NSLog(@"error is %@", error);
+                                                    
+                                                }
+                                                
+                                            }];
+```
+
+```java
+BaasDocument.count("collection",new BaasHandler<Long> () {
+  @Override
+  public void handle(BaasResult<Long> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","visible document count is: "+res.value());
+    } else {
+      Log.e("LOG","Error",res.value());
+    }
+  }
+});
+```
+
+```javascript
+BaasBox.fetchObjectsCount("posts")
+  .done(function(res) {
+  	console.log("res ", res['data']['count']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "count": 1
+  },
+  "http_code": 200
+}
+```
 
 ### Modify a document
 
@@ -3492,6 +3733,7 @@ BaasBox.save(post, "posts")
   "http_code": 200
 }
 ```
+
 ### Update a Document's field
 
 `PUT /document/:collection/:id/.:fieldname`
@@ -3851,231 +4093,8 @@ BaasBox.delete("090dd688-2e9a-4dee-9afa-aad72a1efa93", "posts")
 }
 ```
 
-### Count documents
 
-`GET /document/:collection/count`
 
-**Group**: [baasbox.data.read](#list-groups)
-
-Returns the number of documents that the **user can read** in a collection. 
-Supports [Pagination and Query Criteria](#pagination-and-query-criteria).
-
-Parameter | Description
---------- | -----------
-**collection** | The name of the collection. Mandatory.
-
-<aside class="notice">
-	A collection could contain documents that the user cannot read and therefore they are not included in the count.
-</aside>
-
-<div class="snippet-title">
-	<p>Example of a request to count documents in a collection</p>
-</div>
-
-```shell
-curl http://localhost:9000/document/mycollection/count \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-// Assumes Post is a subclass of BAAObject
-[Post fetchCountForObjectsWithCompletion:^(NSInteger count, NSError *error) {
-                                               
-                                                if (error == nil) {
-                                                
-                                                    NSLog(@"count is %i", count);
-                                                    
-                                                } else {
-                                                
-                                                    NSLog(@"error is %@", error);
-                                                    
-                                                }
-                                                
-                                            }];
-```
-
-```java
-BaasDocument.count("collection",new BaasHandler<Long> () {
-  @Override
-  public void handle(BaasResult<Long> res) {
-    if (res.isSuccess()) {
-      Log.d("LOG","visible document count is: "+res.value());
-    } else {
-      Log.e("LOG","Error",res.value());
-    }
-  }
-});
-```
-
-```javascript
-BaasBox.fetchObjectsCount("posts")
-  .done(function(res) {
-  	console.log("res ", res['data']['count']);
-  })
-  .fail(function(error) {
-  	console.log("error ", error);
-  })
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": {
-    "count": 1
-  },
-  "http_code": 200
-}
-```
-
-### Retrieve documents 
-
-`GET /document/:collection`
-
-**Group**: [baasbox.data.read](#list-groups)
-
-Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria).
-
-Parameter | Description
---------- | -----------
-**collection** | The name of the collection. Mandatory.
-
-<aside class="notice">
-	A collection could contain documents that the user cannot read and therefore they are not included in the result.
-</aside>
-
-<div class="snippet-title">
-	<p>Example of a request to retrieve a list of documents using default pagination</p>
-</div>
-
-```shell
-curl http://localhost:9000/document/mycollection \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-	
-// Version with pagination
-curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-// Assumes Post as a subclass of BAAObject
-[Post getObjectsWithCompletion:^(NSArray *posts, NSError *error) {
-    
-    if (error == nil) {
-        NSLog(@"Posts are %@", posts);
-    } else {
-        // deal with error
-    }
-    
-}];
-
-// Version with pagination
-NSDictionary *parameters = @{kPageNumberKey : @0,
-                             kPageSizeKey : @20};
-[Post getObjectsWithParams:parameters
-                completion:^(NSArray *posts, NSError *error) {
-
-                    if (error == nil) {
-                        NSLog(@"Posts are %@", posts);
-                    } else {
-                        // deal with error
-                    }
-
-                }];
-```
-
-```java
-BaasDocument.fetchAll("collection",
-  new BaasHandler<List<BaasDocument>>() {
-    @Override
-    public void handle(BaasResult<List<BaasDocument>> res) {
-    
-      if (res.isSuccess()) {
-        for (BaasDocument doc:res.value()) {
-          Log.d("LOG","Doc: "+doc);
-        }
-      } else {
-        Log.e("LOG","Error",res.error());
-      }
-    }
-});
-
-// using pagination and selection
-Filter filter = BaasQuery.builder().pagination(0,20)
-                      .orderBy("field desc")
-                      .where("_author = ?")
-                      .whereParams("Cesare")
-                      .filter();
-
-BaasDocument.fetchAll("collection",filter,
-  new BaasHandler<List<BaasDocument>() {
-    @Override
-    public void handle(BaasResult<List<BaasDocument>> res) {
-      if (res.isSuccess()) {
-        for (BaasDocument doc:res.value()) {
-          Log.d("LOG","Doc: "+doc);
-        }
-      } else {
-        Log.e("LOG","Error",res.error());
-      }
-    }
-});
-```
-
-```javascript
-BaasBox.loadCollection("posts")
-  .done(function(res) {
-  	console.log("res ", res);
-  })
-  .fail(function(error) {
-  	console.log("error ", error);
-  })
-  
-// Version with pagination
-BaasBox.loadCollectionWithParams("pizzas", {page: 0, recordsPerPage: BaasBox.pagelength})
-  .done(function(res) {
-  	console.log("res ", res);
-  })
-  .fail(function(error) {
-  	console.log("error ", error);
-  })
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": [
-    {
-      "@rid": "#25:1",
-      "@version": 5,
-      "@class": "mycollection",
-      "title": "My new post title",
-      "body": "Body of my post.",
-      "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
-      "_creation_date": "2014-01-30T22:22:36.036+0100",
-      "_author": "cesare"
-    },
-	{
-      "@rid": "#26:1",
-      "@version": 5,
-      "@class": "mycollection",
-      "title": "My second post title",
-      "body": "Body of my second post.",
-      "id": "af1236fe-c8bs-4r6f-866b-e4cnkutd8636",
-      "_creation_date": "2014-01-30T22:22:38.031+0100",
-      "_author": "cesare"
-    }
-  ],
-  "http_code": 200
-}
-```
 
 ### Grant permissions on a Document
 
@@ -4480,7 +4499,7 @@ Please note that you can have as many links as you want between two documents or
 To create a link, a user has to have at least the read permission on both objects to link.
 
 
-### Retrieves links
+### Retrieve links
 
 
 `GET /link/:id`
@@ -4490,7 +4509,7 @@ To create a link, a user has to have at least the read permission on both object
 You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
 The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
 
-Of course you can apply filters to the fields of linked nodes as well.
+Of course you can apply filters to the fields of linked nodes to search for specific links that match the criteria.
 
 `GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
 
@@ -4508,7 +4527,7 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
