@@ -92,14 +92,9 @@ NOTHING HERE
 **System Requirements**  [Java VM 6](http://java.com/en/download/) or later. BaasBox is compiled with
 Java 1.6.
 
-1. Download the latest version from [here](http://www.baasbox.com/download/), keep
-   in mind that until the 1.0 version will be released, BaasBox is not
-   production-ready and therefore subject to change. For Windows
-   Platforms on the same page you will find the `start.tar.gz` file.
+1. Download the latest version from [here](http://www.baasbox.com/download/). 
 2. Unzip the `baasbox-x.x.zip` file wherever you want.
-3. Only for Windows Platforms: unzip the `start.tar.gz` file and put the
-   extracted start.bat in the same directory
-4. Type:
+3. Type:
    * run `start.bat` (on Windows)
    * `./start` (on *nix) You might need to grant execution permissions via
    `chmod +x ./start`
