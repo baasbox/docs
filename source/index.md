@@ -15,8 +15,9 @@ toc_footers:
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-The latest version is **0.8.3**
+It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 
+The latest version is **0.8.3**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -33,7 +34,9 @@ documentation explains:
    *  [JavaScript](?javascript#javascript-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-1-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-3-released/)
+
+FAQs are available on our [support site](http://support.baasbox.com/)
 
 The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
@@ -83,7 +86,18 @@ public class MyApp extends Application{
 ```
 
 ```javascript
-NOTHING HERE
+/*
+You can download the SDK from the [download page](http://www.baasbox.com/download/).
+To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
+*/
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
+<script src="../baasbox.js"></script>
+
+/*
+The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
+The SDK also supports [Zepto](http://zeptojs.com/).
+*/
 ```
 
 
@@ -104,6 +118,8 @@ with your preferred browser. If everything worked fine, the BaasBox logo
 should appear. Now you can open the administrator console: [http://localhost:9000/console](http://localhost:9000/console )
 For further details about the console, you can read [console](#console).
 That’s all! BaasBox is ready to go and to serve your apps! To stop the server just halt (Ctrl-C) the shell script.
+
+BaasBox is also available as a [**cloud service**](http://beta.baasbox.com) already configured and ready to use.
 
 # Configuration
 BaasBox does not need any configuration to start. However, you can modify many parameters to fit your specific needs.
@@ -141,7 +157,8 @@ NOTHING HERE
 
 Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
 By default no options are used.
-A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html) 
+A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html).
+
 These settings cannot be modified at runtime.
 
 ## Play Framework Settings
@@ -162,7 +179,8 @@ NOTHING HERE
 ```
 
 BaasBox is based on the [Play Framework 2.2.4](http://www.playframework.com). This means that it accepts all the options available for any Play application.
-A complete reference of these option can be found [here](http://www.playframework.com/documentation/2.2.4/ProductionConfiguration)
+A complete reference of these option can be found [here](http://www.playframework.com/documentation/2.2.4/ProductionConfiguration).
+
 These settings cannot be modified at runtime.
 
 ## BaasBox Settings
@@ -186,6 +204,8 @@ Key | Description | Default
 **baasbox.startup.dumpdb** | it dumps DB information on startup | `false`
 **baasbox.server.accesslog** | Enable/disable the access log | `true`
 
+These settings cannot be modified at runtime.
+
 ## App Settings
 These are settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you are not forced to specify them every time you start BaasBox.
 The App Settings can be configured via the [Administration Console](#console).
@@ -201,7 +221,9 @@ The settings are splitted in five sections:
 
 - Social Login
 
-The available options are:
+These settings can be modified at runtime.
+
+The available options for each section are described below.
 
 ### Application
 
@@ -647,7 +669,10 @@ following window:
 
 
 
-#SDK
+# SDK
+Native SDKs for iOS, Android and Javascript are available. They allow to access to many functions of BaasBox server using a native interface.
+
+One cool feature it is the "pass through" function that allow to perform a _raw_ call to BaasBox in case you want to do something that is not supported by the SDK yet.
 
 ## iOS SDK
 
@@ -661,6 +686,14 @@ We recommend to install it using Cocoapods. Just add the following line to your 
 `pod 'BaasBoxSDK', '~> 0.8.3'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+
+Finally insert the following statement in the .pch file
+
+`#import "BAAClient.h"`
+
+and you are good to go. 
+
+Note for **Swift** projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one add the following statement and you are good to go: #import "BAAClient.h" 
 
 #### Importing
 
@@ -774,7 +807,6 @@ The SDK is distributed as a jar. To get started download it from the [download s
 You can also use maven gradle or maven to depend on the library:
 
 ``compile 'com.baasbox:baasbox-android:0.8.3'``
-
 
 
 #### Initialization
