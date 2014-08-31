@@ -653,6 +653,357 @@ following window:
 
 
 
+#SDK
+
+## iOS SDK
+
+The SDK is distributed in two ways: 
+
+* as a [Cocoapod](http://cocoapods.org/?q=baasBox)
+* as a zip file 
+
+We recommend to install it using Cocoapods. Just add the following line to your Podfile.
+
+`pod 'BaasBoxSDK', '~> 0.8.3'`
+
+If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+
+#### Importing
+
+The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
+
+```objective_c
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "BAAClient.h"
+#endif
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Initialization
+
+You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
+
+```objective_c
+[BaasBox setBaseURL:@"http://localhost:9000"
+appCode:@"1234567890"];
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Architecture and pass-through
+
+The iOS SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
+On the right there is an example of a GET request.
+
+There are four methods, one for each HTTP verb.
+
+``- (void)getPath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+
+``- (void)postPath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+``- (void)putPath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+``- (void)deletePath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+
+As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"/file/details"
+parameters:parameters
+success:^(id responseObject) {
+
+NSLog(@"response is %@", responseObject);         
+
+} failure:^(NSError *error) {
+
+NSLog(@"error is %@", error); 
+
+}];
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+
+## Android SDK
+
+BaasBox provides a native Android SDK, to further ease development of mobile applications.
+The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
+You can also use maven gradle or maven to depend on the library:
+
+``compile 'com.baasbox:baasbox-android:0.8.3'``
+
+
+
+#### Initialization
+
+Currently, you can have only one client per application. 
+The client must be initialized before you can use any of the provided features.
+The preferred way to initialize the SDK is to override the default 
+application and configure it in the ``onCreate()`` method, 
+using the ``BaasBox.Builder`` class.
+
+<div class="snippet-title">
+<p>Example initialization</p>
+</div>
+
+```java
+//...
+import com.baasbox.android.BaasBox;
+
+public class MyApp extends Application {
+
+private BaasBox client;
+
+@Override
+public void onCreate() {
+super.onCreate();
+BaasBox.Builder b = 
+new BaasBox.Builder(this);
+client = b.setApiDomain("address")
+.setAppCode("appcode")
+.setPushSenderIds("your google sender id") //used for push notifications
+.init();
+}
+}
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### General usage
+
+Most BaasBox rest resources are exposed through wrapper classes.
+Endpoints are accessible through asynchronous methods, that accept a general callback interface
+``BaasHandler<T>``
+
+You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
+
+Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
+
+You can control asynchronous requests through the returned RequestToken.
+
+<div class="snippet-title">
+<p>Example requests</p>
+</div>
+
+```java
+// Here  BaasDocument is used as an example
+// it represents documents on the server, 
+// more on this later
+
+// asynchronous request
+RequestToken tok = BaasDocument.fetchAll("coll",
+new BaasHandler<List<BaasDocument>>() {
+@Override
+public void handle(BaasResult<List<BaasDocument>> res) {
+// res is the result of the request
+}
+});
+
+// synchronous equivalent BLOCKS!!!
+BaasResult<List<BaasDocument>> res = 
+BaasDocument.fetchAllSync("coll");
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Asynchronous requests management
+
+Asynchronous requests are executed by a pool of threads.
+While an asynchronous request is running you can manage it
+using the return value of the method, a ``RequestToken``.
+Tokens are designed to let you *suspend* the assigned callback without
+interrupting the real request, allowing the later resumption of
+result processing on the main thread when you are ready to handle it.
+This is quite useful when callbacks are tied to the lifecycle of your
+acitivities.
+
+Request tokens let you cancel/abort requests, or wait for their completion,
+this is useful in testing or if you want to parallelize your http requests.
+
+```java
+// an example asynchronous request in an activity
+public class MyActivity extends Activity implements
+BaasHandler<BaasUser>{
+private final statis String BAAS_REQ = "tag";
+private RequestToken token;
+
+public void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+// you resume suspended requests
+// and obtain the token back
+token = RequestToken.loadAndResume(
+savedInstanceState,
+BAAS_REQ,
+this);
+if(token!=null){
+// a request has been resumed
+}
+}
+
+public void onSaveInstanceSate(Bundle state){
+super.onSaveInstanceState(state);
+if(token!=null){
+token.suspendAndSave(state,TAG);
+}
+}
+
+public void handle(BaasResult<BaasUser> res){
+token = null;
+// process result
+}
+}
+
+
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Pass-through API
+
+Some rest endpoints have no direct equivalent in the API.
+For them you can use the lower level pass through API provided by the SDK
+through the ``rest()`` and ``restSync()`` methods.
+Whenever you see a "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
+Using these methods you can access these APIs while still enjoying the rest
+of the SDK features, such as concurrency and lifecycle management, caching,
+handling of the authentication.
+
+```java
+BaasBox cli  = BaasBox.getDefault();
+cli.rest(HttpRequest.GET,
+"endpoint",
+optJsonBody,
+authenticate,
+new BaasHandler<JsonObject>(){
+@Override
+public void handle(BaasResult<JsonObject> res){
+}});
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+
+## JavaScript SDK
+The JavaScript SDK is based on [jQuery](http://jquery.com/). The [example page](https://github.com/baasbox/JS-SDK/blob/master/example/index.html) contains an example of each API
+call available. 
+
+#### Importing
+
+You can download the SDK from the [download page](http://www.baasbox.com/download/).
+To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
+
+```shell
+NOTHING HERE
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
+<script src="../baasbox.js"></script>
+```
+
+The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
+The SDK also supports [Zepto](http://zeptojs.com/).
+
+#### Pass-through API
+
+For any non implemented API you can use jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
 
 
 # API
@@ -858,356 +1209,6 @@ NOTHING HERE
 <aside class="notice">
 	The value of the parameter must be URL encoded.
 </aside>
-
-### iOS SDK
-
-The SDK is distributed in two ways: 
-
-* as a [Cocoapod](http://cocoapods.org/?q=baasBox)
-* as a zip file 
-
-We recommend to install it using Cocoapods. Just add the following line to your Podfile.
-
-`pod 'BaasBoxSDK', '~> 0.8.3'`
-
-If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
-
-#### Importing
-
-The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
-
-```objective_c
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import "BAAClient.h"
-#endif
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-#### Initialization
-
-You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
-
-```objective_c
-[BaasBox setBaseURL:@"http://localhost:9000"
-            appCode:@"1234567890"];
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-#### Architecture and pass-through
-
-The iOS SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
-On the right there is an example of a GET request.
-
-There are four methods, one for each HTTP verb.
-
-``- (void)getPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id responseObject))success
-        failure:(void (^)(NSError *error))failure;``
-
-
-``- (void)postPath:(NSString *)path
-      parameters:(NSDictionary *)parameters
-         success:(void (^)(id responseObject))success
-         failure:(void (^)(NSError *error))failure;``
-
-``- (void)putPath:(NSString *)path
-    parameters:(NSDictionary *)parameters
-       success:(void (^)(id responseObject))success
-       failure:(void (^)(NSError *error))failure;``
-
-``- (void)deletePath:(NSString *)path
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(id responseObject))success
-          failure:(void (^)(NSError *error))failure;``
-
-
-As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
-
-```objective_c
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client getPath:@"/file/details"
-     parameters:parameters
-        success:^(id responseObject) {
-          
-          NSLog(@"response is %@", responseObject);         
-          
-        } failure:^(NSError *error) {
-          
-          NSLog(@"error is %@", error); 
-          
-        }];
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-
-### Android SDK
-
-BaasBox provides a native Android SDK, to further ease development of mobile applications.
-The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
-You can also use maven gradle or maven to depend on the library:
-
-``compile 'com.baasbox:baasbox-android:0.8.3'``
-
-
-
-#### Initialization
-
-Currently, you can have only one client per application. 
-The client must be initialized before you can use any of the provided features.
-The preferred way to initialize the SDK is to override the default 
-application and configure it in the ``onCreate()`` method, 
-using the ``BaasBox.Builder`` class.
-
-<div class="snippet-title">
-	<p>Example initialization</p>
-</div>
-
-```java
-//...
-import com.baasbox.android.BaasBox;
-
-public class MyApp extends Application {
-  
-  private BaasBox client;
-  
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    BaasBox.Builder b = 
-        new BaasBox.Builder(this);
-    client = b.setApiDomain("address")
-              .setAppCode("appcode")
-	      .setPushSenderIds("your google sender id") //used for push notifications
-              .init();
-  }
-}
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-#### General usage
-
-Most BaasBox rest resources are exposed through wrapper classes.
-Endpoints are accessible through asynchronous methods, that accept a general callback interface
-``BaasHandler<T>``
-
-You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
-
-Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
-
-You can control asynchronous requests through the returned RequestToken.
-
-<div class="snippet-title">
-	<p>Example requests</p>
-</div>
-
-```java
-// Here  BaasDocument is used as an example
-// it represents documents on the server, 
-// more on this later
-
-// asynchronous request
-RequestToken tok = BaasDocument.fetchAll("coll",
-  new BaasHandler<List<BaasDocument>>() {
-    @Override
-    public void handle(BaasResult<List<BaasDocument>> res) {
-      // res is the result of the request
-    }
-});
-
-// synchronous equivalent BLOCKS!!!
-BaasResult<List<BaasDocument>> res = 
-  BaasDocument.fetchAllSync("coll");
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-#### Asynchronous requests management
-
-Asynchronous requests are executed by a pool of threads.
-While an asynchronous request is running you can manage it
-using the return value of the method, a ``RequestToken``.
-Tokens are designed to let you *suspend* the assigned callback without
-interrupting the real request, allowing the later resumption of
-result processing on the main thread when you are ready to handle it.
-This is quite useful when callbacks are tied to the lifecycle of your
-acitivities.
-
-Request tokens let you cancel/abort requests, or wait for their completion,
-this is useful in testing or if you want to parallelize your http requests.
-
-```java
-// an example asynchronous request in an activity
-public class MyActivity extends Activity implements
-  BaasHandler<BaasUser>{
-  private final statis String BAAS_REQ = "tag";
-  private RequestToken token;
-  
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    // you resume suspended requests
-    // and obtain the token back
-    token = RequestToken.loadAndResume(
-      savedInstanceState,
-      BAAS_REQ,
-      this);
-   if(token!=null){
-    // a request has been resumed
-   }
-  }
-  
-  public void onSaveInstanceSate(Bundle state){
-    super.onSaveInstanceState(state);
-    if(token!=null){
-      token.suspendAndSave(state,TAG);
-    }
-  }
-  
-  public void handle(BaasResult<BaasUser> res){
-    token = null;
-    // process result
-  }
-}
-
-
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-#### Pass-through API
-
-Some rest endpoints have no direct equivalent in the API.
-For them you can use the lower level pass through API provided by the SDK
-through the ``rest()`` and ``restSync()`` methods.
-Whenever you see a "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
-Using these methods you can access these APIs while still enjoying the rest
-of the SDK features, such as concurrency and lifecycle management, caching,
-handling of the authentication.
-
-```java
-BaasBox cli  = BaasBox.getDefault();
-cli.rest(HttpRequest.GET,
-         "endpoint",
-         optJsonBody,
-         authenticate,
-         new BaasHandler<JsonObject>(){
-  @Override
-  public void handle(BaasResult<JsonObject> res){
-  }});
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
-
-
-### JavaScript SDK
-The JavaScript SDK is based on [jQuery](http://jquery.com/). The [example page](https://github.com/baasbox/JS-SDK/blob/master/example/index.html) contains an example of each API
-call available. 
-
-#### Importing
-
-You can download the SDK from the [download page](http://www.baasbox.com/download/).
-To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
-
-```shell
-NOTHING HERE
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```javascript
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
-<script src="../baasbox.js"></script>
-```
-
-The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
-The SDK also supports [Zepto](http://zeptojs.com/).
-
-#### Pass-through API
-
-For any non implemented API you can use jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
 
 
 ##User Management
