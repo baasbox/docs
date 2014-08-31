@@ -584,7 +584,6 @@ button and you will see this window:
 </aside>
 
 
-
 ## Collections
 
 By selecting the Collections option on the menu you can access the
@@ -1229,7 +1228,7 @@ Parameter | Description
 **username** | The username for the user. Mandatory
 **password** | Password. Mandatory
 **visibleByTheUser** | an object whose fields are private and visible only by the user
-**visibleByFriends** | an object whose fields are visible by the user and friends (for future friendship management)
+**visibleByFriends** | an object whose fields are visible by the user and friends (for friendship management)
 **visibleByRegisteredUsers** | an object whose fields are visible by the user, friends, any registered user
 **visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, also anonymous users
 
@@ -2065,8 +2064,437 @@ BaasBox.fetchUsers()
 }
 ```
 
+## Social Login ##
 
-##Friendship
+BaasBox provides an API that allows you to connect/create your users
+through social networks.
+
+BaasBox social API is integrated with the following social networks: -
+Facebook - Google +
+
+We are planning on adding more in the near future.
+
+The use of an API in a client application needs an *appKey* and an
+*appSecret* usually provided by the social network itself. More
+information on how you can get those values can be found here:
+
+-  facebook (http://developers.facebook.com/docs/)
+-  google+ (http://code.google.com/apis/console)
+
+Once you create your app inside the social network you will have access
+to the *apiKey* / *apiSecret* values; those values must be stored into
+the BaasBox database in order to use BaasBox social feature: you can
+access the social login tab from the settings menu in the admin console.
+
+![Social login tab](images/Social_login/social_login_tab.png)
+
+Then click on the specific social network you are working on and fill in
+the form with the keys and press Save. You can disable the social
+feature for a specific social network by pressing the **disable xxx
+button**
+
+![Disable](images/Social_login/disable.png)
+
+Once you have connected to a social network you can use any client
+library to obtain the OAuth tokens for users account, and store them
+with the social API provided by BaasBox.
+
+You can find an application example and tutorial [here](http://www.baasbox.com/social-login/)
+
+API documentation
+
+###Retrieve all social network connections for connected user
+
+`GET /social`
+
+Headers:
+
+-  X-BAASBOX-APPCODE: App Code
+-  X-BB-SESSION: Session token for current user
+
+Returns a JSON representation of the social network connected to the
+user along with all the information retrieved at the moment of
+login/linking. An example of the returned data is:
+
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```shell
+curl http://localhost:9000/social  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser fetchLinkedSocialNetworksWithCompletion:^(NSArray *objects, NSError *error) {
+
+if (error == nil) {     
+
+NSLog(@"social are %@", objects);
+
+} else {
+
+NSLog(@"%@", error);
+
+}
+
+}];
+
+```
+
+```java
+To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+"data": [
+{
+"username": "xxx",
+"password": null,
+"from": "google",
+"token": "<token>",
+"secret": "<secret>",
+"id": "<userid>",
+"additionalData": {
+"email": "<email>",
+"name": "<name>",
+"avatarUrl": "<avatar>",
+"personal_url": "<personal_url>"
+}
+}
+]
+```
+
+This API should be invoked with a valid X-BB-SESSION header and a valid
+X-BAASBOX-APPCODE header as specified in the authorization section of
+the doc.
+
+This method can be used to retrieve the tokens to post on the social
+network wall using a client SDK provided by the social network itself.
+
+Returns:
+
+-  200 code with a JSON object which data property contains all the
+linked social networks to the current user.
+-  404 code if the user does not have any social network linked to their
+account
+-  401 code (Unauthorized) if one of the mandatory headers are missing
+
+###Login a User with a specified social network
+
+`POST /social/:socialNetwork`
+
+Headers: X-BAASBOX-APPCODE = App code
+
+Url parameters
+
+:socialNetwork could be **facebook** or **google**
+
+Parameters:
+
+-  oauth\_token: the **oauth\_token** obtained after user authentication
+and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+-  oauth\_secret: the **oauth\_secret** obtained after user
+authentication and authorization with a client library (see example
+[here](http://www.baasbox.com/social-login/))
+
+This method allows to login into the BaasBox app using the tokens
+obtained by a social network client library. If the user has already
+logged in with same tokens the server will simply return the
+X-BB-SESSION token that will be used for further requests.
+
+If the user does not exist it will be created and an X-BB-SESSION token
+will be returned. Upon user creation some data will be extracted from
+the social network profile and they will be stored inside the user
+object. A username will be uniquely generated (to prevent username
+collision). Therefore after a succesfull login, if necessary, the client
+app may ask for a username and update the user object accordingly.(See
+the example [here](http://www.baasbox.com/social-login/))
+
+Returns:
+
+-  200 code with the user's X-BB-SESSION token
+-  400 code if one of the oauth\_token or oauth\_secret was missing
+-  401 code if the X-BAASBOX-APPCODE header was missing
+-  500 code if something on the server went wrong (i.e. another user
+with the same tokens already exists)
+
+<div class="snippet-title">
+<p>Example of a request to login with Facebook</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/facebook  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Facebook.
+[BAAUser loginWithFacebookToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+
+BAAClient *c = [BAAClient sharedClient];
+NSLog(@"logged in with facebook %@", c.currentUser);
+
+} else {
+
+NSLog(@"error %@", error);
+
+}
+
+}];
+```
+
+```java
+String token= ...;// a valid token from the provider
+BaasUser.signupWithProvider(Social.FACEBOOK,token,token,new BaasHandler<BaasUser>(){
+@Override
+public void handler(BaasResult<BaasUser> res) {
+if(res.isSuccess()){
+BaasUser current = res.value(); 
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request to login with Google</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/google  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Google.
+[BAAUser loginWithGoogleToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+
+BAAClient *c = [BAAClient sharedClient];
+NSLog(@"logged in with facebook %@", c.currentUser);
+
+} else {
+
+NSLog(@"error %@", error);
+
+}
+
+}];
+```
+
+```java
+To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+###Link a user to a specified social network
+
+`PUT /social/:socialNetwork`
+
+Headers:
+
+-  X-BAASBOX-APPCODE = App code
+-  X-BB-SESSION = Session token for the current user
+
+Url parameters
+
+:socialNetwork could be **facebook** or **google**
+
+Parameters: oauth\_token: the **oauth\_token** obtained after user
+authentication and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+oauth\_secret: the **oauth\_secret** obtained after user authentication
+and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+This method allows an existing user to connect their account to a
+specified social network.
+
+This procedure is very similar to the Login method with a difference:
+this is a PUT request and it must be invoked with the X-BB-SESSION
+header.
+
+Returns: 
+-  200 code with an empty response if the linking was succesful, 
+-  401 code if any of the mandatory headers was missing, 
+-  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
+
+<div class="snippet-title">
+<p>Example of a request to link an account to Facebook</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/facebook  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Facebook
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToFacebookWithToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"user linked to FB");                                                                                         
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request to link an account to Google</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/google  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Google
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToGoogleWithToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"user linked to FB");                                                                                         
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+###Unlink a user from a specified social network
+
+`DELETE /social/:socialNetwork`
+
+Headers:
+
+-  X-BAASBOX-APPCODE = App code
+-  X-BB-SESSION = Session token for current user
+
+Url parameters :socialNetwork could be **facebook** or **google**
+
+This method unlinks the current user account from a specified social
+network. If the user was generated by a social network login and the
+specified social network is the only one linked to the user, an error
+will be raised (as the user will not be available to connect anymore).
+
+
+<div class="snippet-title">
+<p>Example of a request to unlink an account from Facebook</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/social/facebook  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromFacebookWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"account unlinked");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request to unlink an account from Google</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/social/google  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromGoogleWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"account unlinked");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+To be implemented 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+
+##Friendship and Social API
 BaasBox is able to manage relations among users, implementing a concept of friendship similar (but not identical) to the one used by Twitter.
 A user registered on BaasBox can "follow" another user calling the _follow_ API.
 
@@ -2435,6 +2863,197 @@ BaasBox.fetchFollowers("cesare")
   "http_code": 200
 }
 ```
+
+## Push Notifications
+
+Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
+
+### Enable push notifications
+
+`PUT /push/enable/:os/:pushToken`
+
+**Group**: [baasbox.notifications.receive](#list-groups)
+
+Enables a specific user (logged using a specific device) to receive push notifications.
+
+Parameter | Description
+--------- | -----------
+**os** | The operative system. One of: `ios`, `android`. Mandatory.
+**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+
+<div class="snippet-title">
+<p>Example of a request to enable push notifications</p>
+</div>
+
+```shell
+curl -X PUT  http://localhost:9000/push/enable/ios/123  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client askToEnablePushNotifications];
+```
+```java
+// given you have provided one or more sender ids to the initial configuration
+BaasCloudMessagingService box=BaasBox.messagingService();
+box.enable(new BaasHandler<Void>() {
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isSuccess()){
+// registrationid saved on the server
+}
+}
+});
+
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
+### Disable push notifications
+
+`PUT /push/disable/:pushToken`
+
+**Group**: [baasbox.notifications.receive](#list-groups)
+
+Disable a specific user (logged using a specific device) to unreceive push notifications.
+
+Parameter | Description
+--------- | -----------
+**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
+
+<div class="snippet-title">
+<p>Example of a request to disable push notifications</p>
+</div>
+
+```shell
+curl -X PUT  http://localhost:9000/push/disable/123  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client disablePushNotificationsWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"push notifications disabled");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+BaasCloudMessagingService client = BaasBox.messagingService();
+client.disable(new BaasHandler<Void>(){
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isSuccess()){
+// successfully unregistered
+}
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
+### Send a push notification
+
+`POST /push/message/:username`
+
+**Group**: [baasbox.notifications.send](#list-groups)
+
+Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
+
+Parameter | Description
+--------- | -----------
+**username** | The username of the user who has to receive the notification. Mandatory.
+
+```shell
+curl -X POST  http://localhost:9000/push/message/cesare  \
+-d '{"message" : "hi"}' \
+-H Content-type:application/json \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+BAAClient *client = [BAAClient sharedClient];
+[client postPath:@"/push/message/cesare"
+parameters:@{@"message" : @"Hi there"}
+success:^(id responseObject) {
+
+NSLog(@"Notification sent");
+
+} failure:^(NSError *error) {
+
+NSLog(@"error %@", error);
+
+}];
+```
+
+```java
+JsonObject message = new JsonObject()
+.putString("greeting","Hello World!")
+.putString("from","BaasBox");
+
+BaasUser user = BaasUser.withUserName("Cesare");
+user.send(message,new BaasHandler<Void>(){
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isFailed()){
+Log.e("LOG","Something went wrong",res.error());
+}
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
 
 ## Collections
 
@@ -3735,6 +4354,235 @@ BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", Baas
 }
 ```
 
+## Links
+
+Available since 0.8.0
+
+This function is still **experimental**
+
+Links allow to connect documents and files each other. They are similar to the relations in a relational database.
+Of course there are differences between relations and links. First of all, links have versus, secondly   they have a name.
+
+Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
+
+For an example please see the code aside.
+
+```
+customer
+Document A          (out) -------------> (in)   Document B
+Invoices										Customers
+
+item
+Document A     		(out) -------------> (in)	Document C
+Invoices              							Items
+
+```
+
+
+Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
+Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
+For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
+
+You can query links by name and/or use filters to select linked documents (or file). 
+At the moment is it possible only to execute query on links, there are not APIs to traverse them or to query linked documents from a given one.
+
+
+### Create a link
+
+`POST /link/:sourceId/:label/:destId`
+
+**Group**: [baasbox.data.write](#list-groups)
+
+To create a link you must provide the two documents you want to connect and the link name.
+Since links have direction the first document will be the source node of the link and the second one will be the destination node.
+
+Parameter | Description
+--------- | -----------
+**sourceId** | The ID of the first document or file to link.
+**label** | The link name. Can be any valid string
+**destId** | The ID of the second document or file to link.
+
+```shell
+curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
+
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>  
+
+```json
+{
+"result":"ok",
+"data":{
+"@version":3,
+"@class":"E",
+"label":"customer",
+"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
+"_author":"admin",
+"_creation_date":"2014-05-23T14:37:27.027+0200",
+"out":{
+"@version":2,
+"@class":"Invoices",
+"number":345,
+"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
+"_creation_date":"2014-05-23T14:32:40.040+0200",
+"_author":"admin"
+},
+"in":{
+"@version":2,
+"@class":"Customers",
+"name":"John Doe",
+"age":31,
+"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
+"_creation_date":"2014-05-23T14:32:03.003+0200",
+"_author":"admin"
+}
+},
+"http_code":200
+}
+```
+
+The returned link is decorated with the following fields:
+
+- `id`: unique ID 
+- `@version`: number indication of the version of the link, just like documents
+- `@class`: always equals to "E"
+- `_creation_date`: timestamp 
+- `_author`: username of the user who created the link.
+- `label': the provided label
+- `out`: the source object (the first one provided)
+- `in`: the destination object (the second one provided)
+
+These fields **cannot** be overwritten. 
+
+The `out` and `in` fields contain the content of both objects. 
+
+**REMEMBER**: the `out` field points to the source, the `in` points to the destination, like in the following schema:
+
+` Source Doc ----->(out) link (in)----> Dest Doc `
+
+
+Please note that you can have as many links as you want between two documents or files even with the same label.
+
+To create a link, a user has to have at least the read permission on both objects to link.
+
+
+### Retrieves links
+
+
+`GET /link/:id`
+
+`GET /link`
+
+You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
+The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
+
+Of course you can apply filters to the fields of linked nodes as well.
+
+`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
+
+```shell
+curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 "http://localhost:9000/link?where=in.name.toLowerCase()%20like%20%27john%25%27%20and%20label%3D%27customer%27"
+
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>  
+
+```json
+{
+"result":"ok",
+"data":{
+"@version":3,
+"@class":"E",
+"label":"customer",
+"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
+"_author":"admin",
+"_creation_date":"2014-05-23T14:37:27.027+0200",
+"out":{
+"@version":2,
+"@class":"Invoices",
+"number":345,
+"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
+"_creation_date":"2014-05-23T14:32:40.040+0200",
+"_author":"admin"
+},
+"in":{
+"@version":2,
+"@class":"Customers",
+"name":"John Doe",
+"age":31,
+"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
+"_creation_date":"2014-05-23T14:32:03.003+0200",
+"_author":"admin"
+}
+},
+"http_code":200
+}
+```
+
+### Delete links
+
+`DELETE /link/:id`
+
+Deletes a link. 
+
+At the moment links can be deleted by anyone. The RSL (Record Security Level) has not yet been implemented on links.
+
+```shell
+curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>  
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
 ## Files
 
 Users can upload files. Only the user who created them can access such files, besides administrators and users who have the role of “BackOffice”. 
@@ -4533,234 +5381,7 @@ BaasBox.revokeRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.U
 ```
 
 
-## Links
 
-Available since 0.8.0
-
-This function is still **experimental**
-
-Links allow to connect documents and files each other. They are similar to the relations in a relational database.
-Of course there are differences between relations and links. First of all, links have versus, secondly   they have a name.
-
-Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
-
-For an example please see the code aside.
-
-```
-                             customer
-Document A          (out) -------------> (in)   Document B
-Invoices										Customers
-
-                              item
-Document A     		(out) -------------> (in)	Document C
-Invoices              							Items
-
-```
-
-
-Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
-Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
-For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
-
-You can query links by name and/or use filters to select linked documents (or file). 
-At the moment is it possible only to execute query on links, there are not APIs to traverse them or to query linked documents from a given one.
-
-
-### Create a link
-
-`POST /link/:sourceId/:label/:destId`
-
-**Group**: [baasbox.data.write](#list-groups)
-
-To create a link you must provide the two documents you want to connect and the link name.
-Since links have direction the first document will be the source node of the link and the second one will be the destination node.
-
-Parameter | Description
---------- | -----------
-**sourceId** | The ID of the first document or file to link.
-**label** | The link name. Can be any valid string
-**destId** | The ID of the second document or file to link.
-
-```shell
-curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
-	 
-```
-
-```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
-```
-
-```java
-//Please see the "pass-through" functionality of the Android SDK
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>  
-
-```json
-{
-	"result":"ok",
-	"data":{
-		"@version":3,
-		"@class":"E",
-		"label":"customer",
-		"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
-		"_author":"admin",
-		"_creation_date":"2014-05-23T14:37:27.027+0200",
-		"out":{
-			"@version":2,
-			"@class":"Invoices",
-			"number":345,
-			"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
-			"_creation_date":"2014-05-23T14:32:40.040+0200",
-			"_author":"admin"
-		},
-		"in":{
-			"@version":2,
-			"@class":"Customers",
-			"name":"John Doe",
-			"age":31,
-			"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
-			"_creation_date":"2014-05-23T14:32:03.003+0200",
-			"_author":"admin"
-		}
-	},
-	"http_code":200
-}
-```
-
-The returned link is decorated with the following fields:
-
-- `id`: unique ID 
-- `@version`: number indication of the version of the link, just like documents
-- `@class`: always equals to "E"
-- `_creation_date`: timestamp 
-- `_author`: username of the user who created the link.
-- `label': the provided label
-- `out`: the source object (the first one provided)
-- `in`: the destination object (the second one provided)
-
-These fields **cannot** be overwritten. 
-
-The `out` and `in` fields contain the content of both objects. 
-
-**REMEMBER**: the `out` field points to the source, the `in` points to the destination, like in the following schema:
-
-` Source Doc ----->(out) link (in)----> Dest Doc `
-
-
-Please note that you can have as many links as you want between two documents or files even with the same label.
-
-To create a link, a user has to have at least the read permission on both objects to link.
-
-
-### Retrieves links
-
-
-`GET /link/:id`
-
-`GET /link`
-
-You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
-The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
-
-Of course you can apply filters to the fields of linked nodes as well.
-
-`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
-
-```shell
-curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 "http://localhost:9000/link?where=in.name.toLowerCase()%20like%20%27john%25%27%20and%20label%3D%27customer%27"
-	 
-```
-
-```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
-```
-
-```java
-//Please see the "pass-through" functionality of the Android SDK
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>  
-
-```json
-{
-	"result":"ok",
-	"data":{
-		"@version":3,
-		"@class":"E",
-		"label":"customer",
-		"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
-		"_author":"admin",
-		"_creation_date":"2014-05-23T14:37:27.027+0200",
-		"out":{
-			"@version":2,
-			"@class":"Invoices",
-			"number":345,
-			"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
-			"_creation_date":"2014-05-23T14:32:40.040+0200",
-			"_author":"admin"
-		},
-		"in":{
-			"@version":2,
-			"@class":"Customers",
-			"name":"John Doe",
-			"age":31,
-			"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
-			"_creation_date":"2014-05-23T14:32:03.003+0200",
-			"_author":"admin"
-		}
-	},
-	"http_code":200
-}
-```
-
-### Delete links
-
-`DELETE /link/:id`
-
-Deletes a link. 
-
-At the moment links can be deleted by anyone. The RSL (Record Security Level) has not yet been implemented on links.
-
-```shell
-curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
-```
-
-```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
-```
-
-```java
-//Please see the "pass-through" functionality of the Android SDK
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>  
-
-```json
-{
-	"result": "ok",
-	"data": "",
-	"http_code": 200
-}
-```
 
 ## Assets
 
@@ -5369,8 +5990,9 @@ response.
 
 By default all groups are enabled.
 
-Only administrators can call these APIs.
-
+<aside class="notice">	
+Only users belonging to administrator roles can call these APIs.
+</aside> 
 
 ### List groups
 
@@ -5580,621 +6202,3 @@ TO BE IMPLEMENTED
 }
 ```
 
-## Push Notifications
-
-Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
-
-### Enable push notifications
-
-`PUT /push/enable/:os/:pushToken`
-
-**Group**: [baasbox.notifications.receive](#list-groups)
-
-Enables a specific user (logged using a specific device) to receive push notifications.
-
-Parameter | Description
---------- | -----------
-**os** | The operative system. One of: `ios`, `android`. Mandatory.
-**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
-
-<div class="snippet-title">
-	<p>Example of a request to enable push notifications</p>
-</div>
-
-```shell
-curl -X PUT  http://localhost:9000/push/enable/ios/123  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client askToEnablePushNotifications];
-```
-```java
-// given you have provided one or more sender ids to the initial configuration
-BaasCloudMessagingService box=BaasBox.messagingService();
-box.enable(new BaasHandler<Void>() {
-       @Override
-       public void handle(BaasResult<Void> res){
-         if(res.isSuccess()){
-           // registrationid saved on the server
-         }
-       }
-     });
-
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-### Disable push notifications
-
-`PUT /push/disable/:pushToken`
-
-**Group**: [baasbox.notifications.receive](#list-groups)
-
-Disable a specific user (logged using a specific device) to unreceive push notifications.
-
-Parameter | Description
---------- | -----------
-**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
-
-<div class="snippet-title">
-	<p>Example of a request to disable push notifications</p>
-</div>
-
-```shell
-curl -X PUT  http://localhost:9000/push/disable/123  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client disablePushNotificationsWithCompletion:^(BOOL success, NSError *error) {
-  
-    if (success) {
-        NSLog(@"push notifications disabled");
-    } else {
-        NSLog(@"error %@", error);
-    }
-    
-}];
-```
-
-```java
-BaasCloudMessagingService client = BaasBox.messagingService();
-client.disable(new BaasHandler<Void>(){
-  @Override
-  public void handle(BaasResult<Void> res){
-    if(res.isSuccess()){
-      // successfully unregistered
-    }
-  }
-});
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-### Send a push notification
-
-`POST /push/message/:username`
-
-**Group**: [baasbox.notifications.send](#list-groups)
-
-Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
-
-Parameter | Description
---------- | -----------
-**username** | The username of the user who has to receive the notification. Mandatory.
-
-```shell
-curl -X POST  http://localhost:9000/push/message/cesare  \
-	 -d '{"message" : "hi"}' \
-	 -H Content-type:application/json \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-BAAClient *client = [BAAClient sharedClient];
-[client postPath:@"/push/message/cesare"
-      parameters:@{@"message" : @"Hi there"}
-         success:^(id responseObject) {
-             
-             NSLog(@"Notification sent");
-             
-         } failure:^(NSError *error) {
-             
-             NSLog(@"error %@", error);
-             
-         }];
-```
-
-```java
-JsonObject message = new JsonObject()
-  .putString("greeting","Hello World!")
-  .putString("from","BaasBox");
-  
-BaasUser user = BaasUser.withUserName("Cesare");
-user.send(message,new BaasHandler<Void>(){
-  @Override
-  public void handle(BaasResult<Void> res){
-    if(res.isFailed()){
-      Log.e("LOG","Something went wrong",res.error());
-    }
-  }
-});
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-## Social Login ##
-
-BaasBox provides an API that allows you to connect/create your users
-through social networks.
-
-BaasBox social API is integrated with the following social networks: -
-Facebook - Google +
-
-We are planning on adding more in the near future.
-
-The use of an API in a client application needs an *appKey* and an
-*appSecret* usually provided by the social network itself. More
-information on how you can get those values can be found here:
-
--  facebook (http://developers.facebook.com/docs/)
--  google+ (http://code.google.com/apis/console)
-
-Once you create your app inside the social network you will have access
-to the *apiKey* / *apiSecret* values; those values must be stored into
-the BaasBox database in order to use BaasBox social feature: you can
-access the social login tab from the settings menu in the admin console.
-
-![Social login tab](images/Social_login/social_login_tab.png)
-
-Then click on the specific social network you are working on and fill in
-the form with the keys and press Save. You can disable the social
-feature for a specific social network by pressing the **disable xxx
-button**
-
-![Disable](images/Social_login/disable.png)
-
-Once you have connected to a social network you can use any client
-library to obtain the OAuth tokens for users account, and store them
-with the social API provided by BaasBox.
-
-You can find an application example and tutorial [here](http://www.baasbox.com/social-login/)
-
-API documentation
-
-###Retrieve all social network connections for connected user
-
-`GET /social`
-
-Headers:
-
--  X-BAASBOX-APPCODE: App Code
--  X-BB-SESSION: Session token for current user
-
-Returns a JSON representation of the social network connected to the
-user along with all the information retrieved at the moment of
-login/linking. An example of the returned data is:
-
-<div class="snippet-title">
-	<p>Example of a request</p>
-</div>
-
-```shell
-curl http://localhost:9000/social  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is logged in
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser fetchLinkedSocialNetworksWithCompletion:^(NSArray *objects, NSError *error) {
-                                                
-                                                 if (error == nil) {     
-	                                        
-                                                     NSLog(@"social are %@", objects);
-
-                                                 } else {
-	
-                                                     NSLog(@"%@", error);
-
-                                                 }
-                                                 
-                                             }];
-
-```
-
-```java
-To be implemented 
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-   "data": [
-        {
-            "username": "xxx",
-            "password": null,
-            "from": "google",
-            "token": "<token>",
-            "secret": "<secret>",
-            "id": "<userid>",
-            "additionalData": {
-                "email": "<email>",
-                "name": "<name>",
-                "avatarUrl": "<avatar>",
-                "personal_url": "<personal_url>"
-            }
-        }
-	]
-```
-
-This API should be invoked with a valid X-BB-SESSION header and a valid
-X-BAASBOX-APPCODE header as specified in the authorization section of
-the doc.
-
-This method can be used to retrieve the tokens to post on the social
-network wall using a client SDK provided by the social network itself.
-
-Returns:
-
--  200 code with a JSON object which data property contains all the
-   linked social networks to the current user.
--  404 code if the user does not have any social network linked to their
-   account
--  401 code (Unauthorized) if one of the mandatory headers are missing
-
-###Login a User with a specified social network
-
-`POST /social/:socialNetwork`
-
-Headers: X-BAASBOX-APPCODE = App code
-
-Url parameters
-
-:socialNetwork could be **facebook** or **google**
-
-Parameters:
-
--  oauth\_token: the **oauth\_token** obtained after user authentication
-   and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
-
--  oauth\_secret: the **oauth\_secret** obtained after user
-   authentication and authorization with a client library (see example
-   [here](http://www.baasbox.com/social-login/))
-
-This method allows to login into the BaasBox app using the tokens
-obtained by a social network client library. If the user has already
-logged in with same tokens the server will simply return the
-X-BB-SESSION token that will be used for further requests.
-
-If the user does not exist it will be created and an X-BB-SESSION token
-will be returned. Upon user creation some data will be extracted from
-the social network profile and they will be stored inside the user
-object. A username will be uniquely generated (to prevent username
-collision). Therefore after a succesfull login, if necessary, the client
-app may ask for a username and update the user object accordingly.(See
-the example [here](http://www.baasbox.com/social-login/))
-
-Returns:
-
--  200 code with the user's X-BB-SESSION token
--  400 code if one of the oauth\_token or oauth\_secret was missing
--  401 code if the X-BAASBOX-APPCODE header was missing
--  500 code if something on the server went wrong (i.e. another user
-   with the same tokens already exists)
-
-<div class="snippet-title">
-	<p>Example of a request to login with Facebook</p>
-</div>
-
-```shell
-curl -X POST  http://localhost:9000/social/facebook  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-NSString *token = ... ; // Valid authentication token obtained by Facebook.
-[BAAUser loginWithFacebookToken:token
-                     completion:^(BOOL success, NSError *error) {
-
-                         if (success) {
-
-                             BAAClient *c = [BAAClient sharedClient];
-                             NSLog(@"logged in with facebook %@", c.currentUser);
-
-                         } else {
-
-                             NSLog(@"error %@", error);
-
-                         }
-
-                     }];
-```
-
-```java
-String token= ...;// a valid token from the provider
-BaasUser.signupWithProvider(Social.FACEBOOK,token,token,new BaasHandler<BaasUser>(){
-@Override
-  public void handler(BaasResult<BaasUser> res) {
-   if(res.isSuccess()){
-     BaasUser current = res.value(); 
-   }
-});
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a request to login with Google</p>
-</div>
-
-```shell
-curl -X POST  http://localhost:9000/social/google  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-NSString *token = ... ; // Valid authentication token obtained by Google.
-[BAAUser loginWithGoogleToken:token
-                    completion:^(BOOL success, NSError *error) {
-
-                         if (success) {
-
-                             BAAClient *c = [BAAClient sharedClient];
-                             NSLog(@"logged in with facebook %@", c.currentUser);
-
-                         } else {
-
-                             NSLog(@"error %@", error);
-
-                         }
-
-                   }];
-```
-
-```java
-To be implemented 
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-###Link a user to a specified social network
-
-`PUT /social/:socialNetwork`
-
-Headers:
-
--  X-BAASBOX-APPCODE = App code
--  X-BB-SESSION = Session token for the current user
-
-Url parameters
-
-:socialNetwork could be **facebook** or **google**
-
-Parameters: oauth\_token: the **oauth\_token** obtained after user
-authentication and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
-
-oauth\_secret: the **oauth\_secret** obtained after user authentication
-and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
-
-This method allows an existing user to connect their account to a
-specified social network.
-
-This procedure is very similar to the Login method with a difference:
-this is a PUT request and it must be invoked with the X-BB-SESSION
-header.
-
-Returns: 
--  200 code with an empty response if the linking was succesful, 
--  401 code if any of the mandatory headers was missing, 
--  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
-
-<div class="snippet-title">
-	<p>Example of a request to link an account to Facebook</p>
-</div>
-
-```shell
-curl -X PUT http://localhost:9000/social/facebook  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-NSString *token = ...; // Token obtained by Facebook
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser linkToFacebookWithToken:token
-                                  completion:^(BOOL success, NSError *error) {
-        
-                                         if (success) {
-                                             NSLog(@"user linked to FB");                                                                                         
-                                         } else {
-                                             NSLog(@"error %@", error);
-                                         }
-
-                                  }];
-```
-
-```java
-To be implemented 
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a request to link an account to Google</p>
-</div>
-
-```shell
-curl -X PUT http://localhost:9000/social/google  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-NSString *token = ...; // Token obtained by Google
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser linkToGoogleWithToken:token
-                                completion:^(BOOL success, NSError *error) {
-        
-                                         if (success) {
-                                             NSLog(@"user linked to FB");                                                                                         
-                                         } else {
-                                             NSLog(@"error %@", error);
-                                         }
-
-                                 }];
-```
-
-```java
-To be implemented 
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-###Unlink a user from a specified social network
-
-`DELETE /social/:socialNetwork`
-
-Headers:
-
--  X-BAASBOX-APPCODE = App code
--  X-BB-SESSION = Session token for current user
-
-Url parameters :socialNetwork could be **facebook** or **google**
-
-This method unlinks the current user account from a specified social
-network. If the user was generated by a social network login and the
-specified social network is the only one linked to the user, an error
-will be raised (as the user will not be available to connect anymore).
-
-
-<div class="snippet-title">
-	<p>Example of a request to unlink an account from Facebook</p>
-</div>
-
-```shell
-curl -X DELETE http://localhost:9000/social/facebook  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser unlinkFromFacebookWithCompletion:^(BOOL success, NSError *error) {
-                                                 
-                                                 if (success) {
-                                                     NSLog(@"account unlinked");
-                                                 } else {
-                                                     NSLog(@"error %@", error);
-                                                 }
-
-                                             }];
-```
-
-```java
-To be implemented 
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-	<p>Example of a request to unlink an account from Google</p>
-</div>
-
-```shell
-curl -X DELETE http://localhost:9000/social/google  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser unlinkFromGoogleWithCompletion:^(BOOL success, NSError *error) {
-                                                 
-                                                 if (success) {
-                                                     NSLog(@"account unlinked");
-                                                 } else {
-                                                     NSLog(@"error %@", error);
-                                                 }
-
-                                             }];
-```
-
-```java
-To be implemented 
-```
-
-```javascript
-TO BE IMPLEMENTED
-```
