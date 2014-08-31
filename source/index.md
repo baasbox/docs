@@ -1103,7 +1103,7 @@ These are custom error codes specific to BaasBox, returned into the bb_code fiel
    internet connection 
 -  50303: Could not send push notifications. HINT: Check your API Key (Google).
 
-### Pagination and query criteria
+## Pagination and query criteria
 
 Some queries support pagination. There are two important parameters in paginated calls.
 
