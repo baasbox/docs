@@ -82,6 +82,10 @@ public class MyApp extends Application{
 }
 ```
 
+```javascript
+NOTHING HERE
+```
+
 
 # Installation
 
@@ -136,6 +140,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
 By default no options are used.
 A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html) 
@@ -151,6 +159,10 @@ NOTHING HERE
 ```
 
 ```java
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -325,6 +337,10 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 <aside class="notice"> 
 **NOTE**: remember to ALWAYS include in the first line the statement:
 `
@@ -414,6 +430,10 @@ NOTHING HERE
 ```
 
 ```java
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -831,6 +851,10 @@ PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
 });
 ```
 
+```javascript
+NOTHING HERE
+```
+
 <aside class="notice">
 	The value of the parameter must be URL encoded.
 </aside>
@@ -852,6 +876,14 @@ If you prefer the good old way, download the SDK from the [download section](htt
 
 The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
 
+```objective_c
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "BAAClient.h"
+#endif
+```
+
 ```shell
 NOTHING HERE
 ```
@@ -860,12 +892,8 @@ NOTHING HERE
 NOTHING HERE
 ```
 
-```objective_c
-#ifdef __OBJC__
-  #import <UIKit/UIKit.h>
-  #import <Foundation/Foundation.h>
-  #import "BAAClient.h"
-#endif
+```javascript
+NOTHING HERE
 ```
 
 #### Initialization
@@ -882,6 +910,10 @@ NOTHING HERE
 ```
 
 ```java
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -2941,6 +2973,10 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 NOT IMPLEMENTED
 ```
 
+```javascript
+NOTHING HERE
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2984,6 +3020,10 @@ NOT IMPLEMENTED
 
 ```java
 NOT IMPLEMENTED
+```
+
+```javascript
+NOTHING HERE
 ```
 
 <div class="snippet-title">
@@ -3031,6 +3071,11 @@ NOT IMPLEMENTED
 ```java
 NOT IMPLEMENTED
 ```
+
+```javascript
+NOTHING HERE
+```
+
 
 <div class="snippet-title">
 	<p>Response includes a new property</p>
@@ -3080,6 +3125,10 @@ NOT IMPLEMENTED
 
 ```java
 NOT IMPLEMENTED
+```
+
+```javascript
+NOTHING HERE
 ```
 
 <div class="snippet-title">
