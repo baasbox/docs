@@ -15,7 +15,7 @@ toc_footers:
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-The latest version is **0.8.2**
+The latest version is **0.8.3**
 
 
 You can access all sections using the sidebar on the left. The
@@ -49,7 +49,7 @@ Click on any tab above to choose the platform of your interest.
 
 ```objective_c
 To install the iOS SDK you have two ways.
-We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.1'" to your pod file.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.3'" to your pod file.
 As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the folder BaasBox-iOS-SDK on Xcode.
 
 Finally insert the following statement in the .pch file
@@ -868,7 +868,7 @@ The SDK is distributed in two ways:
 
 We recommend to install it using Cocoapods. Just add the following line to your Podfile.
 
-`pod 'BaasBoxSDK', '~> 0.8.2'`
+`pod 'BaasBoxSDK', '~> 0.8.3'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
@@ -983,7 +983,7 @@ BaasBox provides a native Android SDK, to further ease development of mobile app
 The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
 You can also use maven gradle or maven to depend on the library:
 
-``compile 'com.baasbox:baasbox-android:0.8.0'``
+``compile 'com.baasbox:baasbox-android:0.8.3'``
 
 
 
