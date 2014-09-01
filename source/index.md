@@ -51,15 +51,15 @@ Click on any tab above to choose the platform of your interest.
 ```
 
 ```objective_c
-To install the iOS SDK you have two ways.
+You have two ways to install the iOS SDK.
 We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.3'" to your pod file.
-As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the folder BaasBox-iOS-SDK on Xcode.
+As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the BaasBox-iOS-SDK folder on Xcode.
 
 Finally insert the following statement in the .pch file
 #import "BAAClient.h" 
 and you are good to go. 
 
-Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one add the following statement and you are good to go: #import "BAAClient.h" 
+Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
 ```
 
 ```java
@@ -106,7 +106,7 @@ The SDK also supports [Zepto](http://zeptojs.com/).
 **System Requirements**  [Java VM 6](http://java.com/en/download/) or later. BaasBox is compiled with
 Java 1.6.
 
-1. Download the latest version from [here](http://www.baasbox.com/download/). 
+1. Download the latest version [here](http://www.baasbox.com/download/). 
 2. Unzip the `baasbox-x.x.zip` file wherever you want.
 3. Type:
    * run `start.bat` (on Windows)
@@ -179,7 +179,7 @@ NOTHING HERE
 ```
 
 BaasBox is based on the [Play Framework 2.2.4](http://www.playframework.com). This means that it accepts all the options available for any Play application.
-A complete reference of these options can be found [here](http://www.playframework.com/documentation/2.2.4/ProductionConfiguration).
+A complete reference of such options can be found [here](http://www.playframework.com/documentation/2.2.4/ProductionConfiguration).
 
 These settings cannot be modified at runtime.
 
@@ -192,7 +192,7 @@ Here are the BaasBox settings you can set:
 
 Key | Description | Default
 --------- | ----------- | -------------
-**application.secret** | The secret key is used to secure cryptographics functions |  `A very long string`
+**application.secret** | The secret key used to secure cryptographics functions |  `A very long string`
 **orient.baasbox.path** |  The path where BaasBox will store the embedded OrientDB data |  `db/baasbox`
 **orient.baasbox.backup.path** |  The path where BaasBox will store the backups |  `db/backup`
 **push.baasbox.certificates.folder** | The folder where the iOS push certificate will be stored  |  `certificates`
@@ -207,7 +207,7 @@ Key | Description | Default
 These settings cannot be modified at runtime.
 
 ## App Settings
-These are settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you are not forced to specify them every time you start BaasBox.
+These are the settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you do not have to specify them every time you start BaasBox.
 The App Settings can be configured via the [Administration Console](#console).
 The settings are splitted in five sections:
 
@@ -260,7 +260,7 @@ Options for the server-side images resizing feature
 Key | Description | Default
 --------- | ----------- | -------------
 **image.allows.automatic.resize** | Enable or disable automatic resizing of images | `true`
-**image.allowed.automatic.resize.formats**  | A space-separated-values list of image size, both in px or in % | `25% 50% 75% <=80px`
+**image.allowed.automatic.resize.formats**  | A space-separated-value list of image size, both in px or in % | `25% 50% 75% <=80px`
 
 ### Push Notifications
 
@@ -279,13 +279,13 @@ Key | Description | Default
 
 ### Social Login
 
-Options to use Social Network as user authenticators
+Options to use the Social Networks as user authenticators
 
 Key | Description | Default
 --------- | ----------- | -------------
-**social.facebook.enabled** | Activate the FaceBook authenticator  |  `false`
-**social.facebook.token** | Application Token for Facebook app  | 
-**social.facebook.secret**  | Application secret for Facebook app | 
+**social.facebook.enabled** | Activate the Facebook authenticator  |  `false`
+**social.facebook.token** | Application Token for the Facebook app  | 
+**social.facebook.secret**  | Application secret for the Facebook app | 
 **social.google.enabled** | Activate the Google+ authenticator  |  `false`
 **social.google.token** | Application Token for Google+ |
 **social.google.secret**  | Application secret for Google+ |
@@ -307,7 +307,7 @@ baasbox.settings.<section>.<key>.value=<new value>
 
 Where 
 
-- _section_ is one from:
+- _section_ is one of:
 
   - Application
 
@@ -319,7 +319,7 @@ Where
 
   - Images
 
-- _key_ is one key listed above
+- _key_ is one of the keys listed above
 
 Both sections and key names are case-sensitive.
 <aside class="notice"> 
@@ -333,7 +333,7 @@ To use an external file, you have to use the following options and instructions
 
 <span style="color:#F9F9F9;">(keysnippetcode)_____</span><br/>Key   | <span style="color:#F9F9F9;">(descriptionsnippetcode)_____</span><br/>Description   |   <span style="color:#F9F9F9;">(examplesnippetcode)_____</span><br/>Example
 --------- | ----------- | -------------
-**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)` directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
+**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)`directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
 
 Regarding the `config.file` key, a possible example of an external configuration file may be:
 
@@ -400,10 +400,10 @@ Available functions are:
 
 -  Users management:
 
-   -  Signup, Login, Logout, profiles management (private features, public
+   -  Signup, Login, Logout, profile management (private features, public
       features and so on), forgotten password recovery, link and log-in
       through Facebook and Google+
-   -  Roles management: administrators, registered users, back-office
+   -  Role management: administrators, registered users, back-office
       users, creation of new roles.
 
 -  File management:
@@ -418,11 +418,11 @@ Available functions are:
 
 -  DB management:
 
-   -  Backup/restore and reset of the integrated database
+   -  Backup/restore and reset the integrated database
 
 -  Api Access management:
 
-   - Enable/disable groups of rest endpoints from external access
+   - Enable/disable groups of REST endpoints from external access
 
 ## Applied Technology
 
@@ -454,11 +454,11 @@ NOTHING HERE
 NOTHING HERE
 ```
 
-BaasBox has a web console that allows managing its behavior and performing administrative
+BaasBox has a web console that allows to manage its behavior and to perform administrative
 tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
-deployed BaasBox in the correct way, you can open your browser and open
+deployed BaasBox the correct way, you can open your browser and open
 the welcome screen: ![Console image](images/Console_0.8.1/home_console.png)
 
 ## Login screen
@@ -480,7 +480,7 @@ fields will be filled with the default values.
 
 ## Dashboard 
 
-Once you logged in, you will see the main dashboard screen: 
+Once you have logged in, you will see the main dashboard screen: 
 
 ![Dashboard image](images/Console_0.8.1/baasbox_0-8-1-console.png)
 
@@ -507,7 +507,7 @@ dashboard is split into several sections:
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
     -  Database: you can find version with its path and data size
-12. Access to a dialog window to change password or to logout
+12. Access a dialog window to change the password or to logout
     -  Change password: Just insert old and new passwords, then confirm
        the new one
     -  Logout: just logout from the console. Remember that you can also
@@ -515,7 +515,7 @@ dashboard is split into several sections:
 13. DB Management: you can create a backup of your DB and import & export
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-16. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
+16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
 
 
 <aside class="notice">  
@@ -533,7 +533,7 @@ See also [Settings](#settings).
 
 ## API Access
 
-The [API Access](#api-access83) section allows you to manage which rest endpoints are accessible
+The [API Access](#api-access83) section allows you to manage which REST endpoints are accessible
 to non administrator users.
 Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
