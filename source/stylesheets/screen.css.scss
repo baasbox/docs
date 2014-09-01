@@ -192,8 +192,8 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
     margin-top:68px;
   }
 
-  #lang-selector {
-    position: fixed;
+  .lang-selector {
+    //position: fixed;
     width: 100%;
     z-index: 50;
     font-weight: bold;
@@ -239,7 +239,7 @@ h4 {
   z-index: 30;
 
   &>h1, &>h2, &>h3, &>h4, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
-    margin-right: $examples-width;
+    margin-right: $content-right-margin;
     padding: 0 $main-padding;
     @include box-sizing(border-box);
     display: block;
@@ -433,7 +433,7 @@ h4 {
     margin: 0;
     width: $examples-width;
 
-    float:right;
+    //float:right;
     clear:right;
 
     @include box-sizing(border-box);
@@ -455,7 +455,6 @@ h4 {
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      border-radius: 5px;
       padding: $code-annotation-padding;
       color: #ccc;
       border-top: 1px solid #000;
