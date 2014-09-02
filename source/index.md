@@ -693,7 +693,7 @@ Finally insert the following statement in the .pch file
 
 and you are good to go. 
 
-Note for **Swift** projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one add the following statement and you are good to go: #import "BAAClient.h" 
+Note for **Swift** projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
 
 #### Importing
 
@@ -742,7 +742,7 @@ NOTHING HERE
 
 #### Architecture and pass-through
 
-The iOS SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
+The iOS SDK is structured following an onion-skin model. Most of the APIs are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you use these methods when available. Should you see "TO BE IMPLEMENTED" in the iOS section, you can resort to use the ``BAAClient`` class. 
 On the right there is an example of a GET request.
 
 There are four methods, one for each HTTP verb.
@@ -769,7 +769,7 @@ success:(void (^)(id responseObject))success
 failure:(void (^)(NSError *error))failure;``
 
 
-As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
+As stated above, we strongly suggest you use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you won't neeed to use ``BAAClient`` methods at all in your app.
 
 ```objective_c
 // Assumes there is a logged in user
@@ -856,7 +856,7 @@ NOTHING HERE
 
 #### General usage
 
-Most BaasBox rest resources are exposed through wrapper classes.
+Most BaasBox REST resources are exposed through wrapper classes.
 Endpoints are accessible through asynchronous methods, that accept a general callback interface
 ``BaasHandler<T>``
 
@@ -968,7 +968,7 @@ NOTHING HERE
 Some rest endpoints have no direct equivalent in the API.
 For them you can use the lower level pass through API provided by the SDK
 through the ``rest()`` and ``restSync()`` methods.
-Whenever you see a "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
+Whenever you see "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
 Using these methods you can access these APIs while still enjoying the rest
 of the SDK features, such as concurrency and lifecycle management, caching,
 handling of the authentication.
@@ -1024,12 +1024,12 @@ NOTHING HERE
 <script src="../baasbox.js"></script>
 ```
 
-The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
+The jQuery cookie plugin, which you need to save authentication tokens, is already included at the top of the `baasbox.js` file.
 The SDK also supports [Zepto](http://zeptojs.com/).
 
 #### Pass-through API
 
-For any non implemented API you can use jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
+For any non-implemented API you can use the jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
 
 
 # API
@@ -1124,7 +1124,7 @@ These are custom error codes specific to BaasBox, returned into the bb_code fiel
 -  40101: Authentication info not valid or not provided. HINT: has your
    session expired?
 -  50301: Push settings are not properly configured. HINT: go to
-   administration console and check the settings
+   the administration console and check the settings
 -  50302: The server cannot resolve the host name. HINT: check your
    internet connection 
 -  50303: Could not send push notifications. HINT: Check your API Key (Google).
@@ -1814,9 +1814,9 @@ BaasBox.changePassword("oldpass", "newpass")
 
 **Group**: [baasbox.account.lost_password](#list-groups)
 
-Allows to reset a user password. This API is useful when users forget their password and need to reset it. This is the workflow: 
+Allows to reset a user's password. This API is useful when users forget their password and need to reset it. This is the workflow: 
 
-- the server checks if the email address is present within the `visibleByTheUser` fields in the user profile 
+- the server checks if the email address exists within the `visibleByTheUser` fields in the user profile 
 - the server sends an email to that address with a generated link to follow in order to reset the password 
 - the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
 - the user fills in the two fields and submits the form 
@@ -2110,12 +2110,12 @@ information on how you can get those values can be found here:
 
 Once you create your app inside the social network you will have access
 to the *apiKey* / *apiSecret* values; those values must be stored into
-the BaasBox database in order to use BaasBox social feature: you can
+the BaasBox database in order to use the BaasBox social feature: you can
 access the social login tab from the settings menu in the admin console.
 
 ![Social login tab](images/Social_login/social_login_tab.png)
 
-Then click on the specific social network you are working on and fill in
+Then click on the specific social network you are working on, fill in
 the form with the keys and press Save. You can disable the social
 feature for a specific social network by pressing the **disable xxx
 button**
@@ -2130,7 +2130,7 @@ You can find an application example and tutorial [here](http://www.baasbox.com/s
 
 API documentation
 
-###Retrieve all social network connections for connected user
+###Retrieve all social network connections for a connected user
 
 `GET /social`
 
@@ -2172,7 +2172,7 @@ NSLog(@"%@", error);
 ```
 
 ```java
-To be implemented 
+TO BE IMPLEMENTED
 ```
 
 ```javascript
@@ -2211,8 +2211,8 @@ network wall using a client SDK provided by the social network itself.
 
 Returns:
 
--  200 code with a JSON object which data property contains all the
-linked social networks to the current user.
+-  200 code with a JSON object whose data property contains all the
+social networks linked to the current user.
 -  404 code if the user does not have any social network linked to their
 account
 -  401 code (Unauthorized) if one of the mandatory headers are missing
@@ -2223,7 +2223,7 @@ account
 
 Headers: X-BAASBOX-APPCODE = App code
 
-Url parameters
+URL parameters
 
 :socialNetwork could be **facebook** or **google**
 
@@ -2238,14 +2238,14 @@ authentication and authorization with a client library (see example
 
 This method allows to login into the BaasBox app using the tokens
 obtained by a social network client library. If the user has already
-logged in with same tokens the server will simply return the
+logged in with the same tokens the server will simply return the
 X-BB-SESSION token that will be used for further requests.
 
 If the user does not exist it will be created and an X-BB-SESSION token
 will be returned. Upon user creation some data will be extracted from
 the social network profile and they will be stored inside the user
 object. A username will be uniquely generated (to prevent username
-collision). Therefore after a succesfull login, if necessary, the client
+collision). Therefore after a succesful login, if necessary, the client
 app may ask for a username and update the user object accordingly.(See
 the example [here](http://www.baasbox.com/social-login/))
 
@@ -2333,7 +2333,7 @@ NSLog(@"error %@", error);
 ```
 
 ```java
-To be implemented 
+TO BE IMPLEMENTED
 ```
 
 ```javascript
@@ -2349,7 +2349,7 @@ Headers:
 -  X-BAASBOX-APPCODE = App code
 -  X-BB-SESSION = Session token for the current user
 
-Url parameters
+URL parameters
 
 :socialNetwork could be **facebook** or **google**
 
@@ -2399,7 +2399,7 @@ NSLog(@"error %@", error);
 ```
 
 ```java
-To be implemented 
+TO BE IMPLEMENTED
 ```
 
 ```javascript
@@ -2434,7 +2434,7 @@ NSLog(@"error %@", error);
 ```
 
 ```java
-To be implemented 
+TO BE IMPLEMENTED 
 ```
 
 ```javascript
@@ -2450,7 +2450,7 @@ Headers:
 -  X-BAASBOX-APPCODE = App code
 -  X-BB-SESSION = Session token for current user
 
-Url parameters :socialNetwork could be **facebook** or **google**
+URL parameters: socialNetwork could be **facebook** or **google**
 
 This method unlinks the current user account from a specified social
 network. If the user was generated by a social network login and the
@@ -2482,7 +2482,7 @@ NSLog(@"error %@", error);
 ```
 
 ```java
-To be implemented 
+TO BE IMPLEMENTED 
 ```
 
 ```javascript
@@ -2513,7 +2513,7 @@ NSLog(@"error %@", error);
 ```
 
 ```java
-To be implemented 
+TO BE IMPLEMENTED 
 ```
 
 ```javascript
@@ -2552,7 +2552,7 @@ Finally, if _user_b_ doesn't want to follow _user_a_ anymore, he can invoke the 
 
 ```DELETE /follow/user_a```
 
-Note that the _follow_ API is not mutual, just like in Twitter.
+Please note that the _follow_ API is not mutual, just like in Twitter.
 
 ### Follow a user
 
@@ -3189,7 +3189,7 @@ NOT SUPPORTED
 ```
 
 ```java
-/* this api is usable only as administrator using the raw request interface */
+/* this API is usable only as administrator using the raw request interface */
 BaasBox client = BaasBox.getDefault();
 String collectionName = "mycollection";
 client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
@@ -3335,10 +3335,10 @@ BaasBox.save(post, "posts")
 ```
 
 ### Retrieve documents
-You can get documents in two ways: using their unique ids, or executing a query to perform a search.
+You can get documents in two ways: using their unique IDs, or executing a query to perform a search.
 Both methods are described below.   
 
-#### Retrieve a document by its id
+#### Retrieve a document by its ID
 
 `GET /document/:collection/:ID`
 
@@ -3594,7 +3594,7 @@ Parameter | Description
 **collection** | The name of the collection. Mandatory.
 
 <aside class="notice">
-	A collection could contain documents that the user cannot read and therefore they are not included in the count.
+	A collection could contain documents that the user cannot read. Therefore they are not included in the count.
 </aside>
 
 <div class="snippet-title">
@@ -4055,7 +4055,7 @@ NOTHING HERE
 
 **Group**: [baasbox.data.write](#list-groups)
 
-Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (plus  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
+Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (and  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
 
 Parameter | Description
 --------- | -----------
@@ -4280,7 +4280,7 @@ Parameter | Description
 **id** | The ID of the document. Mandatory.
 **action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to whom you want to assign the grant
-**rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+**rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
 	<p>Example of a request to revoke read access to user "a" on document "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e"</p>
@@ -4406,12 +4406,12 @@ Available since 0.8.0
 
 This function is still **experimental**
 
-Links allow to connect documents and files each other. They are similar to the relations in a relational database.
-Of course there are differences between relations and links. First of all, links have versus, secondly   they have a name.
+Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
+Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
 
 Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
 
-For an example please see the code aside.
+As an example please see the code aside.
 
 ```
 customer
@@ -4430,7 +4430,7 @@ Nodes are connected by links (or edges). Links have a versus, a label, and a sou
 For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
 
 You can query links by name and/or use filters to select linked documents (or file). 
-At the moment is it possible only to execute query on links, there are not APIs to traverse them or to query linked documents from a given one.
+At the moment it is possible to execute query only on links, there are not APIs to traverse them or to query linked documents from a given one.
 
 
 ### Create a link
@@ -4440,7 +4440,7 @@ At the moment is it possible only to execute query on links, there are not APIs 
 **Group**: [baasbox.data.write](#list-groups)
 
 To create a link you must provide the two documents you want to connect and the link name.
-Since links have direction the first document will be the source node of the link and the second one will be the destination node.
+Since links have a direction, the first document will be the source node of the link and the second one will be the destination node.
 
 Parameter | Description
 --------- | -----------
@@ -5004,7 +5004,7 @@ BaasBox.fetchFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
 </div>
 
 ```json
-// Binary of the file
+// Binary file
 ```
 
 <div class="snippet-title">
@@ -5185,14 +5185,14 @@ TO BE IMPLEMENTED
 
 **Group**: [baasbox.file.grants](#list-groups)
 
-API to grant access on a file to a specific user or role.
+API to grant access to a file for a specific user or role.
 
 Parameter | Description
 --------- | -----------
 **id** | The ID of the file. Mandatory.
 **action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to whom you want to assign the grant. Mandatory.
-**rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+**rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
 	<p>Example of a request to grant read access to user “a” on a file</p>
@@ -5309,7 +5309,7 @@ BaasBox.grantRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UP
 
 **Group**: [baasbox.file.grants](#list-groups)
 
-API to revoke access on a file to a specific user or role.
+API to revoke access to a file for a specific user or role.
 
 Parameter | Description
 --------- | -----------
@@ -5609,7 +5609,7 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-// if it's json
+// if it's a JSON
 BaasAsset.fetchData("name",new BaasHandler<JsonObject>() {
   @Override
   public void handler(BaasResult<JsonObject> res) {
@@ -5792,9 +5792,9 @@ TO BE IMPLEMENTED
 </aside>
 
 
-## Settings API
+## API Settings
 
-Settings are app-related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
+Settings are app-related configuration options. They are intended to set up many app-specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
 
 More information can be found [here](#app-settings)
 
