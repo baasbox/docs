@@ -5,6 +5,7 @@ language_tabs:
   - shell: cURL
   - objective_c: iOS
   - java: Android
+  - javascript: JavaScript
 
 toc_footers:
  - <a href='#'></a>
@@ -14,8 +15,9 @@ toc_footers:
 
 BaasBox is a complete solution to implement the back end of your applications.
 
-The latest version is **0.8.2**
+It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 
+The latest version is **0.8.3**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -29,9 +31,12 @@ documentation explains:
 
    *  [iOS SDK](?objective_c#ios-sdk)
    *  [Android SDK](?java#android-sdk)
+   *  [JavaScript](?javascript#javascript-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-1-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-3-released/)
+
+FAQs are available on our [support site](http://support.baasbox.com/)
 
 The Android SDK JavaDoc is [here](http://baasbox.github.io/Android-SDK/docs/)
 
@@ -46,15 +51,15 @@ Click on any tab above to choose the platform of your interest.
 ```
 
 ```objective_c
-To install the iOS SDK you have two ways.
-We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.1'" to your pod file.
-As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the folder BaasBox-iOS-SDK on Xcode.
+You have two ways to install the iOS SDK.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.3'" to your pod file.
+As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the BaasBox-iOS-SDK folder on Xcode.
 
 Finally insert the following statement in the .pch file
 #import "BAAClient.h" 
 and you are good to go. 
 
-Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one add the following statement and you are good to go: #import "BAAClient.h" 
+Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
 ```
 
 ```java
@@ -80,20 +85,30 @@ public class MyApp extends Application{
 }
 ```
 
+```javascript
+/*
+You can download the SDK from the [download page](http://www.baasbox.com/download/).
+To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
+*/
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
+<script src="../baasbox.js"></script>
+
+/*
+The jQuery cookie plugin, needed to save authentication tokens, is already included at the top of the `baasbox.js` file.
+The SDK also supports [Zepto](http://zeptojs.com/).
+*/
+```
+
 
 # Installation
 
 **System Requirements**  [Java VM 6](http://java.com/en/download/) or later. BaasBox is compiled with
 Java 1.6.
 
-1. Download the latest version from [here](http://www.baasbox.com/download/), keep
-   in mind that until the 1.0 version will be released, BaasBox is not
-   production-ready and therefore subject to change. For Windows
-   Platforms on the same page you will find the `start.tar.gz` file.
+1. Download the latest version [here](http://www.baasbox.com/download/). 
 2. Unzip the `baasbox-x.x.zip` file wherever you want.
-3. Only for Windows Platforms: unzip the `start.tar.gz` file and put the
-   extracted start.bat in the same directory
-4. Type:
+3. Type:
    * run `start.bat` (on Windows)
    * `./start` (on *nix) You might need to grant execution permissions via
    `chmod +x ./start`
@@ -103,6 +118,8 @@ with your preferred browser. If everything worked fine, the BaasBox logo
 should appear. Now you can open the administrator console: [http://localhost:9000/console](http://localhost:9000/console )
 For further details about the console, you can read [console](#console).
 That’s all! BaasBox is ready to go and to serve your apps! To stop the server just halt (Ctrl-C) the shell script.
+
+BaasBox is also available as a [**cloud service**](http://beta.baasbox.com) already configured and ready to use.
 
 # Configuration
 BaasBox does not need any configuration to start. However, you can modify many parameters to fit your specific needs.
@@ -134,9 +151,14 @@ NOTHING HERE
 NOTHING HERE
 ```
 
+```javascript
+NOTHING HERE
+```
+
 Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
 By default no options are used.
-A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html) 
+A complete reference to the JVM parameters can be found [here](http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html).
+
 These settings cannot be modified at runtime.
 
 ## Play Framework Settings
@@ -152,8 +174,13 @@ NOTHING HERE
 NOTHING HERE
 ```
 
-BaasBox is based on the [Play! Framework](http://www.playframework.com). This means that it accepts all the options available for any Play! application.
-A complete reference of these option can be found [here](hhttp://www.playframework.com/documentation/2.1.5/ProductionConfiguration)
+```javascript
+NOTHING HERE
+```
+
+BaasBox is based on the [Play Framework 2.2.4](http://www.playframework.com). This means that it accepts all the options available for any Play application.
+A complete reference of such options can be found [here](http://www.playframework.com/documentation/2.2.4/ProductionConfiguration).
+
 These settings cannot be modified at runtime.
 
 ## BaasBox Settings
@@ -165,7 +192,7 @@ Here are the BaasBox settings you can set:
 
 Key | Description | Default
 --------- | ----------- | -------------
-**application.secret** | The secret key is used to secure cryptographics functions |  `A very long string`
+**application.secret** | The secret key used to secure cryptographics functions |  `A very long string`
 **orient.baasbox.path** |  The path where BaasBox will store the embedded OrientDB data |  `db/baasbox`
 **orient.baasbox.backup.path** |  The path where BaasBox will store the backups |  `db/backup`
 **push.baasbox.certificates.folder** | The folder where the iOS push certificate will be stored  |  `certificates`
@@ -177,8 +204,10 @@ Key | Description | Default
 **baasbox.startup.dumpdb** | it dumps DB information on startup | `false`
 **baasbox.server.accesslog** | Enable/disable the access log | `true`
 
+These settings cannot be modified at runtime.
+
 ## App Settings
-These are settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you are not forced to specify them every time you start BaasBox.
+These are the settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you do not have to specify them every time you start BaasBox.
 The App Settings can be configured via the [Administration Console](#console).
 The settings are splitted in five sections:
 
@@ -192,7 +221,9 @@ The settings are splitted in five sections:
 
 - Social Login
 
-The available options are:
+These settings can be modified at runtime.
+
+The available options for each section are described below.
 
 ### Application
 
@@ -229,7 +260,7 @@ Options for the server-side images resizing feature
 Key | Description | Default
 --------- | ----------- | -------------
 **image.allows.automatic.resize** | Enable or disable automatic resizing of images | `true`
-**image.allowed.automatic.resize.formats**  | A space-separated-values list of image size, both in px or in % | `25% 50% 75% <=80px`
+**image.allowed.automatic.resize.formats**  | A space-separated-value list of image size, both in px or in % | `25% 50% 75% <=80px`
 
 ### Push Notifications
 
@@ -248,13 +279,13 @@ Key | Description | Default
 
 ### Social Login
 
-Options to use Social Network as user authenticators
+Options to use the Social Networks as user authenticators
 
 Key | Description | Default
 --------- | ----------- | -------------
-**social.facebook.enabled** | Activate the FaceBook authenticator  |  `false`
-**social.facebook.token** | Application Token for Facebook app  | 
-**social.facebook.secret**  | Application secret for Facebook app | 
+**social.facebook.enabled** | Activate the Facebook authenticator  |  `false`
+**social.facebook.token** | Application Token for the Facebook app  | 
+**social.facebook.secret**  | Application secret for the Facebook app | 
 **social.google.enabled** | Activate the Google+ authenticator  |  `false`
 **social.google.token** | Application Token for Google+ |
 **social.google.secret**  | Application secret for Google+ |
@@ -276,7 +307,7 @@ baasbox.settings.<section>.<key>.value=<new value>
 
 Where 
 
-- _section_ is one from:
+- _section_ is one of:
 
   - Application
 
@@ -288,7 +319,7 @@ Where
 
   - Images
 
-- _key_ is one key listed above
+- _key_ is one of the keys listed above
 
 Both sections and key names are case-sensitive.
 <aside class="notice"> 
@@ -302,7 +333,7 @@ To use an external file, you have to use the following options and instructions
 
 <span style="color:#F9F9F9;">(keysnippetcode)_____</span><br/>Key   | <span style="color:#F9F9F9;">(descriptionsnippetcode)_____</span><br/>Description   |   <span style="color:#F9F9F9;">(examplesnippetcode)_____</span><br/>Example
 --------- | ----------- | -------------
-**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)` directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
+**config.file** |   An external configuration file. You can put all your parameters in a file. This file MUST include the `include classpath(“application.conf”)`directive, otherwise BaasBox will not work | `-Dconfig.file=baasbox.config` 
 
 Regarding the `config.file` key, a possible example of an external configuration file may be:
 
@@ -320,6 +351,10 @@ NOTHING HERE
 ```
 
 ```java
+NOTHING HERE
+```
+
+```javascript
 NOTHING HERE
 ```
 
@@ -365,10 +400,10 @@ Available functions are:
 
 -  Users management:
 
-   -  Signup, Login, Logout, profiles management (private features, public
+   -  Signup, Login, Logout, profile management (private features, public
       features and so on), forgotten password recovery, link and log-in
       through Facebook and Google+
-   -  Roles management: administrators, registered users, back-office
+   -  Role management: administrators, registered users, back-office
       users, creation of new roles.
 
 -  File management:
@@ -383,15 +418,15 @@ Available functions are:
 
 -  DB management:
 
-   -  Backup/restore and reset of the integrated database
+   -  Backup/restore and reset the integrated database
 
 -  Api Access management:
 
-   - Enable/disable groups of rest endpoints from external access
+   - Enable/disable groups of REST endpoints from external access
 
 ## Applied Technology
 
-BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play! framework](http://www.playframework.com/) 2.1.5 and it incorporates the core of the [OrientDB database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
+BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play Framework 2.2.4](http://www.playframework.com/) and it incorporates the core of the [OrientDB 1.6.3 database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
 objects and queries without using specific abstractions or having to simulate them on the applicative level. OrientDB was recently surveyed and entered Gartner's Magic Quadrant.
 
 
@@ -415,11 +450,15 @@ NOTHING HERE
 NOTHING HERE
 ```
 
-BaasBox has a web console that allows managing its behavior and performing administrative
+```javascript
+NOTHING HERE
+```
+
+BaasBox has a web console that allows to manage its behavior and to perform administrative
 tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
-deployed BaasBox in the correct way, you can open your browser and open
+deployed BaasBox the correct way, you can open your browser and open
 the welcome screen: ![Console image](images/Console_0.8.1/home_console.png)
 
 ## Login screen
@@ -441,7 +480,7 @@ fields will be filled with the default values.
 
 ## Dashboard 
 
-Once you logged in, you will see the main dashboard screen: 
+Once you have logged in, you will see the main dashboard screen: 
 
 ![Dashboard image](images/Console_0.8.1/baasbox_0-8-1-console.png)
 
@@ -468,7 +507,7 @@ dashboard is split into several sections:
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
     -  Database: you can find version with its path and data size
-12. Access to a dialog window to change password or to logout
+12. Access a dialog window to change the password or to logout
     -  Change password: Just insert old and new passwords, then confirm
        the new one
     -  Logout: just logout from the console. Remember that you can also
@@ -476,7 +515,7 @@ dashboard is split into several sections:
 13. DB Management: you can create a backup of your DB and import & export
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-16. Api Access: The API Access section allows you to manage which rest endpoints are accessible to non administrator users
+16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
 
 
 <aside class="notice">  
@@ -494,7 +533,7 @@ See also [Settings](#settings).
 
 ## API Access
 
-The [API Access](#api-access83) section allows you to manage which rest endpoints are accessible
+The [API Access](#api-access83) section allows you to manage which REST endpoints are accessible
 to non administrator users.
 Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
@@ -560,7 +599,6 @@ button and you will see this window:
 <aside class="notice">
 	Starred fields are mandatory. After you have filled in at least the mandatory fields, you have to save the changes.
 </aside>
-
 
 
 ## Collections
@@ -631,6 +669,367 @@ following window:
 
 
 
+# SDK
+Native SDKs for iOS, Android and Javascript are available. They allow to access to many functions of BaasBox server using a native interface.
+
+One cool feature it is the "pass through" function that allow to perform a _raw_ call to BaasBox in case you want to do something that is not supported by the SDK yet.
+
+## iOS SDK
+
+The SDK is distributed in two ways: 
+
+* as a [Cocoapod](http://cocoapods.org/?q=baasBox)
+* as a zip file 
+
+We recommend to install it using Cocoapods. Just add the following line to your Podfile.
+
+`pod 'BaasBoxSDK', '~> 0.8.3'`
+
+If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
+
+Finally insert the following statement in the .pch file
+
+`#import "BAAClient.h"`
+
+and you are good to go. 
+
+Note for **Swift** projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
+
+#### Importing
+
+The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
+
+```objective_c
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "BAAClient.h"
+#endif
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Initialization
+
+You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
+
+```objective_c
+[BaasBox setBaseURL:@"http://localhost:9000"
+appCode:@"1234567890"];
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Architecture and pass-through
+
+The iOS SDK is structured following an onion-skin model. Most of the APIs are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you use these methods when available. Should you see "TO BE IMPLEMENTED" in the iOS section, you can resort to use the ``BAAClient`` class. 
+On the right there is an example of a GET request.
+
+There are four methods, one for each HTTP verb.
+
+``- (void)getPath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+
+``- (void)postPath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+``- (void)putPath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+``- (void)deletePath:(NSString *)path
+parameters:(NSDictionary *)parameters
+success:(void (^)(id responseObject))success
+failure:(void (^)(NSError *error))failure;``
+
+
+As stated above, we strongly suggest you use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you won't neeed to use ``BAAClient`` methods at all in your app.
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client getPath:@"/file/details"
+parameters:parameters
+success:^(id responseObject) {
+
+NSLog(@"response is %@", responseObject);         
+
+} failure:^(NSError *error) {
+
+NSLog(@"error is %@", error); 
+
+}];
+```
+
+```shell
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+
+## Android SDK
+
+BaasBox provides a native Android SDK, to further ease development of mobile applications.
+The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
+You can also use maven gradle or maven to depend on the library:
+
+``compile 'com.baasbox:baasbox-android:0.8.3'``
+
+
+#### Initialization
+
+Currently, you can have only one client per application. 
+The client must be initialized before you can use any of the provided features.
+The preferred way to initialize the SDK is to override the default 
+application and configure it in the ``onCreate()`` method, 
+using the ``BaasBox.Builder`` class.
+
+<div class="snippet-title">
+<p>Example initialization</p>
+</div>
+
+```java
+//...
+import com.baasbox.android.BaasBox;
+
+public class MyApp extends Application {
+
+private BaasBox client;
+
+@Override
+public void onCreate() {
+super.onCreate();
+BaasBox.Builder b = 
+new BaasBox.Builder(this);
+client = b.setApiDomain("address")
+.setAppCode("appcode")
+.setPushSenderIds("your google sender id") //used for push notifications
+.init();
+}
+}
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### General usage
+
+Most BaasBox REST resources are exposed through wrapper classes.
+Endpoints are accessible through asynchronous methods, that accept a general callback interface
+``BaasHandler<T>``
+
+You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
+
+Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
+
+You can control asynchronous requests through the returned RequestToken.
+
+<div class="snippet-title">
+<p>Example requests</p>
+</div>
+
+```java
+// Here  BaasDocument is used as an example
+// it represents documents on the server, 
+// more on this later
+
+// asynchronous request
+RequestToken tok = BaasDocument.fetchAll("coll",
+new BaasHandler<List<BaasDocument>>() {
+@Override
+public void handle(BaasResult<List<BaasDocument>> res) {
+// res is the result of the request
+}
+});
+
+// synchronous equivalent BLOCKS!!!
+BaasResult<List<BaasDocument>> res = 
+BaasDocument.fetchAllSync("coll");
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Asynchronous requests management
+
+Asynchronous requests are executed by a pool of threads.
+While an asynchronous request is running you can manage it
+using the return value of the method, a ``RequestToken``.
+Tokens are designed to let you *suspend* the assigned callback without
+interrupting the real request, allowing the later resumption of
+result processing on the main thread when you are ready to handle it.
+This is quite useful when callbacks are tied to the lifecycle of your
+acitivities.
+
+Request tokens let you cancel/abort requests, or wait for their completion,
+this is useful in testing or if you want to parallelize your http requests.
+
+```java
+// an example asynchronous request in an activity
+public class MyActivity extends Activity implements
+BaasHandler<BaasUser>{
+private final statis String BAAS_REQ = "tag";
+private RequestToken token;
+
+public void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+// you resume suspended requests
+// and obtain the token back
+token = RequestToken.loadAndResume(
+savedInstanceState,
+BAAS_REQ,
+this);
+if(token!=null){
+// a request has been resumed
+}
+}
+
+public void onSaveInstanceSate(Bundle state){
+super.onSaveInstanceState(state);
+if(token!=null){
+token.suspendAndSave(state,TAG);
+}
+}
+
+public void handle(BaasResult<BaasUser> res){
+token = null;
+// process result
+}
+}
+
+
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+#### Pass-through API
+
+Some rest endpoints have no direct equivalent in the API.
+For them you can use the lower level pass through API provided by the SDK
+through the ``rest()`` and ``restSync()`` methods.
+Whenever you see "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
+Using these methods you can access these APIs while still enjoying the rest
+of the SDK features, such as concurrency and lifecycle management, caching,
+handling of the authentication.
+
+```java
+BaasBox cli  = BaasBox.getDefault();
+cli.rest(HttpRequest.GET,
+"endpoint",
+optJsonBody,
+authenticate,
+new BaasHandler<JsonObject>(){
+@Override
+public void handle(BaasResult<JsonObject> res){
+}});
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```shell
+NOTHING HERE
+```
+
+```javascript
+NOTHING HERE
+```
+
+
+## JavaScript SDK
+The JavaScript SDK is based on [jQuery](http://jquery.com/). The [example page](https://github.com/baasbox/JS-SDK/blob/master/example/index.html) contains an example of each API
+call available. 
+
+#### Importing
+
+You can download the SDK from the [download page](http://www.baasbox.com/download/).
+To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
+
+```shell
+NOTHING HERE
+```
+
+```objective_c
+NOTHING HERE
+```
+
+```java
+NOTHING HERE
+```
+
+```javascript
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
+<script src="../baasbox.js"></script>
+```
+
+The jQuery cookie plugin, which you need to save authentication tokens, is already included at the top of the `baasbox.js` file.
+The SDK also supports [Zepto](http://zeptojs.com/).
+
+#### Pass-through API
+
+For any non-implemented API you can use the jQuery [$.ajax](http://api.jquery.com/jquery.ajax/) interface.
 
 
 # API
@@ -725,12 +1124,12 @@ These are custom error codes specific to BaasBox, returned into the bb_code fiel
 -  40101: Authentication info not valid or not provided. HINT: has your
    session expired?
 -  50301: Push settings are not properly configured. HINT: go to
-   administration console and check the settings
+   the administration console and check the settings
 -  50302: The server cannot resolve the host name. HINT: check your
    internet connection 
 -  50303: Could not send push notifications. HINT: Check your API Key (Google).
 
-### Pagination and query criteria
+## Pagination and query criteria
 
 Some queries support pagination. There are two important parameters in paginated calls.
 
@@ -829,300 +1228,13 @@ PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
 });
 ```
 
+```javascript
+NOTHING HERE
+```
+
 <aside class="notice">
 	The value of the parameter must be URL encoded.
 </aside>
-
-### iOS SDK
-
-The SDK is distributed in two ways: 
-
-* as a Cocoapod
-* as a zip file 
-
-We recommend to install it using Cocoapods. Just add the following line to your Podfile.
-
-`pod 'BaasBoxSDK', '~> 0.8'`
-
-If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
-
-#### Importing
-
-The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```objective_c
-#ifdef __OBJC__
-  #import <UIKit/UIKit.h>
-  #import <Foundation/Foundation.h>
-  #import "BAAClient.h"
-#endif
-```
-
-#### Initialization
-
-You need to initialize the SDK before making any API call. The best place to do it is in the ```application:didFinishLaunchingWithOptions`` method of your app. All you need to provide is the base URL and the app code, as in the example on the right.
-
-```objective_c
-[BaasBox setBaseURL:@"http://localhost:9000"
-            appCode:@"1234567890"];
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-#### Architecture and pass-through
-
-The SDK is structured following an onion-skin model. Most of the API are available through classes like ``BAAUser`` or ``BAAObject``, which respectively contains methods for user management (login, signup, etc.) and documents (create, update, etc.). We suggest you to use these methods when available. In case you see a "TO BE IMPLEMENTED" in the iOS section you can resort to use the ``BAAClient`` class. 
-On the right there is an example of a GET request.
-
-There are four methods, one for each HTTP verb.
-
-``- (void)getPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(id responseObject))success
-        failure:(void (^)(NSError *error))failure;``
-
-
-``- (void)postPath:(NSString *)path
-      parameters:(NSDictionary *)parameters
-         success:(void (^)(id responseObject))success
-         failure:(void (^)(NSError *error))failure;``
-
-``- (void)putPath:(NSString *)path
-    parameters:(NSDictionary *)parameters
-       success:(void (^)(id responseObject))success
-       failure:(void (^)(NSError *error))failure;``
-
-``- (void)deletePath:(NSString *)path
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(id responseObject))success
-          failure:(void (^)(NSError *error))failure;``
-
-
-As stated above we strongly suggest to use higher level methods available in the classes ``BAAFile``, ``BAAObject`` and ``BAAUser`` and to resort to the ``BAAClient`` methods only if you can't do otherwise. We will soon finish the implementation of the SDK so that you don't neeed to use ``BAAClient`` methods at all in your app.
-
-```objective_c
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client getPath:@"/file/details"
-     parameters:parameters
-        success:^(id responseObject) {
-          
-          NSLog(@"response is %@", responseObject);         
-          
-        } failure:^(NSError *error) {
-          
-          NSLog(@"error is %@", error); 
-          
-        }];
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-
-### Android SDK
-
-BaasBox provides a native Android SDK, to further ease development of mobile applications.
-The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
-You can also use maven gradle or maven to depend on the library:
-
-``compile 'com.baasbox:baasbox-android:0.8.0'``
-
-
-
-#### Initialization
-
-Currently, you can have only one client per application. 
-The client must be initialized before you can use any of the provided features.
-The preferred way to initialize the SDK is to override the default 
-application and configure it in the ``onCreate()`` method, 
-using the ``BaasBox.Builder`` class.
-
-<div class="snippet-title">
-	<p>Example initialization</p>
-</div>
-
-```java
-//...
-import com.baasbox.android.BaasBox;
-
-public class MyApp extends Application {
-  
-  private BaasBox client;
-  
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    BaasBox.Builder b = 
-        new BaasBox.Builder(this);
-    client = b.setApiDomain("address")
-              .setAppCode("appcode")
-	      .setPushSenderIds("your google sender id") //used for push notifications
-              .init();
-  }
-}
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-#### General usage
-
-Most BaasBox rest resources are exposed through wrapper classes.
-Endpoints are accessible through asynchronous methods, that accept a general callback interface
-``BaasHandler<T>``
-
-You can also access endpoints using synchronous alternatives using the ``*Sync`` version of the methods.
-
-Results are always wrapped in ``BaasResult<T>``, this can represent the actual result or a failure.
-
-You can control asynchronous requests through the returned RequestToken.
-
-<div class="snippet-title">
-	<p>Example requests</p>
-</div>
-
-```java
-// Here  BaasDocument is used as an example
-// it represents documents on the server, 
-// more on this later
-
-// asynchronous request
-RequestToken tok = BaasDocument.fetchAll("coll",
-  new BaasHandler<List<BaasDocument>>() {
-    @Override
-    public void handle(BaasResult<List<BaasDocument>> res) {
-      // res is the result of the request
-    }
-});
-
-// synchronous equivalent BLOCKS!!!
-BaasResult<List<BaasDocument>> res = 
-  BaasDocument.fetchAllSync("coll");
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-#### Asynchronous requests management
-
-Asynchronous requests are executed by a pool of threads.
-While an asynchronous request is running you can manage it
-using the return value of the method, a ``RequestToken``.
-Tokens are designed to let you *suspend* the assigned callback without
-interrupting the real request, allowing the later resumption of
-result processing on the main thread when you are ready to handle it.
-This is quite useful when callbacks are tied to the lifecycle of your
-acitivities.
-
-Request tokens let you cancel/abort requests, or wait for their completion,
-this is useful in testing or if you want to parallelize your http requests.
-
-```java
-// an example asynchronous request in an activity
-public class MyActivity extends Activity implements
-  BaasHandler<BaasUser>{
-  private final statis String BAAS_REQ = "tag";
-  private RequestToken token;
-  
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    // you resume suspended requests
-    // and obtain the token back
-    token = RequestToken.loadAndResume(
-      savedInstanceState,
-      BAAS_REQ,
-      this);
-   if(token!=null){
-    // a request has been resumed
-   }
-  }
-  
-  public void onSaveInstanceSate(Bundle state){
-    super.onSaveInstanceState(state);
-    if(token!=null){
-      token.suspendAndSave(state,TAG);
-    }
-  }
-  
-  public void handle(BaasResult<BaasUser> res){
-    token = null;
-    // process result
-  }
-}
-
-
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-#### Pass-through API
-
-Some rest endpoints have no direct equivalent in the API.
-For them you can use the lower level pass through API provided by the SDK
-through the ``rest()`` and ``restSync()`` methods.
-Whenever you see a "TO BE IMPLEMENTED" in the Android section you can recur to this methods.
-Using these methods you can access these APIs while still enjoying the rest
-of the SDK features, such as concurrency and lifecycle management, caching,
-handling of the authentication.
-
-```java
-BaasBox cli  = BaasBox.getDefault();
-cli.rest(HttpRequest.GET,
-         "endpoint",
-         optJsonBody,
-         authenticate,
-         new BaasHandler<JsonObject>(){
-  @Override
-  public void handle(BaasResult<JsonObject> res){
-  }});
-```
-
-```objective_c
-NOTHING HERE
-```
-
-```shell
-NOTHING HERE
-```
-
-
-
 
 
 ##User Management
@@ -1143,7 +1255,7 @@ Parameter | Description
 **username** | The username for the user. Mandatory
 **password** | Password. Mandatory
 **visibleByTheUser** | an object whose fields are private and visible only by the user
-**visibleByFriends** | an object whose fields are visible by the user and friends (for future friendship management)
+**visibleByFriends** | an object whose fields are visible by the user and friends (for friendship management)
 **visibleByRegisteredUsers** | an object whose fields are visible by the user, friends, any registered user
 **visibleByAnonymousUsers** | an object whose fields are public and visible by everyone, also anonymous users
 
@@ -1188,6 +1300,16 @@ user.signup(new BaasHandler<BaasUser>(){
     }
   }
 });
+```
+
+```javascript
+BaasBox.signup("cesare", "password")
+	.done(function (res) {
+  	console.log("signup ", res);
+  })
+  .fail(function (error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1271,6 +1393,17 @@ user.login(new BaasHandler<BaasUser>() {
   }
 });
 ```
+
+```javascript
+BaasBox.login("cesare", "password")
+	.done(function (user) {
+		console.log("Logged in ", user);
+	})
+	.fail(function (err) {
+		console.log("error ", err);
+	})
+```
+
 <div class="snippet-title">
 	<p>Sample response when a user is logged in</p>
 </div> 
@@ -1341,6 +1474,16 @@ BaasUser.current().logout(new BaasHandler<Void>() {
     }
   };
 });
+```
+
+```javascript
+BaasBox.logout()
+  .done(function (res) {
+  	console.log(res);
+  })
+  .fail(function (error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1440,6 +1583,17 @@ BaasUser.current().refresh(new BaasHandler<BaasUser>() {
   }
 });
 ```
+
+```javascript
+BaasBox.fetchCurrentUser()
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Sample response</p>
 </div>  
@@ -1536,6 +1690,16 @@ user.save(new BaasHandler<BaasUser>() {
 });
 ```
 
+```javascript
+BaasBox.updateUserProfile({"visibleByAnonymousUsers": {"email" : "mail@mail.com"}})
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 
 <div class="snippet-title">
 	<p>Sample JSON response</p>
@@ -1619,6 +1783,18 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
   }
 });
 ```
+
+```javascript
+BaasBox.changePassword("oldpass", "newpass")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+
 <div class="snippet-title">
 	<p>Example of response</p>
 </div>
@@ -1638,9 +1814,9 @@ current.changePassword("newpassword",new BaasHandler<Void>() {
 
 **Group**: [baasbox.account.lost_password](#list-groups)
 
-Allows to reset a user password. This API is useful when users forget their password and need to reset it. This is the workflow: 
+Allows to reset a user's password. This API is useful when users forget their password and need to reset it. This is the workflow: 
 
-- the server checks if the email address is present within the `visibleByTheUser` fields in the user profile 
+- the server checks if the email address exists within the `visibleByTheUser` fields in the user profile 
 - the server sends an email to that address with a generated link to follow in order to reset the password 
 - the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
 - the user fills in the two fields and submits the form 
@@ -1684,6 +1860,16 @@ BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
     }
   }
 };
+```
+
+```javascript
+BaasBox.resetPassword()
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1734,12 +1920,12 @@ Parameter | Description
 </div>
 
 ```shell
-curl http://localhost:9000/user/a \
+curl http://localhost:9000/user/cesare \
 	 -H X-BB-SESSION:f083f676-65d0-45bd-bfe5-e876ef3f659e
 ```
 
 ```objective_c
-[BAAUser loadUserDetails:@"a"
+[BAAUser loadUserDetails:@"cesare"
               completion:^(BAAUser *user, NSError *error) {
     
     if (error == nil) {
@@ -1767,6 +1953,16 @@ BaasUser.fetch("a",new BaasHandler<BaasUser>() {
     }
   }
 });
+```
+
+```javascript
+BaasBox.fetchUserProfile("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -1842,6 +2038,16 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
 });
 ```
 
+```javascript
+BaasBox.fetchUsers()
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -1885,8 +2091,437 @@ BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
 }
 ```
 
+## Social Login ##
 
-##Friendship
+BaasBox provides an API that allows you to connect/create your users
+through social networks.
+
+BaasBox social API is integrated with the following social networks: -
+Facebook - Google +
+
+We are planning on adding more in the near future.
+
+The use of an API in a client application needs an *appKey* and an
+*appSecret* usually provided by the social network itself. More
+information on how you can get those values can be found here:
+
+-  facebook (http://developers.facebook.com/docs/)
+-  google+ (http://code.google.com/apis/console)
+
+Once you create your app inside the social network you will have access
+to the *apiKey* / *apiSecret* values; those values must be stored into
+the BaasBox database in order to use the BaasBox social feature: you can
+access the social login tab from the settings menu in the admin console.
+
+![Social login tab](images/Social_login/social_login_tab.png)
+
+Then click on the specific social network you are working on, fill in
+the form with the keys and press Save. You can disable the social
+feature for a specific social network by pressing the **disable xxx
+button**
+
+![Disable](images/Social_login/disable.png)
+
+Once you have connected to a social network you can use any client
+library to obtain the OAuth tokens for users account, and store them
+with the social API provided by BaasBox.
+
+You can find an application example and tutorial [here](http://www.baasbox.com/social-login/)
+
+API documentation
+
+###Retrieve all social network connections for a connected user
+
+`GET /social`
+
+Headers:
+
+-  X-BAASBOX-APPCODE: App Code
+-  X-BB-SESSION: Session token for current user
+
+Returns a JSON representation of the social network connected to the
+user along with all the information retrieved at the moment of
+login/linking. An example of the returned data is:
+
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```shell
+curl http://localhost:9000/social  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser fetchLinkedSocialNetworksWithCompletion:^(NSArray *objects, NSError *error) {
+
+if (error == nil) {     
+
+NSLog(@"social are %@", objects);
+
+} else {
+
+NSLog(@"%@", error);
+
+}
+
+}];
+
+```
+
+```java
+TO BE IMPLEMENTED
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+"data": [
+{
+"username": "xxx",
+"password": null,
+"from": "google",
+"token": "<token>",
+"secret": "<secret>",
+"id": "<userid>",
+"additionalData": {
+"email": "<email>",
+"name": "<name>",
+"avatarUrl": "<avatar>",
+"personal_url": "<personal_url>"
+}
+}
+]
+```
+
+This API should be invoked with a valid X-BB-SESSION header and a valid
+X-BAASBOX-APPCODE header as specified in the authorization section of
+the doc.
+
+This method can be used to retrieve the tokens to post on the social
+network wall using a client SDK provided by the social network itself.
+
+Returns:
+
+-  200 code with a JSON object whose data property contains all the
+social networks linked to the current user.
+-  404 code if the user does not have any social network linked to their
+account
+-  401 code (Unauthorized) if one of the mandatory headers are missing
+
+###Login a User with a specified social network
+
+`POST /social/:socialNetwork`
+
+Headers: X-BAASBOX-APPCODE = App code
+
+URL parameters
+
+:socialNetwork could be **facebook** or **google**
+
+Parameters:
+
+-  oauth\_token: the **oauth\_token** obtained after user authentication
+and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+-  oauth\_secret: the **oauth\_secret** obtained after user
+authentication and authorization with a client library (see example
+[here](http://www.baasbox.com/social-login/))
+
+This method allows to login into the BaasBox app using the tokens
+obtained by a social network client library. If the user has already
+logged in with the same tokens the server will simply return the
+X-BB-SESSION token that will be used for further requests.
+
+If the user does not exist it will be created and an X-BB-SESSION token
+will be returned. Upon user creation some data will be extracted from
+the social network profile and they will be stored inside the user
+object. A username will be uniquely generated (to prevent username
+collision). Therefore after a succesful login, if necessary, the client
+app may ask for a username and update the user object accordingly.(See
+the example [here](http://www.baasbox.com/social-login/))
+
+Returns:
+
+-  200 code with the user's X-BB-SESSION token
+-  400 code if one of the oauth\_token or oauth\_secret was missing
+-  401 code if the X-BAASBOX-APPCODE header was missing
+-  500 code if something on the server went wrong (i.e. another user
+with the same tokens already exists)
+
+<div class="snippet-title">
+<p>Example of a request to login with Facebook</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/facebook  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Facebook.
+[BAAUser loginWithFacebookToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+
+BAAClient *c = [BAAClient sharedClient];
+NSLog(@"logged in with facebook %@", c.currentUser);
+
+} else {
+
+NSLog(@"error %@", error);
+
+}
+
+}];
+```
+
+```java
+String token= ...;// a valid token from the provider
+BaasUser.signupWithProvider(Social.FACEBOOK,token,token,new BaasHandler<BaasUser>(){
+@Override
+public void handler(BaasResult<BaasUser> res) {
+if(res.isSuccess()){
+BaasUser current = res.value(); 
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request to login with Google</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/social/google  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+NSString *token = ... ; // Valid authentication token obtained by Google.
+[BAAUser loginWithGoogleToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+
+BAAClient *c = [BAAClient sharedClient];
+NSLog(@"logged in with facebook %@", c.currentUser);
+
+} else {
+
+NSLog(@"error %@", error);
+
+}
+
+}];
+```
+
+```java
+TO BE IMPLEMENTED
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+###Link a user to a specified social network
+
+`PUT /social/:socialNetwork`
+
+Headers:
+
+-  X-BAASBOX-APPCODE = App code
+-  X-BB-SESSION = Session token for the current user
+
+URL parameters
+
+:socialNetwork could be **facebook** or **google**
+
+Parameters: oauth\_token: the **oauth\_token** obtained after user
+authentication and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+oauth\_secret: the **oauth\_secret** obtained after user authentication
+and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
+
+This method allows an existing user to connect their account to a
+specified social network.
+
+This procedure is very similar to the Login method with a difference:
+this is a PUT request and it must be invoked with the X-BB-SESSION
+header.
+
+Returns: 
+-  200 code with an empty response if the linking was succesful, 
+-  401 code if any of the mandatory headers was missing, 
+-  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
+
+<div class="snippet-title">
+<p>Example of a request to link an account to Facebook</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/facebook  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Facebook
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToFacebookWithToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"user linked to FB");                                                                                         
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+TO BE IMPLEMENTED
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request to link an account to Google</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/social/google  \
+-d "oauth_token=OAUTH_TOKEN" \
+-d "oauth_secret=OAUTH_SECRET" \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+NSString *token = ...; // Token obtained by Google
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser linkToGoogleWithToken:token
+completion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"user linked to FB");                                                                                         
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+TO BE IMPLEMENTED 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+###Unlink a user from a specified social network
+
+`DELETE /social/:socialNetwork`
+
+Headers:
+
+-  X-BAASBOX-APPCODE = App code
+-  X-BB-SESSION = Session token for current user
+
+URL parameters: socialNetwork could be **facebook** or **google**
+
+This method unlinks the current user account from a specified social
+network. If the user was generated by a social network login and the
+specified social network is the only one linked to the user, an error
+will be raised (as the user will not be available to connect anymore).
+
+
+<div class="snippet-title">
+<p>Example of a request to unlink an account from Facebook</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/social/facebook  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromFacebookWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"account unlinked");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+TO BE IMPLEMENTED 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request to unlink an account from Google</p>
+</div>
+
+```shell
+curl -X DELETE http://localhost:9000/social/google  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes a user is already logged in
+BAAClient *client = [BAAClient sharedClient];
+[client.currentUser unlinkFromGoogleWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"account unlinked");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+TO BE IMPLEMENTED 
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+
+##Friendship and Social API
 BaasBox is able to manage relations among users, implementing a concept of friendship similar (but not identical) to the one used by Twitter.
 A user registered on BaasBox can "follow" another user calling the _follow_ API.
 
@@ -1917,7 +2552,7 @@ Finally, if _user_b_ doesn't want to follow _user_a_ anymore, he can invoke the 
 
 ```DELETE /follow/user_a```
 
-Note that the _follow_ API is not mutual, just like in Twitter.
+Please note that the _follow_ API is not mutual, just like in Twitter.
 
 ### Follow a user
 
@@ -1972,6 +2607,17 @@ user.follow(new BaasHandler<BaasUser>() {
   } 
 });
 ```
+
+```javascript
+BaasBox.followUser("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2053,6 +2699,17 @@ BaasUser.withUserName("cesare").unfollow(
     }
   });
 ```
+
+```javascript
+BaasBox.unfollowUser("cesare")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2111,6 +2768,16 @@ user.following(new BaasHandler<List<BaasUser>>() {
     }
   }
 });
+```
+
+```javascript
+BaasBox.fetchFollowing("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -2187,6 +2854,16 @@ user.followers(new BaasHandler<List<BaasUser>>() {
 });
 ```
 
+```javascript
+BaasBox.fetchFollowers("cesare")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 
 <div class="snippet-title">
 	<p>Example of a response with "cesare"'s followers</p>
@@ -2213,6 +2890,197 @@ user.followers(new BaasHandler<List<BaasUser>>() {
   "http_code": 200
 }
 ```
+
+## Push Notifications
+
+Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
+
+### Enable push notifications
+
+`PUT /push/enable/:os/:pushToken`
+
+**Group**: [baasbox.notifications.receive](#list-groups)
+
+Enables a specific user (logged using a specific device) to receive push notifications.
+
+Parameter | Description
+--------- | -----------
+**os** | The operative system. One of: `ios`, `android`. Mandatory.
+**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
+
+<div class="snippet-title">
+<p>Example of a request to enable push notifications</p>
+</div>
+
+```shell
+curl -X PUT  http://localhost:9000/push/enable/ios/123  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client askToEnablePushNotifications];
+```
+```java
+// given you have provided one or more sender ids to the initial configuration
+BaasCloudMessagingService box=BaasBox.messagingService();
+box.enable(new BaasHandler<Void>() {
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isSuccess()){
+// registrationid saved on the server
+}
+}
+});
+
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
+### Disable push notifications
+
+`PUT /push/disable/:pushToken`
+
+**Group**: [baasbox.notifications.receive](#list-groups)
+
+Disable a specific user (logged using a specific device) to unreceive push notifications.
+
+Parameter | Description
+--------- | -----------
+**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
+
+<div class="snippet-title">
+<p>Example of a request to disable push notifications</p>
+</div>
+
+```shell
+curl -X PUT  http://localhost:9000/push/disable/123  \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+// Assumes there is a logged in user
+BAAClient *client = [BAAClient sharedClient];
+[client disablePushNotificationsWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"push notifications disabled");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+BaasCloudMessagingService client = BaasBox.messagingService();
+client.disable(new BaasHandler<Void>(){
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isSuccess()){
+// successfully unregistered
+}
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
+### Send a push notification
+
+`POST /push/message/:username`
+
+**Group**: [baasbox.notifications.send](#list-groups)
+
+Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
+
+Parameter | Description
+--------- | -----------
+**username** | The username of the user who has to receive the notification. Mandatory.
+
+```shell
+curl -X POST  http://localhost:9000/push/message/cesare  \
+-d '{"message" : "hi"}' \
+-H Content-type:application/json \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+BAAClient *client = [BAAClient sharedClient];
+[client postPath:@"/push/message/cesare"
+parameters:@{@"message" : @"Hi there"}
+success:^(id responseObject) {
+
+NSLog(@"Notification sent");
+
+} failure:^(NSError *error) {
+
+NSLog(@"error %@", error);
+
+}];
+```
+
+```java
+JsonObject message = new JsonObject()
+.putString("greeting","Hello World!")
+.putString("from","BaasBox");
+
+BaasUser user = BaasUser.withUserName("Cesare");
+user.send(message,new BaasHandler<Void>(){
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isFailed()){
+Log.e("LOG","Something went wrong",res.error());
+}
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
 
 ## Collections
 
@@ -2270,6 +3138,16 @@ client.rest(HttpRequest.POST,"admin/collection/"+collectionName,null,true,
             });
 ```
 
+```javascript
+BaasBox.createCollection("pizzas")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2311,7 +3189,7 @@ NOT SUPPORTED
 ```
 
 ```java
-/* this api is usable only as administrator using the raw request interface */
+/* this API is usable only as administrator using the raw request interface */
 BaasBox client = BaasBox.getDefault();
 String collectionName = "mycollection";
 client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
@@ -2325,6 +3203,16 @@ client.rest(HttpRequest.DELETE,"admin/collection/"+collectionName,null,true,
                 }
               }
             });
+```
+
+```javascript
+BaasBox.deleteCollection("pizzas")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -2411,6 +3299,20 @@ doc.save(new BaasHandler<BaasDocument>() {
 });
 ```
 
+```javascript
+// Assumes a collection named "posts" has been created
+var post = new Object();
+post.title = "My new post title";
+post.body = "Body of my post.";		
+BaasBox.save(post, "posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2432,8 +3334,11 @@ doc.save(new BaasHandler<BaasDocument>() {
 }
 ```
 
-### Retrieve a document
+### Retrieve documents
+You can get documents in two ways: using their unique IDs, or executing a query to perform a search.
+Both methods are described below.   
 
+#### Retrieve a document by its ID
 
 `GET /document/:collection/:ID`
 
@@ -2485,6 +3390,16 @@ BaasDocument.fetch("mycollection",
                  }});
 ```
 
+```javascript
+BaasBox.loadObject("posts", "090dd688-2e9a-4dee-9afa-aad72a1efa93")
+  .done(function(res) {
+  	console.log("res ", res['data']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2506,6 +3421,244 @@ BaasDocument.fetch("mycollection",
 }
 ```
 
+#### Retrieve documents by a query
+
+`GET /document/:collection`
+
+**Group**: [baasbox.data.read](#list-groups)
+
+Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria). 
+This means that you can use, for example, the _where_ criteria to filter the result, the _recordsPerPage_ criteria to limit the number of records to retrieve, and so on.
+In the _where_ clause you can use the [SQL-FILTERING](http://www.orientechnologies.com/docs/last/orientdb.wiki/SQL-Where.html) syntax of OrientDB
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read and therefore they are not included in the result.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to retrieve a list of documents using default pagination</p>
+</div>
+
+```shell
+curl http://localhost:9000/document/mycollection \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+	
+// Version with pagination
+curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes Post as a subclass of BAAObject
+[Post getObjectsWithCompletion:^(NSArray *posts, NSError *error) {
+    
+    if (error == nil) {
+        NSLog(@"Posts are %@", posts);
+    } else {
+        // deal with error
+    }
+    
+}];
+
+// Version with pagination
+NSDictionary *parameters = @{kPageNumberKey : @0,
+                             kPageSizeKey : @20};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+
+                }];
+				
+// Apply a filter using the where keyword
+NSDictionary *parameters = @{@"where" : "color=‘red'"};
+[Post getObjectsWithParams:parameters
+                completion:^(NSArray *posts, NSError *error) {
+                    if (error == nil) {
+                        NSLog(@"Posts are %@", posts);
+                    } else {
+                        // deal with error
+                    }
+                }];
+```
+
+```java
+BaasDocument.fetchAll("collection",
+  new BaasHandler<List<BaasDocument>>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
+    
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
+      }
+    }
+});
+
+// using pagination and selection
+Filter filter = BaasQuery.builder().pagination(0,20)
+                      .orderBy("field desc")
+                      .where("_author = ?")
+                      .whereParams("Cesare")
+                      .filter();
+
+BaasDocument.fetchAll("collection",filter,
+  new BaasHandler<List<BaasDocument>() {
+    @Override
+    public void handle(BaasResult<List<BaasDocument>> res) {
+      if (res.isSuccess()) {
+        for (BaasDocument doc:res.value()) {
+          Log.d("LOG","Doc: "+doc);
+        }
+      } else {
+        Log.e("LOG","Error",res.error());
+      }
+    }
+});
+```
+
+```javascript
+BaasBox.loadCollection("posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+  
+// Version with pagination
+BaasBox.loadCollectionWithParams("pizzas", {page: 0, recordsPerPage: BaasBox.pagelength})
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
+
+```json
+{
+  "result": "ok",
+  "data": [
+    {
+      "@rid": "#25:1",
+      "@version": 5,
+      "@class": "mycollection",
+      "title": "My new post title",
+      "body": "Body of my post.",
+      "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
+      "_creation_date": "2014-01-30T22:22:36.036+0100",
+      "_author": "cesare"
+    },
+	{
+      "@rid": "#26:1",
+      "@version": 5,
+      "@class": "mycollection",
+      "title": "My second post title",
+      "body": "Body of my second post.",
+      "id": "af1236fe-c8bs-4r6f-866b-e4cnkutd8636",
+      "_creation_date": "2014-01-30T22:22:38.031+0100",
+      "_author": "cesare"
+    }
+  ],
+  "http_code": 200
+}
+```
+
+### Count documents
+
+`GET /document/:collection/count`
+
+**Group**: [baasbox.data.read](#list-groups)
+
+Returns the number of documents that the **user can read** in a collection. 
+Supports [Pagination and Query Criteria](#pagination-and-query-criteria).
+
+Parameter | Description
+--------- | -----------
+**collection** | The name of the collection. Mandatory.
+
+<aside class="notice">
+	A collection could contain documents that the user cannot read. Therefore they are not included in the count.
+</aside>
+
+<div class="snippet-title">
+	<p>Example of a request to count documents in a collection</p>
+</div>
+
+```shell
+curl http://localhost:9000/document/mycollection/count \
+	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+```
+
+```objective_c
+// Assumes Post is a subclass of BAAObject
+[Post fetchCountForObjectsWithCompletion:^(NSInteger count, NSError *error) {
+                                               
+                                                if (error == nil) {
+                                                
+                                                    NSLog(@"count is %i", count);
+                                                    
+                                                } else {
+                                                
+                                                    NSLog(@"error is %@", error);
+                                                    
+                                                }
+                                                
+                                            }];
+```
+
+```java
+BaasDocument.count("collection",new BaasHandler<Long> () {
+  @Override
+  public void handle(BaasResult<Long> res) {
+    if (res.isSuccess()) {
+      Log.d("LOG","visible document count is: "+res.value());
+    } else {
+      Log.e("LOG","Error",res.value());
+    }
+  }
+});
+```
+
+```javascript
+BaasBox.fetchObjectsCount("posts")
+  .done(function(res) {
+  	console.log("res ", res['data']['count']);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+<div class="snippet-title">
+	<p>Example of a response</p>
+</div>
+
+```json
+{
+  "result": "ok",
+  "data": {
+    "count": 1
+  },
+  "http_code": 200
+}
+```
 
 ### Modify a document
 
@@ -2540,7 +3693,6 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688-2e9a-4dee-9afa-
 
 ```objective_c
 // Assumes post is an instance of Post, which subclasses BAAObject with properties "title", "body" and "tags".
-Post *post = [[Post alloc] init];
 post.title = @"My new post title";
 post.tags = @"tag1"
 post.body = @"Body of my post.";
@@ -2572,6 +3724,21 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
 });
 ```
 
+```javascript
+// Assumes posts has properties "title", "body" and "tags".
+post.title = @"My new post title";
+post.tags = @"tag1"
+post.body = @"Body of my post.";
+BaasBox.save(post, "posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2593,6 +3760,7 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
   "http_code": 200
 }
 ```
+
 ### Update a Document's field
 
 `PUT /document/:collection/:id/.:fieldname`
@@ -2626,7 +3794,6 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 
 ```objective_c
 // Assumes post is an instance of Post, which subclasses BAAObject with properties "title".
-Post *post = [[Post alloc] init];
 post.title = @"My new title";
 [post saveObjectWithCompletion:^(Post *p, NSError *error) {
 
@@ -2641,6 +3808,17 @@ post.title = @"My new title";
 
 ```java
 NOT IMPLEMENTED
+```
+
+```javascript
+// Assumes post is an instance of Post, which subclasses BAAObject with properties "title".
+BaasBox.updateField(post.id, "posts", "title", "My new title")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -2682,6 +3860,10 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 
 ```java
 NOT IMPLEMENTED
+```
+
+```javascript
+NOTHING HERE
 ```
 
 <div class="snippet-title">
@@ -2729,6 +3911,10 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
+```javascript
+NOTHING HERE
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2774,6 +3960,11 @@ NOT IMPLEMENTED
 ```java
 NOT IMPLEMENTED
 ```
+
+```javascript
+NOTHING HERE
+```
+
 
 <div class="snippet-title">
 	<p>Response includes a new property</p>
@@ -2825,6 +4016,10 @@ NOT IMPLEMENTED
 NOT IMPLEMENTED
 ```
 
+```javascript
+NOTHING HERE
+```
+
 <div class="snippet-title">
 	<p>Response includes a new value for the property</p>
 </div>
@@ -2860,7 +4055,7 @@ NOT IMPLEMENTED
 
 **Group**: [baasbox.data.write](#list-groups)
 
-Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (plus  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
+Deletes the document with the ID specified in the collection provided as parameter. Only the owner of the document (and  admin and backoffice users) can delete it, besides users who have been granted the permission to delete.
 
 Parameter | Description
 --------- | -----------
@@ -2902,6 +4097,17 @@ doc.delete(new BaasHandler<Void>() {
   }
 });
 ```
+
+```javascript
+BaasBox.delete("090dd688-2e9a-4dee-9afa-aad72a1efa93", "posts")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -2914,202 +4120,8 @@ doc.delete(new BaasHandler<Void>() {
 }
 ```
 
-### Count documents
 
-`GET /document/:collection/count`
 
-**Group**: [baasbox.data.read](#list-groups)
-
-Returns the number of documents that the **user can read** in a collection. 
-Supports [Pagination and Query Criteria](#pagination-and-query-criteria).
-
-Parameter | Description
---------- | -----------
-**collection** | The name of the collection. Mandatory.
-
-<aside class="notice">
-	A collection could contain documents that the user cannot read and therefore they are not included in the count.
-</aside>
-
-<div class="snippet-title">
-	<p>Example of a request to count documents in a collection</p>
-</div>
-
-```shell
-curl http://localhost:9000/document/mycollection/count \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-// Assumes Post is a subclass of BAAObject
-[Post fetchCountForObjectsWithCompletion:^(NSInteger count, NSError *error) {
-                                               
-                                                if (error == nil) {
-                                                
-                                                    NSLog(@"count is %i", count);
-                                                    
-                                                } else {
-                                                
-                                                    NSLog(@"error is %@", error);
-                                                    
-                                                }
-                                                
-                                            }];
-```
-
-```java
-BaasDocument.count("collection",new BaasHandler<Long> () {
-  @Override
-  public void handle(BaasResult<Long> res) {
-    if (res.isSuccess()) {
-      Log.d("LOG","visible document count is: "+res.value());
-    } else {
-      Log.e("LOG","Error",res.value());
-    }
-  }
-});
-```
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": {
-    "count": 1
-  },
-  "http_code": 200
-}
-```
-
-### Retrieve documents 
-
-`GET /document/:collection`
-
-**Group**: [baasbox.data.read](#list-groups)
-
-Returns the documents that the **user can read** in a collection. This API supports [Pagination and Query Criteria](#pagination-and-query-criteria).
-
-Parameter | Description
---------- | -----------
-**collection** | The name of the collection. Mandatory.
-
-<aside class="notice">
-	A collection could contain documents that the user cannot read and therefore they are not included in the result.
-</aside>
-
-<div class="snippet-title">
-	<p>Example of a request to retrieve a list of documents using default pagination</p>
-</div>
-
-```shell
-curl http://localhost:9000/document/mycollection \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-	
-// Version with pagination
-curl 'http://localhost:9000/document/mycollection?page=0&recordsPerPage=1' \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
-```
-
-```objective_c
-// Assumes Post as a subclass of BAAObject
-[Post getObjectsWithCompletion:^(NSArray *posts, NSError *error) {
-    
-    if (error == nil) {
-        NSLog(@"Posts are %@", posts);
-    } else {
-        // deal with error
-    }
-    
-}];
-
-// Version with pagination
-NSDictionary *parameters = @{kPageNumberKey : @0,
-                             kPageSizeKey : @20};
-[Post getObjectsWithParams:parameters
-                completion:^(NSArray *posts, NSError *error) {
-
-                    if (error == nil) {
-                        NSLog(@"Posts are %@", posts);
-                    } else {
-                        // deal with error
-                    }
-
-                }];
-```
-
-```java
-BaasDocument.fetchAll("collection",
-  new BaasHandler<List<BaasDocument>>() {
-    @Override
-    public void handle(BaasResult<List<BaasDocument>> res) {
-    
-      if (res.isSuccess()) {
-        for (BaasDocument doc:res.value()) {
-          Log.d("LOG","Doc: "+doc);
-        }
-      } else {
-        Log.e("LOG","Error",res.error());
-      }
-    }
-});
-
-// using pagination and selection
-Filter filter = BaasQuery.builder().pagination(0,20)
-                      .orderBy("field desc")
-                      .where("_author = ?")
-                      .whereParams("Cesare")
-                      .filter();
-
-BaasDocument.fetchAll("collection",filter,
-  new BaasHandler<List<BaasDocument>() {
-    @Override
-    public void handle(BaasResult<List<BaasDocument>> res) {
-      if (res.isSuccess()) {
-        for (BaasDocument doc:res.value()) {
-          Log.d("LOG","Doc: "+doc);
-        }
-      } else {
-        Log.e("LOG","Error",res.error());
-      }
-    }
-});
-
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": [
-    {
-      "@rid": "#25:1",
-      "@version": 5,
-      "@class": "mycollection",
-      "title": "My new post title",
-      "body": "Body of my post.",
-      "id": "af1d66fe-c8b6-436f-866b-e4c823ae7666",
-      "_creation_date": "2014-01-30T22:22:36.036+0100",
-      "_author": "cesare"
-    },
-	{
-      "@rid": "#26:1",
-      "@version": 5,
-      "@class": "mycollection",
-      "title": "My second post title",
-      "body": "Body of my second post.",
-      "id": "af1236fe-c8bs-4r6f-866b-e4cnkutd8636",
-      "_creation_date": "2014-01-30T22:22:38.031+0100",
-      "_author": "cesare"
-    }
-  ],
-  "http_code": 200
-}
-```
 
 ### Grant permissions on a Document
 
@@ -3132,7 +4144,7 @@ Parameter | Description
 **rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
-	<p>Example of a request to grant read access to user "a" on document "090dd688"</p>
+	<p>Example of a request to grant read access to user "a" on document "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e"</p>
 </div>
 
 ```shell
@@ -3142,7 +4154,7 @@ curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
 
 ```objective_c
 // Assumes p is an instance of Post, which is a subclass of BAAObject
-[p grantAccessToUser:@"a"
+[p grantAccessToUser:@"cesare"
               ofType:kAclReadPermission
           completion:^(id object, NSError *error) {
    
@@ -3172,6 +4184,17 @@ doc.grant(Grant.READ,"a",new BaasHandler<Void>() {
   }
 });
 ```
+
+```javascript
+BaasBox.grantAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 
 <div class="snippet-title">
 	<p>Example of a request to grant update access to all registered users on a document</p>
@@ -3217,6 +4240,16 @@ doc.grantAll(Grant.UPDATE,Role.REGISTERED,
    });
 ```
 
+```javascript
+BaasBox.grantAccessToRole("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -3247,10 +4280,10 @@ Parameter | Description
 **id** | The ID of the document. Mandatory.
 **action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to whom you want to assign the grant
-**rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+**rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
-	<p>Example of a request to revoke read access to user "a" on document "090dd688"</p>
+	<p>Example of a request to revoke read access to user "a" on document "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e"</p>
 </div>
 
 ```shell
@@ -3261,7 +4294,7 @@ curl -X DELETE http://localhost:9000/document/mycollection/090dd688/read/user/a 
 ```objective_c
 // Assumes p is an instance of Post, which is a subclass of BAAObject
 [p revokeAccessToUser:@"a"
-               ofType:kAclUpdatePermission
+               ofType:kAclReadPermission
            completion:^(SMPost *post, NSError *error) {
      
                if (error == nil) {
@@ -3291,6 +4324,15 @@ doc.revoke(Grant.READ,"a",new BaasHandler<Void>() {
 });
 ```
 
+```javascript
+BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
 
 <div class="snippet-title">
 	<p>Example of a request to revoke update access to all registered users on a document</p>
@@ -3336,6 +4378,16 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
    });
 ```
 
+```javascript
+BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+  	console.log("res ", res);
+  })
+  .fail(function(error) {
+  	console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -3345,6 +4397,235 @@ doc.revokeAll(Grant.UPDATE,Role.REGISTERED,
   "result": "ok",
   "data": "",
   "http_code": 200
+}
+```
+
+## Links
+
+Available since 0.8.0
+
+This function is still **experimental**
+
+Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
+Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
+
+Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
+
+As an example please see the code aside.
+
+```
+customer
+Document A          (out) -------------> (in)   Document B
+Invoices										Customers
+
+item
+Document A     		(out) -------------> (in)	Document C
+Invoices              							Items
+
+```
+
+
+Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
+Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
+For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
+
+You can query links by name and/or use filters to select linked documents (or file). 
+At the moment it is possible to execute query only on links, there are not APIs to traverse them or to query linked documents from a given one.
+
+
+### Create a link
+
+`POST /link/:sourceId/:label/:destId`
+
+**Group**: [baasbox.data.write](#list-groups)
+
+To create a link you must provide the two documents you want to connect and the link name.
+Since links have a direction, the first document will be the source node of the link and the second one will be the destination node.
+
+Parameter | Description
+--------- | -----------
+**sourceId** | The ID of the first document or file to link.
+**label** | The link name. Can be any valid string
+**destId** | The ID of the second document or file to link.
+
+```shell
+curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
+
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>  
+
+```json
+{
+"result":"ok",
+"data":{
+"@version":3,
+"@class":"E",
+"label":"customer",
+"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
+"_author":"admin",
+"_creation_date":"2014-05-23T14:37:27.027+0200",
+"out":{
+"@version":2,
+"@class":"Invoices",
+"number":345,
+"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
+"_creation_date":"2014-05-23T14:32:40.040+0200",
+"_author":"admin"
+},
+"in":{
+"@version":2,
+"@class":"Customers",
+"name":"John Doe",
+"age":31,
+"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
+"_creation_date":"2014-05-23T14:32:03.003+0200",
+"_author":"admin"
+}
+},
+"http_code":200
+}
+```
+
+The returned link is decorated with the following fields:
+
+- `id`: unique ID 
+- `@version`: number indication of the version of the link, just like documents
+- `@class`: always equals to "E"
+- `_creation_date`: timestamp 
+- `_author`: username of the user who created the link.
+- `label': the provided label
+- `out`: the source object (the first one provided)
+- `in`: the destination object (the second one provided)
+
+These fields **cannot** be overwritten. 
+
+The `out` and `in` fields contain the content of both objects. 
+
+**REMEMBER**: the `out` field points to the source, the `in` points to the destination, like in the following schema:
+
+` Source Doc ----->(out) link (in)----> Dest Doc `
+
+
+Please note that you can have as many links as you want between two documents or files even with the same label.
+
+To create a link, a user has to have at least the read permission on both objects to link.
+
+
+### Retrieve links
+
+
+`GET /link/:id`
+
+`GET /link`
+
+You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
+The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
+
+Of course you can apply filters to the fields of linked nodes to search for specific links that match the criteria.
+
+`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
+
+```shell
+curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 "http://localhost:9000/link?where=in.name.toLowerCase()%20like%20%27john%25%27%20and%20label%3D%27customer%27"
+
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+//Please use the $.ajax interface
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>  
+
+```json
+{
+"result":"ok",
+"data":{
+"@version":3,
+"@class":"E",
+"label":"customer",
+"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
+"_author":"admin",
+"_creation_date":"2014-05-23T14:37:27.027+0200",
+"out":{
+"@version":2,
+"@class":"Invoices",
+"number":345,
+"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
+"_creation_date":"2014-05-23T14:32:40.040+0200",
+"_author":"admin"
+},
+"in":{
+"@version":2,
+"@class":"Customers",
+"name":"John Doe",
+"age":31,
+"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
+"_creation_date":"2014-05-23T14:32:03.003+0200",
+"_author":"admin"
+}
+},
+"http_code":200
+}
+```
+
+### Delete links
+
+`DELETE /link/:id`
+
+Deletes a link. 
+
+At the moment links can be deleted by anyone. The RSL (Record Security Level) has not yet been implemented on links.
+
+```shell
+curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>  
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
 }
 ```
 
@@ -3425,6 +4706,22 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
+```javascript
+// Assumes 'uploadForm' is a form with an input tag of type 'file'
+$("#uploadForm").submit(function(e) {
+  e.preventDefault();
+  var formObj = $(this);
+  var formData = new FormData(this);
+  BaasBox.uploadFile(formData)
+    .done(function(res) {
+      console.log("res ", res);
+    })
+    .fail(function(error) {
+      console.log("error ", error);
+    })
+});
+```
+
 <div class="snippet-title">
 	<p>Example of a response when a file is created</p>
 </div>
@@ -3496,6 +4793,10 @@ file.upload(data,new BaasHandler<BaasFile> file) {
 }
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a request to create a file with attached data and acl</p>
 </div>
@@ -3553,6 +4854,10 @@ file.upload(acl,data,new BaasHandler<BaasFile> file) {
 }
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 ### Delete a file
 
 `DELETE /file/:id`
@@ -3604,7 +4909,16 @@ file.delete(new BaasHandler<Void>() {
 // if you don't have a reference to the file
 // object but you know it's id
 BaasFile.delete("fileId",handler);
+```
 
+```javascript
+BaasBox.deleteFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3675,12 +4989,22 @@ file.download("path-to-save-the-file.to",
               });
 ```
 
+```javascript
+BaasBox.fetchFile("0d7c2469-71e0-447b-a524-a8ecd0bf4a77")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
 
 ```json
-// Binary of the file
+// Binary file
 ```
 
 <div class="snippet-title">
@@ -3748,6 +5072,16 @@ BaasFile.fetch(fileId, new BaasHandler<BaasFile> () {
   }
 });
 ```
+
+```javascript
+BaasBox.fetchFileDetails("7491d26b-b730-40e7-9587-c0c3f58193c7")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
+```
  
 <div class="snippet-title">
 	<p>Example of a response with file details</p>
@@ -3810,6 +5144,10 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
 });
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response with details of files</p>
 </div>
@@ -3847,14 +5185,14 @@ BaasFile.fetchAll(new BaasHandler<List<BaasFile>>() {
 
 **Group**: [baasbox.file.grants](#list-groups)
 
-API to grant access on a file to a specific user or role.
+API to grant access to a file for a specific user or role.
 
 Parameter | Description
 --------- | -----------
 **id** | The ID of the file. Mandatory.
 **action** | The grant you want to assign. One of: 	`read`, `update`, `delete`, `all`. Mandatory.
 **username** | The username of the user to whom you want to assign the grant. Mandatory.
-**rolename** | The name of role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
+**rolename** | The name of the role to whom you want to grant the permission. One of: `anonymous`, `registered`, `administrator`, plus those defined by the administrator. Mandatory.
 
 <div class="snippet-title">
 	<p>Example of a request to grant read access to user “a” on a file</p>
@@ -3894,6 +5232,16 @@ file.grant(Grant.READ,"andrea",new BaasHandler<Void>(){
 });
 ```
 
+```javascript
+BaasBox.grantUserAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
+```
+
 <div class="snippet-title">
 	<p>Example of a request to grant write access to role “registered” on a file</p>
 </div>
@@ -3930,7 +5278,16 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
     }
   }
 });
+```
 
+```javascript
+BaasBox.grantRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3952,7 +5309,7 @@ file.grantAll(Grant.READ,"registered",new BaasHandler<Void>(){
 
 **Group**: [baasbox.file.grants](#list-groups)
 
-API to revoke access on a file to a specific user or role.
+API to revoke access to a file for a specific user or role.
 
 Parameter | Description
 --------- | -----------
@@ -3997,7 +5354,16 @@ file.revoke(Grant.READ,"andrea",new BaasHandler<Void>(){
     }
   }
 });
+```
 
+```javascript
+BaasBox.revokeUserAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.READ_PERMISSION, "a")
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4036,7 +5402,16 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
     }
   }
 });
+```
 
+```javascript
+BaasBox.revokeRoleAccessToFile("7491d26b-b730-40e7-9587-c0c3f58193c7", BaasBox.UPDATE_PERMISSION, BaasBox.REGISTERED_ROLE)
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -4052,222 +5427,7 @@ file.revokeAll(Grant.READ,"registered",new BaasHandler<Void>(){
 ```
 
 
-## Links
 
-Available since 0.8.0
-
-This function is still **experimental**
-
-Links allow to connect documents and files each other. They are similar to the relations in a relational database.
-Of course there are differences between relations and links. First of all, links have versus, secondly   they have a name.
-
-Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
-
-For an example please see the code aside.
-
-```
-                             customer
-Document A          (out) -------------> (in)   Document B
-Invoices										Customers
-
-                              item
-Document A     		(out) -------------> (in)	Document C
-Invoices              							Items
-
-```
-
-
-Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
-Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
-For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
-
-You can query links by name and/or use filters to select linked documents (or file). 
-At the moment is it possible only to execute query on links, there are not APIs to traverse them or to query linked documents from a given one.
-
-
-### Create a link
-
-`POST /link/:sourceId/:label/:destId`
-
-**Group**: [baasbox.data.write](#list-groups)
-
-To create a link you must provide the two documents you want to connect and the link name.
-Since links have direction the first document will be the source node of the link and the second one will be the destination node.
-
-Parameter | Description
---------- | -----------
-**sourceId** | The ID of the first document or file to link.
-**label** | The link name. Can be any valid string
-**destId** | The ID of the second document or file to link.
-
-```shell
-curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
-	 
-```
-
-```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
-```
-
-```java
-//Please see the "pass-through" functionality of the Android SDK
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>  
-
-```json
-{
-	"result":"ok",
-	"data":{
-		"@version":3,
-		"@class":"E",
-		"label":"customer",
-		"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
-		"_author":"admin",
-		"_creation_date":"2014-05-23T14:37:27.027+0200",
-		"out":{
-			"@version":2,
-			"@class":"Invoices",
-			"number":345,
-			"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
-			"_creation_date":"2014-05-23T14:32:40.040+0200",
-			"_author":"admin"
-		},
-		"in":{
-			"@version":2,
-			"@class":"Customers",
-			"name":"John Doe",
-			"age":31,
-			"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
-			"_creation_date":"2014-05-23T14:32:03.003+0200",
-			"_author":"admin"
-		}
-	},
-	"http_code":200
-}
-```
-
-The returned link is decorated with the following fields:
-
-- `id`: unique ID 
-- `@version`: number indication of the version of the link, just like documents
-- `@class`: always equals to "E"
-- `_creation_date`: timestamp 
-- `_author`: username of the user who created the link.
-- `label': the provided label
-- `out`: the source object (the first one provided)
-- `in`: the destination object (the second one provided)
-
-These fields **cannot** be overwritten. 
-
-The `out` and `in` fields contain the content of both objects. 
-
-**REMEMBER**: the `out` field points to the source, the `in` points to the destination, like in the following schema:
-
-` Source Doc ----->(out) link (in)----> Dest Doc `
-
-
-Please note that you can have as many links as you want between two documents or files even with the same label.
-
-To create a link, a user has to have at least the read permission on both objects to link.
-
-
-### Retrieves links
-
-
-`GET /link/:id`
-
-`GET /link`
-
-You can retrieve a single link by its ID, or query the entire link-space. Be careful because too many links could be returned.
-The endpoint supports [selection and query criteria](#pagination-and-query-criteria), so you can ask  the server to filter the response.
-
-Of course you can apply filters to the fields of linked nodes as well.
-
-`GET /link?where=in.name.toLowerCase() like 'john%' and label="customer" `
-
-```shell
-curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 "http://localhost:9000/link?where=in.name.toLowerCase()%20like%20%27john%25%27%20and%20label%3D%27customer%27"
-	 
-```
-
-```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
-```
-
-```java
-//Please see the "pass-through" functionality of the Android SDK
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>  
-
-```json
-{
-	"result":"ok",
-	"data":{
-		"@version":3,
-		"@class":"E",
-		"label":"customer",
-		"id":"994cb9b0-ccba-4ba2-a7dd-68c0440a0783",
-		"_author":"admin",
-		"_creation_date":"2014-05-23T14:37:27.027+0200",
-		"out":{
-			"@version":2,
-			"@class":"Invoices",
-			"number":345,
-			"id":"423d56a1-bc83-467d-b27c-897a5f4cd229",
-			"_creation_date":"2014-05-23T14:32:40.040+0200",
-			"_author":"admin"
-		},
-		"in":{
-			"@version":2,
-			"@class":"Customers",
-			"name":"John Doe",
-			"age":31,
-			"id":"a0868a63-0d38-4fc9-93c3-1f9b62eeadf0",
-			"_creation_date":"2014-05-23T14:32:03.003+0200",
-			"_author":"admin"
-		}
-	},
-	"http_code":200
-}
-```
-
-### Delete links
-
-`DELETE /link/:id`
-
-Deletes a link. 
-
-At the moment links can be deleted by anyone. The RSL (Record Security Level) has not yet been implemented on links.
-
-```shell
-curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/994cb9b0-ccba-4ba2-a7dd-68c0440a0783
-```
-
-```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
-```
-
-```java
-//Please see the "pass-through" functionality of the Android SDK
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>  
-
-```json
-{
-	"result": "ok",
-	"data": "",
-	"http_code": 200
-}
-```
 
 ## Assets
 
@@ -4302,8 +5462,12 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```java
-// TO BE IMPLEMENTED
+// NOT IMPLEMENTED
 // It's only for admins. You can do it in the web console.
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4349,6 +5513,10 @@ curl http://localhost:9000/admin/asset \
 
 ```java
 // NOT IMPLEMENTED
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4441,7 +5609,7 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
-// if it's json
+// if it's a JSON
 BaasAsset.fetchData("name",new BaasHandler<JsonObject>() {
   @Override
   public void handler(BaasResult<JsonObject> res) {
@@ -4464,6 +5632,10 @@ BaasAsset.streamAsset("name",new BaasHandler<byte[]>() {
     }
   }
 });
+```1
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4511,6 +5683,10 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
+TO BE IMPLEMENTED
+```
+
+```javascript
 TO BE IMPLEMENTED
 ```
 
@@ -4568,6 +5744,10 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4612,9 +5792,9 @@ TO BE IMPLEMENTED
 </aside>
 
 
-## Settings API
+## API Settings
 
-Settings are app-related configuration options. They are intended to set up many app specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
+Settings are app-related configuration options. They are intended to set up many app-specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
 
 More information can be found [here](#app-settings)
 
@@ -4648,6 +5828,10 @@ BAAClient *client = [BAAClient sharedClient];
 ```
 
 ```java
+TO BE IMPLEMENTED
+```
+
+```javascript
 TO BE IMPLEMENTED
 ```
 
@@ -4736,6 +5920,10 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4821,6 +6009,10 @@ BAAClient *client = [BAAClient sharedClient];
 TO BE IMPLEMENTED
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>  
@@ -4844,8 +6036,9 @@ response.
 
 By default all groups are enabled.
 
-Only administrators can call these APIs.
-
+<aside class="notice">	
+Only users belonging to administrator roles can call these APIs.
+</aside> 
 
 ### List groups
 
@@ -4889,6 +6082,10 @@ curl -X GET http://localhost:9000/admin/endpoints \
 ```
 
 ```java
+```
+
+```javascript
+TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
@@ -4947,6 +6144,10 @@ curl -X GET http://localhost:9000/admin/endpoints/baasbox.assets \
 ```java
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div> 
@@ -4988,6 +6189,10 @@ curl -X PUT http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```java
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -5027,6 +6232,10 @@ curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 ```java
 ```
 
+```javascript
+TO BE IMPLEMENTED
+```
+
 <div class="snippet-title">
 	<p>Example of a response</p>
 </div>
@@ -5039,579 +6248,3 @@ curl -X DELETE http://localhost:9000/admin/endpoints/baasbox.assets/enabled \
 }
 ```
 
-## Push Notifications
-
-Push notifications are messages that a user can receive using an APP that has BaasBox as back-end. Supported platforms are Android and iOS. Certificates have to be configured in the [Settings of the console](#console-settings).
-
-### Enable push notifications
-
-`PUT /push/enable/:os/:pushToken`
-
-**Group**: [baasbox.notifications.receive](#list-groups)
-
-Enables a specific user (logged using a specific device) to receive push notifications.
-
-Parameter | Description
---------- | -----------
-**os** | The operative system. One of: `ios`, `android`. Mandatory.
-**pushToken** | The token returned by either Apple or Google to enable push notifications. Mandatory.
-
-<div class="snippet-title">
-	<p>Example of a request to enable push notifications</p>
-</div>
-
-```shell
-curl -X PUT  http://localhost:9000/push/enable/ios/123  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client askToEnablePushNotifications];
-```
-```java
-// given you have provided one or more sender ids to the initial configuration
-BaasCloudMessagingService box=BaasBox.messagingService();
-box.enable(new BaasHandler<Void>() {
-       @Override
-       public void handle(BaasResult<Void> res){
-         if(res.isSuccess()){
-           // registrationid saved on the server
-         }
-       }
-     });
-
-```
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-### Disable push notifications
-
-`PUT /push/disable/:pushToken`
-
-**Group**: [baasbox.notifications.receive](#list-groups)
-
-Disable a specific user (logged using a specific device) to unreceive push notifications.
-
-Parameter | Description
---------- | -----------
-**pushToken** | The token returned by either Apple or Google to disable push notifications. Mandatory.
-
-<div class="snippet-title">
-	<p>Example of a request to disable push notifications</p>
-</div>
-
-```shell
-curl -X PUT  http://localhost:9000/push/disable/123  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes there is a logged in user
-BAAClient *client = [BAAClient sharedClient];
-[client disablePushNotificationsWithCompletion:^(BOOL success, NSError *error) {
-  
-    if (success) {
-        NSLog(@"push notifications disabled");
-    } else {
-        NSLog(@"error %@", error);
-    }
-    
-}];
-```
-
-```java
-BaasCloudMessagingService client = BaasBox.messagingService();
-client.disable(new BaasHandler<Void>(){
-  @Override
-  public void handle(BaasResult<Void> res){
-    if(res.isSuccess()){
-      // successfully unregistered
-    }
-  }
-});
-```
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-### Send a push notification
-
-`POST /push/message/:username`
-
-**Group**: [baasbox.notifications.send](#list-groups)
-
-Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
-
-Parameter | Description
---------- | -----------
-**username** | The username of the user who has to receive the notification. Mandatory.
-
-```shell
-curl -X POST  http://localhost:9000/push/message/cesare  \
-	 -d '{"message" : "hi"}' \
-	 -H Content-type:application/json \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-BAAClient *client = [BAAClient sharedClient];
-[client postPath:@"/push/message/cesare"
-      parameters:@{@"message" : @"Hi there"}
-         success:^(id responseObject) {
-             
-             NSLog(@"Notification sent");
-             
-         } failure:^(NSError *error) {
-             
-             NSLog(@"error %@", error);
-             
-         }];
-```
-
-```java
-JsonObject message = new JsonObject()
-  .putString("greeting","Ciao Mondo!")
-  .putString("from","BaasBox");
-  
-BaasUser user = BaasUser.withUserName("Cesare");
-user.send(message,new BaasHandler<Void>(){
-  @Override
-  public void handle(BaasResult<Void> res){
-    if(res.isFailed()){
-      Log.e("LOG","Something went wrong",res.error());
-    }
-  }
-});
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-## Social Login ##
-
-BaasBox provides an API that allows you to connect/create your users
-through social networks.
-
-BaasBox social API is integrated with the following social networks: -
-Facebook - Google +
-
-We are planning on adding more in the near future.
-
-The use of an API in a client application needs an *appKey* and an
-*appSecret* usually provided by the social network itself. More
-information on how you can get those values can be found here:
-
--  facebook (http://developers.facebook.com/docs/)
--  google+ (http://code.google.com/apis/console)
-
-Once you create your app inside the social network you will have access
-to the *apiKey* / *apiSecret* values; those values must be stored into
-the BaasBox database in order to use BaasBox social feature: you can
-access the social login tab from the settings menu in the admin console.
-
-![Social login tab](images/Social_login/social_login_tab.png)
-
-Then click on the specific social network you are working on and fill in
-the form with the keys and press Save. You can disable the social
-feature for a specific social network by pressing the **disable xxx
-button**
-
-![Disable](images/Social_login/disable.png)
-
-Once you have connected to a social network you can use any client
-library to obtain the OAuth tokens for users account, and store them
-with the social API provided by BaasBox.
-
-You can find an application example and tutorial [here](http://www.baasbox.com/social-login/)
-
-API documentation
-
-###Retrieve all social network connections for connected user
-
-`GET /social`
-
-Headers:
-
--  X-BAASBOX-APPCODE: App Code
--  X-BB-SESSION: Session token for current user
-
-Returns a JSON representation of the social network connected to the
-user along with all the information retrieved at the moment of
-login/linking. An example of the returned data is:
-
-<div class="snippet-title">
-	<p>Example of a request</p>
-</div>
-
-```shell
-curl http://localhost:9000/social  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is logged in
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser fetchLinkedSocialNetworksWithCompletion:^(NSArray *objects, NSError *error) {
-                                                
-                                                 if (error == nil) {     
-	                                        
-                                                     NSLog(@"social are %@", objects);
-
-                                                 } else {
-	
-                                                     NSLog(@"%@", error);
-
-                                                 }
-                                                 
-                                             }];
-
-```
-
-```java
-To be implemented 
-```
-
-<div class="snippet-title">
-	<p>Example of a response</p>
-</div>
-
-```json
-   "data": [
-        {
-            "username": "xxx",
-            "password": null,
-            "from": "google",
-            "token": "<token>",
-            "secret": "<secret>",
-            "id": "<userid>",
-            "additionalData": {
-                "email": "<email>",
-                "name": "<name>",
-                "avatarUrl": "<avatar>",
-                "personal_url": "<personal_url>"
-            }
-        }
-	]
-```
-
-This API should be invoked with a valid X-BB-SESSION header and a valid
-X-BAASBOX-APPCODE header as specified in the authorization section of
-the doc.
-
-This method can be used to retrieve the tokens to post on the social
-network wall using a client SDK provided by the social network itself.
-
-Returns:
-
--  200 code with a JSON object which data property contains all the
-   linked social networks to the current user.
--  404 code if the user does not have any social network linked to their
-   account
--  401 code (Unauthorized) if one of the mandatory headers are missing
-
-###Login a User with a specified social network
-
-`POST /social/:socialNetwork`
-
-Headers: X-BAASBOX-APPCODE = App code
-
-Url parameters
-
-:socialNetwork could be **facebook** or **google**
-
-Parameters:
-
--  oauth\_token: the **oauth\_token** obtained after user authentication
-   and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
-
--  oauth\_secret: the **oauth\_secret** obtained after user
-   authentication and authorization with a client library (see example
-   [here](http://www.baasbox.com/social-login/))
-
-This method allows to login into the BaasBox app using the tokens
-obtained by a social network client library. If the user has already
-logged in with same tokens the server will simply return the
-X-BB-SESSION token that will be used for further requests.
-
-If the user does not exist it will be created and an X-BB-SESSION token
-will be returned. Upon user creation some data will be extracted from
-the social network profile and they will be stored inside the user
-object. A username will be uniquely generated (to prevent username
-collision). Therefore after a succesfull login, if necessary, the client
-app may ask for a username and update the user object accordingly.(See
-the example [here](http://www.baasbox.com/social-login/))
-
-Returns:
-
--  200 code with the user's X-BB-SESSION token
--  400 code if one of the oauth\_token or oauth\_secret was missing
--  401 code if the X-BAASBOX-APPCODE header was missing
--  500 code if something on the server went wrong (i.e. another user
-   with the same tokens already exists)
-
-<div class="snippet-title">
-	<p>Example of a request to login with Facebook</p>
-</div>
-
-```shell
-curl -X POST  http://localhost:9000/social/facebook  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-NSString *token = ... ; // Valid authentication token obtained by Facebook.
-[BAAUser loginWithFacebookToken:token
-                     completion:^(BOOL success, NSError *error) {
-
-                         if (success) {
-
-                             BAAClient *c = [BAAClient sharedClient];
-                             NSLog(@"logged in with facebook %@", c.currentUser);
-
-                         } else {
-
-                             NSLog(@"error %@", error);
-
-                         }
-
-                     }];
-```
-
-```java
-String token= ...;// a valid token from the provider
-BaasUser.signupWithProvider(Social.FACEBOOK,token,token,new BaasHandler<BaasUser>(){
-@Override
-  public void handler(BaasResult<BaasUser> res) {
-   if(res.isSuccess()){
-     BaasUser current = res.value(); 
-   }
-});
-```
-
-<div class="snippet-title">
-	<p>Example of a request to login with Google</p>
-</div>
-
-```shell
-curl -X POST  http://localhost:9000/social/google  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-NSString *token = ... ; // Valid authentication token obtained by Google.
-[BAAUser loginWithGoogleToken:token
-                    completion:^(BOOL success, NSError *error) {
-
-                         if (success) {
-
-                             BAAClient *c = [BAAClient sharedClient];
-                             NSLog(@"logged in with facebook %@", c.currentUser);
-
-                         } else {
-
-                             NSLog(@"error %@", error);
-
-                         }
-
-                   }];
-```
-
-```java
-To be implemented 
-```
-
-###Link a user to a specified social network
-
-`PUT /social/:socialNetwork`
-
-Headers:
-
--  X-BAASBOX-APPCODE = App code
--  X-BB-SESSION = Session token for the current user
-
-Url parameters
-
-:socialNetwork could be **facebook** or **google**
-
-Parameters: oauth\_token: the **oauth\_token** obtained after user
-authentication and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
-
-oauth\_secret: the **oauth\_secret** obtained after user authentication
-and authorization with a client library (see example [here](http://www.baasbox.com/social-login/))
-
-This method allows an existing user to connect their account to a
-specified social network.
-
-This procedure is very similar to the Login method with a difference:
-this is a PUT request and it must be invoked with the X-BB-SESSION
-header.
-
-Returns: 
--  200 code with an empty response if the linking was succesful, 
--  401 code if any of the mandatory headers was missing, 
--  500 code if something on the server went wrong (i.e. another user with the same tokens already exists)
-
-<div class="snippet-title">
-	<p>Example of a request to link an account to Facebook</p>
-</div>
-
-```shell
-curl -X PUT http://localhost:9000/social/facebook  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-NSString *token = ...; // Token obtained by Facebook
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser linkToFacebookWithToken:token
-                                  completion:^(BOOL success, NSError *error) {
-        
-                                         if (success) {
-                                             NSLog(@"user linked to FB");                                                                                         
-                                         } else {
-                                             NSLog(@"error %@", error);
-                                         }
-
-                                  }];
-```
-
-```java
-To be implemented 
-```
-
-<div class="snippet-title">
-	<p>Example of a request to link an account to Google</p>
-</div>
-
-```shell
-curl -X PUT http://localhost:9000/social/google  \
-	 -d "oauth_token=OAUTH_TOKEN" \
-	 -d "oauth_secret=OAUTH_SECRET" \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-NSString *token = ...; // Token obtained by Google
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser linkToGoogleWithToken:token
-                                completion:^(BOOL success, NSError *error) {
-        
-                                         if (success) {
-                                             NSLog(@"user linked to FB");                                                                                         
-                                         } else {
-                                             NSLog(@"error %@", error);
-                                         }
-
-                                 }];
-```
-
-```java
-To be implemented 
-```
-
-###Unlink a user from a specified social network
-
-`DELETE /social/:socialNetwork`
-
-Headers:
-
--  X-BAASBOX-APPCODE = App code
--  X-BB-SESSION = Session token for current user
-
-Url parameters :socialNetwork could be **facebook** or **google**
-
-This method unlinks the current user account from a specified social
-network. If the user was generated by a social network login and the
-specified social network is the only one linked to the user, an error
-will be raised (as the user will not be available to connect anymore).
-
-
-<div class="snippet-title">
-	<p>Example of a request to unlink an account from Facebook</p>
-</div>
-
-```shell
-curl -X DELETE http://localhost:9000/social/facebook  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser unlinkFromFacebookWithCompletion:^(BOOL success, NSError *error) {
-                                                 
-                                                 if (success) {
-                                                     NSLog(@"account unlinked");
-                                                 } else {
-                                                     NSLog(@"error %@", error);
-                                                 }
-
-                                             }];
-```
-
-```java
-To be implemented 
-```
-
-<div class="snippet-title">
-	<p>Example of a request to unlink an account from Google</p>
-</div>
-
-```shell
-curl -X DELETE http://localhost:9000/social/google  \
- 	 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
-```
-
-```objective_c
-// Assumes a user is already logged in
-BAAClient *client = [BAAClient sharedClient];
-[client.currentUser unlinkFromGoogleWithCompletion:^(BOOL success, NSError *error) {
-                                                 
-                                                 if (success) {
-                                                     NSLog(@"account unlinked");
-                                                 } else {
-                                                     NSLog(@"error %@", error);
-                                                 }
-
-                                             }];
-```
-
-```java
-To be implemented 
-```
