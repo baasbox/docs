@@ -264,8 +264,8 @@ Key | Description | Default
 
 ### Push Notifications
 
-From version 0.9.0, BaasBox add profiles feature. It's possibile to declare max three apps which share the same backend. <br/>
-i.e. administration app and customer app for a store or it's possible to distribute an app free and an app not free.
+Since version 0.9.0 BaasBox has profiles feature. It's possibile to declare at most three apps which share the same backend. <br/>
+i.e. an administration app and a customer app for a store, or it's possible to distribute one app for free and one app not for free.
 
 New section on console, Push Settings in category Push.
 
@@ -540,7 +540,7 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
-17. Push Settings. Section where is possible to enable/disable profiles for sending push notifications
+17. Push Settings. The section where it is possible to enable/disable profiles for sending push notifications
 18. Engine
 
 
@@ -570,7 +570,7 @@ named group.
 ## Push Settings
 
 The Push Settings section allows you to enable/disable profiles for sending push notifications.
-From BaasBox 0.9.0 is possible to handle profiles for sending push notifications.
+From BaasBox 0.9.0 it is possible to manage profiles for sending push notifications.
 In particular BaasBox support **max three profiles**. It's possible to switch settings profile by the tab section.
 
 - App nr.1 (Default) is the section for profile1
@@ -3083,21 +3083,21 @@ For information about additional data check the following links
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. This will be sent to every device, registered with respective profile, on which the user has enabled push notifications.
+Allows to send a push notification. This will be sent to every device, registered with therespective profile, on which the user has enabled push notifications.
 
 Parameter | Description | Type
 --------- | ----------- | ------
 **message** | The message for the user. **Mandatory**. | String
 **username** | The username of the user who has to receive the notification. **Mandatory**.
-**profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, it will be used profile 1 | Array of String
+**profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, profile 1 will be used | Array of String
 **sound**| A sound to play for iOS | String
 **badge**| The number to display as the badge of the application icon for iOS | Integer
-**actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to use for the right button’s title instead of “View” for iOS | String
+**actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to be used for the right button’s title instead of “View” for iOS | String
 **localizedKey** | A key to an alert-message string in a Localizable.strings file for the current localization for iOS| String
 **localizedArguments** | Variable string values to appear in place of the format specifiers in localizedKey for iOS| Array of String
 **custom** | Custom data Android & iOS | Value, JSONArray or JSONObject
 **collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
-**time_to_live** | How long (in seconds) the message should be kept on GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allow 2419200
+**time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allowed 2419200
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
@@ -3177,7 +3177,7 @@ TO BE IMPLEMENTED
 "http_code": 200
 }
 
-//or (in case of some error in settings i.e. push send to Android & iOS devices but only Android settings are configured)
+//or (in case of errors in settings i.e. push sent to Android & iOS devices but only Android settings are configured)
 {
 "result": "ok",
 "data": "Push notifications were sent but they may be subject to loss of data. HINT: check push settings in console",
@@ -3190,21 +3190,21 @@ TO BE IMPLEMENTED
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. This will be sent to every device, registered with respective profile, on which users have enabled push notifications.
+Allows to send a push notification. This will be sent to every device, registered with the respective profile, on which users have enabled push notifications.
 
 Parameter | Description | Type
 --------- | ----------- | ------
 **message** | The message for the users. **Mandatory**. | String
 **users** | The username of the users who have to receive the notification. **Mandatory** | Array of String
-**profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, it will be used profile 1 | Array of String
+**profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, profile 1 will be used | Array of String
 **sound**| A sound to play for iOS | String
 **badge**| The number to display as the badge of the application icon for iOS | Integer
-**actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to use for the right button’s title instead of “View” for iOS | String
+**actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to be used for the right button’s title instead of “View” for iOS | String
 **localizedKey** | A key to an alert-message string in a Localizable.strings file for the current localization for iOS| String
 **localizedArguments** | Variable string values to appear in place of the format specifiers in localizedKey for iOS| Array of String
 **custom** | Custom data Android & iOS | Value, JSONArray or JSONObject
 **collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
-**time_to_live** | How long (in seconds) the message should be kept on GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allow 2419200
+**time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allow 2419200
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
@@ -3280,7 +3280,7 @@ TO BE IMPLEMENTED
 "http_code": 200
 }
 
-//or (in case of some error in settings i.e. push send to Android & iOS devices but only Android settings are configured)
+//or (in case of errors in settings i.e. push sent to Android & iOS devices but only Android settings are configured)
 {
 "result": "ok",
 "data": "Push notifications were sent but they may be subject to loss of data. HINT: check push settings in console",
