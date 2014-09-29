@@ -3083,7 +3083,7 @@ For information about additional data check the following links
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. This will be sent to every device, registered with therespective profile, on which the user has enabled push notifications.
+Allows to send a push notification. This will be sent to every device, registered with the respective profile, on which the user has enabled push notifications.
 
 Parameter | Description | Type
 --------- | ----------- | ------
