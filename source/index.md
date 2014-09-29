@@ -298,6 +298,8 @@ Key | Description | Default
 **profile3.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the third profile |
 **profile3.push.profile.enable** | Enable this profile | `false`
 
+**N.B.: Profiles must be turned on after being configured**
+
 
 ### Social Login
 
@@ -538,6 +540,8 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
+17. Push Settings. Section where is possible to enable/disable profiles for sending push notifications
+18. Engine
 
 
 <aside class="notice">  
@@ -561,7 +565,25 @@ Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
 named group.
 
-![Api access control](images/Console_0.8.1/api_access_control.png)
+![Api access control](images/Console_0.9.0/api_access_control.png)
+
+## Push Settings
+
+The Push Settings section allows you to enable/disable profiles for sending push notifications.
+From BaasBox 0.9.0 is possible to handle profiles for sending push notifications.
+In particular BaasBox support **max three profiles**. It's possible to switch settings profile by the tab section.
+
+- App nr.1 (Default) is the section for profile1
+- App nr.2 profile2 is the section for profile2
+- App nr.3 profile3 is the section for profile3
+
+For Android Key (Sandbox/Production), remember to check the availability of Google Cloud Messaging for Android, in Google Play Developer Console.
+If disabled or if Android Key is wrong it will be returned error and no key are stored.
+
+When the settings is configured, is possible to enabled the specific profile.
+
+**Notice: Is possible to switch mode, with profile enabled, only if the settings for the other mode are configured.**
+![Push settings] (images/Console_0.9.0/push_settings.png)
 
 
 ## Database Management
@@ -3050,19 +3072,22 @@ TO BE IMPLEMENTED
 
 ### Send a push notification
 
-For information about additional data check:
-iOS:https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html
-Android:https://developer.android.com/google/gcm/server.html
+For information about additional data check the following links
+
+- [iOS](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)
+- [Android](https://developer.android.com/google/gcm/server.html)
+
 
 ##### DEPRECATED
 `POST /push/message/:username`
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
+Allows to send a push notification. This will be sent to every device, registered with respective profile, on which the user has enabled push notifications.
 
 Parameter | Description | Type
 --------- | ----------- | ------
+**message** | The message for the user. **Mandatory**. | String
 **username** | The username of the user who has to receive the notification. **Mandatory**.
 **profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, it will be used profile 1 | Array of String
 **sound**| A sound to play for iOS | String
@@ -3117,6 +3142,30 @@ TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```json
+{
+	"message":"test".
+	"profiles":[1],   
+	"sound":"sound.wav",
+  	"actionLocalizedKey":"Play",
+  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
+  	"localizedArguments":["Jenna","Frank"],
+  	"badge":10,
+  	"custom": {
+        		"data": "text",
+        		"title": "Titletext",
+      		},
+	"collapse_key":"update_match_15",
+	"time_to_live":106
+	"users":["X","Y","Z"]
+}
+
+```
+
+<div class="snippet-title">
 <p>Example of a response</p>
 </div>
 
@@ -3141,11 +3190,12 @@ TO BE IMPLEMENTED
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
+Allows to send a push notification. This will be sent to every device, registered with respective profile, on which users have enabled push notifications.
 
 Parameter | Description | Type
 --------- | ----------- | ------
-**username** | The username of the user who has to receive the notification. **Mandatory** | Array of String
+**message** | The message for the users. **Mandatory**. | String
+**users** | The username of the users who have to receive the notification. **Mandatory** | Array of String
 **profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, it will be used profile 1 | Array of String
 **sound**| A sound to play for iOS | String
 **badge**| The number to display as the badge of the application icon for iOS | Integer
@@ -3196,6 +3246,26 @@ Log.e("LOG","Something went wrong",res.error());
 
 ```javascript
 TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```json
+{
+	"message":"test".
+	"profiles":[1,3],   
+	"sound":"sound.wav",
+  	"actionLocalizedKey":"Play",
+  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
+  	"localizedArguments":["Jenna","Frank"],
+  	"badge":10,
+    "custom":["year","10"],
+	"collapse_key":"update_match_15",
+	"time_to_live":106
+}
+
 ```
 
 <div class="snippet-title">
