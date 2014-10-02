@@ -3089,7 +3089,7 @@ Parameter | Description | Type
 --------- | ----------- | ------
 **message** | The message for the users. **Mandatory**. | String
 **users** | The username of the users who have to receive the notification. **Mandatory** | Array of String
-**profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, profile 1 will be used | Array of String
+**profiles** | The app used for sending push notifications (only allow Array of Integer i.e. [1,2,3]). If empty, app #1 will be used | Array of Integer
 **sound**| A sound to play for iOS | String
 **badge**| The number to display as the badge of the application icon for iOS | Integer
 **actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to be used for the right button’s title instead of “View” for iOS | String
@@ -3193,7 +3193,7 @@ Parameter | Description | Type
 --------- | ----------- | ------
 **message** | The message for the user. **Mandatory**. | String
 **username** | The username of the user who has to receive the notification. **Mandatory**.
-**profiles** | The profile used for sending push notifications (only allow Array of Int i.e. [1,2,3]). If empty, profile 1 will be used | Array of String
+**profiles** | The app used for sending push notifications (only allow Array of Integer i.e. [1,2,3]). If empty, app #1 will be used | Array of Integer
 **sound**| A sound to play for iOS | String
 **badge**| The number to display as the badge of the application icon for iOS | Integer
 **actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to be used for the right button’s title instead of “View” for iOS | String
