@@ -269,36 +269,38 @@ i.e. an administration app and a customer app for a store, or it's possible to d
 
 New section on console, Push Settings available directly in leftmenu.
 
+**N.B.: Apps must be turned on after being configured**
+
 Options for the Push Notifications feature
 
 Key | Description | Default
 --------- | ----------- | -------------
-**profile1.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the first profile| `true` i.e. it is in SANDBOX mode
-**profile1.push.apple.timeout**  | The timeout for push notifications on Apple devices for the first profile| `0` - no timeout
-**profile1.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the first profile |
-**profile1.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the first profile  | 
-**profile1.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the first profile  |
-**profile1.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the first profile  |
-**profile1.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the first profile |
+**profile1.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the first app| `true` i.e. it is in SANDBOX mode
+**profile1.push.apple.timeout**  | The timeout for push notifications on Apple devices for the first app| `0` - no timeout
+**profile1.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the first app |
+**profile1.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the first app  | 
+**profile1.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the first app  |
+**profile1.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the first app  |
+**profile1.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the first app |
 **profile1.push.profile.enable** | Enable this profile | `false`
-**profile2.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the second profile| `true` i.e. it is in SANDBOX mode
-**profile2.push.apple.timeout**  | The timeout for push notifications on Apple devices for the second profile| `0` - no timeout
-**profile2.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the second profile |
-**profile2.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the second profile  | 
-**profile2.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the second profile  |
-**profile2.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the second profile  |
-**profile2.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the second profile |
+**profile2.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the second app| `true` i.e. it is in SANDBOX mode
+**profile2.push.apple.timeout**  | The timeout for push notifications on Apple devices for the second app| `0` - no timeout
+**profile2.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the second app |
+**profile2.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the second app  | 
+**profile2.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the second app  |
+**profile2.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the second app  |
+**profile2.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the second app |
 **profile2.push.profile.enable** | Enable this profile | `false`
-**profile3.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the third profile| `true` i.e. it is in SANDBOX mode
-**profile3.push.apple.timeout**  | The timeout for push notifications on Apple devices for the third profile| `0` - no timeout
-**profile3.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the third profile |
-**profile3.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the third profile  | 
-**profile3.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the third profile  |
-**profile3.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the third profile  |
-**profile3.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the third profile |
+**profile3.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the third app| `true` i.e. it is in SANDBOX mode
+**profile3.push.apple.timeout**  | The timeout for push notifications on Apple devices for the third app| `0` - no timeout
+**profile3.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the third app |
+**profile3.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the third app  | 
+**profile3.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the third app  |
+**profile3.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the third app  |
+**profile3.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the third app |
 **profile3.push.profile.enable** | Enable this profile | `false`
 
-**N.B.: Apps must be turned on after being configured**
+
 
 
 ### Social Login
@@ -569,9 +571,9 @@ named group.
 
 ## Push Settings
 
-The Push Settings section allows you to enable/disable profiles for sending push notifications.
-From BaasBox 0.9.0 it is possible to manage profiles for sending push notifications.
-In particular BaasBox support **max three profiles**. It's possible to switch settings profile by the tab section.
+The Push Settings section allows you to enable/disable apps for sending push notifications.
+From BaasBox 0.9.0 it is possible to manage apps for sending push notifications.
+In particular BaasBox support **max three apps**. It's possible to switch app settings by the tab section.
 
 - App #1 (Default) is the section for the first app, which is the default app
 - App #2 is the section for the second app
