@@ -264,10 +264,10 @@ Key | Description | Default
 
 ### Push Notifications
 
-Since version 0.9.0 BaasBox has profiles feature. It's possibile to declare at most three apps which share the same backend. <br/>
-i.e. an administration app and a customer app for a store, or it's possible to distribute one app for free and one app not for free.
+Since version 0.9.0, with BaasBox is possible to manage at most three apps for sending push notifications. <br/>
+i.e. an administration app and a customer app for a store, or it's possible to distribute one app for free and one app not for free. In this example the apps share the same backend.
 
-New section on console, Push Settings in category Push.
+New section on console, Push Settings available directly in leftmenu.
 
 Options for the Push Notifications feature
 
@@ -298,7 +298,7 @@ Key | Description | Default
 **profile3.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the third profile |
 **profile3.push.profile.enable** | Enable this profile | `false`
 
-**N.B.: Profiles must be turned on after being configured**
+**N.B.: Apps must be turned on after being configured**
 
 
 ### Social Login
@@ -540,7 +540,7 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
-17. Push Settings. The section where it is possible to enable/disable profiles for sending push notifications
+17. Push Settings. The section where it is possible to enable/disable apps for sending push notifications.
 18. Engine
 
 
@@ -573,16 +573,16 @@ The Push Settings section allows you to enable/disable profiles for sending push
 From BaasBox 0.9.0 it is possible to manage profiles for sending push notifications.
 In particular BaasBox support **max three profiles**. It's possible to switch settings profile by the tab section.
 
-- App nr.1 (Default) is the section for profile1
-- App nr.2 profile2 is the section for profile2
-- App nr.3 profile3 is the section for profile3
+- App #1 (Default) is the section for the first app, which is the default app
+- App #2 is the section for the second app
+- App #3 is the section for third app
 
 For Android Key (Sandbox/Production), remember to check the availability of Google Cloud Messaging for Android, in Google Play Developer Console.
 If disabled or if Android Key is wrong it will be returned error and no key are stored.
 
-When the settings is configured, is possible to enabled the specific profile.
+When the settings is configured, is possible to enabled the specific app.
 
-**Notice: Is possible to switch mode, with profile enabled, only if the settings for the other mode are configured.**
+**Notice: Is possible to switch mode, with app enabled, only if the settings for the other mode are configured.**
 ![Push settings] (images/Console_0.9.0/push_settings.png)
 
 
@@ -1182,7 +1182,7 @@ These are custom error codes specific to BaasBox, returned into the bb_code fiel
 -  50302: The server cannot resolve the host name. HINT: check your internet connection.
 -  50303: Could not send push notifications. HINT: Check your API Key (Google).		
 -  50304: Could not save API KEY. HINT: Check your API Key, it's possible that push service aren't enabled in the Google Play Developer Console.
--  50305: Push profile disabled, one or more profile are disabled.	
+-  50305: Push app disabled, one or more app are disabled.	
 -  50306: Cannot switch, because settings for the selected mode are missing.
 
 ## Pagination and query criteria
