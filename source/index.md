@@ -5997,7 +5997,7 @@ TO BE IMPLEMENTED
 </aside>
 
 
-### Geospatial Queries
+## Geospatial Queries
 
 Since BaasBox is based on OrientDB, you can use any function that this NoSQL database has.
 One of these functions is _distance()_ that returns the distance in Km between two points on the globe.
