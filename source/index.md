@@ -17,7 +17,7 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 
-The latest version is **0.8.3**
+The latest version is **0.9.0**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -34,7 +34,7 @@ documentation explains:
    *  [JavaScript](?javascript#javascript-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-3-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-9-0-released/)
 
 FAQs are available on our [support site](http://support.baasbox.com/)
 
@@ -264,18 +264,44 @@ Key | Description | Default
 
 ### Push Notifications
 
+Since version 0.9.0, with BaasBox is possible to manage at most three apps for sending push notifications. <br/>
+i.e. an administration app and a customer app for a store, or it's possible to distribute one app for free and one app not for free. In this example the apps share the same backend.
+
+New section on console, Push Settings available directly in leftmenu.
+
+**N.B.: Apps must be turned on after being configured**
+
 Options for the Push Notifications feature
 
 Key | Description | Default
 --------- | ----------- | -------------
-**push.sandbox.enable** | Specify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server to send the notification| `true` i.e. it is in SANDBOX mode
-**push.apple.timeout**  | The timeout for push notifications on Apple devices | `0` - no timeout
-**sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode |
-**sandbox.ios.certificate** | The Apple certificate in SANDBOX mode | 
-**sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode |
-**production.android.api.key**  | The key to send push notifications to Android devices in PRODUCTION mode |
-**production.ios.certificate**  | The Apple certificate in PRODUCTION mode |
-**production.ios.certificate.password** | The password of the Apple certificate in PRODUCTION mode |
+**profile1.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the first app| `true` i.e. it is in SANDBOX mode
+**profile1.push.apple.timeout**  | The timeout for push notifications on Apple devices for the first app| `0` - no timeout
+**profile1.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the first app |
+**profile1.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the first app  | 
+**profile1.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the first app  |
+**profile1.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the first app  |
+**profile1.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the first app |
+**profile1.push.profile.enable** | Enable this profile | `false`
+**profile2.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the second app| `true` i.e. it is in SANDBOX mode
+**profile2.push.apple.timeout**  | The timeout for push notifications on Apple devices for the second app| `0` - no timeout
+**profile2.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the second app |
+**profile2.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the second app  | 
+**profile2.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the second app  |
+**profile2.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the second app  |
+**profile2.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the second app |
+**profile2.push.profile.enable** | Enable this profile | `false`
+**profile3.push.sandbox.enable** | The value to verify if BaasBox needs to contact the SANDBOX server or the PRODUCTION server for the third app| `true` i.e. it is in SANDBOX mode
+**profile3.push.apple.timeout**  | The timeout for push notifications on Apple devices for the third app| `0` - no timeout
+**profile3.sandbox.android.api.key** | The key to send push notifications to Android devices in SANDBOX mode for the third app |
+**profile3.sandbox.ios.certificate** | The Apple certificate in SANDBOX mode for the third app  | 
+**profile3.sandbox.ios.certificate.password**  | The password of the Apple certificate in SANDBOX mode for the third app  |
+**profile3.production.ios.certificate**  | The Apple certificate in PRODUCTION mode for the third app  |
+**profile3.production.ios.certificate.password**  | The password of the Apple certificate in PRODUCTION mode for the third app |
+**profile3.push.profile.enable** | Enable this profile | `false`
+
+
+
 
 ### Social Login
 
@@ -426,7 +452,7 @@ Available functions are:
 
 ## Applied Technology
 
-BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play Framework 2.2.4](http://www.playframework.com/) and it incorporates the core of the [OrientDB 1.6.3 database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
+BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play Framework 2.2.4](http://www.playframework.com/) and it incorporates the core of the [OrientDB 1.7.9 database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
 objects and queries without using specific abstractions or having to simulate them on the applicative level. OrientDB was recently surveyed and entered Gartner's Magic Quadrant.
 
 
@@ -516,6 +542,8 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
+17. Push Settings. The section where it is possible to enable/disable apps for sending push notifications.
+18. Engine
 
 
 <aside class="notice">  
@@ -539,7 +567,25 @@ Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
 named group.
 
-![Api access control](images/Console_0.8.1/api_access_control.png)
+![Api access control](images/Console_0.9.0/api_access_control.png)
+
+## Push Settings
+
+The Push Settings section allows you to enable/disable apps for sending push notifications.
+From BaasBox 0.9.0 it is possible to manage apps for sending push notifications.
+In particular BaasBox support **max three apps**. It's possible to switch app settings by the tab section.
+
+- App #1 (Default) is the section for the first app, which is the default app
+- App #2 is the section for the second app
+- App #3 is the section for third app
+
+For Android Key (Sandbox/Production), remember to check the availability of Google Cloud Messaging for Android, in Google Play Developer Console.
+If disabled or if Android Key is wrong it will be returned error and no key are stored.
+
+When the settings is configured, is possible to enabled the specific app.
+
+**Notice: Is possible to switch mode, with app enabled, only if the settings for the other mode are configured.**
+![Push settings] (images/Console_0.9.0/push_settings.png)
 
 
 ## Database Management
@@ -1109,21 +1155,33 @@ understand why the request was rejected.
 
 These are custom error codes specific to BaasBox, returned into the bb_code field.
 
--  40001: You are attempting to update a database object with older
-   data. Version is not the same
+-  40001: You are attempting to update a database object with older data. Version is not the same.
 -  40002: The ACL field is not a valid JSON string.
 -  40003: The specified permission is unknown. Valid ones are 'read', 'update', 'delete', 'all'.
 -  40004: Only users and roles can be used.
 -  40005: The specified user does not exist.
 -  40006: The specified role does not exist.
 -  40010: The JSON value must be an array.
--  40101: Authentication info not valid or not provided. HINT: has your
-   session expired?
--  50301: Push settings are not properly configured. HINT: go to
-   the administration console and check the settings
--  50302: The server cannot resolve the host name. HINT: check your
-   internet connection 
--  50303: Could not send push notifications. HINT: Check your API Key (Google).
+-  40011: The body payload cannot be empty.
+-  40101: Authentication info not valid or not provided. HINT: has your session expired?.
+-  40020: The body payload doesn't contain the 'message' key or message value is NOT a String.
+-  40021: Push profile invalid. It must be an Array of integer and accepted values are 1,2 or 3.
+-  40022: Users MUST be an array of String.
+-  40023: The body payload doesn't contain key users.
+-  40024: Sound value MUST be a String.
+-  40025: Badge value MUST be a number.
+-  40026: ActionLocalizedKey MUST be a String
+-  40027: LocalizedKey MUST be a String.
+-  40028: LocalizedArguments MUST be an Array of String.
+-  40029: Collapse_key MUST be a String
+-  40030: Time_to_live MUST be a positive number or equal zero.
+-  40031: Message MUST be a String.
+-  50301: Push settings are not properly configured. HINT: go to the administration console and check the settings.
+-  50302: The server cannot resolve the host name. HINT: check your internet connection.
+-  50303: Could not send push notifications. HINT: Check your API Key (Google).		
+-  50304: Could not save API KEY. HINT: Check your API Key, it's possible that push service aren't enabled in the Google Play Developer Console.
+-  50305: Push app disabled, one or more app are disabled.	
+-  50306: Cannot switch, because settings for the selected mode are missing.
 
 ## Pagination and query criteria
 
@@ -3012,15 +3070,30 @@ TO BE IMPLEMENTED
 
 ### Send a push notification
 
-`POST /push/message/:username`
+For information about additional data check the following links
+
+- [iOS](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html)
+- [Android](https://developer.android.com/google/gcm/server.html)
+
+`POST /push/message/`
 
 **Group**: [baasbox.notifications.send](#list-groups)
 
-Allows to send a push notification. This will be sent to every device on which the user has enabled push notifications.
+Allows to send a push notification. This will be sent to every device, registered with the respective app, on which users have enabled push notifications.
 
-Parameter | Description
---------- | -----------
-**username** | The username of the user who has to receive the notification. Mandatory.
+Parameter | Description | Type
+--------- | ----------- | ------
+**message** | The message for the users. **Mandatory**. | String
+**users** | The username of the users who have to receive the notification. **Mandatory** | Array of String
+**profiles** | The app used for sending push notifications (only allow Array of Integer i.e. [1,2,3]). If empty, app #1 will be used | Array of Integer
+**sound**| A sound to play for iOS | String
+**badge**| The number to display as the badge of the application icon for iOS | Integer
+**actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to be used for the right button’s title instead of “View” for iOS | String
+**localizedKey** | A key to an alert-message string in a Localizable.strings file for the current localization for iOS| String
+**localizedArguments** | Variable string values to appear in place of the format specifiers in localizedKey for iOS| Array of String
+**custom** | Custom data Android & iOS | Value, JSONArray or JSONObject
+**collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
+**time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allow 2419200
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
@@ -3065,14 +3138,151 @@ TO BE IMPLEMENTED
 ```
 
 <div class="snippet-title">
-<p>Example of a response</p>
+<p>Example of a request</p>
 </div>
 
 ```json
 {
+	"message":"test".
+	"profiles":[1,3],   
+	"sound":"sound.wav",
+  	"actionLocalizedKey":"Play",
+  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
+  	"localizedArguments":["Jenna","Frank"],
+  	"badge":10,
+    "custom":["year","10"],
+	"collapse_key":"update_match_15",
+	"time_to_live":106
+}
+
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+// if all OK
+{
 "result": "ok",
 "data": "",
 "http_code": 200
+}
+
+//or (in case of errors in settings i.e. push sent to Android & iOS devices but only Android settings are configured)
+{
+"result": "ok",
+"data": "Push notifications were sent but they may be subject to loss of data. HINT: check push settings in console",
+"http_code": 200,
+"bb_code": "20001"
+}
+```
+
+##### DEPRECATED
+`POST /push/message/:username`
+
+**Group**: [baasbox.notifications.send](#list-groups)
+
+Allows to send a push notification. This will be sent to every device, registered with the respective app, on which the user has enabled push notifications.
+
+Parameter | Description | Type
+--------- | ----------- | ------
+**message** | The message for the user. **Mandatory**. | String
+**username** | The username of the user who has to receive the notification. **Mandatory**.
+**profiles** | The app used for sending push notifications (only allow Array of Integer i.e. [1,2,3]). If empty, app #1 will be used | Array of Integer
+**sound**| A sound to play for iOS | String
+**badge**| The number to display as the badge of the application icon for iOS | Integer
+**actionLocalizedKey** | The string is used as a key to get a localized string in the current localization to be used for the right button’s title instead of “View” for iOS | String
+**localizedKey** | A key to an alert-message string in a Localizable.strings file for the current localization for iOS| String
+**localizedArguments** | Variable string values to appear in place of the format specifiers in localizedKey for iOS| Array of String
+**custom** | Custom data Android & iOS | Value, JSONArray or JSONObject
+**collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
+**time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allowed 2419200
+
+```shell
+curl -X POST  http://localhost:9000/push/message/cesare  \
+-d '{"message" : "hi"}' \
+-H Content-type:application/json \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+BAAClient *client = [BAAClient sharedClient];
+[client postPath:@"/push/message/cesare"
+parameters:@{@"message" : @"Hi there"}
+success:^(id responseObject) {
+
+NSLog(@"Notification sent");
+
+} failure:^(NSError *error) {
+
+NSLog(@"error %@", error);
+
+}];
+```
+
+```java
+JsonObject message = new JsonObject()
+.putString("greeting","Hello World!")
+.putString("from","BaasBox");
+
+BaasUser user = BaasUser.withUserName("Cesare");
+user.send(message,new BaasHandler<Void>(){
+@Override
+public void handle(BaasResult<Void> res){
+if(res.isFailed()){
+Log.e("LOG","Something went wrong",res.error());
+}
+}
+});
+```
+
+```javascript
+TO BE IMPLEMENTED
+```
+
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```json
+{
+	"message":"test".
+	"profiles":[1],   
+	"sound":"sound.wav",
+  	"actionLocalizedKey":"Play",
+  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
+  	"localizedArguments":["Jenna","Frank"],
+  	"badge":10,
+  	"custom": {
+        		"data": "text",
+        		"title": "Titletext",
+      		},
+	"collapse_key":"update_match_15",
+	"time_to_live":106
+	"users":["X","Y","Z"]
+}
+
+```
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+// if all OK
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+
+//or (in case of errors in settings i.e. push sent to Android & iOS devices but only Android settings are configured)
+{
+"result": "ok",
+"data": "Push notifications were sent but they may be subject to loss of data. HINT: check push settings in console",
+"http_code": 200,
+"bb_code": "20001"
 }
 ```
 
