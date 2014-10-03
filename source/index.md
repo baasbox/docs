@@ -5790,10 +5790,10 @@ TO BE IMPLEMENTED
 
 ### Geospatial Queries
 Since BaasBox is based on OrientDB, you can use any function that this NoSQL database has.
-One of these functions is _distance()_ that returns the distance, in Km, between two points in the globe.
-How to use this feature?
+One of these functions is _distance()_ that returns the distance in Km between two points on the globe.
+How can you use this feature?
 
-Let's say you have a collection of POIs, each record has a latitude and longitude stored as degrees in two fields, you can get all the POIs within a certain radius:
+Let's say you have a collection of POIs, and each record has a latitude and longitude stored as degrees in two fields, you can get all the POIs within a certain radius:
 
 ```json
 "poi" collection:
@@ -5814,20 +5814,20 @@ Let's say you have a collection of POIs, each record has a latitude and longitud
     }
 ```
 
-Once you have retrieved the device position through its sensors, you can perform a query like "Hey, BaasBox, gimme POIs around me in a radius of 5 Km".
+Once you have retrieved the device position through its sensors, you can perform a query like "Hey, BaasBox, gimme the POIs around me in a radius of 5 Km".
 For example, if you are visiting Rome:
 
 `GET /document/poi?where=distance(lat,long,41.872389,12.480180) < 5 `
 
-What about you want also know the distance?
+What if you also want know the distance?
 
 `GET /document/poi?fields=name,distance(lat,long,41.872389,12.480180) as dist&where=distance(lat,long,41.872389,12.480180) < 5 `
 
-BaasBox returns the name and distance of the POIs that satisfy the where criteria.
+BaasBox returns the name and distance of the POIs that satisfy the "where" criteria.
 
-Remember that by default the query is executed only on records that the user can actually read. 
+Remember that by default the query is executed only on those records that the user can actually read. 
 
-This is amazing if you want to manage private and public POIs, the filter is automatically applied.
+This is amazing if you want to manage private and public POIs, because the filter is applied automatically.
 
 
 ```shell
