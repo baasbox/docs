@@ -16,7 +16,7 @@ toc_footers:
 BaasBox is a complete solution to implement the back end of your applications.
 
 It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
-
+	
 The latest version is **0.9.0**
 
 You can access all sections using the sidebar on the left. The
@@ -5998,6 +5998,7 @@ TO BE IMPLEMENTED
 
 
 ### Geospatial Queries
+
 Since BaasBox is based on OrientDB, you can use any function that this NoSQL database has.
 One of these functions is _distance()_ that returns the distance in Km between two points on the globe.
 How can you use this feature?
