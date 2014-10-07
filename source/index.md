@@ -6647,9 +6647,9 @@ I campi da configurare per far funzionare il servizio di Password Recovery sono 
 
 ## Password Recovery with Gmail account
 
-Affinché  l'account Gmail sia "abilitato" ad inviare l'email di Password Recovery, bisogna abilitare l'accesso per App meno sicure. La pagina in cui è possibile operare questa scelta è la [seguente](https://www.google.com/settings/security/lesssecureapps), attivando tale impostazione per l'account Gmail definito nel parametro *email.from*.
+Affinché  l'account Gmail sia "abilitato" ad inviare l'email di Password Recovery, bisogna abilitare l'accesso per App meno sicure. La pagina in cui è possibile operare questa scelta è la <a target='_blank' href="https://www.google.com/settings/security/lesssecureapps">seguente</a>, attivando tale impostazione per l'account Gmail definito nel parametro *email.from*.
 
-References: [Less secure Apps](https://support.google.com/accounts/answer/6010255).
+References: <a target='_blank' href="https://support.google.com/accounts/answer/6010255">Less secure Apps</a>.
 
 I campi da configurare per far funzionare il servizio di Password Recovery con account Gmail sono i seguenti:
 
