@@ -6013,92 +6013,6 @@ TO BE IMPLEMENTED
 </aside>
 
 
-## Geospatial Queries
-
-Since BaasBox is based on OrientDB, you can use any function that this NoSQL database has.
-One of these functions is _distance()_ that returns the distance in Km between two points on the globe.
-How can you use this feature?
-
-Let's say you have a collection of POIs, and each record has a latitude and longitude stored as degrees in two fields, you can get all the POIs within a certain radius:
-
-```json
-"poi" collection:
-    {
-      "lat": 41.890210,
-	  "long": 12.492231,
-	  "name": "Colosseum"
-    },
-    {
-      "lat": 41.902916,
-	  "long": 12.453389,
-	  "name": "Vatican City"
-    },
-    {
-      "lat": 40.690050,
-	  "long": -74.045068,
-	  "name": "Liberty Island"
-    }
-```
-
-Once you have retrieved the device position through its sensors, you can perform a query like "Hey, BaasBox, gimme the POIs around me in a radius of 5 Km".
-For example, if you are visiting Rome:
-
-`GET /document/poi?where=distance(lat,long,41.872389,12.480180) < 5 `
-
-What if you also want know the distance?
-
-`GET /document/poi?fields=name,distance(lat,long,41.872389,12.480180) as dist&where=distance(lat,long,41.872389,12.480180) < 5 `
-
-BaasBox returns the name and distance of the POIs that satisfy the where criteria.
-
-Remember that by default the query is executed only on records that the user can actually read. 
-
-This is amazing if you want to manage private and public POIs, because the filter is automatically applied.
-
-
-```shell
-curl -X GET -H "x-baasbox-appcode:1234567890" -H "Authorization:Basic YWRtaW46YWRtaW4="  http://localhost:9000/document/poi?where=distance\(lat,long,41.872389,12.480180\)+%3C+5
-```
-
-```objective_c
-// Assumes Poi as a subclass of BAAObject
-NSDictionary *parameters = @{@"where" : "distance(lat,long,41.872389,12.480180) < 5"};
-[Poi getObjectsWithParams:parameters
-                completion:^(NSArray *pois, NSError *error) {
-                    if (error == nil) {
-                        NSLog(@"POIs are %@", pois);
-                    } else {
-                        // deal with error
-                    }
-                }];
-```
-
-```java
-private static final BaasQuery PREPARED_QUERY =
-   BaasQuery.builder()
-            .collection("poi")
-            .where("distance(lat,long,41.872389,12.480180) < 5")
-            .build();
-			
-PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
-  @Override
-  public void handle(BaasResult<List<JsonObjec>> res){
-    // handle result or failure
-  }
-});
-```
-
-```javascript
-BaasBox.loadCollectionWithParams("poi", {where:"distance(lat,long,41.872389,12.480180) < 5"})
-  .done(function(res) {
-    console.log("res ", res);
-  })
-  .fail(function(error) {
-    console.log("error ", error);
-  })
-```
-
-
 ## API Settings
 
 Settings are app-related configuration options. They are intended to set up many app-specific parameters, like the app name, the push notification certificate supplied by Apple, and so on. Settings are split in different sections or topics.
@@ -6555,3 +6469,219 @@ TO BE IMPLEMENTED
 }
 ```
 
+# Use Cases
+
+## Geospatial Queries
+
+Since BaasBox is based on OrientDB, you can use any function that this NoSQL database has.
+One of these functions is _distance()_ that returns the distance in Km between two points on the globe.
+How can you use this feature?
+
+Let's say you have a collection of POIs, and each record has a latitude and longitude stored as degrees in two fields, you can get all the POIs within a certain radius:
+
+```json
+"poi" collection:
+    {
+      "lat": 41.890210,
+	  "long": 12.492231,
+	  "name": "Colosseum"
+    },
+    {
+      "lat": 41.902916,
+	  "long": 12.453389,
+	  "name": "Vatican City"
+    },
+    {
+      "lat": 40.690050,
+	  "long": -74.045068,
+	  "name": "Liberty Island"
+    }
+```
+
+Once you have retrieved the device position through its sensors, you can perform a query like "Hey, BaasBox, gimme the POIs around me in a radius of 5 Km".
+For example, if you are visiting Rome:
+
+`GET /document/poi?where=distance(lat,long,41.872389,12.480180) < 5 `
+
+What if you also want know the distance?
+
+`GET /document/poi?fields=name,distance(lat,long,41.872389,12.480180) as dist&where=distance(lat,long,41.872389,12.480180) < 5 `
+
+BaasBox returns the name and distance of the POIs that satisfy the where criteria.
+
+Remember that by default the query is executed only on records that the user can actually read. 
+
+This is amazing if you want to manage private and public POIs, because the filter is automatically applied.
+
+
+```shell
+curl -X GET -H "x-baasbox-appcode:1234567890" -H "Authorization:Basic YWRtaW46YWRtaW4="  http://localhost:9000/document/poi?where=distance\(lat,long,41.872389,12.480180\)+%3C+5
+```
+
+```objective_c
+// Assumes Poi as a subclass of BAAObject
+NSDictionary *parameters = @{@"where" : "distance(lat,long,41.872389,12.480180) < 5"};
+[Poi getObjectsWithParams:parameters
+                completion:^(NSArray *pois, NSError *error) {
+                    if (error == nil) {
+                        NSLog(@"POIs are %@", pois);
+                    } else {
+                        // deal with error
+                    }
+                }];
+```
+
+```java
+private static final BaasQuery PREPARED_QUERY =
+   BaasQuery.builder()
+            .collection("poi")
+            .where("distance(lat,long,41.872389,12.480180) < 5")
+            .build();
+			
+PREPARED_QUERY.query(new BaasHandler<List<JsonObject>>(){
+  @Override
+  public void handle(BaasResult<List<JsonObjec>> res){
+    // handle result or failure
+  }
+});
+```
+
+```javascript
+BaasBox.loadCollectionWithParams("poi", {where:"distance(lat,long,41.872389,12.480180) < 5"})
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
+```
+
+
+## Password Recovery
+
+In questa guida spiegheremo brevemente cos'è e come funziona il servizio di Password Recovery di BaasBox
+BaasBox infatti ha la funzionalità di Password Recovery che consente agli utenti della tua App di resettare la propria password qualora la dimentichino.
+
+Per fruire di questa funzione è importante che al momento del signup l'App invii a BaasBox l'indirizzo email dell'utente nel campo *email* dell'oggetto *visibleByTheUser* come è possibile vedere in questo esempio.
+
+`PUT /me `
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```json
+{
+	"visibleByTheUser":{"email":"email_of_the_user@email.com"}
+}
+```
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+    "result": "ok",
+    "data": {
+        "visibleByTheUser": {
+            "email": "email_of_the_user@email.com"
+        },
+        ...
+		...
+		...
+    },
+    "http_code": 200
+}
+```
+
+By the way it is possible to create a user with email address
+
+`POST /user `
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```json
+{
+  "username":"user",
+  "password":"user",
+  "visibleByTheUser":{
+      "email":"email_of_the_user@email.com"
+    }
+}
+```
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+    "result": "ok",
+    "data": {
+        ...
+		...
+		...
+        "visibleByTheUser": {
+            "email": "email_of_the_user@email.com"
+        ...
+		...
+		...
+    },
+    "http_code": 201
+}
+```
+
+Infine l'App deve chiamare l'API di reset password quando richiesto che ricordiamo essere
+
+`GET user/:username/password/reset`
+
+Se otteniamo la risposta seguente:
+
+```json
+{
+    "result": "error",
+    "message": "Cannot send mail to reset the password:  Could not reach the mail server. Please contact the server administrator",
+    "resource": "/user/test/password/reset",
+    "method": "GET",
+    "request_header": {
+       ...
+       ...
+       ...
+    },
+}
+```
+
+Vorrà dire che abbiamo sbagliato qualcosa nella configurazione.
+
+I campi da configurare per far funzionare il servizio di Password Recovery sono i seguenti
+
++  email.from: il mittente dell'email di Password Recovery (il tuo indirizzo email);
++  network.smtp.authentication: Da impostare a TRUE se il server richiede l'autenticazione;
++  network.smtp.host: IP ADDRESS or fully qualified name of the SMTP server;
++  network.smtp.password:la password dell'account email del mittente;
++  network.smtp.port:La porta utilizzata del server SMTP: SSL o TLS
++  network.smtp.ssl:TRUE/FALSE a seconda della volontà di usare SSL o TLS ;
++  network.smtp.tls:TRUE/FALSE a seconda della volontà di usare SSL o TLS;
++  network.smtp.user: DEVE essere lo stesso account presente nel campo email.from (**COMPRENSIVO DI DOMINIO**);
+
+**N.B. NON E' POSSIBILE AVERE ENTRAMBI I CAMPI NETWORK.SMTP.SSL E NETWORK.SMTP.TLS IMPOSTATI A TRUE, UNO DEI DUE DEVE ESSERE SETTATO A FALSE.**
+
+
+
+## Password Recovery with Gmail account
+
+Affinché  l'account Gmail sia "abilitato" ad inviare l'email di Password Recovery, bisogna abilitare l'accesso per App meno sicure. La pagina in cui è possibile operare questa scelta è la <a target='_blank' href="https://www.google.com/settings/security/lesssecureapps">seguente</a>, attivando tale impostazione per l'account Gmail definito nel parametro *email.from*.
+
+References: <a target='_blank' href="https://support.google.com/accounts/answer/6010255">Less secure Apps</a>.
+
+I campi da configurare per far funzionare il servizio di Password Recovery con account Gmail sono i seguenti:
+
++  email.from: il mittente dell'email di Password Recovery (il tuo indirizzo Gmail);
++  network.smtp.authentication: Da impostare a TRUE se il server richiede l'autenticazione, Gmail la richiede;
++  network.smtp.host: IP ADDRESS or fully qualified name of the SMTP server, in this case smtp.gmail.com;
++  network.smtp.password:la password dell'account Gmail del mittente;
++  network.smtp.port:La porta utilizzata del server SMTP: SSL (465) o TLS (587);
++  network.smtp.ssl:TRUE/FALSE a seconda della volontà di usare SSL o TLS ;
++  network.smtp.tls:TRUE/FALSE a seconda della volontà di usare SSL o TLS;
++  network.smtp.user: DEVE essere lo stesso account presente nel campo email.from (**COMPRENSIVO DI DOMINIO @GMAIL.COM**);
+
+**N.B. RICORDIAMO CHE NON E' POSSIBILE AVERE ENTRAMBI I CAMPI NETWORK.SMTP.SSL E NETWORK.SMTP.TLS IMPOSTATI A TRUE, UNO DEI DUE DEVE ESSERE SETTATO A FALSE.**
