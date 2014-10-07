@@ -2971,10 +2971,26 @@ curl -X PUT  http://localhost:9000/push/enable/ios/123  \
 ```
 
 ```objective_c
-// Assumes there is a logged in user
+// Call this method only AFTER a successful login or signup.
 BAAClient *client = [BAAClient sharedClient];
 [client askToEnablePushNotifications];
+
+// implement these delegate methods in the app delegate.
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    BAAClient *client = [BAAClient sharedClient];
+    [client enablePushNotifications:deviceToken completion:^(BOOL success, NSError *error) {
+        if (error) {
+            // handle the error
+        }
+    }];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    // handle the error
+}
 ```
+
 ```java
 // given you have provided one or more sender ids to the initial configuration
 BaasCloudMessagingService box=BaasBox.messagingService();
