@@ -6562,7 +6562,7 @@ BaasBox.loadCollectionWithParams("poi", {where:"distance(lat,long,41.872389,12.4
 In questa guida spiegheremo brevemente cos'è e come funziona il servizio di Password Recovery di BaasBox
 BaasBox infatti ha la funzionalità di Password Recovery che consente agli utenti della tua App di resettare la propria password qualora la dimentichino.
 
-Per fruire di questa funzione è importante che al momento del signup l'App invii a BaasBox l'indirizzo email dell'utente nel campo email dell'oggetto visibleByTheUser come è possibile vedere in questo esempio.
+Per fruire di questa funzione è importante che al momento del signup l'App invii a BaasBox l'indirizzo email dell'utente nel campo *email* dell'oggetto *visibleByTheUser* come è possibile vedere in questo esempio.
 
 `PUT /me `
 <div class="snippet-title">
@@ -6629,6 +6629,28 @@ By the way it is possible to create a user with email address
     "http_code": 201
 }
 ```
+
+Infine l'App deve chiamare l'API di reset password quando richiesto che ricordiamo essere
+
+`GET user/:username/password/reset`
+
+Se otteniamo la risposta seguente:
+
+```json
+{
+    "result": "error",
+    "message": "Cannot send mail to reset the password:  Could not reach the mail server. Please contact the server administrator",
+    "resource": "/user/test/password/reset",
+    "method": "GET",
+    "request_header": {
+       ...
+       ...
+       ...
+    },
+}
+```
+
+Vorrà dire che abbiamo sbagliato qualcosa nella configurazione.
 
 I campi da configurare per far funzionare il servizio di Password Recovery sono i seguenti
 
