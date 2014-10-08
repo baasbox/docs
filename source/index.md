@@ -6559,10 +6559,12 @@ BaasBox.loadCollectionWithParams("poi", {where:"distance(lat,long,41.872389,12.4
 
 ## Password Recovery
 
-In questa guida spiegheremo brevemente cos'è e come funziona il servizio di Password Recovery di BaasBox
-BaasBox infatti ha la funzionalità di Password Recovery che consente agli utenti della tua App di resettare la propria password qualora la dimentichino.
+In this guide I will briefly explain what the Password Recovery service of BaasBox is and how it works.
+BaasBox has a function for Password Recovery that allows the users of your App to reset their password in case they forgot it.
 
-Per fruire di questa funzione è importante che al momento del signup l'App invii a BaasBox l'indirizzo email dell'utente nel campo *email* dell'oggetto *visibleByTheUser* come è possibile vedere in questo esempio.
+In order to make use of this function it is important that upon signup the App sends to BaasBox the email address of the user in the *email* field of the *visibleByTheUser* object, as you will see in the following example.
+
+
 
 `PUT /me `
 <div class="snippet-title">
@@ -6630,11 +6632,11 @@ By the way it is possible to create a user with email address
 }
 ```
 
-Infine l'App deve chiamare l'API di reset password quando richiesto che ricordiamo essere
+Finally, the App has to call the reset password API whenever requested. This is
 
 `GET user/:username/password/reset`
 
-Se otteniamo la risposta seguente:
+If you get the following response:
 
 ```json
 {
@@ -6650,38 +6652,37 @@ Se otteniamo la risposta seguente:
 }
 ```
 
-Vorrà dire che abbiamo sbagliato qualcosa nella configurazione.
+this means that you got something wrong in the set up.
 
-I campi da configurare per far funzionare il servizio di Password Recovery sono i seguenti
+The fields you need to set up in order to have the Password Recovery service function are the following:
 
-+  email.from: il mittente dell'email di Password Recovery (il tuo indirizzo email);
-+  network.smtp.authentication: Da impostare a TRUE se il server richiede l'autenticazione;
++  email.from: the sender of the Password Recovery email (your email address);
++  network.smtp.authentication: to be set to TRUE if the server requires authentication;
 +  network.smtp.host: IP ADDRESS or fully qualified name of the SMTP server;
-+  network.smtp.password:la password dell'account email del mittente;
-+  network.smtp.port:La porta utilizzata del server SMTP: SSL o TLS
-+  network.smtp.ssl:TRUE/FALSE a seconda della volontà di usare SSL o TLS ;
++  network.smtp.password: the password of the sender's email account;
++  network.smtp.port: the port used by the SMTP server: SSL or TLS;
++  network.smtp.ssl:TRUE/FALSE according to the use of SSL or TLS;
 +  network.smtp.tls:TRUE/FALSE a seconda della volontà di usare SSL o TLS;
-+  network.smtp.user: DEVE essere lo stesso account presente nel campo email.from (**COMPRENSIVO DI DOMINIO**);
++  network.smtp.user: MUST be the same account in the email.from field (INCLUDING THE DOMAIN i.e. @email.com);
 
-**N.B. NON E' POSSIBILE AVERE ENTRAMBI I CAMPI NETWORK.SMTP.SSL E NETWORK.SMTP.TLS IMPOSTATI A TRUE, UNO DEI DUE DEVE ESSERE SETTATO A FALSE.**
-
+**N.B. IT IS NOT POSSIBLE TO HAVE BOTH THE NETWORK.SMTP.SSL AND NETWORK.SMTP.TLS FIELDS SET TO TRUE, ONE OF THEM HAS TO BE SET TO FALSE.**
 
 
 ## Password Recovery with Gmail account
 
-Affinché  l'account Gmail sia "abilitato" ad inviare l'email di Password Recovery, bisogna abilitare l'accesso per App meno sicure. La pagina in cui è possibile operare questa scelta è la <a target='_blank' href="https://www.google.com/settings/security/lesssecureapps">seguente</a>, attivando tale impostazione per l'account Gmail definito nel parametro *email.from*.
+In order for the Gmail account to be "enabled" to send the Password Recovery email, you need to enable the access to less secure Apps. The page on which you can make this choice is the <a target='_blank' href="https://www.google.com/settings/security/lesssecureapps">following</a>, activating this setting for the Gmail account set in the *email.from* parameter.
 
 References: <a target='_blank' href="https://support.google.com/accounts/answer/6010255">Less secure Apps</a>.
 
-I campi da configurare per far funzionare il servizio di Password Recovery con account Gmail sono i seguenti:
+The fields you need to set up in order to have the Password Recovery service work on Gmail accounts are the following:
 
-+  email.from: il mittente dell'email di Password Recovery (il tuo indirizzo Gmail);
-+  network.smtp.authentication: Da impostare a TRUE se il server richiede l'autenticazione, Gmail la richiede;
++  email.from: the sender of the Password Recovery email (your Gmail address);
++  network.smtp.authentication: to be set to TRUE if the server requires authentication, and Gmail does;
 +  network.smtp.host: IP ADDRESS or fully qualified name of the SMTP server, in this case smtp.gmail.com;
-+  network.smtp.password:la password dell'account Gmail del mittente;
-+  network.smtp.port:La porta utilizzata del server SMTP: SSL (465) o TLS (587);
-+  network.smtp.ssl:TRUE/FALSE a seconda della volontà di usare SSL o TLS ;
-+  network.smtp.tls:TRUE/FALSE a seconda della volontà di usare SSL o TLS;
-+  network.smtp.user: DEVE essere lo stesso account presente nel campo email.from (**COMPRENSIVO DI DOMINIO @GMAIL.COM**);
++  network.smtp.password: the password of the sender's Gmail account;
++  network.smtp.port: the port used by the SMTP server: SSL (465) or TLS (587);
++  network.smtp.ssl:TRUE/FALSE according to the use of SSL or TLS ;
++  network.smtp.tls:TRUE/FALSE according to the use of SSL or TLS;
++  network.smtp.user: MUST be the same account of the email.from field (INCLUDING THE DOMAIN @GMAIL.COM);
 
-**N.B. RICORDIAMO CHE NON E' POSSIBILE AVERE ENTRAMBI I CAMPI NETWORK.SMTP.SSL E NETWORK.SMTP.TLS IMPOSTATI A TRUE, UNO DEI DUE DEVE ESSERE SETTATO A FALSE.**
+**N.B. IT IS NOT POSSIBLE TO HAVE BOTH THE NETWORK.SMTP.SSL AND NETWORK.SMTP.TLS FIELDS SET TO TRUE, ONE OF THEM HAS TO BE SET TO FALSE.**
