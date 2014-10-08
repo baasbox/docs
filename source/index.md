@@ -6559,7 +6559,6 @@ BaasBox.loadCollectionWithParams("poi", {where:"distance(lat,long,41.872389,12.4
 
 ## Password Recovery
 
-In this guide I will briefly explain what the Password Recovery service of BaasBox is and how it works.
 BaasBox has a function for Password Recovery that allows the users of your App to reset their password in case they forgot it.
 
 In order to make use of this function it is important that upon signup the App sends to BaasBox the email address of the user in the *email* field of the *visibleByTheUser* object, as you will see in the following example.
