@@ -17,7 +17,7 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 	
-The latest version is **0.9.0**
+The latest version is **0.8.4**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
