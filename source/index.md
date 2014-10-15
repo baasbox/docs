@@ -17,7 +17,7 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 	
-The latest version is **0.9.0**
+The latest version is **0.8.4**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -1195,7 +1195,6 @@ Parameter | Description
 **params** | an array of value for the where clause. For example: ``/API\_URL/WHERECLAUSE/&params=yellow&params=cyan``
 **orderBy** | set an order by clause in a SQL-like fashion (i.e.: orderBy name desc). NOTE: the direction of ordering (asc or desc) is mandatory if pagination is used (see below)
 **page** | a 0 based index indicating the page requested
-**recordPerPage** | the number of records per page
 **fields** | allows to specify a subset of fields (projections) to return instead of the entire record. It is also possibile to specify aggregate functions and execute all the operations allowed by OrientDB into the "select" statements. An exhaustive list of available functions is available at [https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators](https://github.com/orientechnologies/orientdb/wiki/SQL-Where#wiki-field-operators), meanwhile the explanation of how to specify projections is at [https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections](https://github.com/orientechnologies/orientdb/wiki/SQL-Query#projections)
 **groupBy** | allows to indicate a "group by" criteria to group the result-set by one or more fields just like in standard SQL statements. This criteria is used in conjunction with the aggregate functions expressed into the "fields"
 **count** | if set to "true", it returns the number of records that match the query instead of the entire record-set
