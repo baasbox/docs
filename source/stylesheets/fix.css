@@ -250,3 +250,23 @@ nav {
 	color:#111111 !important;
 	border:1px solid #E3D08D !important
 }
+
+.bb-cloud-service input[type='submit'] {
+	background: #E38C21;
+	color: #fff;
+	border: none;
+	height: 40px;
+	width: 180px;
+	font-size: 12px;
+	outline: 0;
+	cursor: pointer;
+	margin: auto;
+	margin-top: 3px;
+	margin-right: -190px;
+	border-radius: 4px;
+	text-transform:uppercase;
+}
+
+.bb-cloud-service input[type='submit']:hover {
+	background: #7B3D35;
+}
