@@ -264,7 +264,7 @@ Key | Description | Default
 
 ### Push Notifications
 
-Since version 0.9.0, with BaasBox is possible to manage at most three apps for sending push notifications. <br/>
+Since version 0.8.4, with BaasBox is possible to manage at most three apps for sending push notifications. <br/>
 i.e. an administration app and a customer app for a store, or it's possible to distribute one app for free and one app not for free. In this example the apps share the same backend.
 
 New section on console, Push Settings available directly in leftmenu.
@@ -485,14 +485,14 @@ tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox the correct way, you can open your browser and open
-the welcome screen: ![Console image](images/Console_0.8.1/home_console.png)
+the welcome screen: ![Console image](images/Console_0.8.4/home_console.png)
 
 ## Login screen
 
 When you are in the start view, the administrator console is reachable
 at the `/console` path. 
 
-![Login image](images/Console_0.8.1/login.png)
+![Login image](images/Console_0.8.4/login.png)
 To login in the administrative area you must supply credentials and Application Code to the administrator.
 By default these values are:
 
@@ -508,7 +508,7 @@ fields will be filled with the default values.
 
 Once you have logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.8.1/baasbox_0-8-1-console.png)
+![Dashboard image](images/Console_0.8.4/baasbox_0-8-4-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -543,7 +543,6 @@ dashboard is split into several sections:
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
 17. Push Settings. The section where it is possible to enable/disable apps for sending push notifications.
-18. Engine
 
 
 <aside class="notice">  
@@ -567,12 +566,12 @@ Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
 named group.
 
-![Api access control](images/Console_0.9.0/api_access_control.png)
+![Api access control](images/Console_0.8.4/api_access_control.png)
 
 ## Push Settings
 
 The Push Settings section allows you to enable/disable apps for sending push notifications.
-From BaasBox 0.9.0 it is possible to manage apps for sending push notifications.
+From BaasBox 0.8.4 it is possible to manage apps for sending push notifications.
 In particular BaasBox support **max three apps**. It's possible to switch app settings by the tab section.
 
 - App #1 (Default) is the section for the first app, which is the default app
@@ -585,7 +584,7 @@ If disabled or if Android Key is wrong it will be returned error and no key are 
 When the settings is configured, is possible to enabled the specific app.
 
 **Notice: Is possible to switch mode, with app enabled, only if the settings for the other mode are configured.**
-![Push settings] (images/Console_0.9.0/push_settings.png)
+![Push settings] (images/Console_0.8.4/push_settings.png)
 
 
 ## Database Management
@@ -848,7 +847,7 @@ BaasBox provides a native Android SDK, to further ease development of mobile app
 The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
 You can also use maven gradle or maven to depend on the library:
 
-``compile 'com.baasbox:baasbox-android:0.8.3'``
+``compile 'com.baasbox:baasbox-android:0.8.4'``
 
 
 #### Initialization
