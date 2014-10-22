@@ -3133,19 +3133,18 @@ NSLog(@"error %@", error);
 ```
 
 ```java
-JsonObject message = new JsonObject()
-.putString("greeting","Hello World!")
-.putString("from","BaasBox");
-
-BaasUser user = BaasUser.withUserName("Cesare");
-user.send(message,new BaasHandler<Void>(){
-@Override
-public void handle(BaasResult<Void> res){
-if(res.isFailed()){
-Log.e("LOG","Something went wrong",res.error());
-}
-}
-});
+BaasBox.messagingService()
+       .newMessage()
+       .profiles(BaasCloudMessagingService.PROFILE2)
+       .extra(new JsonObject().put("key","value"))
+       .text("message")
+       .to(user,user2)
+       .send(new BaasHandler<Void>() {
+            @Override
+            public void handle(BaasResult<Void> result) {
+              // handle the result          
+            }
+        });
 ```
 
 ```javascript
