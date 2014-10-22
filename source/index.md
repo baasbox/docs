@@ -52,7 +52,7 @@ Click on any tab above to choose the platform of your interest.
 
 ```objective_c
 You have two ways to install the iOS SDK.
-We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.3'" to your pod file.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.4'" to your pod file.
 As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the BaasBox-iOS-SDK folder on Xcode.
 
 Finally insert the following statement in the .pch file
@@ -725,7 +725,7 @@ The SDK is distributed in two ways:
 
 We recommend to install it using Cocoapods. Just add the following line to your Podfile.
 
-`pod 'BaasBoxSDK', '~> 0.8.3'`
+`pod 'BaasBoxSDK', '~> 0.8.4'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
