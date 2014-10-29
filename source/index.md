@@ -4821,7 +4821,7 @@ curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
