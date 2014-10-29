@@ -3109,24 +3109,29 @@ Parameter | Description | Type
 **collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
 **time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allow 2419200
 
+<div class="snippet-title">
+<p>Example of a request to send a push notification</p>
+</div>
+
 ```shell
-curl -X POST  http://localhost:9000/push/message/cesare  \
--d '{"message" : "hi"}' \
+curl -X POST  http://localhost:9000/push/message  \
+-d '{"message" : "hi", "users" :  ["cesare"]}' \
 -H Content-type:application/json \
 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
 ```
 
 ```objective_c
 BAAClient *client = [BAAClient sharedClient];
-[client postPath:@"/push/message/cesare"
-parameters:@{@"message" : @"Hi there"}
-success:^(id responseObject) {
+[client postPath:@"/push/message"
+      parameters:@{@"message" : @"hi", @"users" : @[@"cesare"]}
+         success:^(id responseObject) {
 
-NSLog(@"Notification sent");
+           NSLog(@"Notification sent");
 
-} failure:^(NSError *error) {
+         } 
+         failure:^(NSError *error) {
 
-NSLog(@"error %@", error);
+           NSLog(@"error %@", error);
 
 }];
 ```
@@ -3147,27 +3152,13 @@ BaasBox.messagingService()
 ```
 
 ```javascript
-TO BE IMPLEMENTED
-```
-
-<div class="snippet-title">
-<p>Example of a request</p>
-</div>
-
-```json
-{
-	"message":"test".
-	"profiles":[1,3],   
-	"sound":"sound.wav",
-  	"actionLocalizedKey":"Play",
-  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
-  	"localizedArguments":["Jenna","Frank"],
-  	"badge":10,
-    "custom":["year","10"],
-	"collapse_key":"update_match_15",
-	"time_to_live":106
-}
-
+BaasBox.sendPushNotification({"message" : "hi", "users" : ["cesare"]})
+  .done(function(res) {
+    console.log("res ", res);
+  })
+  .fail(function(error) {
+    console.log("error ", error);
+  })
 ```
 
 <div class="snippet-title">
@@ -3177,17 +3168,17 @@ TO BE IMPLEMENTED
 ```json
 // if all OK
 {
-"result": "ok",
-"data": "",
-"http_code": 200
+  "result": "ok",
+  "data": "",
+  "http_code": 200
 }
 
 //or (in case of errors in settings i.e. push sent to Android & iOS devices but only Android settings are configured)
 {
-"result": "ok",
-"data": "Push notifications were sent but they may be subject to loss of data. HINT: check push settings in console",
-"http_code": 200,
-"bb_code": "20001"
+  "result": "ok",
+  "data": "Push notifications were sent but they may be subject to loss of data. HINT: check push settings in console",
+  "http_code": 200,
+  "bb_code": "20001"
 }
 ```
 
@@ -4622,8 +4613,6 @@ BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", Baas
 
 Available since 0.8.0
 
-This function is still **experimental**
-
 Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
 Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
 
@@ -4632,11 +4621,11 @@ Links are implemented using the graph capabilities of OrientDB that is the datab
 As an example please see the code aside.
 
 ```
-customer
+                             customer
 Document A          (out) -------------> (in)   Document B
 Invoices										Customers
 
-item
+                               item
 Document A     		(out) -------------> (in)	Document C
 Invoices              							Items
 
@@ -4680,7 +4669,7 @@ curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-a
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
@@ -4832,7 +4821,7 @@ curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
