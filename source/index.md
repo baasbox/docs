@@ -4611,6 +4611,8 @@ BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", Baas
 
 ## Links
 
+Available since 0.8.0
+
 Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
 Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
 
