@@ -4611,10 +4611,6 @@ BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", Baas
 
 ## Links
 
-Available since 0.8.0
-
-This function is still **experimental**
-
 Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
 Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
 
@@ -4623,11 +4619,11 @@ Links are implemented using the graph capabilities of OrientDB that is the datab
 As an example please see the code aside.
 
 ```
-customer
+                             customer
 Document A          (out) -------------> (in)   Document B
 Invoices										Customers
 
-item
+                               item
 Document A     		(out) -------------> (in)	Document C
 Invoices              							Items
 
