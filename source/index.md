@@ -17,7 +17,7 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 	
-The latest version is **0.8.4**
+The latest version is **0.9.0**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -3108,6 +3108,9 @@ Parameter | Description | Type
 **custom** | Custom data Android & iOS | Value, JSONArray or JSONObject
 **collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
 **time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allow 2419200
+**content-available** | (Available from BaasBox 0.9.0) Provide this key with a value of 1 to indicate that new content is available. Including this key and value means that when your app is launched in the background or resumed for iOS 7 | Integer
+**category** | (Available from BaasBox 0.9.0) Sets the category of the notification for iOS8 notification actions | String
+
 
 <div class="snippet-title">
 <p>Example of a request to send a push notification</p>
