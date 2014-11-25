@@ -34,7 +34,7 @@ documentation explains:
    *  [JavaScript](?javascript#javascript-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-9-0-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-8-4-released/)
 
 FAQs are available on our [support site](http://support.baasbox.com/)
 
