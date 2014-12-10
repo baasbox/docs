@@ -103,8 +103,8 @@ The SDK also supports [Zepto](http://zeptojs.com/).
 
 # Installation
 
-**System Requirements**  [Java VM 6](http://java.com/en/download/) or later. BaasBox is compiled with
-Java 1.6.
+**System Requirements**  [Java VM 8](http://java.com/en/download/) or later. BaasBox is compiled with
+Java 1.8.
 
 1. Download the latest version [here](http://www.baasbox.com/download/). 
 2. Unzip the `baasbox-x.x.zip` file wherever you want.
@@ -395,7 +395,7 @@ include classpath("application.conf")
 
 BaasBox is a server that makes available a set of functions for the
 backend of mobile applications. All you need is a **Java Virtual Machine
-1.6 or later**. BaasBox already has everything you need
+1.8 or later**. BaasBox already has everything you need
 for it to work: an application server and a DB server. 
 BaasBox was born to be simple to use and manage. To migrate a BaasBox instance from a
 server to another, you just have to zip the database folder and copy it
@@ -452,7 +452,7 @@ Available functions are:
 
 ## Applied Technology
 
-BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play Framework 2.2.4](http://www.playframework.com/) and it incorporates the core of the [OrientDB 1.7.9 database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
+BaasBox is written mostly in Java, with some code in [Scala](http://www.scala-lang.org/). It uses the [Play Framework 2.2.4](http://www.playframework.com/) and it incorporates the core of the [OrientDB 1.7.10 database](http://www.orientechnologies.com/orientdb/). This will allow BaasBox to natively manage the relations between JSON objects and to link
 objects and queries without using specific abstractions or having to simulate them on the applicative level. OrientDB was recently surveyed and entered Gartner's Magic Quadrant.
 
 
@@ -485,14 +485,17 @@ tasks. The console is a responsive one-page web application that
 performs REST calls to the BaasBox admin APIs. We suppose that
 BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox the correct way, you can open your browser and open
-the welcome screen: ![Console image](images/Console_0.8.4/home_console.png)
+the welcome screen: 
+
+![Console image](images/Console_0.9.0/home_console.png)
 
 ## Login screen
 
 When you are in the start view, the administrator console is reachable
 at the `/console` path. 
 
-![Login image](images/Console_0.8.4/login.png)
+![Login image](images/Console_0.9.0/login.png)
+
 To login in the administrative area you must supply credentials and Application Code to the administrator.
 By default these values are:
 
@@ -508,7 +511,7 @@ fields will be filled with the default values.
 
 Once you have logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.8.4/baasbox_0-8-4-console.png)
+![Dashboard image](images/Console_0.9.0/baasbox_0-9-0-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -543,6 +546,7 @@ dashboard is split into several sections:
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
 17. Push Settings. The section where it is possible to enable/disable apps for sending push notifications.
+18. Plugin installed. The section where it is possibile to write your own plugins.
 
 
 <aside class="notice">  
@@ -708,6 +712,31 @@ following window:
 	field and save the changes to create a new asset.
 </aside>
 
+## Plugins
+
+From BaasBox 0.9.0 it is possibile to write your own plugin thanks Server Side Code (engine).
+
+The home of the plugins section is the follow:
+![Plugins Home](images/Console_0.9.0/plugins_home.png)
+
+For create a new plugin, please click to the button called New...
+Please choose a plugin name.
+![Create Plugin](images/Console_0.9.0/plugins_create.png)
+
+Now we have created a new plugin, below you can discover the meaning of the plugin icons.
+![New Plugin](images/Console_0.9.0/plugins_home_keys.png)
+
+1.  Create a new plugin
+2.  Delete the plugin
+3.  Refresh plugin
+4.  Save plugin
+5.  Activate/deactivate plugin
+6.	Enable/Disable Script Private Storage
+7.  Change background color (black/white)
+8.  Enable/Disable Plugin Log
+
+For further informations please check the dedicate section
+[Plugin code docs] (https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 
 # SDK
@@ -2141,6 +2170,70 @@ BaasBox.fetchUsers()
   "http_code": 200
 }
 ```
+
+### Change username
+
+
+``PUT /me/username ``
+
+**Group**: [baasbox.users](#list-groups)
+
+From BaasBox 0.9.0 it is possibile to change username thanks
+
+Payload
+{"username":"mynewverycoolusername"}
+
+Parameter | Description | 
+--------- | ----------- | 
+username	The new username
+
+
+<aside class="warning">
+WARNING: call this API as soon the user is registered. It perform a couple of updates to substitute many de-normalized refs that can be very time-consuming!
+</aside>
+
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+
+```shell
+curl -X POST  http://localhost:9000/me/username  \
+-d '{"username" : "matteo"}' \
+-H Content-type:application/json \
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+```
+
+```objective_c
+TO BE IMPLEMENTED
+
+
+```
+
+```java
+TO BE IMPLEMENTED
+
+```
+
+```javascript
+TO BE IMPLEMENTED
+
+```
+
+
+<div class="snippet-title">
+<p>Example of a response</p>
+</div>
+
+```json
+{
+    "result": "ok",
+    "data": "",
+    "http_code": 200
+}
+
+```
+
+
 
 ## Social Login ##
 
