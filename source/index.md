@@ -714,9 +714,9 @@ following window:
 
 ## Plugins
 
-From BaasBox 0.9.0 it is possibile to write your own plugin thanks Server Side Code (engine).
+Since BaasBox 0.9.0 it is possibile to write your own plugin thanks to the Server Side Code (engine).
 
-The home of the plugins section is the follow:
+The home of the plugins section is the following:
 ![Plugins Home](images/Console_0.9.0/plugins_home.png)
 
 For create a new plugin, please click to the button called "New..." and choose a plugin name.
@@ -725,7 +725,7 @@ Now we have created a new plugin, below you can discover the meaning of the plug
 ![New Plugin](images/Console_0.9.0/plugins_home_keys.png)
 
 1.  Create a new plugin
-2.  Delete the plugin
+2.  Delete plugin
 3.  Refresh plugin
 4.  Save plugin
 5.  Activate/deactivate plugin
@@ -733,7 +733,7 @@ Now we have created a new plugin, below you can discover the meaning of the plug
 7.  Change background color (black/white)
 8.  Enable/Disable Plugin Log
 
-For further informations please check the [section] (https://github.com/baasbox/baasbox/wiki/PluginApi)
+For further information please check the [section] (https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 
 # SDK
