@@ -26,6 +26,7 @@ documentation explains:
    *  [how to install BaasBox](?shell#installation)
    *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
    *  [REST API](?shell#api)
+   *  [Plugin Engine (Server Side Scripts)](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 *  the SDK features
 
