@@ -26,6 +26,7 @@ documentation explains:
    *  [how to install BaasBox](?shell#installation)
    *  [how to use the admin console and a detailed section about the REST API that you can use](?shell#console)
    *  [REST API](?shell#api)
+   *  [Plugin Engine (Server Side Scripts)](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 *  the SDK features
 
@@ -524,7 +525,7 @@ dashboard is split into several sections:
 6.  Number of documents (objects) stored in the embedded database and
     rapid access to the relative section
 7.  Number of files stored and rapid access to the relative section
-8.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
+8.  Quick link to the [download](http://www.baasbox.com/download/) on the BaasBox website where you
     can find the latest version
 9.  Number of collections, documents and total size in one window.
 10. Here you can see all the latest news about BaasBox. These are feeds from
@@ -535,7 +536,7 @@ dashboard is split into several sections:
     -  OS: you can find name, version, architecture and processors
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
-    -  Database: you can find version with its path and data size
+    -  Database: you can find the version with its path and data size
 12. Access a dialog window to change the password or to logout
     -  Change password: Just insert old and new passwords, then confirm
        the new one
@@ -544,8 +545,8 @@ dashboard is split into several sections:
 13. DB Management: you can create a backup of your DB and import & export
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
-17. Push Settings. The section where it is possible to enable/disable apps for sending push notifications.
+16. API Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
+17. Push Settings. The section where it is possible to enable/disable apps to send push notifications.
 18. Plugin installed. The section where it is possibile to write your own plugins.
 
 
@@ -719,21 +720,24 @@ Since BaasBox 0.9.0 it is possibile to write your own plugin thanks to the Serve
 The home of the plugins section is the following:
 ![Plugins Home](images/Console_0.9.0/plugins_home.png)
 
-For create a new plugin, please click to the button called "New..." and choose a plugin name.
+To create a new plugin, click on the "New..." button and choose a plugin name.
 
-Now we have created a new plugin, below you can discover the meaning of the plugin icons.
+The names of the plugins must be in the form _namespace.plugin_name_, the namespace "baasbox" is reserved.
+
+Now you have created a new plugin, here is a brief explanation of the editor page.
+
 ![New Plugin](images/Console_0.9.0/plugins_home_keys.png)
 
 1.  Create a new plugin
-2.  Delete plugin
-3.  Refresh plugin
-4.  Save plugin
-5.  Activate/deactivate plugin
-6.	Enable/Disable Script Private Storage
-7.  Change background color (black/white)
-8.  Enable/Disable Plugin Log
+2.  Delete the plugin
+3.  Refresh the plugin list
+4.  Save the plugin
+5.  Activate/deactivate the plugin
+6.  Show/Hide the plugin local storage
+7.  Edit the plugin (you can enter edit mode just by starting to type)
+8.  Enable/Disable the Plugin Log
 
-For further information please check the [section] (https://github.com/baasbox/baasbox/wiki/PluginApi)
+For further information please check the [wiki] (https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 
 # SDK
@@ -6547,6 +6551,13 @@ TO BE IMPLEMENTED
     "http_code": 200
 }
 ```
+
+# Plugin Engine
+Since v.0.9.0 you can write your own scripts (plugins) to run inside BaasBox.
+
+To create a plugin please see the [Console](?#plugins)
+
+The entire plugin reference is located on [GitHub](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 # Use Cases
 
