@@ -525,7 +525,7 @@ dashboard is split into several sections:
 6.  Number of documents (objects) stored in the embedded database and
     rapid access to the relative section
 7.  Number of files stored and rapid access to the relative section
-8.  Quick link to the [download](http://www.baasbox.com/download/) of BaasBox site where you
+8.  Quick link to the [download](http://www.baasbox.com/download/) on the BaasBox website where you
     can find the latest version
 9.  Number of collections, documents and total size in one window.
 10. Here you can see all the latest news about BaasBox. These are feeds from
@@ -536,7 +536,7 @@ dashboard is split into several sections:
     -  OS: you can find name, version, architecture and processors
        viewed by your OS
     -  Java: you can find version, vendor and class version of your JDK
-    -  Database: you can find version with its path and data size
+    -  Database: you can find the version with its path and data size
 12. Access a dialog window to change the password or to logout
     -  Change password: Just insert old and new passwords, then confirm
        the new one
@@ -545,8 +545,8 @@ dashboard is split into several sections:
 13. DB Management: you can create a backup of your DB and import & export
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-16. Api Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
-17. Push Settings. The section where it is possible to enable/disable apps for sending push notifications.
+16. API Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
+17. Push Settings. The section where it is possible to enable/disable apps to send push notifications.
 18. Plugin installed. The section where it is possibile to write your own plugins.
 
 
@@ -720,9 +720,9 @@ Since BaasBox 0.9.0 it is possibile to write your own plugin thanks to the Serve
 The home of the plugins section is the following:
 ![Plugins Home](images/Console_0.9.0/plugins_home.png)
 
-To create a new plugin, click the button called "New..." and choose a plugin name.
+To create a new plugin, click on the "New..." button and choose a plugin name.
 
-Names of the plugins must be in the form _namespace.plugin_name_, the namespace "baasbox" is reserved.
+The names of the plugins must be in the form _namespace.plugin_name_, the namespace "baasbox" is reserved.
 
 Now you have created a new plugin, here is a brief explanation of the editor page.
 
@@ -732,10 +732,10 @@ Now you have created a new plugin, here is a brief explanation of the editor pag
 2.  Delete the plugin
 3.  Refresh the plugin list
 4.  Save the plugin
-5.  Activate/deactivate plugin
-6.	Show/Hide the plugin local storage
-7.  Edit the plugin (you can enter in edit mode just starting typing)
-8.  Enable/Disable Plugin Log
+5.  Activate/deactivate the plugin
+6.  Show/Hide the plugin local storage
+7.  Edit the plugin (you can enter edit mode just by starting to type)
+8.  Enable/Disable the Plugin Log
 
 For further information please check the [wiki] (https://github.com/baasbox/baasbox/wiki/PluginApi)
 
