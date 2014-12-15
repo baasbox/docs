@@ -720,21 +720,24 @@ Since BaasBox 0.9.0 it is possibile to write your own plugin thanks to the Serve
 The home of the plugins section is the following:
 ![Plugins Home](images/Console_0.9.0/plugins_home.png)
 
-For create a new plugin, please click to the button called "New..." and choose a plugin name.
+To create a new plugin, click the button called "New..." and choose a plugin name.
 
-Now we have created a new plugin, below you can discover the meaning of the plugin icons.
+Names of the plugins must be in the form _namespace.plugin_name_, the namespace "baasbox" is reserved.
+
+Now you have created a new plugin, here is a brief explanation of the editor page.
+
 ![New Plugin](images/Console_0.9.0/plugins_home_keys.png)
 
 1.  Create a new plugin
-2.  Delete plugin
-3.  Refresh plugin
-4.  Save plugin
+2.  Delete the plugin
+3.  Refresh the plugin list
+4.  Save the plugin
 5.  Activate/deactivate plugin
-6.	Enable/Disable Script Private Storage
-7.  Change background color (black/white)
+6.	Show/Hide the plugin local storage
+7.  Edit the plugin (you can enter in edit mode just starting typing)
 8.  Enable/Disable Plugin Log
 
-For further information please check the [section] (https://github.com/baasbox/baasbox/wiki/PluginApi)
+For further information please check the [wiki] (https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 
 # SDK
@@ -6548,6 +6551,13 @@ TO BE IMPLEMENTED
     "http_code": 200
 }
 ```
+
+# Plugin Engine
+Since v.0.9.0 you can write your own scripts (plugins) to run inside BaasBox.
+
+To create a plugin please see the [Console](?#plugins)
+
+The entire plugin reference is located on [GitHub](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 # Use Cases
 
