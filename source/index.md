@@ -3259,6 +3259,41 @@ BaasBox.sendPushNotification({"message" : "hi", "users" : ["cesare"]})
 ```
 
 <div class="snippet-title">
+<p>Example of a request</p>
+</div>
+```json
+{
+	"message":"test".
+	"profiles":[1],   
+	"sound":"sound.wav",
+  	"actionLocalizedKey":"Play",
+  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
+  	"localizedArguments":["Jenna","Frank"],
+  	"badge":10,
+  	"custom": {
+        		"data": "text",
+        		"title": "Titletext",
+      		},
+	"category":"invite",
+	"collapse_key":"update_match_15",
+	"time_to_live":106,
+	"users":["X","Y","Z"]
+}
+```
+Following an example for the content-available field  (available since iOS 7.0)
+
+<div class="snippet-title">
+<p>Example of a request for content-available field</p>
+</div>
+```json
+{
+	"message":"test",
+	"profiles":[1],   
+	"content-available":1
+}
+```
+
+<div class="snippet-title">
 <p>Example of a response</p>
 </div>
 
@@ -3299,6 +3334,8 @@ Parameter | Description | Type
 **custom** | Custom data Android & iOS | Value, JSONArray or JSONObject
 **collapse_key** | An arbitrary string (such as "Updates Available") that is used to collapse a group of like messages when the device is offline for Android | String
 **time_to_live** | How long (in seconds) the message should be kept on the GCM storage if the device is offline for Android. If empty, it will be set to 4 weeks | Integer, max value allowed 2419200
+**content-available** | (Available from BaasBox 0.9.0) Provide this key with a value of 1 to indicate that new content is available. Including this key and value means that when your app is launched in the background or resumed for iOS 7 | Integer
+**category** | (Available from BaasBox 0.9.0) Sets the category of the notification for iOS8 notification actions | String
 
 ```shell
 curl -X POST  http://localhost:9000/push/message/cesare  \
@@ -3361,7 +3398,6 @@ TO BE IMPLEMENTED
       		},
 	"collapse_key":"update_match_15",
 	"time_to_live":106
-	"users":["X","Y","Z"]
 }
 
 ```
