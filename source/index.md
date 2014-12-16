@@ -3205,6 +3205,29 @@ Parameter | Description | Type
 **content-available** | (Available from BaasBox 0.9.0) Provide this key with a value of 1 to indicate that new content is available. Including this key and value means that when your app is launched in the background or resumed for iOS 7 | Integer
 **category** | (Available from BaasBox 0.9.0) Sets the category of the notification for iOS8 notification actions | String
 
+<div class="snippet-title">
+<p>Example of a request</p>
+</div>
+```json
+{
+	"message":"test".
+	"profiles":[1],   
+	"sound":"sound.wav",
+  	"actionLocalizedKey":"Play",
+  	"localizedKey":"GAME_PLAY_REQUEST_FORMAT",
+  	"localizedArguments":["Jenna","Frank"],
+  	"badge":10,
+  	"custom": {
+        		"data": "text",
+        		"title": "Titletext",
+      		},
+	"category":"invite",
+	"collapse_key":"update_match_15",
+	"time_to_live":106
+	"users":["X","Y","Z"]
+}
+```
+
 
 <div class="snippet-title">
 <p>Example of a request to send a push notification</p>
@@ -3361,7 +3384,6 @@ TO BE IMPLEMENTED
       		},
 	"collapse_key":"update_match_15",
 	"time_to_live":106
-	"users":["X","Y","Z"]
 }
 
 ```
