@@ -877,7 +877,7 @@ BaasBox provides a native Android SDK, to further ease development of mobile app
 The SDK is distributed as a jar. To get started download it from the [download section](http://www.baasbox.com/download) of the website, and put it in the libs folder of your project.
 You can also use maven gradle or maven to depend on the library:
 
-``compile 'com.baasbox:baasbox-android:0.8.4'``
+``compile 'com.baasbox:baasbox-android:0.9.0'``
 
 
 #### Initialization
@@ -1092,7 +1092,17 @@ NOTHING HERE
 
 ```javascript
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	
-<script src="../baasbox.js"></script>
+<script src="baasbox.js"></script>
+<script type="text/javascript" charset="utf-8">
+	
+	$(document).ready(function() {
+		BaasBox.setEndPoint("http://localhost:9000"); //the address of your BaasBox server
+		BaasBox.appcode = "1234567890";				  //the application code of your server
+		...
+		...
+		...
+	};
+	
 ```
 
 The jQuery cookie plugin, which you need to save authentication tokens, is already included at the top of the `baasbox.js` file.
@@ -4068,9 +4078,9 @@ doc.save(SaveMode.IGNORE_VERSION,new BaasHandler<BaasDocument>(){
 
 ```javascript
 // Assumes posts has properties "title", "body" and "tags".
-post.title = @"My new post title";
-post.tags = @"tag1"
-post.body = @"Body of my post.";
+post.title = "My new post title";
+post.tags = "tag1"
+post.body = "Body of my post.";
 BaasBox.save(post, "posts")
   .done(function(res) {
   	console.log("res ", res);
@@ -4149,7 +4159,7 @@ post.title = @"My new title";
 ```
 
 ```java
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the Android SDK
 ```
 
 ```javascript
@@ -4200,12 +4210,13 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 // then use the method saveObjectWithCompletion: to save the object.
 ```
 
+
 ```java
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the Android SDK
 ```
 
 ```javascript
-NOTHING HERE
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
@@ -4246,15 +4257,15 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the iOS SDK
 ```
 
 ```java
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the Android SDK
 ```
 
 ```javascript
-NOTHING HERE
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
@@ -4296,15 +4307,15 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the iOS SDK
 ```
 
 ```java
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the Android SDK
 ```
 
 ```javascript
-NOTHING HERE
+//Please use the $.ajax interface
 ```
 
 
@@ -4351,15 +4362,15 @@ curl -X PUT http://localhost:9000/document/mycollection/af1d66fe-c8b6-436f-866b-
 ```
 
 ```objective_c
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the iOS SDK
 ```
 
 ```java
-NOT IMPLEMENTED
+//Please see the "pass-through" functionality of the Android SDK
 ```
 
 ```javascript
-NOTHING HERE
+//Please use the $.ajax interface
 ```
 
 <div class="snippet-title">
@@ -5807,7 +5818,8 @@ curl http://localhost:9000/admin/asset \
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+// NOT IMPLEMENTED
+// It's only for admins. You can do it in the web console.
 ```
 
 <div class="snippet-title">
