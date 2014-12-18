@@ -6595,6 +6595,23 @@ To create a plugin please see the [Console](?#plugins)
 
 The entire plugin reference is located on [GitHub](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
+```shell
+NOTHING HERE
+
+```
+
+```objective_c
+//Please see the "pass-through" functionality of the iOS SDK
+```
+
+```java
+//Please see the "pass-through" functionality of the Android SDK
+```
+
+```javascript
+//Please use the $.ajax interface
+```
+
 # Use Cases
 
 ## Geospatial Queries
