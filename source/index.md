@@ -4809,7 +4809,15 @@ curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-a
 ```
 
 ```java
-//Please see the "pass-through" functionality of the Android SDK
+BaasLink.create("customer","source-id","dest-id",RequestOptions.DEFAULT,new BaasHandler<BaasLink>() {
+    @Override
+    public void handle(BaasResult<BaasLink> res) {
+      if (res.isSuccess()){
+        BaasLink value = res.value();
+        Log.d("TAG","value is your new link");
+      }
+    }
+});
 ```
 
 ```javascript
@@ -4901,7 +4909,31 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 ```
 
 ```java
-//Please see the "pass-through" functionality of the Android SDK
+//single link
+BaasLink.fetch("id", RequestOptions.DEFAULT,new BaasHandler<BaasLink>() {
+  @Override
+  public void handle(BaasResult<BaasLink> res) {
+    if (res.isSuccess()){
+      Log.d("TAG",res.value().toString());
+    } else {
+      Log.d("TAG","Handle error");
+    }
+  }
+});
+
+//many liinks
+BaasQuery.Criteria query =BaasQuery.builder().where("in.name.toLowerCase() like john").criteria();
+BaasLink.fetchAll("customer",query,RequestOptions.DEFAULT,new BaasHandler<List<BaasLink>>() {
+  @Override
+  public void handle(BaasResult<List<BaasLink>> res) {
+      if (res.isSuccess()){
+        List<BaasLink> links = res.value();
+        Log.d("TAG","Your links are here: "+links.size());
+      } else {
+        //handle errors
+      }
+  }
+});
 ```
 
 ```javascript
@@ -4961,7 +4993,14 @@ curl -X DELETE -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox
 ```
 
 ```java
-//Please see the "pass-through" functionality of the Android SDK
+BaasLink.withId("id").delete(RequestOptions.DEFAULT,new BaasHandler<Void>() {
+  @Override
+  public void handle(BaasResult<Void> ok) {
+    if (ok.isSuccess()){
+      Log.d("TAG","Link has been deleted");
+    }
+  }
+});
 ```
 
 ```javascript
@@ -6617,7 +6656,19 @@ NOTHING HERE
 ```
 
 ```java
-//Please see the "pass-through" functionality of the Android SDK
+// plugins are invoked through pass-through
+// eg:
+BaasBox box =BaasBox.getDefault();
+box.rest(HttpRequest.POST, 
+         "plugin/mywonderful.plugin", 
+         new JsonObject().put("bodyVal", 2), 
+         true,
+         new BaasHandler<JsonObject>() {
+          @Override
+          public void handle(BaasResult<JsonObject> res) {
+            Log.d("TAG","Ok: "res.isSuccess());
+          }
+});
 ```
 
 ```javascript
