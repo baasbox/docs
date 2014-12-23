@@ -6891,3 +6891,14 @@ The fields you need to set up in order to have the Password Recovery service wor
 +  network.smtp.user: MUST be the same account of the email.from field (INCLUDING THE DOMAIN @GMAIL.COM);
 
 **N.B. IT IS NOT POSSIBLE TO HAVE BOTH THE NETWORK.SMTP.SSL AND NETWORK.SMTP.TLS FIELDS SET TO TRUE, ONE OF THEM HAS TO BE SET TO FALSE.**
+
+## How to query with the Creation Date
+
+In order to perform correctly the query with the creation date you must write the following statement 
+
+```json
+_creation_date > date('2014-09-09T17:59:47.772+0200')
+```
+just beware of encoding it correctly to be passed as a query parameter.
+
+
