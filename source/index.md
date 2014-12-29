@@ -6627,7 +6627,19 @@ NOTHING HERE
 ```
 
 ```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
+// Assumes this plugin is installed on the server: https://gist.github.com/funkyboy/ecc754dbe0f89e4a4c56
+BAAClient *c = [BAAClient sharedClient];
+[c getPath:@"/plugin/geo.bb"
+parameters:@{@"ip" : @"8.8.8.8"}
+   success:^(id responseObject) {
+     
+     NSLog(@"res %@", responseObject);
+     
+   } failure:^(NSError *error) {
+     
+     NSLog(@"error %@ ", error);
+     
+   }];
 ```
 
 ```java
