@@ -53,14 +53,14 @@ Click on any tab above to choose the platform of your interest.
 
 ```objective_c
 You have two ways to install the iOS SDK.
-We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.4'" to your pod file.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.9.0'" to your pod file.
 As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the BaasBox-iOS-SDK folder on Xcode.
 
-Finally insert the following statement in the .pch file
+Finally insert the following statement wherever you need BaasBox functionalities
 #import "BAAClient.h" 
 and you are good to go. 
 
-Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
+Note for Swift projects. As of Xcode 6.1 you need to drag .h and .m files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
 ```
 
 ```java
@@ -754,41 +754,18 @@ The SDK is distributed in two ways:
 
 We recommend to install it using Cocoapods. Just add the following line to your Podfile.
 
-`pod 'BaasBoxSDK', '~> 0.8.4'`
+`pod 'BaasBoxSDK', '~> 0.9.0'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
-Finally insert the following statement in the .pch file
+Finally insert the following statement wherever you need BaasBox functionalities
 
 `#import "BAAClient.h"`
 
 and you are good to go. 
 
-Note for **Swift** projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
+Note for **Swift** projects. As of Xcode 6.1 you need to drag .h and .m files (and not the enclosing folder), otherwise you are not asked to create a bridging header. 
 
-#### Importing
-
-The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
-
-```objective_c
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import "BAAClient.h"
-#endif
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
 
 #### Initialization
 
@@ -1457,17 +1434,15 @@ curl http://localhost:9000/login \
 ```
 
 ```objective_c
-BAAClient *client = [BAAClient sharedClient];
-[client authenticateUser:@"user"
-                password:@"password"
-              completion:^(BOOL success, NSError *error) {
-                  
-			if (success) {
-				NSLog(@"user is %@", client.currentUser);
-			} else {
-				// show error
-			}
-}];
+[BAAUser loginWithUsername:@"cesare"
+                  password:@"password"
+                completion:^(BOOL success, NSError *error) {
+                  if (success) {
+                    NSLog(@"user is %@", client.currentUser);
+                  } else {
+                    // show error
+                  }
+                }];
 ```
 
 ```java
