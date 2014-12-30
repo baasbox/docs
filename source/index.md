@@ -6627,10 +6627,26 @@ NOTHING HERE
 ```
 
 ```objective_c
+// Example with GET
 // Assumes this plugin is installed on the server: https://gist.github.com/funkyboy/ecc754dbe0f89e4a4c56
 BAAClient *c = [BAAClient sharedClient];
 [c getPath:@"/plugin/geo.bb"
 parameters:@{@"ip" : @"8.8.8.8"}
+   success:^(id responseObject) {
+     
+     NSLog(@"res %@", responseObject);
+     
+   } failure:^(NSError *error) {
+     
+     NSLog(@"error %@ ", error);
+     
+   }];
+
+// Example with POST
+// Assumes this plugin is installed https://gist.github.com/funkyboy/ad3b25dfdbd53e27324f
+BAAClient *c = [BAAClient sharedClient];
+[c postPath:@"/plugin/addcar.bb"
+parameters:@{@"name" : @"ferrari"}
    success:^(id responseObject) {
      
      NSLog(@"res %@", responseObject);
