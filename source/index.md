@@ -6675,7 +6675,27 @@ box.rest(HttpRequest.POST,
 ```
 
 ```javascript
-//Please use the $.ajax interface
+// Example with GET
+// Assumes this plugin is installed on the server: https://gist.github.com/funkyboy/ecc754dbe0f89e4a4c56
+var url = BaasBox.endPoint + '/plugin/geo.bb';
+$.get(url, {"ip" : "8.8.8.8"})
+  .done(function (res) {
+    console.log("res is ", res.data);
+  })
+  .fail(function (error) {
+      console.log("error = ", error);
+   })
+
+// Example with POST
+// Assumes this plugin is installed https://gist.github.com/funkyboy/ad3b25dfdbd53e27324f
+var url = BaasBox.endPoint + '/plugin/addcar.bb';
+$.post(url, {"name" : "ferrari"})
+  .done(function (res) {
+    console.log("res is ", res.data);
+  })
+  .fail(function (error) {
+      console.log("error = ", error);
+  })
 ```
 
 # Use Cases
