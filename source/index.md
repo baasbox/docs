@@ -2163,19 +2163,18 @@ BaasBox.fetchUsers()
 ``PUT /me/username ``
 
 **Group**: [baasbox.users](#list-groups)
+		
+**Headers**: See authorization header in the [General Remarks](#general-remarks)
 
-From BaasBox 0.9.0 it is possibile to change username thanks
-
-Payload
-{"username":"mynewverycoolusername"}
+**Description**: Starting from v. 0.9.0 it is possibile to change usernames 
 
 Parameter | Description | 
 --------- | ----------- | 
-username	The new username
+**username** | The new username
 
 
 <aside class="warning">
-WARNING: call this API as soon the user is registered. It perform a couple of updates to substitute many de-normalized refs that can be very time-consuming!
+WARNING: call this API as soon the user is registered. It performs updates to substitute many de-normalized refs that can be very time-consuming!
 </aside>
 
 <div class="snippet-title">
@@ -2190,18 +2189,17 @@ curl -X POST  http://localhost:9000/me/username  \
 ```
 
 ```objective_c
-TO BE IMPLEMENTED
-
+//Please see the "pass-through" functionality of the iOS SDK
 
 ```
 
 ```java
-TO BE IMPLEMENTED
+//Please see the "pass-through" functionality of the Android SDK
 
 ```
 
 ```javascript
-TO BE IMPLEMENTED
+//Please see the "pass-through" functionality of the JS SDK
 
 ```
 
