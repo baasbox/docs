@@ -53,14 +53,14 @@ Click on any tab above to choose the platform of your interest.
 
 ```objective_c
 You have two ways to install the iOS SDK.
-We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.8.4'" to your pod file.
+We suggest cocoapods: just add "pod 'BaasBoxSDK', '~> 0.9.0'" to your pod file.
 As an alternative you can download this repo (https://github.com/baasbox/iOS-SDK) and drag and drop the BaasBox-iOS-SDK folder on Xcode.
 
-Finally insert the following statement in the .pch file
+Finally insert the following statement wherever you need BaasBox functionalities
 #import "BAAClient.h" 
 and you are good to go. 
 
-Note for Swift projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
+Note for Swift projects. As of Xcode 6.1 you need to drag .h and .m files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
 ```
 
 ```java
@@ -754,41 +754,18 @@ The SDK is distributed in two ways:
 
 We recommend to install it using Cocoapods. Just add the following line to your Podfile.
 
-`pod 'BaasBoxSDK', '~> 0.8.4'`
+`pod 'BaasBoxSDK', '~> 0.9.0'`
 
 If you prefer the good old way, download the SDK from the [download section](http://www.baasbox.com/download) of the website, and drag and drop the whole folder into your Xcode project.
 
-Finally insert the following statement in the .pch file
+Finally insert the following statement wherever you need BaasBox functionalities
 
 `#import "BAAClient.h"`
 
 and you are good to go. 
 
-Note for **Swift** projects. As of Xcode beta2 you need to drag .h and .n files (and not the enclosing folder), otherwise you are not asked to create a bridging header. Once you have created one, add the following statement and you are good to go: #import "BAAClient.h" 
+Note for **Swift** projects. As of Xcode 6.1 you need to drag .h and .m files (and not the enclosing folder), otherwise you are not asked to create a bridging header. 
 
-#### Importing
-
-The simplest way to import the SDK is to add this line ``#import "BAAClient.h"`` into the .pch file of your project and you are all set. Check out the example on the right.
-
-```objective_c
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import "BAAClient.h"
-#endif
-```
-
-```shell
-NOTHING HERE
-```
-
-```java
-NOTHING HERE
-```
-
-```javascript
-NOTHING HERE
-```
 
 #### Initialization
 
@@ -1457,17 +1434,15 @@ curl http://localhost:9000/login \
 ```
 
 ```objective_c
-BAAClient *client = [BAAClient sharedClient];
-[client authenticateUser:@"user"
-                password:@"password"
-              completion:^(BOOL success, NSError *error) {
-                  
-			if (success) {
-				NSLog(@"user is %@", client.currentUser);
-			} else {
-				// show error
-			}
-}];
+[BAAUser loginWithUsername:@"cesare"
+                  password:@"password"
+                completion:^(BOOL success, NSError *error) {
+                  if (success) {
+                    NSLog(@"user is %@", client.currentUser);
+                  } else {
+                    // show error
+                  }
+                }];
 ```
 
 ```java
@@ -4809,7 +4784,7 @@ curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-a
 ```
 
 ```java
-  BaasLink.create("customer","source-id","dest-id",RequestOptions.DEFAULT,new BaasHandler<BaasLink>() {
+BaasLink.create("customer","source-id","dest-id",RequestOptions.DEFAULT,new BaasHandler<BaasLink>() {
     @Override
     public void handle(BaasResult<BaasLink> res) {
       if (res.isSuccess()){
@@ -4910,16 +4885,16 @@ curl -X GET -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-ap
 
 ```java
 //single link
- BaasLink.fetch("id", RequestOptions.DEFAULT,new BaasHandler<BaasLink>() {
-    @Override
-    public void handle(BaasResult<BaasLink> res) {
-      if (res.isSuccess()){
-        Log.d("TAG",res.value().toString());
-      } else {
-        Log.d("TAG","Handle error");
-      }
+BaasLink.fetch("id", RequestOptions.DEFAULT,new BaasHandler<BaasLink>() {
+  @Override
+  public void handle(BaasResult<BaasLink> res) {
+    if (res.isSuccess()){
+      Log.d("TAG",res.value().toString());
+    } else {
+      Log.d("TAG","Handle error");
     }
-  });
+  }
+});
 
 //many liinks
 BaasQuery.Criteria query =BaasQuery.builder().where("in.name.toLowerCase() like john").criteria();
@@ -6652,7 +6627,35 @@ NOTHING HERE
 ```
 
 ```objective_c
-//Please see the "pass-through" functionality of the iOS SDK
+// Example with GET
+// Assumes this plugin is installed on the server: https://gist.github.com/funkyboy/ecc754dbe0f89e4a4c56
+BAAClient *c = [BAAClient sharedClient];
+[c getPath:@"/plugin/geo.bb"
+parameters:@{@"ip" : @"8.8.8.8"}
+   success:^(id responseObject) {
+     
+     NSLog(@"res %@", responseObject);
+     
+   } failure:^(NSError *error) {
+     
+     NSLog(@"error %@ ", error);
+     
+   }];
+
+// Example with POST
+// Assumes this plugin is installed https://gist.github.com/funkyboy/ad3b25dfdbd53e27324f
+BAAClient *c = [BAAClient sharedClient];
+[c postPath:@"/plugin/addcar.bb"
+parameters:@{@"name" : @"ferrari"}
+   success:^(id responseObject) {
+     
+     NSLog(@"res %@", responseObject);
+     
+   } failure:^(NSError *error) {
+     
+     NSLog(@"error %@ ", error);
+     
+   }];
 ```
 
 ```java
@@ -6672,7 +6675,27 @@ box.rest(HttpRequest.POST,
 ```
 
 ```javascript
-//Please use the $.ajax interface
+// Example with GET
+// Assumes this plugin is installed on the server: https://gist.github.com/funkyboy/ecc754dbe0f89e4a4c56
+var url = BaasBox.endPoint + '/plugin/geo.bb';
+$.get(url, {"ip" : "8.8.8.8"})
+  .done(function (res) {
+    console.log("res is ", res.data);
+  })
+  .fail(function (error) {
+      console.log("error = ", error);
+   })
+
+// Example with POST
+// Assumes this plugin is installed https://gist.github.com/funkyboy/ad3b25dfdbd53e27324f
+var url = BaasBox.endPoint + '/plugin/addcar.bb';
+$.post(url, {"name" : "ferrari"})
+  .done(function (res) {
+    console.log("res is ", res.data);
+  })
+  .fail(function (error) {
+      console.log("error = ", error);
+  })
 ```
 
 # Use Cases
@@ -6891,3 +6914,14 @@ The fields you need to set up in order to have the Password Recovery service wor
 +  network.smtp.user: MUST be the same account of the email.from field (INCLUDING THE DOMAIN @GMAIL.COM);
 
 **N.B. IT IS NOT POSSIBLE TO HAVE BOTH THE NETWORK.SMTP.SSL AND NETWORK.SMTP.TLS FIELDS SET TO TRUE, ONE OF THEM HAS TO BE SET TO FALSE.**
+
+## How to query with the Creation Date
+
+In order to perform correctly the query with the creation date you must write the following statement 
+
+```json
+_creation_date > date('2014-09-09T17:59:47.772+0200')
+```
+just beware of encoding it correctly to be passed as a query parameter.
+
+
