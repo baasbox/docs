@@ -17,7 +17,7 @@ BaasBox is a complete solution to implement the back end of your applications.
 
 It is available as a product released under the Apache 2 license, or as a [cloud service](http://beta.baasbox.com)
 	
-The latest version is **0.9.0**
+The latest version is **0.9.1**
 
 You can access all sections using the sidebar on the left. The
 documentation explains:
@@ -35,7 +35,7 @@ documentation explains:
    *  [JavaScript](?javascript#javascript-sdk)
 
 
-For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-9-0-released/)
+For a complete list of changes and new features, see the [changelog](http://www.baasbox.com/baasbox-0-9-1-released/)
 
 FAQs are available on our [support site](http://support.baasbox.com/)
 
@@ -447,7 +447,7 @@ Available functions are:
 
    -  Backup/restore and reset the integrated database
 
--  Api Access management:
+-  REST API Access management:
 
    - Enable/disable groups of REST endpoints from external access
 
@@ -488,14 +488,14 @@ BaasBox is deployed on localhost with its default parameters. If you
 deployed BaasBox the correct way, you can open your browser and open
 the welcome screen: 
 
-![Console image](images/Console_0.9.0/home_console.png)
+![Console image](images/Console_0.9.1/home_console.png)
 
 ## Login screen
 
 When you are in the start view, the administrator console is reachable
 at the `/console` path. 
 
-![Login image](images/Console_0.9.0/login.png)
+![Login image](images/Console_0.9.1/login.png)
 
 To login in the administrative area you must supply credentials and Application Code to the administrator.
 By default these values are:
@@ -545,7 +545,7 @@ dashboard is split into several sections:
 13. DB Management: you can create a backup of your DB and import & export
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
-16. API Access: The API Access section allows you to manage which REST endpoints are accessible to non administrator users
+16. REST API Access: The REST API Access section allows you to manage which REST endpoints are accessible to non administrator users
 17. Push Settings. The section where it is possible to enable/disable apps to send push notifications.
 18. Plugin installed. The section where it is possibile to write your own plugins.
 
@@ -563,15 +563,15 @@ recovery, images and push notifications. Each record has the Edit button
 that allows you to modify its action. 
 See also [Settings](#settings).
 
-## API Access
+## REST API Access
 
-The [API Access](#api-access83) section allows you to manage which REST endpoints are accessible
+The [REST API Access](#rest-api-access100) section allows you to manage which REST endpoints are accessible
 to non administrator users.
 Those are grouped by functionality under a **Function** group.
 Each record has a button to switch on and off the endpoints in the
 named group.
 
-![Api access control](images/Console_0.8.4/api_access_control.png)
+![Api access control](images/Console_0.9.1/api_access_control.png)
 
 ## Push Settings
 
@@ -644,7 +644,7 @@ registereduser), a creation date, a status and actions. You also have a
 search tool. If you want to create a new user, click on the New User
 button and you will see this window:
 
-![New user image](images/Console_0.8.1/create_new_user.png)
+![New user image](images/Console_0.9.1/create_new_user.png)
 
 <aside class="notice">
 	Starred fields are mandatory. After you have filled in at least the mandatory fields, you have to save the changes.
@@ -663,7 +663,7 @@ In this section you have a list of all your collections and you can quickly
 find them with the search tool. To create a new collection, click on the
 New Collection button and insert its name, then save the changes.
 
-![New collection](images/Console_0.8.1/create_new_collection.png)
+![New collection](images/Console_0.9.1/create_new_collection.png)
 
 
 ## Documents
@@ -706,7 +706,7 @@ Actions. Of course you also have the search tool. If you want to create
 a new asset, click on the New Asset button and you will see the
 following window: 
 
-![New asset](images/Console_0.8.1/new_asset.png)
+![New asset](images/Console_0.9.1/new_asset.png)
 
 <aside class="notice">
 	You have to fill in at least the Name
@@ -6389,9 +6389,9 @@ TO BE IMPLEMENTED
 }
 ```
 
-## API Access
+## REST API Access
 
-API access control lets you manage which endpoints are accessible from the *outside world*.
+REST API access control lets you manage which endpoints are accessible from the *outside world*.
 Each endpoint belongs to a named group, identified by a key.
 
 Disabled groups render their endpoints inaccessible to clients, unless the user is authenticated as
