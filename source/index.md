@@ -1265,10 +1265,10 @@ NSDictionary *parameters = @{@"where" : "color='red'"};
 ```
 
 ```java
-Filter paginate = BaasQuery.builder()
+Criteria paginate = BaasQuery.builder()
                            .pagination(0,30)
                            .orderBy("user.name")
-                           .filter();
+                           .criteria();
 
 BaasUser.fetchAll(paginate,new BaasHandler<List<BaasUser>>() {
   @Override
@@ -2096,10 +2096,10 @@ NSDictionary *parameters = @{kPageNumberKey : @0,
 ```
 
 ```java
-Filter filter = BaasQuery.builder()
+Criteria filter = BaasQuery.builder()
                          .pagination(0,2)
                          .orderBy("user.name")
-                         .filter();
+                         .criteria();
 BaasUser.fetchAll(filter,new BaasHandler<List<BaasUser>>() {
   @Override
   public void handle(BaasResult<List<BaasUser>> res) {
@@ -3842,11 +3842,11 @@ BaasDocument.fetchAll("collection",
 });
 
 // using pagination and selection
-Filter filter = BaasQuery.builder().pagination(0,20)
+Criteria filter = BaasQuery.builder().pagination(0,20)
                       .orderBy("field desc")
                       .where("_author = ?")
                       .whereParams("Cesare")
-                      .filter();
+                      .criteria();
 
 BaasDocument.fetchAll("collection",filter,
   new BaasHandler<List<BaasDocument>() {
