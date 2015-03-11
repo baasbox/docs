@@ -10,7 +10,7 @@ language_tabs:
 toc_footers:
  - <a href='#'></a>
 ---
-
+cal
 # Introduction
 
 BaasBox is a complete solution to implement the back end of your applications.
@@ -2185,6 +2185,7 @@ Parameter | Description |
 
 <aside class="warning">
 WARNING: call this API as soon the user is registered. It performs updates to substitute many de-normalized refs that can be very time-consuming!
+After the call, if successful, existing tokens are invalidated. It's probably a good idea to show/redirect to the login screen.
 </aside>
 
 <div class="snippet-title">
