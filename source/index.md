@@ -2192,7 +2192,7 @@ WARNING: call this API as soon the user is registered. It performs updates to su
 </div>
 
 ```shell
-curl -X POST  http://localhost:9000/me/username  \
+curl -X PUT  http://localhost:9000/me/username  \
 -d '{"username" : "matteo"}' \
 -H Content-type:application/json \
 -H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
