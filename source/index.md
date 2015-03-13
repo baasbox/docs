@@ -5150,11 +5150,11 @@ file.contentType = @"image/jpeg";
 ```java
 byte[] data = ...; // in memory data to upload
 JsonObject attachedData = new JsonObject()
-                              .putString("someInfo","value);
+                              .putString("someInfo","value");
 
 BaasFile file = new BaasFile(attachedData);
 
-file.upload(data,new BaasHandler<BaasFile> file) {
+file.upload(data,new BaasHandler<BaasFile> () {
   @Override
   public void handle(BaasResult<BaasFile> res) {
     if( res.isSuccess() ) {
@@ -5163,7 +5163,7 @@ file.upload(data,new BaasHandler<BaasFile> file) {
       Log.e("LOG","Deal with error",res.error());
     }
   }
-}
+});
 ```
 
 ```javascript
