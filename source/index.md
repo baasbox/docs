@@ -210,7 +210,7 @@ These settings cannot be modified at runtime.
 ## App Settings
 These are the settings relating to your App. They are stored into the embedded DB and because of this, once they are set, they are read from the DB and you do not have to specify them every time you start BaasBox.
 The App Settings can be configured via the [Administration Console](#console).
-The settings are splitted in five sections:
+The settings are split in five sections:
 
 - Application
 
