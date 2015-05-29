@@ -26,7 +26,16 @@ under the License.
     <%= stylesheet_link_tag "screen", media: 'screen' %>
     <%= stylesheet_link_tag "print", media: 'print' %>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <%= javascript_include_tag  "all" %>
+    <link rel='stylesheet' id='cookie-notice-front-css'  href='http://www.baasbox.com/wp-content/plugins/cookie-notice/css/front.css' type='text/css' media='all' />
+	<%= javascript_include_tag  "all" %>
+
+	<script type='text/javascript'>
+			/* <![CDATA[ */
+			var cnArgs = {"ajaxurl":"http:\/\/www.baasbox.com\/wp-admin\/admin-ajax.php","hideEffect":"none","cookieName":"cookie_notice_accepted","cookieValue":"TRUE","cookieTime":"15811200","cookiePath":"\/","cookieDomain":""};
+			/* ]]> */
+	</script>
+	<script type='text/javascript' src='http://www.baasbox.com/wp-content/plugins/cookie-notice/js/front.js'></script>
+
 
     <script>
 	function start() {
@@ -172,5 +181,8 @@ under the License.
 	      </div>
 	  -->
     </div>
+	<div id="cookie-notice" class="cn-bottom wp-default" style="color: #fff; background-color: #000000;">
+			<div class="cookie-notice-container"><span id="cn-notice-text">We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.</span><a href="" id="cn-accept-cookie" class="button wp-default">Ok</a><a href="http://www.baasbox.com/cookies-policy" target="_self" id="cn-more-info" class="button wp-default">Read more</a>
+	</div>
   </body>
 </html>
