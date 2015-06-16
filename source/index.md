@@ -10,7 +10,6 @@ language_tabs:
 toc_footers:
  - <a href='#'></a>
 ---
-cal
 # Introduction
 
 BaasBox is a complete solution to implement the back end of your applications.
@@ -438,6 +437,7 @@ Available functions are:
    -  Create and fetch files
    -  Content and metadata extraction
    -  ACL
+   -  Images resize
 
 -  Push notifications:
 
@@ -512,7 +512,7 @@ fields will be filled with the default values.
 
 Once you have logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.9.0/baasbox_0-9-0-console.png)
+![Dashboard image](images/Console_0.9.4/baasbox_0-9-4-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -546,9 +546,9 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. REST API Access: The REST API Access section allows you to manage which REST endpoints are accessible to non administrator users
-17. Push Settings. The section where it is possible to enable/disable apps to send push notifications.
+17. Push. The section where it is possible to enable/disable apps to send push notifications. You can also test your settings sending test messages to registered users
 18. Plugin installed. The section where it is possibile to write your own plugins.
-
+19. See the BaasBox verbose log. Useful to inspect what happens behind the scene and to report detailed bugs
 
 <aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
