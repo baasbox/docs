@@ -563,6 +563,20 @@ recovery, images and push notifications. Each record has the Edit button
 that allows you to modify its action. 
 See also [Settings](#settings).
 
+## Image resizing
+
+In the settings you can define an array of possible resizing policies for images.
+
+![Image resize settings](images/Console_0.8.1/image_resize.png)
+
+Examples are: 
+
+* `25%` : scales the image to 25% 
+* `<=80px`: scales the image so that the smallest dimension is at most 80px.
+
+See [Retrieve a file](#retrieve-a-file) on how to use these values.
+
+
 ## REST API Access
 
 The [REST API Access](#rest-api-access100) section allows you to manage which REST endpoints are accessible
@@ -572,6 +586,34 @@ Each record has a button to switch on and off the endpoints in the
 named group.
 
 ![Api access control](images/Console_0.9.1/api_access_control.png)
+
+## Database Management
+
+The item **DB Management** allows you to perform some operations on the
+database. 
+
+![Dashboard image](images/Console_0.8.1/baasbox-db-management.png)
+
+1. Restore a previously created backup file
+2. Create a new backup
+3. View the list of generated backups
+4. Reinitialize the database at its initial state. It deletes all the
+database content.
+
+To create a new backup, you have to click on the "Create a new
+backup..." button. This operation is asynchronous. BaasBox will freeze
+the database and it will stop responding to the clients. When the backup
+is ready you will find it in the list. From that list you can download
+it or delete it.
+
+To restore a database you have to download a backup file locally, and
+then use the restore feature.
+
+## Server Log
+By clicking on this menu item, a new window (or tab) will be opened in your web browser. In this new window, from now on, you will see the BaasBox verbose log (not available on the BaasBox cloud service).
+This feature is quite useful to know what happens behind the scene without access to the server to inspect the logs.
+
+![Server Log](images/Console_0.9.4/baasbox-0.9.4-server-log.png)
 
 ## Push Settings
 
@@ -605,41 +647,6 @@ By default the Payload is:
 Into the _Server Response_ section you can see detailed information on which steps BaasBox performed to elaborate the provided JSON.
 
 ![Api access control](images/Console_0.9.4/baasbox-0-9-4-push-test.png)
-
-## Database Management
-
-The item **DB Management** allows you to perform some operations on the
-database. 
-
-![Dashboard image](images/Console_0.8.1/baasbox-db-management.png)
-
-1. Restore a previously created backup file
-2. Create a new backup
-3. View the list of generated backups
-4. Reinitialize the database at its initial state. It deletes all the
-   database content.
-
-To create a new backup, you have to click on the "Create a new
-backup..." button. This operation is asynchronous. BaasBox will freeze
-the database and it will stop responding to the clients. When the backup
-is ready you will find it in the list. From that list you can download
-it or delete it.
-
-To restore a database you have to download a backup file locally, and
-then use the restore feature.
-
-## Image resizing
-
-In the settings you can define an array of possible resizing policies for images.
-
-![Image resize settings](images/Console_0.8.1/image_resize.png)
-
-Examples are: 
-
-* `25%` : scales the image to 25% 
-* `<=80px`: scales the image so that the smallest dimension is at most 80px.
-
-See [Retrieve a file](#retrieve-a-file) on how to use these values.
 
 
 
