@@ -216,6 +216,11 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
         background-color: $lang-select-pressed-bg;
         color: $lang-select-pressed-text;
       }
+  
+	  &:hover{
+		background-color: rgb(137, 144, 152);
+	  
+	  }
     }
 
     &:after {
@@ -367,7 +372,7 @@ h4 {
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    /*background-color: rgba(0,0,0,0.05);*/
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
@@ -426,8 +431,8 @@ h4 {
 
 .content {
   pre, blockquote {
-    background-color: $code-bg;
-    color: #fff;
+   // background-color: $code-bg;
+   // color: #fff;
 
     padding: 2em $main-padding;
     margin: 0;
