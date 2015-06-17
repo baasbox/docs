@@ -16,8 +16,13 @@ under the License.
 
 @import 'variables';
 
-<%= Rouge::Themes::Github.render(:scope => '.highlight') %>
+<%= Rouge::Themes::MonokaiSublime.render(:scope => '.highlight') %>
 
+ .highlight {
+   background-color:rgb(40, 50, 63);
+ }
+ 
+/*
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
   color: #909090;
 }
@@ -25,3 +30,5 @@ under the License.
 .highlight, .highlight .w {
   background-color: $code-bg;
 }
+
+*/
