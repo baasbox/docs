@@ -4815,8 +4815,8 @@ BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", Baas
 
 Available since 0.8.0
 
-Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
-Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
+Links allow to connect documents, files and users (since v.0.9.4) to each other. They are similar to the relations in a relational database.
+Of course there are differences between relations and links. First of all, links have versus, secondly they have a label.
 
 Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
 
@@ -4836,9 +4836,9 @@ Invoices              							Items
 
 Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
 Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
-For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
+For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](http://orientdb.com/docs/1.7.8/index.html)
 
-You can query links by name and/or use filters to select linked documents (or file). 
+You can query links by label and/or use filters to select linked documents (or file). 
 At the moment it is possible to execute query only on links, there are not APIs to traverse them or to query linked documents from a given one.
 
 
@@ -4848,7 +4848,7 @@ At the moment it is possible to execute query only on links, there are not APIs 
 
 **Group**: [baasbox.data.write](#list-groups)
 
-To create a link you must provide the two documents you want to connect and the link name.
+To create a link you must provide the two objects (documents, files, users) you want to connect and the link label (or name).
 Since links have a direction, the first document will be the source node of the link and the second one will be the destination node.
 
 Parameter | Description
@@ -4856,6 +4856,9 @@ Parameter | Description
 **sourceId** | The ID of the first document or file to link.
 **label** | The link name. Can be any valid string
 **destId** | The ID of the second document or file to link.
+
+**Note**: use the users'id, not their username!
+
 
 ```shell
 curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
