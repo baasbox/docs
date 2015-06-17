@@ -2,8 +2,8 @@
 title: Baasbox API Reference
 
 language_tabs:
-  - shell: cURL
-  - objective_c: iOS
+  - shell: cURL/Shell
+  - objective_c: iOS/OSX
   - java: Android
   - javascript: JavaScript
 
@@ -144,15 +144,15 @@ To set an option you have to type it as a _start_ script parameter.
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
@@ -167,15 +167,15 @@ These settings cannot be modified at runtime.
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 BaasBox is based on the [Play Framework 2.2.4](http://www.playframework.com). This means that it accepts all the options available for any Play application.
@@ -373,15 +373,15 @@ orient.baasbox.path=db/baasbox
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 <aside class="notice"> 
@@ -470,15 +470,15 @@ http://127.0.0.1:9000/console
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 BaasBox has a web console that allows to manage its behavior and to perform administrative
@@ -798,15 +798,15 @@ appCode:@"1234567890"];
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 #### Architecture and pass-through
@@ -857,15 +857,15 @@ NSLog(@"error is %@", error);
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 
@@ -912,15 +912,15 @@ client = b.setApiDomain("address")
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 #### General usage
@@ -959,15 +959,15 @@ BaasDocument.fetchAllSync("coll");
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 #### Asynchronous requests management
@@ -1021,15 +1021,15 @@ token = null;
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 #### Pass-through API
@@ -1055,15 +1055,15 @@ public void handle(BaasResult<JsonObject> res){
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 
@@ -1077,15 +1077,15 @@ You can download the SDK from the [download page](http://www.baasbox.com/downloa
 To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Javascript' Tab
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Javascript' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Javascript' Tab
 ```
 
 ```javascript
@@ -6708,7 +6708,7 @@ To create a plugin please see the [Console](?#plugins)
 The entire plugin reference is located on [GitHub](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See other tabs
 
 ```
 
