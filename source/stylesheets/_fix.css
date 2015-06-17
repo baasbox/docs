@@ -172,7 +172,6 @@ nav {
 	/*background-color:#fff !important;
 	color:#111111 !important;
 	*/
-    border:1px solid #538378 !important;
     margin-top:0px !important;
     margin-left:16px !important;
     margin-bottom:45px !important;
@@ -180,14 +179,14 @@ nav {
 }
 
 .page-wrapper .lang-selector {
-	width:80% !important;
 	border-bottom:none !important;
 	margin-left:16px !important;
 	margin-top:0px !important;
+	
 }
 
 .page-wrapper .lang-selector a{
-	margin-left:16px !important
+	/*margin-left:0px !important*/
 }
 
 .page-wrapper .lang-selector a:active {
