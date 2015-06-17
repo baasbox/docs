@@ -3645,21 +3645,25 @@ Here are the APIs.
 **Group**: [baasbox.data.write](#list-groups)
 
 Creates a document in the collection specified in the parameter. The collection must have been created in advance. See [here](#create-a-new-collection).
-The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
 The returned document is decorated with the following fields:
 
-- `id`: unique ID 
+- `id`: unique Identifier of the document. It is a String and it is unique thorught all the database. 
 - `@version`: number indication of the version of the record, useful to manage concurrent updates
 - `@class`: name of the collection
 - `_creation_date`: timestamp
 - `_author`: username of the user who created the document.
 
-These fields **cannot** be overwritten. 
+**Note**: These fields **cannot** be overwritten. 
+
+Since v0.9.4 you can provide your own ids for documents. 
+
+By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
+
 
 Parameter | Description
 --------- | -----------
 **collection-name** | The name of the collection. Mandatory.
- | A valid JSON as the body of the POST call. Mandatory.
+The body payload | A valid JSON as the body of the POST call. Mandatory.
 
 <div class="snippet-title">
 	<p>Example of a request to create a document</p>
@@ -3740,7 +3744,7 @@ BaasBox.save(post, "posts")
 ```
 
 ### Retrieve documents
-You can get documents in two ways: using their unique IDs, or executing a query to perform a search.
+You can fetch documents in two ways: using their [unique IDs](#retrieve-a-document-by-its-id), or [executing a query to perform a search](#retrieve-documents-by-a-query).
 Both methods are described below.   
 
 #### Retrieve a document by its ID
@@ -3756,6 +3760,7 @@ Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
 **ID** | The unique ID of the document. Mandatory.
+
 
 <div class="snippet-title">
 	<p>Example of a request to retrieve a specific document</p>
