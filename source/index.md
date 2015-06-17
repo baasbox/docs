@@ -2,15 +2,14 @@
 title: Baasbox API Reference
 
 language_tabs:
-  - shell: cURL
-  - objective_c: iOS
+  - shell: cURL/Shell
+  - objective_c: iOS/OSX
   - java: Android
   - javascript: JavaScript
 
 toc_footers:
  - <a href='#'></a>
 ---
-cal
 # Introduction
 
 BaasBox is a complete solution to implement the back end of your applications.
@@ -145,15 +144,15 @@ To set an option you have to type it as a _start_ script parameter.
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 Since BaasBox runs on top of a Java Virtual Machine, you can use any JVM options to perform a fine tuning of your BaasBox.
@@ -168,15 +167,15 @@ These settings cannot be modified at runtime.
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 BaasBox is based on the [Play Framework 2.2.4](http://www.playframework.com). This means that it accepts all the options available for any Play application.
@@ -374,15 +373,15 @@ orient.baasbox.path=db/baasbox
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 <aside class="notice"> 
@@ -438,6 +437,7 @@ Available functions are:
    -  Create and fetch files
    -  Content and metadata extraction
    -  ACL
+   -  Images resize
 
 -  Push notifications:
 
@@ -470,15 +470,15 @@ http://127.0.0.1:9000/console
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Shell' Tab
 ```
 
 BaasBox has a web console that allows to manage its behavior and to perform administrative
@@ -512,7 +512,7 @@ fields will be filled with the default values.
 
 Once you have logged in, you will see the main dashboard screen: 
 
-![Dashboard image](images/Console_0.9.0/baasbox_0-9-0-console.png)
+![Dashboard image](images/Console_0.9.4/baasbox_0-9-4-console.png)
 
 The web console is based on the Twitter bootstrap and on the [Charisma Template](https://github.com/usmanhalalit/charisma/) project. The
 dashboard is split into several sections:
@@ -546,9 +546,9 @@ dashboard is split into several sections:
 14. Roles: you can view and create roles for users
 15. Files: here you will find the files you have uploaded and you will be able to manage them and work on them
 16. REST API Access: The REST API Access section allows you to manage which REST endpoints are accessible to non administrator users
-17. Push Settings. The section where it is possible to enable/disable apps to send push notifications.
+17. Push. The section where it is possible to enable/disable apps to send push notifications. You can also test your settings sending test messages to registered users
 18. Plugin installed. The section where it is possibile to write your own plugins.
-
+19. See the BaasBox verbose log. Useful to inspect what happens behind the scene and to report detailed bugs
 
 <aside class="notice">  
 NOTE: you can hide all tables/sections that have the up-arrow button on
@@ -563,6 +563,20 @@ recovery, images and push notifications. Each record has the Edit button
 that allows you to modify its action. 
 See also [Settings](#settings).
 
+## Image resizing
+
+In the settings you can define an array of possible resizing policies for images.
+
+![Image resize settings](images/Console_0.8.1/image_resize.png)
+
+Examples are: 
+
+* `25%` : scales the image to 25% 
+* `<=80px`: scales the image so that the smallest dimension is at most 80px.
+
+See [Retrieve a file](#retrieve-a-file) on how to use these values.
+
+
 ## REST API Access
 
 The [REST API Access](#rest-api-access100) section allows you to manage which REST endpoints are accessible
@@ -572,6 +586,34 @@ Each record has a button to switch on and off the endpoints in the
 named group.
 
 ![Api access control](images/Console_0.9.1/api_access_control.png)
+
+## Database Management
+
+The item **DB Management** allows you to perform some operations on the
+database. 
+
+![Dashboard image](images/Console_0.8.1/baasbox-db-management.png)
+
+1. Restore a previously created backup file
+2. Create a new backup
+3. View the list of generated backups
+4. Reinitialize the database at its initial state. It deletes all the
+database content.
+
+To create a new backup, you have to click on the "Create a new
+backup..." button. This operation is asynchronous. BaasBox will freeze
+the database and it will stop responding to the clients. When the backup
+is ready you will find it in the list. From that list you can download
+it or delete it.
+
+To restore a database you have to download a backup file locally, and
+then use the restore feature.
+
+## Server Log
+By clicking on this menu item, a new window (or tab) will be opened in your web browser. In this new window, from now on, you will see the BaasBox verbose log (not available on the BaasBox cloud service).
+This feature is quite useful to know what happens behind the scene without access to the server to inspect the logs.
+
+![Server Log](images/Console_0.9.4/baasbox-0.9.4-server-log.png)
 
 ## Push Settings
 
@@ -591,41 +633,20 @@ When the settings is configured, is possible to enabled the specific app.
 **Notice: Is possible to switch mode, with app enabled, only if the settings for the other mode are configured.**
 ![Push settings] (images/Console_0.8.4/push_settings.png)
 
+## Push Test
+From here you can send messages and test the API to send push notifications.
+By default the Payload is:
 
-## Database Management
+```
+{
+    "users": ["user1","user2"],
+    "message": "This is a test message!"
+}
+```
 
-The item **DB Management** allows you to perform some operations on the
-database. 
+Into the _Server Response_ section you can see detailed information on which steps BaasBox performed to elaborate the provided JSON.
 
-![Dashboard image](images/Console_0.8.1/baasbox-db-management.png)
-
-1. Restore a previously created backup file
-2. Create a new backup
-3. View the list of generated backups
-4. Reinitialize the database at its initial state. It deletes all the
-   database content.
-
-To create a new backup, you have to click on the "Create a new
-backup..." button. This operation is asynchronous. BaasBox will freeze
-the database and it will stop responding to the clients. When the backup
-is ready you will find it in the list. From that list you can download
-it or delete it.
-
-To restore a database you have to download a backup file locally, and
-then use the restore feature.
-
-## Image resizing
-
-In the settings you can define an array of possible resizing policies for images.
-
-![Image resize settings](images/Console_0.8.1/image_resize.png)
-
-Examples are: 
-
-* `25%` : scales the image to 25% 
-* `<=80px`: scales the image so that the smallest dimension is at most 80px.
-
-See [Retrieve a file](#retrieve-a-file) on how to use these values.
+![Api access control](images/Console_0.9.4/baasbox-0-9-4-push-test.png)
 
 
 
@@ -644,7 +665,7 @@ registereduser), a creation date, a status and actions. You also have a
 search tool. If you want to create a new user, click on the New User
 button and you will see this window:
 
-![New user image](images/Console_0.9.1/create_new_user.png)
+![New user image](images/Console_0.9.4/create-new-user.png)
 
 <aside class="notice">
 	Starred fields are mandatory. After you have filled in at least the mandatory fields, you have to save the changes.
@@ -777,15 +798,15 @@ appCode:@"1234567890"];
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 #### Architecture and pass-through
@@ -836,15 +857,15 @@ NSLog(@"error is %@", error);
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'iOS' Tab
 ```
 
 
@@ -891,15 +912,15 @@ client = b.setApiDomain("address")
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 #### General usage
@@ -938,15 +959,15 @@ BaasDocument.fetchAllSync("coll");
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 #### Asynchronous requests management
@@ -1000,15 +1021,15 @@ token = null;
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 #### Pass-through API
@@ -1034,15 +1055,15 @@ public void handle(BaasResult<JsonObject> res){
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 ```javascript
-NOTHING HERE
+NOTHING HERE. See the 'Android' Tab
 ```
 
 
@@ -1056,15 +1077,15 @@ You can download the SDK from the [download page](http://www.baasbox.com/downloa
 To use the SDK just import jQuery and the `baasbox.js` in the head section of your page like this.
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See the 'Javascript' Tab
 ```
 
 ```objective_c
-NOTHING HERE
+NOTHING HERE. See the 'Javascript' Tab
 ```
 
 ```java
-NOTHING HERE
+NOTHING HERE. See the 'Javascript' Tab
 ```
 
 ```javascript
@@ -1324,6 +1345,12 @@ NOTHING HERE
 
 **Description**: This API allows a user to sign up to the App. Users will belong to the registered user role and
 they will post new content, will retrieve their own content, will change their password. 
+BaasBox, since v.0.9.4, assigns a unique ID to each user. This ID can be used with the Link API.
+
+You can force your own ID only via plugin script.
+
+Please see the [Plugin Users API documentation](https://github.com/baasbox/baasbox/wiki/PluginApi#create-a-new-user)
+
 
 Parameter | Description
 --------- | -----------
@@ -1398,19 +1425,36 @@ BaasBox.signup("cesare", "password")
     "user": {
       "name": "cesare",
       "status": "ACTIVE",
-      "roles": [
-        {
-          "name": "registered"
-        }
-      ]
+      "roles": [{"name": "registered"}]
     },
-    "signUpDate": "2014-01-23 23:00:18",
-    "X-BB-SESSION": "db7634df-1002-45a2-b2ab-0f6b8556a1fe"
+    "id": "6d5d8300-4339-40a5-8688-d1547fec6e05",
+    "visibleByAnonymousUsers": { },
+    "visibleByTheUser": { },
+    "visibleByFriends": { },
+    "visibleByRegisteredUsers": {
+        "_social": { }
+    },
+    "signUpDate": "2015-06-16T16:20:32.032+0200",
+    "generated_username": false,
+    "X-BB-SESSION": "7f943d99-5872-4f0e-9865-a02386ef882b"
   },
   "http_code": 201
 }
 ```
 
+Here is the explanantion of the server response:
+Field | Description
+--------- | -----------
+**id** | The unique ID associated with the user
+**user.name** | The username for the user.
+**user.status** | It is always ACTIVE. Users can be suspended by themselves or by an administrator
+**visibleByTheUser** | an object whose fields are private and visible only by the user
+**visibleByFriends** | an object whose fields are visible by the user and friends (for friendship management)
+**visibleByFriends._social** | If the user logged in with Facebook or another supported social network, here are some data that can be useful. For example the FBID.
+**visibleByRegisteredUsers** | an object whose fields are visible by the user, friends, any registered user
+**signUpDate** | The sign up date and time
+**generated_username** | When set to true indicates that the user.name field is a fake string generated by the system. This happens when the user logged in with a social network
+**X-BB-SESSION** | The session code that must be used in following calls
 
 
 ### Login
@@ -1486,29 +1530,49 @@ BaasBox.login("cesare", "password")
 
 ```json
 {
-  "result": "ok",
-  "data": {
-    "user": {
-      "name": "cesare",
-      "status": "ACTIVE",
-      "roles": [
-        {
-          "name": "registered"
-        }
-      ]
+    "result": "ok",
+    "data": {
+        "user": {
+            "name": "cesare",
+            "status": "ACTIVE",
+            "roles": [{"name": "registered"}]
+        },
+        "id": "6d5d8300-4339-40a5-8688-d1547fec6e05",
+        "visibleByAnonymousUsers": { },
+        "visibleByTheUser": { },
+        "visibleByFriends": { },
+        "visibleByRegisteredUsers": {
+            "_social": { }
+        },
+        "signUpDate": "2015-06-16T16:20:32.032+0200",
+        "generated_username": false,
+        "X-BB-SESSION": "7f943d99-5872-4f0e-9865-a02386ef882b"
     },
-    "signUpDate": "2014-01-23 23:00:18",
-    "X-BB-SESSION": "41b7ce0f-be44-4737-b346-907483155ad8"
-  },
-  "http_code": 200
+    "http_code": 201
 }
 ```
+
+Here is the explanantion of the server response:
+Field | Description
+--------- | -----------
+**id** | The unique ID associated with the user
+**user.name** | The username for the user.
+**user.status** | It is always ACTIVE. Users can be suspended by themselves or by an administrator
+**visibleByTheUser** | an object whose fields are private and visible only by the user
+**visibleByFriends** | an object whose fields are visible by the user and friends (for friendship management)
+**visibleByFriends._social** | If the user logged in with Facebook or another supported social network, here are some data that can be useful. For example the FBID.
+**visibleByRegisteredUsers** | an object whose fields are visible by the user, friends, any registered user
+**signUpDate** | The sign up date and time
+**generated_username** | When set to true indicates that the user.name field is a fake string generated by the system. This happens when the user logged in with a social network
+**X-BB-SESSION** | The session code that must be used in following calls
+
+
 
 
 ### Logout
 
 
-``POST /logout/:pushToken`` 
+``POST /logout[/:pushToken]`` 
 
 **Group**: [baasbox.account](#list-groups)
 
@@ -1676,20 +1740,25 @@ BaasBox.fetchCurrentUser()
 
 ```json
 {
-  "result": "ok",
-  "data": {
-    "user": {
-      "name": "cesare",
-      "status": "ACTIVE",
-      "roles": [
-        {
-          "name": "registered"
-        }
-      ]
-    },
-    "signUpDate": "2014-01-24T11:28:09.009+0100"
-  },
-  "http_code": 200
+"result": "ok",
+    "data": {
+        "user": {
+            "name": "cesare",
+            "status": "ACTIVE",
+            "roles": [{"name": "registered"}]
+        },
+        "id": "6d5d8300-4339-40a5-8688-d1547fec6e05",
+        "visibleByAnonymousUsers": { },
+        "visibleByTheUser": { },
+        "visibleByFriends": { },
+        "visibleByRegisteredUsers": {
+            "_social": { }
+        },
+        "signUpDate": "2015-06-16T16:20:32.032+0200",
+        "generated_username": false,
+        "X-BB-SESSION": "7f943d99-5872-4f0e-9865-a02386ef882b"
+        },
+    "http_code": 201
 }
 ```
 
@@ -1802,182 +1871,6 @@ BaasBox.updateUserProfile({"visibleByAnonymousUsers": {"email" : "mail@mail.com"
   "http_code": 200
 }
 ```
-
-### Change password
-
-
-``PUT /me/password`` 
-
-**Group**: [baasbox.account](#list-groups)
-
-To change the password of the logged in user.
-
-Parameter | Description
---------- | -----------
-**old** | The old password. Mandatory.
-**new** | The new password. Mandatory.
-
-<aside class="warning">
-	After you call this API the authentication token is not valid anymore and should call [Login](#login) again.
-</aside>
-
-<div class="snippet-title">
-	<p>Example of request</p>
-</div>
-
-```shell
-curl -X PUT http://localhost:9000/me/password \
-	-d '{"old" : "oldpass", "new" : "newpass"}' \
-	-H Content-type:application/json \
-	-H X-BB-SESSION:a30e8f43-4d90-4324-91d2-6065fa6ca63c
-```
-
-```objective_c
-BAAUser *user = ...; // Some user
-[user changeOldPassword:@"oldpass"
-          toNewPassword:@"newpass"
-        completionBlock:^(BOOL success, NSError *error) {
-            
-            if (success) {
-                NSLog(@"pass updared");
-            } else {
-                NSLog(@"err %@", error);
-            }
-            
-        }];
-```
-
-```java
-BaasUser current = BaasUser.current();
-current.changePassword("newpassword",new BaasHandler<Void>() {
-  public Void handle(BaasHandler<Void> res) {
-    if(res.isSuccess()) {
-      Log.d("LOG", "New password updated, you should relogin");
-    } else {
-      Log.e("LOG","error",res.error());
-    }
-  }
-});
-```
-
-```javascript
-BaasBox.changePassword("oldpass", "newpass")
-  .done(function(res) {
-  	console.log("res ", res);
-  })
-  .fail(function(error) {
-  	console.log("error ", error);
-  })
-```
-
-
-<div class="snippet-title">
-	<p>Example of response</p>
-</div>
-
-```json
-{
-  "result": "ok",
-  "data": "",
-  "http_code": 200
-}
-```
-
-
-### Password reset
-
-``GET /user/:username/password/reset``
-
-**Group**: [baasbox.account.lost_password](#list-groups)
-
-Allows to reset a user's password. This API is useful when users forget their password and need to reset it. This is the workflow: 
-
-- the server checks if the email address exists within the `visibleByTheUser` fields in the user profile 
-- the server sends an email to that address with a generated link to follow in order to reset the password 
-- the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
-- the user fills in the two fields and submits the form 
-- a confirmation message is shown by the server 
-- the settings (SMTP configuration, email message to be sent, html form, confirmation and error web page) can be set up by the administrator via the [Settings](#settings) menu in the admin console
-
-Parameter | Description
---------- | -----------
-**username** | Username of the user who wants to reset the password. Mandatory.
-
-<div class="snippet-title">
-	<p>Example of a request for password reset</p>
-</div>
-
-```shell
-curl http://localhost:9000/user/cesare/password/reset \
-	 -H X-BAASBOX-APPCODE:1234567890
-```
-
-```objective_c
-BAAUser *user = ... ; // Some user
-[user resetPasswordWithCompletion:^(BOOL success, NSError *error) {
-    
-    if (success) {
-        NSLog(@"password reset OK");
-    } else {
-        NSLog(@"error %@", error);
-    }
-    
-}];
-```
-
-```java
-BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
-  @Override
-  public void handle(BaasResult<Void> res) {
-    if(res.isSuccess()) {
-      Log.d("LOG","Password reset has been requested");
-    } else{
-      Log.e("LOG","Error",res.error());
-    }
-  }
-};
-```
-
-```javascript
-BaasBox.resetPassword()
-  .done(function(res) {
-  	console.log("res ", res);
-  })
-  .fail(function(error) {
-  	console.log("error ", error);
-  })
-```
-
-<div class="snippet-title">
-	<p>Example of an error</p>
-</div>
-
-
-```json
-{
-  "result": "error",
-  "message": "Cannot reset password, the \"email\" attribute is not defined into the user's private profile",
-  "resource": "/user/cesare/password/reset",
-  "method": "GET",
-  "request_header": {
-    "Accept": [
-      "*/*"
-    ],
-    "Host": [
-      "localhost:9000"
-    ],
-    "X-BAASBOX-APPCODE": [
-      "1234567890"
-    ]
-  },
-  "API_version": "0.7.3-snapshot"
-}
-```
-
-<aside class="warning">
-This API works only if there is an `email` field (populated with a valid email address) in the `visibleByTheUser` field of the user profile
-</aside>
-
 
 ### Fetch a user profile
 
@@ -2167,13 +2060,93 @@ BaasBox.fetchUsers()
 }
 ```
 
+### Change password
+
+
+``PUT /me/password`` 
+
+**Group**: [baasbox.account](#list-groups)
+
+To change the password of the logged in user.
+
+Parameter | Description
+--------- | -----------
+**old** | The old password. Mandatory.
+**new** | The new password. Mandatory.
+
+<aside class="warning">
+After you call this API the authentication token is not valid anymore and should call [Login](#login) again.
+</aside>
+
+<div class="snippet-title">
+<p>Example of request</p>
+</div>
+
+```shell
+curl -X PUT http://localhost:9000/me/password \
+-d '{"old" : "oldpass", "new" : "newpass"}' \
+-H Content-type:application/json \
+-H X-BB-SESSION:a30e8f43-4d90-4324-91d2-6065fa6ca63c
+```
+
+```objective_c
+BAAUser *user = ...; // Some user
+[user changeOldPassword:@"oldpass"
+toNewPassword:@"newpass"
+completionBlock:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"pass updared");
+} else {
+NSLog(@"err %@", error);
+}
+
+}];
+```
+
+```java
+BaasUser current = BaasUser.current();
+current.changePassword("newpassword",new BaasHandler<Void>() {
+public Void handle(BaasHandler<Void> res) {
+if(res.isSuccess()) {
+Log.d("LOG", "New password updated, you should relogin");
+} else {
+Log.e("LOG","error",res.error());
+}
+}
+});
+```
+
+```javascript
+BaasBox.changePassword("oldpass", "newpass")
+.done(function(res) {
+console.log("res ", res);
+})
+.fail(function(error) {
+console.log("error ", error);
+})
+```
+
+
+<div class="snippet-title">
+<p>Example of response</p>
+</div>
+
+```json
+{
+"result": "ok",
+"data": "",
+"http_code": 200
+}
+```
+
 ### Change username
 
 
 ``PUT /me/username ``
 
 **Group**: [baasbox.users](#list-groups)
-		
+
 **Headers**: See authorization header in the [General Remarks](#general-remarks)
 
 **Description**: Starting from v. 0.9.0 it is possibile to change usernames 
@@ -2221,13 +2194,109 @@ curl -X PUT  http://localhost:9000/me/username  \
 
 ```json
 {
-    "result": "ok",
-    "data": "",
-    "http_code": 200
+"result": "ok",
+"data": "",
+"http_code": 200
 }
 
 ```
 
+
+### Password reset
+
+(_Forgotten password_ workflow)
+
+``GET /user/:username/password/reset``
+
+**Group**: [baasbox.account.lost_password](#list-groups)
+
+Allows to reset a user's password. This API is useful when users forget their password and need to reset it. This is the workflow: 
+
+- the server checks if the email address exists within the `visibleByTheUser` fields in the user profile 
+- the server sends an email to that address with a generated link to follow in order to reset the password 
+- the user opens the email and opens the given link in a web browser. That will show a form with two html password fields 
+- the user fills in the two fields and submits the form 
+- a confirmation message is shown by the server 
+- the settings (SMTP configuration, email message to be sent, html form, confirmation and error web page) can be set up by the administrator via the [Settings](#settings) menu in the admin console
+
+Parameter | Description
+--------- | -----------
+**username** | Username of the user who wants to reset the password. Mandatory.
+
+<div class="snippet-title">
+<p>Example of a request for password reset</p>
+</div>
+
+```shell
+curl http://localhost:9000/user/cesare/password/reset \
+-H X-BAASBOX-APPCODE:1234567890
+```
+
+```objective_c
+BAAUser *user = ... ; // Some user
+[user resetPasswordWithCompletion:^(BOOL success, NSError *error) {
+
+if (success) {
+NSLog(@"password reset OK");
+} else {
+NSLog(@"error %@", error);
+}
+
+}];
+```
+
+```java
+BaasUser.requestPasswordReset("cesare",new BaasHandler<Void>() {
+@Override
+public void handle(BaasResult<Void> res) {
+if(res.isSuccess()) {
+Log.d("LOG","Password reset has been requested");
+} else{
+Log.e("LOG","Error",res.error());
+}
+}
+};
+```
+
+```javascript
+BaasBox.resetPassword()
+.done(function(res) {
+console.log("res ", res);
+})
+.fail(function(error) {
+console.log("error ", error);
+})
+```
+
+<div class="snippet-title">
+<p>Example of an error</p>
+</div>
+
+
+```json
+{
+"result": "error",
+"message": "Cannot reset password, the \"email\" attribute is not defined into the user's private profile",
+"resource": "/user/cesare/password/reset",
+"method": "GET",
+"request_header": {
+"Accept": [
+"*/*"
+],
+"Host": [
+"localhost:9000"
+],
+"X-BAASBOX-APPCODE": [
+"1234567890"
+]
+},
+"API_version": "<BaasBox version>"
+}
+```
+
+<aside class="warning">
+This API works only if there is an `email` field (populated with a valid email address) in the `visibleByTheUser` field of the user profile
+</aside>
 
 
 ## Social Login ##
@@ -3576,21 +3645,25 @@ Here are the APIs.
 **Group**: [baasbox.data.write](#list-groups)
 
 Creates a document in the collection specified in the parameter. The collection must have been created in advance. See [here](#create-a-new-collection).
-The `id` field is unique. By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
 The returned document is decorated with the following fields:
 
-- `id`: unique ID 
+- `id`: unique Identifier of the document. It is a String and it is unique thorught all the database. 
 - `@version`: number indication of the version of the record, useful to manage concurrent updates
 - `@class`: name of the collection
 - `_creation_date`: timestamp
 - `_author`: username of the user who created the document.
 
-These fields **cannot** be overwritten. 
+**Note**: These fields **cannot** be overwritten. 
+
+Since v0.9.4 you can provide your own ids for documents. 
+
+By default only the owner can update and delete the documents he created. All the other users (except admins and backoffice) cannot have any kind of access to those documents, unless they are granted permissions.
+
 
 Parameter | Description
 --------- | -----------
 **collection-name** | The name of the collection. Mandatory.
- | A valid JSON as the body of the POST call. Mandatory.
+The body payload | A valid JSON as the body of the POST call. Mandatory.
 
 <div class="snippet-title">
 	<p>Example of a request to create a document</p>
@@ -3671,7 +3744,7 @@ BaasBox.save(post, "posts")
 ```
 
 ### Retrieve documents
-You can get documents in two ways: using their unique IDs, or executing a query to perform a search.
+You can fetch documents in two ways: using their [unique IDs](#retrieve-a-document-by-its-id), or [executing a query to perform a search](#retrieve-documents-by-a-query).
 Both methods are described below.   
 
 #### Retrieve a document by its ID
@@ -3687,6 +3760,7 @@ Parameter | Description
 --------- | -----------
 **collection** | The name of the collection. Mandatory.
 **ID** | The unique ID of the document. Mandatory.
+
 
 <div class="snippet-title">
 	<p>Example of a request to retrieve a specific document</p>
@@ -4741,8 +4815,8 @@ BaasBox.revokeAccessToUser("posts", "4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e", Baas
 
 Available since 0.8.0
 
-Links allow to connect documents and files to each other. They are similar to the relations in a relational database.
-Of course there are differences between relations and links. First of all, links have versus, secondly they have a name.
+Links allow to connect documents, files and users (since v.0.9.4) to each other. They are similar to the relations in a relational database.
+Of course there are differences between relations and links. First of all, links have versus, secondly they have a label.
 
 Links are implemented using the graph capabilities of OrientDB that is the database engine embedded in BaasBox.
 
@@ -4762,9 +4836,9 @@ Invoices              							Items
 
 Basically you can imagine documents and files like nodes in a graph. Each of them is a node that can be connected with others.
 Nodes are connected by links (or edges). Links have a versus, a label, and a source/destination pair of nodes.
-For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](https://github.com/orientechnologies/orientdb/wiki)
+For further information on graph databases, nodes, links and how these are managed by OrientDB, please see the official [OrientDB WIKI site](http://orientdb.com/docs/1.7.8/index.html)
 
-You can query links by name and/or use filters to select linked documents (or file). 
+You can query links by label and/or use filters to select linked documents (or file). 
 At the moment it is possible to execute query only on links, there are not APIs to traverse them or to query linked documents from a given one.
 
 
@@ -4774,7 +4848,7 @@ At the moment it is possible to execute query only on links, there are not APIs 
 
 **Group**: [baasbox.data.write](#list-groups)
 
-To create a link you must provide the two documents you want to connect and the link name.
+To create a link you must provide the two objects (documents, files, users) you want to connect and the link label (or name).
 Since links have a direction, the first document will be the source node of the link and the second one will be the destination node.
 
 Parameter | Description
@@ -4782,6 +4856,9 @@ Parameter | Description
 **sourceId** | The ID of the first document or file to link.
 **label** | The link name. Can be any valid string
 **destId** | The ID of the second document or file to link.
+
+**Note**: use the users'id, not their username!
+
 
 ```shell
 curl -X POST -H X-BB-SESSION:f24c0ccb-e2bd-4741-8133-86fea6ea1e01 -H x-baasbox-appcode:1234567890 -d '' http://localhost:9000/link/423d56a1-bc83-467d-b27c-897a5f4cd229/customer/a0868a63-0d38-4fc9-93c3-1f9b62eeadf0
@@ -6631,7 +6708,7 @@ To create a plugin please see the [Console](?#plugins)
 The entire plugin reference is located on [GitHub](https://github.com/baasbox/baasbox/wiki/PluginApi)
 
 ```shell
-NOTHING HERE
+NOTHING HERE. See other tabs
 
 ```
 
