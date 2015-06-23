@@ -194,36 +194,70 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 
   .lang-selector {
     //position: fixed;
-    width: 100%;
+	width: 80%;
     z-index: 50;
     font-weight: bold;
     background-color: $lang-select-bg;
     border-bottom: 5px solid $lang-select-active-bg;
+	padding: 4px 0px 4px 0px;
+	border_radius: 3px;
+	
     a {
-      display: block;
-      float:left;
-      color: $lang-select-text;
-      text-decoration: none;
-      padding: 0 10px;
-      line-height: 30px;
-
-      &.active {
-        background-color: $lang-select-active-bg;
+		padding: 0 15px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		margin-left: 16px;
+		border-left: none;
+		font-size: 10px;
+		font-family: proxima-nova,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+		font-weight: 600;
+		font-style: normal;
+		background-color: #1d232b;
+		background: linear-gradient(to bottom,$lang-select-grad1,$lang-select-grad2);
+		display: inline-block;
+		line-height: 8px;
+		height: 8px;
+		color: #fff;
+		margin: 0;
+		border: 1px solid #000;
+		text-decoration: none;
+		text-shadow: 0 -1px 0 #000;
+		font-size: 11px;
+		text-transform: uppercase;
+		
+		&:first-child{
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		}
+		
+		&:last-child{
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		}
+		
+		
+		&:hover{
+		background: linear-gradient(to bottom,$lang-select-grad2,$lang-select-grad1);
+		}
+	
+        &.active {
+		background: linear-gradient(to bottom,$lang-select-grad2,$lang-select-grad1);
         color: $lang-select-active-text;
       }
-
+	  
+	  
       &:active {
-        background-color: $lang-select-pressed-bg;
+        background: linear-gradient(to bottom,$lang-select-grad2,$lang-select-grad1);
         color: $lang-select-pressed-text;
       }
-    }
-
-    &:after {
+    
+	&:after {
       content: '';
       clear: both;
       display: block;
-    }
-  }
+		}
+	}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -265,7 +299,7 @@ h4 {
     margin-bottom: $h1-margin-bottom;
     border-top: 1px solid #ddd;
     @include background-image(
-      linear-gradient(top, #fff, #f9f9f9)
+    linear-gradient(top, #fff, #f9f9f9)
     );
   }
 
@@ -363,11 +397,11 @@ h4 {
   }
 
   img {
-    max-width: 100%;
+    max-width: 75%;
   }
 
   code {
-    background-color: rgba(0,0,0,0.05);
+    /*background-color: rgba(0,0,0,0.05);*/
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
@@ -426,14 +460,19 @@ h4 {
 
 .content {
   pre, blockquote {
-    background-color: $code-bg;
-    color: #fff;
+   // background-color: $code-bg;
+   // color: #fff;
 
     padding: 2em $main-padding;
     margin: 0;
     width: $examples-width;
+	width: 80%;
+	max-width: 800px;
+
+	
 
     //float:right;
+	
     clear:right;
 
     @include box-sizing(border-box);
@@ -445,6 +484,8 @@ h4 {
       color: #fff;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
+	  overflow: auto;
+	  
     }
   }
 
@@ -460,6 +501,14 @@ h4 {
       border-top: 1px solid #000;
       border-bottom: 1px solid #404040;
     }
+	
+	blockquote:before{
+	counter-reset: lines;
+	counter-increment: lines;
+	content: counter(lines);
+	
+	}
+	
   }
 }
 
