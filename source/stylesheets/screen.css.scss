@@ -200,6 +200,7 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
     background-color: $lang-select-bg;
     border-bottom: 5px solid $lang-select-active-bg;
 	padding: 4px 0px 4px 0px;
+	border_radius: 3px;
 	
     a {
 		padding: 0 15px;
@@ -223,6 +224,16 @@ button, input.send, input[type="submit"], .hexagon .inner, .colorblock, .block .
 		text-shadow: 0 -1px 0 #000;
 		font-size: 11px;
 		text-transform: uppercase;
+		
+		&:first-child{
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		}
+		
+		&:last-child{
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		}
 		
 		
 		&:hover{
@@ -288,7 +299,7 @@ h4 {
     margin-bottom: $h1-margin-bottom;
     border-top: 1px solid #ddd;
     @include background-image(
-      linear-gradient(top, #fff, #f9f9f9)
+    linear-gradient(top, #fff, #f9f9f9)
     );
   }
 
@@ -455,8 +466,13 @@ h4 {
     padding: 2em $main-padding;
     margin: 0;
     width: $examples-width;
+	width: 80%;
+	max-width: 800px;
+
+	
 
     //float:right;
+	
     clear:right;
 
     @include box-sizing(border-box);
@@ -468,6 +484,8 @@ h4 {
       color: #fff;
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
+	  overflow: auto;
+	  
     }
   }
 
@@ -483,6 +501,14 @@ h4 {
       border-top: 1px solid #000;
       border-bottom: 1px solid #404040;
     }
+	
+	blockquote:before{
+	counter-reset: lines;
+	counter-increment: lines;
+	content: counter(lines);
+	
+	}
+	
   }
 }
 
