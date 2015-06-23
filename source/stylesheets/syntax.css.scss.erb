@@ -20,7 +20,40 @@ under the License.
 
  .highlight {
    background-color:rgb(40, 50, 63);
+   overflow: scroll;
+   max-height: 200px;
+   width: 80%;
+   margin-left: 16px;
+   text-align: left;
  }
+ 
+ .content .highlight table{
+   background-color:rgb(40, 50, 63);
+   width: 100%;
+   text-align: left;
+
+    tr:nth-child(odd)>td {
+	  text-align:left !important;
+      background-color: $code-bg;
+	  width: auto;
+	  text-align: left;
+    }
+
+    tr:nth-child(even)>td {
+      background-color: $code-bg;
+	  width: auto;
+	  text-align: left;
+    }
+	
+	tr:last-child{
+		border-bottom: 0px !important;
+	}
+	pre{
+		padding: 0px !important;
+		margin: 0px !important;
+	}
+}
+ 
  
 /*
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
