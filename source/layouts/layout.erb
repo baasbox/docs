@@ -163,7 +163,12 @@ under the License.
     </div>
     <div class="page-wrapper">
       <div class="content">
-        <%= yield %>
+        <%= yield %> 
+		<% if current_page.data.includes %>
+          <% current_page.data.includes.each do |include| %>
+            <%= partial "includes/#{include}" %>
+          <% end %>
+        <% end %>
       </div>
 	  <!--
 	      <div class="dark-box">
