@@ -23,8 +23,8 @@ Parameter | Description
 </div>
 
 ```shell
-curl -X PUT http://localhost:9000/document/mycollection/090dd688/read/user/a \
-	 -H X-BB-SESSION:4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e
+curl -X PUT http://localhost:9000/document/mycollection/4cbfe03c-632b-4d3e-9a2b-0d4a0326d89e/read/user/a \
+	 -H X-BB-SESSION:090dd688
 ```
 
 ```objective_c
