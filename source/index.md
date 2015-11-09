@@ -85,6 +85,7 @@ includes:
  - delete_a_document
  - grant_permissions_on_a_document
  - revoke_permissions_on_a_document
+ - documents_links_query
  - links
  - create_a_link
  - retrieve_links

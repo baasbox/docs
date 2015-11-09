@@ -1,5 +1,6 @@
 ### Retrieve links
 
+> Note that this api has been deprecated.Please check the document's links navigation API.
 
 `GET /link/:id`
 
