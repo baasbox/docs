@@ -6,6 +6,7 @@ Headers:
 
 -  X-BAASBOX-APPCODE = App code
 -  X-BB-SESSION = Session token for the current user
+-  Content-Type = application/json
 
 URL parameters
 
@@ -37,7 +38,8 @@ Returns:
 curl -X PUT http://localhost:9000/social/facebook  \
 -d "oauth_token=OAUTH_TOKEN" \
 -d "oauth_secret=OAUTH_SECRET" \
--H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23 \
+-H Content-Type: application/json
 ```
 
 ```objective_c
@@ -72,7 +74,8 @@ TO BE IMPLEMENTED
 curl -X PUT http://localhost:9000/social/google  \
 -d "oauth_token=OAUTH_TOKEN" \
 -d "oauth_secret=OAUTH_SECRET" \
--H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23
+-H X-BB-SESSION:2605d809-03f0-4751-8f8e-5f658e179a23 \
+-H Content-Type: application/json
 ```
 
 ```objective_c
