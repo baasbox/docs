@@ -52,6 +52,7 @@ includes:
  - logout
  - suspend_a_user
  - reactivate_a_user
+ - delete_users
  - logged_user_profile
  - update_user_profile
  - fetch_a_user_profile
