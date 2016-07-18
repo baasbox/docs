@@ -1,3 +1,9 @@
+@import url("//hello.myfonts.net/count/31990b");
+
+
+@font-face {font-family: 'IntroRegular';src: url('webfonts/31990B_0_0.eot');src: url('webfonts/31990B_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/31990B_0_0.woff2') format('woff2'),url('webfonts/31990B_0_0.woff') format('woff'),url('webfonts/31990B_0_0.ttf') format('truetype');}
+
+
 @font-face {
     font-family: "Lato";
     font-style: normal;
@@ -17,9 +23,11 @@
     src: local("Lato Bold"), local("Lato-Bold"), url("http://themes.googleusercontent.com/static/fonts/lato/v7/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff") format("woff");
 }
 
-@font-face { font-family: Lato-Regular; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/Lato-Regular.ttf'); } 
+@font-face { font-family: Lato-Regular; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/Lato-Regular.ttf'); }
 
-@font-face { font-family: Lato-Bold; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/lato-bold.svg'); } 
+@font-face { font-family: Lato-Bold; src: url('http://www.baasbox.com/investor-relations/wp-content/themes/PandoraBox/font/lato-bold.svg'); }
+
+
 
 body {
   background: #ffffff;
@@ -54,11 +62,10 @@ nav {
 }
 
 .mainmenu {
-    background-color: #00A99D;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    background-color:#192226 !important;
+    border-bottom:3px white solid;
     left: 0;
-    height: 73px;
+    height: 101px;
     position: fixed;
     text-align: center;
     width: 100%;
@@ -66,37 +73,25 @@ nav {
 }
 
 .mainmenu .menuwrapper .menulist ul li a {
-  color: #fff;
-  display: inline-block;
-  padding: 0.6em 1em;
-  margin: 0 0.5em;
-  border-radius: 4px;
-  text-transform: uppercase;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  text-decoration:none;
-  font-family:"Lato", sans-serif !important;
-  font-size:17px;
+  position:relative;
+	margin-left:16px;
+	margin-top:0px;
+	display: inline-block;
+  font-family: 'IntroRegular';
+	font-size: 21px;
+	color:#fff;
+  text-decoration: none;
 }
-.mainmenu .menuwrapper .menulist ul li a:hover {
-  background: rgba(0, 0, 0, 0.2);
-}
-.mainmenu .menuwrapper .menulist ul li a:active {
-  background: rgba(255, 255, 255, 0.2);
-}
-
 .mainmenu .menuwrapper .menulist ul li {
 	float: left;
-    list-style: none outside none;
+  list-style: none outside none;
+
 }
 
 .mainmenu .menuwrapper .menulist {
     text-align: center;
-    margin-right:163px;
-    margin-top:5px;
+    margin-right:25px;
+    margin-top:50px;
     float:right;
     display: inline-block;
     padding: 0.5em 1em;
@@ -104,21 +99,35 @@ nav {
     text-align: center;
 }
 
+.border_active {
+	padding-bottom:5px;
+	width:0%;
+	height:5px;
+	left:0;
+  margin-left:16px;
+	bottom:-5px;
+	background-color: #ff5368;
+	position: absolute;
+	transition:all ease-out 300ms;
+}
+
 .mainmenu .menuwrapper .logoblock {
     display: inline-block;
     left: 0;
     padding: 0.8em 1em;
     position: absolute;
+    height:80px;
 }
 .mainmenu .menuwrapper .logoblock .companylogo {
-  max-height: 40px;
+  max-height: 79px;
+  margin-top:17px;
   opacity: 1;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  margin-left:37px;
+  margin-left:-16px;
 }
 .mainmenu .menuwrapper .logoblock .companylogo:hover {
   opacity: 0.7;
@@ -143,7 +152,7 @@ nav {
 
 .tocify-wrapper{
 	background-color:#F2F2F2 !important;
-	margin-top:54px !important;
+	margin-top:104px !important;
 }
 
 .tocify-wrapper .toc-footer{
@@ -182,7 +191,7 @@ nav {
 	border-bottom:none !important;
 	margin-left:16px !important;
 	margin-top:0px !important;
-	
+
 }
 
 .page-wrapper .lang-selector a{
