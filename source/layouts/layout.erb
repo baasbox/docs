@@ -49,6 +49,7 @@ under the License.
    			<% end %>
    		<% end %>
       <% end %>
+
    		languagesTags += '</div>';
    		console.log(languagesTags);
    	  	$(".highlight").before(languagesTags)
@@ -111,44 +112,68 @@ under the License.
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
 
+
+
+
+    	$(document).ready(function() {
+    		var delay;
+    		setupMenu();
+    		$(".mainmenu .menuwrapper .menulist ul li a").mouseenter(function() {
+    			clearTimeout(delay);
+    			var width	= $(this).width();
+    			var left	= $(this).position().left+5;
+    			$(".border_active").css("width", width+ "px").css("left", left+"px");
+    		}).mouseleave(function() {
+    			delay = setTimeout(setupMenu, 200);
+    		});
+
+
+    	});
+
+    	function setupMenu(){
+    		if($(".current_page_item").length>0){
+    	var width	= $(".current_page_item").width();
+    	var left	= $(".current_page_item").position().left+5;
+    	$(".border_active").css("width", "51px").css("left", left+"px");
+    }
+    else {
+    	$(".border_active").css("width", "0" + "px").css("left", "0"+"px");
+    }
+    	}
+
 	</script>
+  <link rel="stylesheet" type="text/css" href="MyFontsWebfontsKit.css'; ?>">
 
   </head>
 
   <body class="<%= page_classes %>">
-
 	<div class="mainmenu">
 	        <div class="menuwrapper">
+
 	            <nav class="menulist">
+                <span class="border_active"></span>
 	            	<div class="iconmenu">
 	            		<i class="icon-th-list icon-2x"></i>
 	            	</div>
 	                <ul class="items">
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-6636" id="menu-item-6636"><a href="http://www.baasbox.com/features" title="Features">Features</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-6637" id="menu-item-6637"><a href="http://www.baasbox.com/documentation" title="Docs">Docs</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-6638" id="menu-item-6638"><a href="https://groups.google.com/forum/#!forum/baasbox" target="_new" title="Community">Community</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-6639" id="menu-item-6639"><a href="http://www.baasbox.com/download" title="Downloads">Downloads</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-6640" id="menu-item-6640"><a href="http://www.baasbox.com/blog" title="Blog">Blog</a></li>
-
-	<li class="menu-item">
-    	<form action="http://beta.baasbox.com/" method="GET">
-	    	<span class="bb-cloud-service">
-	            <input type="submit" value="BAASBOX Cloud Service">
-	        </span>
-	    </form>
-	</li>
-
+                    <li id="menu-item-278" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-6"><a href="http://vccw.dev/">Home</a></li>
+                    <li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a href="http://vccw.dev/features">Features</a></li>
+                    <li id="menu-item-148" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-148 current_page_item menu-item"><a href="http://vccw.dev/docs">Docs</a></li>
+                    <li id="menu-item-149" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-149"><a href="http://vccw.dev/community">Community</a></li>
+                    <li id="menu-item-150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150"><a href="http://vccw.dev/downloads">Downloads</a></li>
+                    <li id="menu-item-151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="http://vccw.dev/blog">Blog</a></li>
 
 
 	</ul>            </nav>
 	            <a class="logoblock" href="http://www.baasbox.com/#home">
-	                        	            		<img class="companylogo" src="http://www.baasbox.com/wp-content/uploads/2014/06/marchio_bianco.png">
+	                        	            		<img class="companylogo" src="images/logo.png">
 	            	                        </a>
 
 	            <div class="socialblock">
 	                            </div>
 	        </div>
 	    </div>
+      -->
 
     <div class="tocify-wrapper">
       <div id="toc">
